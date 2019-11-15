@@ -23,8 +23,7 @@ public class MatérielSpécial {
 	 * @param etat
 	 * @param local
 	 */
-	private MatérielSpécial(int id, String nom, String etat, int local) {
-		super();
+	public MatérielSpécial(int id, String nom, String etat, int local) {
 		this.id = id;
 		this.nom = nom;
 		this.etat = etat;
@@ -66,7 +65,7 @@ public class MatérielSpécial {
 	/**
 	 * @return the etat
 	 */
-	private String getEtat() {
+	public String getEtat() {
 		return etat;
 	}
 
@@ -91,33 +90,16 @@ public class MatérielSpécial {
 		this.local = local;
 	}
 	
-	// Méthode
-	
+	/**
+	 * Méthode permettant de changé l'état de la fonction, mais comme je ne connais pas encore les instructions pour accéder à un DB
+	 * @param etat
+	 */
 	public void changerEtat(String etat) {
 		this.etat = etat;
 	}
 	
-	//Main
-	
-	public static void main(String[] args) {
-		
-		MatérielSpécial ms1 = new MatérielSpécial(1,"projo","bien",38);
-		ms1.etat.changerEtat("Moyen");
-		
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
+	/**
+	 * Si nécessaire, des testes d'execption prendont place ici
+	 */
 }
 
