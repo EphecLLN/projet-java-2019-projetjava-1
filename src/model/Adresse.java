@@ -51,6 +51,13 @@ public class Adresse {
 		 return this.numero + " " + this.ville + " " + this.codePostal + " " + this.ville;	
 	}
 	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		
+
+	}
 	
 	/**
 	 * @return the numero
