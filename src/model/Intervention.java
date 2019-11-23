@@ -80,7 +80,7 @@ public class Intervention {
 		// Dans cette méthode il manque toute la partie interaction avec la BDD 
 		// (je ne connais pas encore les outils nécessaires pour réaliser cette 
 		// implémentation)
-		try {  
+		try {   // Il sera utile quand il y aura la connexion à la BDD
 			this.nom = nom;
 			this.commentaires = commentaires;
 		}
@@ -88,6 +88,13 @@ public class Intervention {
 			System.out.println("La modification n'a pas pu aboutir. Veuillez "
 					+ "réessayer.");
 		}
+	}
+	
+	public static void main(String[] args) {
+		Intervention inter1 = new Intervention(1,"a","a");
+		Intervention inter2 = new Intervention(2,"a","a");
+		
+		System.out.println(inter1.id + " " + inter2.id);
 	}
 
 }
