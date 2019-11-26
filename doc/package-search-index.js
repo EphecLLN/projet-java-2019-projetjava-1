@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"tp7"},{"l":"tp7.controller"},{"l":"tp7.model"},{"l":"tp7.test"},{"l":"tp7.view"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"model"}]
