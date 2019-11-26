@@ -10,12 +10,75 @@ package model;
 public class Local {
 	
 	private int id;
-	private Materiels
+	private Materiels nbChaises;
+	private Materiels nbTables;
+	private MaterielSpecial [] materielsSpecials;
+	private Intervention [] interventions;
+	
+	
+	
 	/**
-	 * 
+	 * @return the nbChaises
 	 */
-	public Local() {
-		// TODO Auto-generated constructor stub
+	public Materiels getNbChaises() {
+		return nbChaises;
 	}
 
+
+	/**
+	 * @return the nbTables
+	 */
+	public Materiels getNbTables() {
+		return nbTables;
+	}
+
+	/**
+	 * @return the materielsSpecials
+	 */
+	public MaterielSpecial[] getMaterielsSpecials() {
+		return materielsSpecials;
+	}
+
+
+	/**
+	 * @return the interventions
+	 */
+	public Intervention[] getInterventions() {
+		return interventions;
+	}
+
+
+
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+
+
+	/**
+	 * @param id
+	 * @param nbChaises
+	 * @param nbTables
+	 * @param materielsSpecials
+	 * @param interventions
+	 */
+	public Local(int id, Materiels nbChaises, Materiels nbTables, MaterielSpecial[] materielsSpecials,
+			Intervention[] interventions) {
+		this.id = id;
+		this.nbChaises = nbChaises;
+		this.nbTables = nbTables;
+		this.materielsSpecials = materielsSpecials;
+		this.interventions = interventions;
+	}
+	
+	public void ajouterMaterielSpecial(String nom, String etat) {
+		
+	}
+	
+	public void ajouterIntervention(String nom, String commentaire) {
+		
+	}
 }
