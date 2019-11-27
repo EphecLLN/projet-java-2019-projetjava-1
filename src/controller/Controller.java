@@ -8,5 +8,5 @@ package controller;
  *
  */
 public class Controller {
-
+	Adresse model;
 }

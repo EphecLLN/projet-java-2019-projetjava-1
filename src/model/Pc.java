@@ -3,11 +3,13 @@
  */
 package model;
 
+import java.util.Observable;
+
 /**
  * @author lb
  *
  */
-public class Pc {
+public class Pc extends Observable{
 
 	private int id;
 	private int local;
@@ -73,6 +75,8 @@ public class Pc {
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + nom);
 		}
+		setChanged();
+        notifyObservers();
 	}
 
 }
