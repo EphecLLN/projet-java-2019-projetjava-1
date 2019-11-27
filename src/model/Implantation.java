@@ -36,7 +36,7 @@ public class Implantation {
 	}
 	
 	public int nombreLocauxTotal() {
-		return this.locaux.Length;
+		return this.locaux.length;
 	}
 	
 	public int nombreLocauxInformatiques() {

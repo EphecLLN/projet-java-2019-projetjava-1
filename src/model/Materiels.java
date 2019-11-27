@@ -8,7 +8,7 @@ package model;
  * @author igorv
  *
  */
-public class Matériels {
+public class Materiels {
 	private int neuf;
 	private int bon;
 	private int use;
@@ -22,7 +22,7 @@ public class Matériels {
 	 * @param use
 	 * @param critique
 	 */
-	public Matériels(int neuf, int bon, int use, int critique) {
+	public Materiels(int neuf, int bon, int use, int critique) {
 		this.neuf = neuf;
 		this.bon = bon;
 		this.use = use;
