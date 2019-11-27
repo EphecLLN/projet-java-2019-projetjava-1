@@ -3,12 +3,14 @@
  */
 package model;
 
+import java.util.Observable;
+
 /**
  * Classe permettant la representation de materiel special
  * @author igorv
  *
  */
-public class MaterielSpecial {
+public class MaterielSpecial extends Observable{
 	
 	//Variables d'instance
 		private int id;
@@ -96,6 +98,8 @@ public class MaterielSpecial {
 	 */
 	public void changerEtat(String etat) {
 		this.etat = etat;
+		setChanged();
+        notifyObservers();
 	}
 	
 	/**

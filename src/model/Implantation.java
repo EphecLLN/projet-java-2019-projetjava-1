@@ -3,11 +3,13 @@
  */
 package model;
 
+import java.util.Observable;
+
 /**
  * @author Victoire
  *
  */
-public class Implantation {
+public class Implantation extends Observable{
 	
 	
 	private int id;
@@ -29,20 +31,27 @@ public class Implantation {
 	
 	public void genererAdresse(Adresse adresse) {
 		this.adresse = adresse;
+		setChanged();
+        notifyObservers();
 	}
 	
 	public void ajouterLocaux() {
-		
+		setChanged();
+        notifyObservers();
 	}
 	
 	public int nombreLocauxTotal() {
+		setChanged();
+        notifyObservers();
 		return this.locaux.length;
+		
 	}
 	
 	public int nombreLocauxInformatiques() {
 		
 		//compter uniquement le nombre de locaux informatiques
-		
+		setChanged();
+        notifyObservers();
 		return 0;
 	}
 	

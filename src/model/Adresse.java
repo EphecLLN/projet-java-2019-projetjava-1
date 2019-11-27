@@ -3,11 +3,13 @@
  */
 package model;
 
+import java.util.Observable;
+
 /**
  * @author Victoire
  *
  */
-public class Adresse {
+public class Adresse extends Observable {
 
 	private int id, numero, codePostal;
 	private String rue, ville;
@@ -44,6 +46,8 @@ public class Adresse {
 		catch(Exception e) {
 			System.out.println("La modification n'a pas été effectuée");
 		}
+		setChanged();
+        notifyObservers();
 		
 	}
 	
@@ -51,13 +55,6 @@ public class Adresse {
 		 return this.numero + " " + this.ville + " " + this.codePostal + " " + this.ville;	
 	}
 	
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		
-
-	}
 	
 	/**
 	 * @return the numero

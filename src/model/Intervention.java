@@ -3,11 +3,13 @@
  */
 package model;
 
+import java.util.Observable;
+
 /**
  * @author lb
  *
  */
-public class Intervention {
+public class Intervention extends Observable{
 	
 	private int id;
 	private String nom;
@@ -88,13 +90,10 @@ public class Intervention {
 			System.out.println("La modification n'a pas pu aboutir. Veuillez "
 					+ "réessayer.");
 		}
+		setChanged();
+        notifyObservers();
 	}
 	
-	public static void main(String[] args) {
-		Intervention inter1 = new Intervention(1,"a","a");
-		Intervention inter2 = new Intervention(2,"a","a");
-		
-		System.out.println(inter1.id + " " + inter2.id);
-	}
+
 
 }

@@ -3,11 +3,13 @@
  */
 package model;
 
+import java.util.Observable;
+
 /**
  * @author lb
  *
  */
-public class Local {
+public class Local extends Observable {
 	
 	private int id;
 	private Materiels nbChaises;
@@ -75,10 +77,12 @@ public class Local {
 	}
 	
 	public void ajouterMaterielSpecial(String nom, String etat) {
-		
+		setChanged();
+        notifyObservers();
 	}
 	
 	public void ajouterIntervention(String nom, String commentaire) {
-		
+		setChanged();
+        notifyObservers();
 	}
 }
