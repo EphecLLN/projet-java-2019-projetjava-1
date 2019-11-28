@@ -37,8 +37,7 @@ public class VueConsole extends Vue implements Observer{
 		public void run() {
 			while(true) {
 				// compléter tout ça
-					String pseudo = "", mdp = "";
-					System.out.println(model.utilisateurs.toString());
+					String pseudo = "", mdp = "" , imp = "",var = "", var2= "";
 					do {
 						System.out.print("Utilisateur : ");
 						Scanner scan = new Scanner (System.in);
@@ -49,6 +48,42 @@ public class VueConsole extends Vue implements Observer{
 					}
 					while(!controller.login(pseudo, mdp));
 					System.out.println("Connexion réussie !");
+					
+					System.out.print("Dans quelle implantation êtes-vous? ");
+					Scanner scan3 = new Scanner(System.in);
+					imp = scan3.nextLine();
+					
+					System.out.print("Que voulez-vous faire? A pour calculer un nombre total de locaux, B pour le total de locaux informatique, C pour interragir avec le matériel ");
+					Scanner scan4 = new Scanner(System.in);
+					var = scan4.nextLine();
+					
+					
+					
+					switch(var) {
+					case "A":
+						System.out.println(controller.model.implantation.size());
+						break;
+					case "B":
+						System.out.println("à implémenter");
+						break;
+					case "C" :
+						System.out.print("Que voulez-vous faire? A pour changer l'état du matériel, B pour afficher le total du matériel ");
+						Scanner scan5 = new Scanner(System.in);
+						var2 = scan5.nextLine();
+						switch(var2) {
+						case "A":
+							System.out.println("à implémenter");
+							break;
+						case "B":
+							System.out.println(controller.model.materiel.size());
+							break;
+						default:
+							throw new IllegalArgumentException("Unexpected value: " + var2);
+						}
+						break;
+					default:
+						throw new IllegalArgumentException("Unexpected value: " + var);
+					}
 			}
 		}
 	}

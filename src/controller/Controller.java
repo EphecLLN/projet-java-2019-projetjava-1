@@ -15,7 +15,7 @@ import view.Vue;
  */
 public class Controller {
 
-	Ecole model;
+	public Ecole model;
 	Vue vue;
 	
 	
@@ -37,6 +37,7 @@ public class Controller {
 		}*/
 		return true;
 	}
+	
 	//ajouter les méthodes
 	
 	public void addView(Vue vue) {
