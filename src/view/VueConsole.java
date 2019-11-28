@@ -9,7 +9,8 @@ import java.util.Observer;
 import java.util.Scanner;
 
 import controller.Controller;
-import model.Ecole;
+import model.Adresse;
+import model.Local;
 
 
 /**
@@ -19,8 +20,8 @@ import model.Ecole;
 public class VueConsole extends Vue implements Observer{
 	protected Scanner sc;
 
-	public VueConsole(Ecole model, Controller controller) {
-		super(model, controller);
+	public VueConsole(Local modelLocal, Controller controllerLocal, Adresse modelAdresse, Controller controllerAdresse) {
+		super(modelLocal, controllerLocal, modelAdresse, controllerAdresse);
 		update(null, null);
 		sc = new Scanner(System.in);
 		new Thread (new ReadInput()).start();
@@ -30,7 +31,7 @@ public class VueConsole extends Vue implements Observer{
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 		
-		System.out.println(model);
+		//System.out.println();
 		
 	}
 	
@@ -39,6 +40,7 @@ public class VueConsole extends Vue implements Observer{
 			while(true) {
 				try { // compléter tout ça
 					String c = sc.next();
+					
 				}
 				catch(Exception e){
 					
@@ -53,17 +55,7 @@ public class VueConsole extends Vue implements Observer{
 		System.out.println(string);
 	}
 
-	@Override
-	public void enableWarning() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void disableWarning() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	
 	 
 }
