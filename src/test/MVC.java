@@ -4,7 +4,6 @@
 package test;
 
 import controller.Controller;
-import model.Adresse;
 import model.Ecole;
 import view.VueConsole;
 
@@ -35,13 +34,8 @@ public class MVC {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Adresse a = new Adresse(1,1,1,"ffd","zzz");
-		System.out.println(a.getRue());
-		a.modifierAdresse(3, 555, "ppp", "zzz");
-		System.out.println(a.getRue());
-		public void run() {
-			new MVC();
-		}
+		
+		new MVC();
 	}
 
 }
