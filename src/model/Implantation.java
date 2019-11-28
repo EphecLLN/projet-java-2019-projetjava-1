@@ -28,6 +28,10 @@ public class Implantation extends Observable{
 		
 	}
 	
+	public Implantation() {
+		
+	}
+	
 	
 	public void genererAdresse(Adresse adresse) {
 		this.adresse = adresse;
