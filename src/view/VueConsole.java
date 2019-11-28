@@ -3,13 +3,13 @@
  */
 package view;
 
-import java.lang.ModuleLayer.Controller;
+
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Scanner;
 
-import model.Adresse;
-import model.Test;
+import controller.Controller;
+import model.Ecole;
 
 
 /**
@@ -19,7 +19,7 @@ import model.Test;
 public class VueConsole extends Vue implements Observer{
 	protected Scanner sc;
 
-	public VueConsole(Test model, Controller controller) {
+	public VueConsole(Ecole model, Controller controller) {
 		super(model, controller);
 		update(null, null);
 		sc = new Scanner(System.in);

@@ -3,12 +3,13 @@
  */
 package view;
 
-import java.lang.ModuleLayer.Controller;
+
 import java.util.Observer;
 
+import controller.Controller;
 import model.Adresse;
+import model.Ecole;
 import model.Implantation;
-import model.Test;
 
 
 
@@ -18,12 +19,12 @@ import model.Test;
  */
 public abstract class Vue implements Observer{
 
-	protected Test model; // Faut-il mettre les autres? si oui, comment?
+	protected Ecole model; // Faut-il mettre les autres? si oui, comment?
 	
 	protected Controller controller;
 	
 	@SuppressWarnings("deprecation")
-	public Vue(Test model, Controller controller) {
+	public Vue(Ecole model, Controller controller) {
 		this.model = model;
 		this.controller = controller;
 		model.addObserver(this);

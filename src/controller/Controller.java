@@ -5,7 +5,7 @@ package controller;
 
 
 
-import model.Test;
+import model.Ecole;
 import view.Vue;
 
 /**
@@ -13,10 +13,10 @@ import view.Vue;
  *
  */
 public class Controller {
-	Test model; // même problème que dans la vue
+	Ecole model; // même problème que dans la vue
 	Vue vue;
 	
-	public Controller(Test model) {
+	public Controller(Ecole model) {
 		this.model = model;
 	}
 	
