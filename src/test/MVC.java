@@ -3,6 +3,9 @@
  */
 package test;
 
+import java.sql.SQLException;
+import java.util.Scanner;
+
 import controller.Controller;
 
 import model.Ecole;
@@ -17,7 +20,7 @@ import view.VueConsole;
 
 public class MVC {
 
-	public MVC(){
+	public MVC() throws SQLException{
 		//création du modèle
 		//même problème du coup j'utilise Adresse pour pouvoir faire la suite
 		
@@ -38,11 +41,13 @@ public class MVC {
 	
 	/**
 	 * @param args
+	 * @throws SQLException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException{
 		// TODO Auto-generated method stub
-		
-		new MVC();
+		String pseudo = "", mdp = "";
+			new MVC();
 	}
-
 }
+
+

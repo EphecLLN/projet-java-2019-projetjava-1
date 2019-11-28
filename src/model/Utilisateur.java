@@ -11,12 +11,12 @@ import java.util.Observable;
  */
 public class Utilisateur extends Observable {
 
-	private int id;
-	private String nom, prenom,grade, pseudo, motDePasse, implantation;
+	private int id, grade, implantation;
+	private String nom, prenom, pseudo, motDePasse;
 	
 	String[] util;
 	
-	public Utilisateur(int id, String nom, String prenom, String grade, String pseudo, String motDePasse, String implantation ) {
+	public Utilisateur(int id, String nom, String prenom, int grade, String pseudo, String motDePasse, int implantation ) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -33,7 +33,7 @@ public class Utilisateur extends Observable {
 	 * méthode qui permet de changer le grade d'un utilisateur par celui passé en paramètre
 	 * @param newGrade
 	 */
-	public void changerGrade(String newGrade) {
+	public void changerGrade(int newGrade) {
 		this.grade = newGrade;
 		setChanged();
         notifyObservers();
@@ -48,7 +48,7 @@ public class Utilisateur extends Observable {
 	 * @param motDePasse
 	 * @param implantation
 	 */
-	public void ajouterUtilisateur(int id, String nom, String prenom, String grade, String pseudo,String motDePasse,String implantation ) {
+	public void ajouterUtilisateur(int id, String nom, String prenom, int grade, String pseudo, String motDePasse, int implantation ) {
 		
 		//TODO Implementation collection
 		setChanged();
@@ -153,14 +153,14 @@ public class Utilisateur extends Observable {
 	/**
 	 * @return the grade
 	 */
-	public String getGrade() {
+	public int getGrade() {
 		return grade;
 	}
 
 	/**
 	 * @param grade the grade to set
 	 */
-	public void setGrade(String grade) {
+	public void setGrade(int grade) {
 		this.grade = grade;
 	}
 
@@ -195,14 +195,14 @@ public class Utilisateur extends Observable {
 	/**
 	 * @return the implantation
 	 */
-	public String getImplantation() {
+	public int getImplantation() {
 		return implantation;
 	}
 
 	/**
 	 * @param implantation the implantation to set
 	 */
-	public void setImplantation(String implantation) {
+	public void setImplantation(int implantation) {
 		this.implantation = implantation;
 	}
 	

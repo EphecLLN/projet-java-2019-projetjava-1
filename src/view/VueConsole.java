@@ -30,25 +30,25 @@ public class VueConsole extends Vue implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		
-		//System.out.println(model.);
-		
+		//System.out.println("Bonjour");
 	}
 	
 	private class ReadInput implements Runnable{
 		public void run() {
 			while(true) {
-				try { // compléter tout ça
-					String c = sc.next();
-					if(c.length() != 1) {
-						affiche("Format d'input incorrect");
+				// compléter tout ça
+					String pseudo = "", mdp = "";
+					System.out.println(model.utilisateurs.toString());
+					do {
+						System.out.print("Utilisateur : ");
+						Scanner scan = new Scanner (System.in);
+						pseudo = scan.nextLine();
+						System.out.print("Mot de passe : ");
+						Scanner scan2 = new Scanner(System.in);
+						mdp = scan2.nextLine();
 					}
-					
-					
-				}
-				catch(Exception e){
-					
-				}
+					while(!controller.login(pseudo, mdp));
+					System.out.println("Connexion réussie !");
 			}
 		}
 	}
