@@ -7,9 +7,8 @@ package view;
 import java.util.Observer;
 
 import controller.Controller;
-import model.Adresse;
 import model.Ecole;
-import model.Implantation;
+
 
 
 
