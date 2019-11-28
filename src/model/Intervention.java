@@ -14,6 +14,8 @@ public class Intervention extends Observable{
 	private int id;
 	private String nom;
 	private String commentaires;
+	private int localId;
+	
 	
 	/**
 	 * @return the id
@@ -22,12 +24,14 @@ public class Intervention extends Observable{
 		return id;
 	}
 
+
 	/**
 	 * @param id the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
+
 
 	/**
 	 * @return the nom
@@ -36,12 +40,14 @@ public class Intervention extends Observable{
 		return nom;
 	}
 
+
 	/**
 	 * @param nom the nom to set
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
 
 	/**
 	 * @return the commentaires
@@ -50,6 +56,7 @@ public class Intervention extends Observable{
 		return commentaires;
 	}
 
+
 	/**
 	 * @param commentaires the commentaires to set
 	 */
@@ -57,17 +64,36 @@ public class Intervention extends Observable{
 		this.commentaires = commentaires;
 	}
 
+
 	/**
-	 * @param id identifiant unique
-	 * @param nom Le nom de l'intervention
-	 * @param commentaires Les détails de l'intervention
+	 * @return the localId
 	 */
-	public Intervention(int id, String nom, String commentaires) {
+	public int getLocalId() {
+		return localId;
+	}
+
+
+	/**
+	 * @param localId the localId to set
+	 */
+	public void setLocalId(int localId) {
+		this.localId = localId;
+	}
+	
+	/**
+	 * @param id
+	 * @param nom
+	 * @param commentaires
+	 * @param localId
+	 */
+	public Intervention(int id, String nom, String commentaires, int localId) {
 		this.id = id;
 		this.nom = nom;
 		this.commentaires = commentaires;
+		this.localId = localId;
 	}
-	
+
+
 	/**
 	 * Modifie l'intervention en base de donées et remplace les valeurs des
 	 * attributs de l'objet par les valeurs 

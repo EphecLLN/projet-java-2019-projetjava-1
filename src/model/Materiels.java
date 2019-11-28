@@ -6,36 +6,48 @@ package model;
 import java.util.Observable;
 
 /**
- * Classe permettant de faire et d'actualiser un inventaire de matériels
+ * Classe permettant de faire et d'actualiser un inventaire de matï¿½riels
  * @author igorv
  *
  */
+@SuppressWarnings("deprecation")
 public class Materiels extends Observable{
+	
+	private int id;
+	private String nom;
 	private int neuf;
 	private int bon;
 	private int use;
 	private int critique;
-	
+	private int localId;
 	
 	/**
-	 * Constructeur
-	 * @param neuf
-	 * @param bon
-	 * @param use
-	 * @param critique
+	 * @return the id
 	 */
-	public Materiels(int neuf, int bon, int use, int critique) {
-		this.neuf = neuf;
-		this.bon = bon;
-		this.use = use;
-		this.critique = critique;
+	public int getId() {
+		return id;
 	}
-	
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	/**
-	 * Getters & Setters
+	 * @param id the id to set
 	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the nom
+	 */
+	public String getNom() {
+		return nom;
+	}
+
+	/**
+	 * @param nom the nom to set
+	 */
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 
 	/**
 	 * @return the neuf
@@ -44,14 +56,12 @@ public class Materiels extends Observable{
 		return neuf;
 	}
 
-
 	/**
 	 * @param neuf the neuf to set
 	 */
 	public void setNeuf(int neuf) {
 		this.neuf = neuf;
 	}
-
 
 	/**
 	 * @return the bon
@@ -60,14 +70,12 @@ public class Materiels extends Observable{
 		return bon;
 	}
 
-
 	/**
 	 * @param bon the bon to set
 	 */
 	public void setBon(int bon) {
 		this.bon = bon;
 	}
-
 
 	/**
 	 * @return the use
@@ -76,14 +84,12 @@ public class Materiels extends Observable{
 		return use;
 	}
 
-
 	/**
 	 * @param use the use to set
 	 */
 	public void setUse(int use) {
 		this.use = use;
 	}
-
 
 	/**
 	 * @return the critique
@@ -92,29 +98,59 @@ public class Materiels extends Observable{
 		return critique;
 	}
 
-
 	/**
 	 * @param critique the critique to set
 	 */
 	public void setCritique(int critique) {
 		this.critique = critique;
 	}
-	
-	//////////////////////////////////////////*Méthodes*////////////////////////////////////////////////////////////////////////
+
+	/**
+	 * @return the localId
+	 */
+	public int getLocalId() {
+		return localId;
+	}
+
+	/**
+	 * @param localId the localId to set
+	 */
+	public void setLocalId(int localId) {
+		this.localId = localId;
+	}
 	
 	/**
-	 * Méthode
+	 * @param id
+	 * @param neuf
+	 * @param bon
+	 * @param use
+	 * @param critique
+	 * @param localId
+	 */
+	public Materiels(int id, String nom, int neuf, int bon, int use, int critique, int localId) {
+		this.id = id;
+		this.nom = nom;
+		this.neuf = neuf;
+		this.bon = bon;
+		this.use = use;
+		this.critique = critique;
+		this.localId = localId;
+	}
+	
+	//////////////////////////////////////////*Mï¿½thodes*////////////////////////////////////////////////////////////////////////
+
+	/**
+	 * Mï¿½thode
 	 * 
-	 * Méthode permetant d'actualiser l'inventaire
+	 * Mï¿½thode permetant d'actualiser l'inventaire
 	 * @param neuf
 	 * @param bon
 	 * @param use
 	 * @param critique
 	 * 
 	 */
-	
-	
-	public void actualiser(int neuf, int bon, int use, int critique) {
+	public void actualiser(int id, int neuf, int bon, int use, int critique) {
+		this.id = id;
 		this.neuf = neuf;
 		this.bon = bon;
 		this.use = use;
@@ -124,12 +160,12 @@ public class Materiels extends Observable{
 	}
 	
 	/**
-	 * Méthode permetant de faire le compte d'un matériel
+	 * Mï¿½thode permetant de faire le compte d'un matï¿½riel
 	 * @param neuf
 	 * @param bon
 	 * @param use
 	 * @param critique
-	 * @return la quantitée d'un matériel
+	 * @return la quantitï¿½e d'un matï¿½riel
 	 * 
 	 */
 	

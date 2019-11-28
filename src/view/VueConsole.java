@@ -36,9 +36,8 @@ public class VueConsole extends Vue implements Observer{
 	private class ReadInput implements Runnable{
 		public void run() {
 			while(true) {
-				// compléter tout ça
+				// complï¿½ter tout ï¿½a
 					String pseudo = "", mdp = "";
-					System.out.println(model.utilisateurs.toString());
 					do {
 						System.out.print("Utilisateur : ");
 						Scanner scan = new Scanner (System.in);
@@ -48,14 +47,12 @@ public class VueConsole extends Vue implements Observer{
 						mdp = scan2.nextLine();
 					}
 					while(!controller.login(pseudo, mdp));
-					System.out.println("Connexion réussie !");
 			}
 		}
 	}
 
 	
 	public void affiche(String string) {
-		
 		System.out.println(string);
 	}
 

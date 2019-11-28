@@ -37,9 +37,15 @@ public class Controller {
 		}*/
 		return true;
 	}
-	//ajouter les méthodes
+	//ajouter les mï¿½thodes
 	
 	public void addView(Vue vue) {
 		this.vue = vue;
+	}
+	
+	public void afficherClasses() {
+		for(int i = 0; i < model.locals.size(); i++) {
+			vue.affiche(model.locals.get(i).toString());
+		}
 	}
 }

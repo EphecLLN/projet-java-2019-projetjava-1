@@ -12,77 +12,79 @@ import java.util.Observable;
 public class Local extends Observable {
 	
 	private int id;
-	private Materiels nbChaises;
-	private Materiels nbTables;
-	private MaterielSpecial [] materielsSpecials;
-	private Intervention [] interventions;
-	
-	
-	
-	/**
-	 * @return the nbChaises
-	 */
-	public Materiels getNbChaises() {
-		return nbChaises;
-	}
-
-
-	/**
-	 * @return the nbTables
-	 */
-	public Materiels getNbTables() {
-		return nbTables;
-	}
-
-	/**
-	 * @return the materielsSpecials
-	 */
-	public MaterielSpecial[] getMaterielsSpecials() {
-		return materielsSpecials;
-	}
-
-
-	/**
-	 * @return the interventions
-	 */
-	public Intervention[] getInterventions() {
-		return interventions;
-	}
-
-
-
+	private String nom;
+	private int implantationId;
+	private int localInformatique;
 	/**
 	 * @return the id
 	 */
 	public int getId() {
 		return id;
 	}
-
-
-
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+	/**
+	 * @return the nom
+	 */
+	public String getNom() {
+		return nom;
+	}
+	/**
+	 * @param nom the nom to set
+	 */
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	/**
+	 * @return the implantationId
+	 */
+	public int getImplantationId() {
+		return implantationId;
+	}
+	/**
+	 * @param implantationId the implantationId to set
+	 */
+	public void setImplantationId(int implantationId) {
+		this.implantationId = implantationId;
+	}
+	/**
+	 * @return the localInformatique
+	 */
+	public int getLocalInformatique() {
+		return localInformatique;
+	}
+	/**
+	 * @param localInformatique the localInformatique to set
+	 */
+	public void setLocalInformatique(int localInformatique) {
+		this.localInformatique = localInformatique;
+	}
 	/**
 	 * @param id
-	 * @param nbChaises
-	 * @param nbTables
-	 * @param materielsSpecials
-	 * @param interventions
+	 * @param nom
+	 * @param implantationId
+	 * @param localInformatique
 	 */
-	public Local(int id, Materiels nbChaises, Materiels nbTables, MaterielSpecial[] materielsSpecials,
-			Intervention[] interventions) {
+	public Local(int id, String nom, int implantationId, int localInformatique) {
 		this.id = id;
-		this.nbChaises = nbChaises;
-		this.nbTables = nbTables;
-		this.materielsSpecials = materielsSpecials;
-		this.interventions = interventions;
+		this.nom = nom;
+		this.implantationId = implantationId;
+		this.localInformatique = localInformatique;
 	}
 	
-	public void ajouterMaterielSpecial(String nom, String etat) {
-		setChanged();
-        notifyObservers();
+	public String toString() {
+		
+		String str = "Local : classique";
+		if(localInformatique == 1) {
+			str = "Local : informatique";
+		}
+		
+		return nom + " implantation : " + implantationId + " " + str;
 	}
 	
-	public void ajouterIntervention(String nom, String commentaire) {
-		setChanged();
-        notifyObservers();
-	}
+	
 }
