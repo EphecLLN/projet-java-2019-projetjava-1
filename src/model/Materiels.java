@@ -3,12 +3,14 @@
  */
 package model;
 
+import java.util.Observable;
+
 /**
  * Classe permettant de faire et d'actualiser un inventaire de matériels
  * @author igorv
  *
  */
-public class Matériels {
+public class Materiels extends Observable{
 	private int neuf;
 	private int bon;
 	private int use;
@@ -22,7 +24,7 @@ public class Matériels {
 	 * @param use
 	 * @param critique
 	 */
-	public Matériels(int neuf, int bon, int use, int critique) {
+	public Materiels(int neuf, int bon, int use, int critique) {
 		this.neuf = neuf;
 		this.bon = bon;
 		this.use = use;
@@ -113,6 +115,8 @@ public class Matériels {
 		this.bon = bon;
 		this.use = use;
 		this.critique = critique;
+		setChanged();
+        notifyObservers();
 	}
 	
 	/**
@@ -126,6 +130,8 @@ public class Matériels {
 	 */
 	
 	public int total(int neuf, int bon, int use, int critique) {
+		setChanged();
+        notifyObservers();
 		return neuf + bon + use + critique;
 	}
 	

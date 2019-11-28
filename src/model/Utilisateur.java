@@ -3,11 +3,13 @@
  */
 package model;
 
+import java.util.Observable;
+
 /**
  * @author Victoire
  *
  */
-public class Utilisateur {
+public class Utilisateur extends Observable {
 
 	private int id;
 	private String nom, prenom,grade, pseudo, motDePasse, implantation;
@@ -33,6 +35,8 @@ public class Utilisateur {
 	 */
 	public void changerGrade(String newGrade) {
 		this.grade = newGrade;
+		setChanged();
+        notifyObservers();
 	}
 	/**
 	 * méthode qui permet d'ajouter un utilisateur à la BDD
@@ -47,6 +51,8 @@ public class Utilisateur {
 	public void ajouterUtilisateur(int id, String nom, String prenom, String grade, String pseudo,String motDePasse,String implantation ) {
 		
 		//TODO Implementation collection
+		setChanged();
+        notifyObservers();
 	}
 	
 	/**
@@ -55,6 +61,8 @@ public class Utilisateur {
 	 */
 	public void supprimerUtilisateur(int id) {
 		//TODO implementation collection
+		setChanged();
+        notifyObservers();
 	}
 	
 	/**
@@ -62,6 +70,8 @@ public class Utilisateur {
 	 * return vrai ou faux
 	 */
 	public boolean authentifier(String pseudo, String mdp) {
+		setChanged();
+        notifyObservers();
 		//Implementation collection
 		return false;
 	}
@@ -71,6 +81,8 @@ public class Utilisateur {
 	 * @param pseudo
 	 */
 	public void changerPseudo(String pseudo) {
+		setChanged();
+        notifyObservers();
 		this.pseudo = pseudo;
 		//TODO Implementation collection
 	}
@@ -81,6 +93,8 @@ public class Utilisateur {
 	 */
 	public void changerMDP(String mdp) {
 		this.motDePasse = mdp;
+		setChanged();
+        notifyObservers();
 		//TODO implementation collection
 	}
 	
@@ -89,6 +103,8 @@ public class Utilisateur {
 	 */
 	public void synchroniserBDD() {
 		//TODO à partir des tableaux instancier les objets
+		setChanged();
+        notifyObservers();
 	}
 	
 

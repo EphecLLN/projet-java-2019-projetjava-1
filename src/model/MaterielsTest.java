@@ -11,11 +11,11 @@ import org.junit.jupiter.api.Test;
  * @author igorv
  *
  */
-class MatérielsTest {
+class MaterielsTest {
 
 	@Test
 	public void testActualiser() {
-		Matériels chaise = new Matériels(1,2,3,4);
+		Materiels chaise = new Materiels(1,2,3,4);
 		assertEquals(1, chaise.getNeuf());
 		assertEquals(2, chaise.getBon());
 		assertEquals(3, chaise.getUse());
@@ -24,7 +24,7 @@ class MatérielsTest {
 	
 	@Test
 	public void testTotal() {
-		Matériels tt = new Matériels(1,2,3,4);
+		Materiels tt = new Materiels(1,2,3,4);
 		assertEquals(10, tt.total(1,2,3,4));
 	}
 

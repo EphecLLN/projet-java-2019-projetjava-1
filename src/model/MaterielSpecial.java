@@ -3,12 +3,14 @@
  */
 package model;
 
+import java.util.Observable;
+
 /**
- * Classe permettant la représentation de matériel spécial
+ * Classe permettant la representation de materiel special
  * @author igorv
  *
  */
-public class MatérielSpécial {
+public class MaterielSpecial extends Observable{
 	
 	//Variables d'instance
 		private int id;
@@ -23,7 +25,7 @@ public class MatérielSpécial {
 	 * @param etat
 	 * @param local
 	 */
-	public MatérielSpécial(int id, String nom, String etat, int local) {
+	public MaterielSpecial(int id, String nom, String etat, int local) {
 		this.id = id;
 		this.nom = nom;
 		this.etat = etat;
@@ -91,15 +93,17 @@ public class MatérielSpécial {
 	}
 	
 	/**
-	 * Méthode permettant de changé l'état de la fonction, mais comme je ne connais pas encore les instructions pour accéder à un DB
+	 * Methode permettant de change l'etat de la fonction, mais comme je ne connais pas encore les instructions pour acceder à un DB
 	 * @param etat
 	 */
 	public void changerEtat(String etat) {
 		this.etat = etat;
+		setChanged();
+        notifyObservers();
 	}
 	
 	/**
-	 * Si nécessaire, des testes d'execption prendont place ici
+	 * Si necessaire, des testes d'execption prendont place ici
 	 */
 }
 

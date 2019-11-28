@@ -13,8 +13,10 @@ public class LocalInformatique extends Local {
 	/**
 	 * 
 	 */
-	public LocalInformatique() {
+	public LocalInformatique(int id, Materiels nbChaises, Materiels nbTables, MaterielSpecial[] materielsSpecials,
+			Intervention[] interventions) {
 		// TODO Auto-generated constructor stub
+		super(id, nbChaises, nbTables, materielsSpecials, interventions);
 	}
 
 }
