@@ -53,6 +53,9 @@ public class Pc extends Observable{
 	
 	
 	public void changerEtat(String nom, String etat) {
+		
+		Connexion conn = new Connexion("update pc set " + nom + "=" + etat + "where id =" + this.id);
+		
 		switch (nom) {
 		case "type":
 			this.type = etat;
