@@ -3,6 +3,7 @@
  */
 package model;
 
+import java.sql.SQLException;
 import java.util.Observable;
 
 /**
@@ -76,12 +77,14 @@ public class Local extends Observable {
 		this.interventions = interventions;
 	}
 	
-	public void ajouterMaterielSpecial(String nom, String etat) {
+	public void ajouterMaterielSpecial(int id, String nom, String etat, int local) throws SQLException {
+		Connexion ams = new Connexion("insert into materielspecial values ('"+ id +"','"+ nom +"','"+ etat +"')");
 		setChanged();
         notifyObservers();
 	}
 	
-	public void ajouterIntervention(String nom, String commentaire) {
+	public void ajouterIntervention(int id, String nom, String commentaire) throws SQLException {
+		Connexion ai = new Connexion("insert into intervention values ('"+ id +"','"+ nom +"','"+ commentaire +"')");
 		setChanged();
         notifyObservers();
 	}

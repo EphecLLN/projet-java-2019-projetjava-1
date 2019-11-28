@@ -17,7 +17,7 @@ public class Connexion {
 	private String req;
 	private Connection connexion;
 	private Statement requeteStatement;
-	private ResultSet resultat = null;
+	public ResultSet resultat = null;
 	/**
 	 * @throws SQLException 
 	 * 

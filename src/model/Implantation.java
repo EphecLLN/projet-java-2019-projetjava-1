@@ -3,6 +3,7 @@
  */
 package model;
 
+import java.sql.SQLException;
 import java.util.Observable;
 
 /**
@@ -31,34 +32,6 @@ public class Implantation extends Observable{
 	public Implantation() {
 		
 	}
-	
-	
-	public void genererAdresse(Adresse adresse) {
-		this.adresse = adresse;
-		setChanged();
-        notifyObservers();
-	}
-	
-	public void ajouterLocaux() {
-		setChanged();
-        notifyObservers();
-	}
-	
-	public int nombreLocauxTotal() {
-		setChanged();
-        notifyObservers();
-		return this.locaux.length;
-		
-	}
-	
-	public int nombreLocauxInformatiques() {
-		
-		//compter uniquement le nombre de locaux informatiques
-		setChanged();
-        notifyObservers();
-		return 0;
-	}
-	
 	
 	/**
 	 * @return the id
@@ -101,6 +74,24 @@ public class Implantation extends Observable{
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
-
-
+	
+	public int nombreLocauxTotal() throws SQLException {
+		Connexion nlt = new Connexion("select count(*) from local where implatationId = "+ this.id);
+		nlt.resultat.next();
+		setChanged();
+        notifyObservers();
+		return nlt.resultat.getInt("");
+		
+	}
+	
+	public int nombreLocauxInformatiques() throws SQLException {
+		
+		//compter uniquement le nombre de locaux informatiques
+		Connexion nli = new Connexion("select count(*) from local where localInfomartique = 1");
+		nli.resultat.next();
+		setChanged();
+        notifyObservers();
+		return nli.resultat.getInt("");
+	}
+	
 }

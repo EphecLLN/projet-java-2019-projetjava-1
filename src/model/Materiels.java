@@ -3,6 +3,7 @@
  */
 package model;
 
+import java.sql.SQLException;
 import java.util.Observable;
 
 /**
@@ -11,6 +12,7 @@ import java.util.Observable;
  *
  */
 public class Materiels extends Observable{
+	private int id;
 	private int neuf;
 	private int bon;
 	private int use;
@@ -110,15 +112,16 @@ public class Materiels extends Observable{
 	 * @param bon
 	 * @param use
 	 * @param critique
+	 * @throws SQLException 
 	 * 
 	 */
 	
 	
-	public void actualiser(int neuf, int bon, int use, int critique) {
-		this.neuf = neuf;
-		this.bon = bon;
-		this.use = use;
-		this.critique = critique;
+	public void actualiser(int neuf, int bon, int use, int critique) throws SQLException {
+		Connexion act1 = new Connexion("update materiels set neuf = " + neuf + "where id = " + this.id );
+		Connexion act2 = new Connexion("update materiels set bon = " + bon + "where id = " + this.id );
+		Connexion act3 = new Connexion("update materiels set use = " + use + "where id = " + this.id );
+		Connexion act4 = new Connexion("update materiels set critique = " + critique + "where id = " + this.id );
 		setChanged();
         notifyObservers();
 	}
@@ -130,13 +133,17 @@ public class Materiels extends Observable{
 	 * @param use
 	 * @param critique
 	 * @return la quantitée d'un matériel
+	 * @throws SQLException 
 	 * 
 	 */
 	
-	public int total(int neuf, int bon, int use, int critique) {
+	public int total(int neuf, int bon, int use, int critique) throws SQLException {
+		Connexion ttc = new Connexion("select neuf, bon, use, critique from materiels where id = " + this.id +"from materiels");
+		ttc.resultat.next();
 		setChanged();
         notifyObservers();
-		return neuf + bon + use + critique;
+		return ttc.resultat.getInt("neuf" + "bon" + "use" + "critique");
+		
 	}
 	
 	
