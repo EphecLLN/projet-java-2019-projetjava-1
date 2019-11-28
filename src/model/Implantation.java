@@ -15,17 +15,17 @@ public class Implantation extends Observable{
 	
 	private int id;
 	private String nom;
-	private Adresse adresse;
-	Local[] locaux; //à compléter une fois la classe local liée
+	private int adresseid;
+	Local[] locaux; //ï¿½ complï¿½ter une fois la classe local liï¿½e
 	
-	int[] test = {1, 4, 6, 7};//tableaux de int pour tester les méthodes
-	int[] test2 = {1, 5, 3, 7};//tableaux de int pour tester les méthodes
+	int[] test = {1, 4, 6, 7};//tableaux de int pour tester les mï¿½thodes
+	int[] test2 = {1, 5, 3, 7};//tableaux de int pour tester les mï¿½thodes
 	
 	
-	public Implantation(int id, String nom, Adresse adresse) {
+	public Implantation(int id, String nom, int adresseid) {
 		this.id = id;
 		this.nom = nom;
-		this.adresse = adresse;
+		this.adresseid = adresseid;
 		
 	}
 	
@@ -34,8 +34,8 @@ public class Implantation extends Observable{
 	}
 	
 	
-	public void genererAdresse(Adresse adresse) {
-		this.adresse = adresse;
+	public void genererAdresse(int adresse) {
+		this.adresseid = adresse;
 		setChanged();
         notifyObservers();
 	}
@@ -93,15 +93,15 @@ public class Implantation extends Observable{
 	/**
 	 * @return the adresse
 	 */
-	public Adresse getAdresse() {
-		return adresse;
+	public int getAdresse() {
+		return adresseid;
 	}
 
 	/**
 	 * @param adresse the adresse to set
 	 */
-	public void setAdresse(Adresse adresse) {
-		this.adresse = adresse;
+	public void setAdresse(int adresse) {
+		this.adresseid = adresse;
 	}
 
 

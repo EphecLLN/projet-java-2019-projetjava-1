@@ -11,31 +11,67 @@ import java.util.Observable;
  * @author Victoire
  *
  */
+@SuppressWarnings("deprecation")
 public class Ecole extends Observable {
 	
 	public ArrayList<Adresse> adresses = new ArrayList<Adresse>();
-	public ArrayList<Implantation> implantation = new ArrayList<Implantation>();
-	public ArrayList<Intervention> intervention = new ArrayList<Intervention>();
-	public ArrayList<Local> local = new ArrayList<Local>();
-	public ArrayList<LocalInformatique> localInformatique = new ArrayList<LocalInformatique>();
-	public ArrayList<Materiels> materiel = new ArrayList<Materiels>();
-	public ArrayList<MaterielSpecial> materielSpecial = new ArrayList<MaterielSpecial>();
-	public ArrayList<Pc> pc = new ArrayList<Pc>();
+	public ArrayList<Implantation> implantations = new ArrayList<Implantation>();
+	public ArrayList<Intervention> interventions = new ArrayList<Intervention>();
+	public ArrayList<Local> locals = new ArrayList<Local>();
+	public ArrayList<LocalInformatique> localInformatiques = new ArrayList<LocalInformatique>();
+	public ArrayList<Materiels> materiels = new ArrayList<Materiels>();
+	public ArrayList<MaterielSpecial> materielSpecials = new ArrayList<MaterielSpecial>();
+	public ArrayList<Pc> pcs = new ArrayList<Pc>();
 	public ArrayList<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
 	
 	public Ecole() throws SQLException {
-		utilisateurs.add(new Utilisateur(1, "a", "a", 0, "a", "abc", 2));
-/*
+		
+		
+		
 		Connexion conAdresses = new Connexion("select * from adresse");
 		conAdresses.resultat.next();
 		while(! conAdresses.resultat.isAfterLast()){
 			adresses.add(new Adresse(conAdresses.resultat.getInt("id"), conAdresses.resultat.getInt("numero"), conAdresses.resultat.getString("rue"), conAdresses.resultat.getString("ville"), conAdresses.resultat.getInt("codePostal")));             
-			System.out.println(adresses.toString());
 			conAdresses.resultat.next();
-		}*/
+		}
+		
+		Connexion connImplantation = new Connexion("select * from implantation");
+		connImplantation.resultat.next();
+		while(! connImplantation.resultat.isAfterLast()){
+			implantations.add(new Implantation(connImplantation.resultat.getInt("id"), connImplantation.resultat.getString("nom"), connImplantation.resultat.getInt("adresseId")));             
+			connImplantation.resultat.next();
+		}
+		
+		Connexion connLocal = new Connexion("select * from local");
+		connLocal.resultat.next();
+		while(! connLocal.resultat.isAfterLast()){
+			locals.add(new Local(connLocal.resultat.getInt("id"), connLocal.resultat.getString("nom"), connLocal.resultat.getInt("implantationId"), connLocal.resultat.getInt("localInformatique")));             
+			connLocal.resultat.next();
+		}
+		
+		Connexion connIntervention = new Connexion("select * from intervention");
+		connIntervention.resultat.next();
+		while(! connIntervention.resultat.isAfterLast()){
+			interventions.add(new Intervention(connIntervention.resultat.getInt("id"), connIntervention.resultat.getString("nom"), connIntervention.resultat.getString("commentaires"), connIntervention.resultat.getInt("localId")));             
+			connIntervention.resultat.next();
+		}
+		
+		Connexion connMateriels = new Connexion("select * from materiels");
+		connMateriels.resultat.next();
+		while(! connMateriels.resultat.isAfterLast()){
+			materiels.add(new Materiels(connMateriels.resultat.getInt("id"), connMateriels.resultat.getString("nom"), connMateriels.resultat.getInt("neuf"), connMateriels.resultat.getInt("bon"), connMateriels.resultat.getInt("use"), connMateriels.resultat.getInt("critique"), connMateriels.resultat.getInt("localId")));             
+			connMateriels.resultat.next();
+		}
+		
+		Connexion connMaterielSpecial = new Connexion("select * from materielSpecial");
+		connMaterielSpecial.resultat.next();
+		while(! connMaterielSpecial.resultat.isAfterLast()){
+			materielSpecials.add(new MaterielSpecial(connMaterielSpecial.resultat.getInt("id"), connMaterielSpecial.resultat.getString("nom"), connMaterielSpecial.resultat.getString("etat"), connMaterielSpecial.resultat.getInt("localId")));             
+			connMaterielSpecial.resultat.next();
+		}
+		
 	}
-	
-	
+
 	
 }
 	

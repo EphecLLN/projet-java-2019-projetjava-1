@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package view;
 
@@ -32,11 +32,11 @@ public class VueConsole extends Vue implements Observer{
 		// TODO Auto-generated method stub
 		//System.out.println("Bonjour");
 	}
-	
+
 	private class ReadInput implements Runnable{
 		public void run() {
 			while(true) {
-				// compléter tout ça
+				// complï¿½ter tout ï¿½a
 					String pseudo = "", mdp = "" , imp = "",var = "", var2= "";
 					do {
 						System.out.print("Utilisateur : ");
@@ -47,32 +47,32 @@ public class VueConsole extends Vue implements Observer{
 						mdp = scan2.nextLine();
 					}
 					while(!controller.login(pseudo, mdp));
-					System.out.println("Connexion réussie !");
-					
-					System.out.print("Dans quelle implantation êtes-vous? ");
+					System.out.println("Connexion rï¿½ussie !");
+
+					System.out.print("Dans quelle implantation ï¿½tes-vous? ");
 					Scanner scan3 = new Scanner(System.in);
 					imp = scan3.nextLine();
-					
-					System.out.print("Que voulez-vous faire? A pour calculer un nombre total de locaux, B pour le total de locaux informatique, C pour interragir avec le matériel ");
+
+					System.out.print("Que voulez-vous faire? A pour calculer un nombre total de locaux, B pour le total de locaux informatique, C pour interragir avec le matï¿½riel ");
 					Scanner scan4 = new Scanner(System.in);
 					var = scan4.nextLine();
-					
-					
-					
+
+
+
 					switch(var) {
 					case "A":
 						System.out.println(controller.model.implantation.size());
 						break;
 					case "B":
-						System.out.println("à implémenter");
+						System.out.println("ï¿½ implï¿½menter");
 						break;
 					case "C" :
-						System.out.print("Que voulez-vous faire? A pour changer l'état du matériel, B pour afficher le total du matériel ");
+						System.out.print("Que voulez-vous faire? A pour changer l'ï¿½tat du matï¿½riel, B pour afficher le total du matï¿½riel ");
 						Scanner scan5 = new Scanner(System.in);
 						var2 = scan5.nextLine();
 						switch(var2) {
 						case "A":
-							System.out.println("à implémenter");
+							System.out.println("ï¿½ implï¿½menter");
 							break;
 						case "B":
 							System.out.println(controller.model.materiel.size());
@@ -88,13 +88,12 @@ public class VueConsole extends Vue implements Observer{
 		}
 	}
 
-	
+
 	public void affiche(String string) {
-		
 		System.out.println(string);
 	}
 
-	
-	
-	 
+
+
+
 }
