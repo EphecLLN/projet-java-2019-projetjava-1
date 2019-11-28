@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package model;
 
@@ -10,7 +10,7 @@ import java.util.Observable;
  *
  */
 public class Local extends Observable {
-	
+
 	private int id;
 	private String nom;
 	private int implantationId;
@@ -75,16 +75,16 @@ public class Local extends Observable {
 		this.implantationId = implantationId;
 		this.localInformatique = localInformatique;
 	}
-	
+
 	public String toString() {
-		
+
 		String str = "Local : classique";
 		if(localInformatique == 1) {
 			str = "Local : informatique";
 		}
-		
+
 		return nom + " implantation : " + implantationId + " " + str;
 	}
-	
-	
+
+
 }

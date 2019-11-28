@@ -3,6 +3,7 @@
  */
 package model;
 
+import java.sql.SQLException;
 import java.util.Observable;
 
 /**
@@ -44,11 +45,12 @@ public class Implantation extends Observable{
         notifyObservers();
 	}
 	
-	public int nombreLocauxTotal() {
+	public int nombreLocauxTotal() throws SQLException {
+		Connexion nlt = new Connexion("select count(*) from local where implatationId = "+ this.id);
+		nlt.resultat.next();
 		setChanged();
         notifyObservers();
-		return this.locaux.length;
-		
+		return nlt.resultat.getInt("1");
 	}
 	
 	public int nombreLocauxInformatiques() {
