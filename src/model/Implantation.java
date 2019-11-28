@@ -80,7 +80,7 @@ public class Implantation extends Observable{
 		nlt.resultat.next();
 		setChanged();
         notifyObservers();
-		return nlt.resultat.getInt("");
+		return nlt.resultat.getInt("1");
 		
 	}
 	
@@ -91,7 +91,7 @@ public class Implantation extends Observable{
 		nli.resultat.next();
 		setChanged();
         notifyObservers();
-		return nli.resultat.getInt("");
+		return nli.resultat.getInt("1");
 	}
 	
 }
