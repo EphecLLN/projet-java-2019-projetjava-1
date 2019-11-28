@@ -14,7 +14,7 @@ public class Adresse extends Observable {
 	private int id, numero, codePostal;
 	private String rue, ville;
 
-	public Adresse(int id, int numero, int codePostal, String rue, String ville){
+	public Adresse(int id, int numero, String rue, String ville, int codePostal){
 	this.id = id;
 	this.numero = numero;
 	this.codePostal = codePostal;

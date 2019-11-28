@@ -8,7 +8,7 @@ class AdresseTest {
 
 	@Test
 	void testModifierAdresse() {
-		Adresse a = new Adresse(1, 5, 1348, "avenue", "lln");
+		Adresse a = new Adresse(1, 5, "avenue", "lln", 1348);
 		a.modifierAdresse(22, 1357, "rue du Brasseur", "Hélécine");
 		assertEquals(22, a.getNumero());
 		assertEquals(1357, a.getCodePostal());

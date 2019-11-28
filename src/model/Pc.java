@@ -3,6 +3,7 @@
  */
 package model;
 
+import java.sql.SQLException;
 import java.util.Observable;
 
 /**
@@ -52,7 +53,7 @@ public class Pc extends Observable{
 	}
 	
 	
-	public void changerEtat(String nom, String etat) {
+	public void changerEtat(String nom, String etat) throws SQLException {
 		
 		Connexion conn = new Connexion("update pc set " + nom + "=" + etat + "where id =" + this.id);
 		

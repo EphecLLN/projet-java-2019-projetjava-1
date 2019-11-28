@@ -19,11 +19,24 @@ public class Controller {
 	Vue vue;
 	
 	
-	public Controller(Ecole modelLocal) {
-		this.model = modelLocal;
+	public Controller(Ecole model) {
+		this.model = model;
 	}
 	
-	
+	public boolean login(String user, String mdp) {
+		
+		// A revoir
+		
+		/*boolean res = false;
+		for(int i = 0; i < model.utilisateurs.size(); i++) {
+			if(model.utilisateurs.get(i).getPseudo() == user) {
+				if(model.utilisateurs.get(i).getMotDePasse() == mdp) {
+					res = true;
+				}
+			}
+		}*/
+		return true;
+	}
 	//ajouter les méthodes
 	
 	public void addView(Vue vue) {

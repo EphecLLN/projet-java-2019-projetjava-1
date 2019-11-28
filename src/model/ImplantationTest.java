@@ -18,9 +18,9 @@ class ImplantationTest {
 	 */
 	@Test
 	void testGenererAdresse() {
-		Implantation i = new Implantation(1, "Ephec", new Adresse(1, 3, 1348, "avenue du ciseau", "lln"));
-		i.genererAdresse(new Adresse(1, 3, 1348, "avenue du ciseau", "lln"));
-		assertEquals(new Adresse(1, 3, 1348, "avenue du ciseau", "lln"), i.getAdresse());
+		Implantation i = new Implantation(1, "Ephec", new Adresse(1, 3, "avenue du ciseau", "lln", 1348));
+		i.genererAdresse(new Adresse(1, 3, "avenue du ciseau", "lln", 1348));
+		assertEquals(new Adresse(1, 3, "avenue du ciseau", "lln", 1348), i.getAdresse());
 	}
 	
 	/**
@@ -28,11 +28,11 @@ class ImplantationTest {
 	 */
 	@Test
 	void testAjouterLocaux() {
-		Implantation i = new Implantation(1, "Ephec", new Adresse(1, 3, 1348, "avenue du ciseau", "lln"));
+		Implantation i = new Implantation(1, "Ephec", new Adresse(1, 3, "avenue du ciseau", "lln", 1348));
 		i.ajouterLocaux();//besoin de la classe local pour la suite
 		assertEquals(1, i.getId());
 		assertEquals("Ephec", i.getNom());
-		assertEquals(new Adresse(1, 3, 1348, "avenue du ciseau", "lln"), i.getAdresse());
+		assertEquals(new Adresse(1, 3, "avenue du ciseau", "lln", 1348), i.getAdresse());
 		
 	}
 
