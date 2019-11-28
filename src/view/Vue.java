@@ -8,8 +8,13 @@ import java.util.Observer;
 
 import controller.Controller;
 import model.Adresse;
+<<<<<<< HEAD
 import model.Local;
 
+=======
+import model.Ecole;
+import model.Implantation;
+>>>>>>> parent of c03dbac... .
 
 
 
