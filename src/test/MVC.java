@@ -39,6 +39,9 @@ public class MVC {
 		System.out.println(a.getRue());
 		a.modifierAdresse(3, 555, "ppp", "zzz");
 		System.out.println(a.getRue());
+		public void run() {
+			new MVC();
+		}
 	}
 
 }
