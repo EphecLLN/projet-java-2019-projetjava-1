@@ -9,8 +9,8 @@ import java.util.Observer;
 import java.util.Scanner;
 
 import controller.Controller;
-import model.Adresse;
-import model.Local;
+import model.Ecole;
+
 
 
 /**
@@ -20,8 +20,8 @@ import model.Local;
 public class VueConsole extends Vue implements Observer{
 	protected Scanner sc;
 
-	public VueConsole(Local modelLocal, Controller controllerLocal, Adresse modelAdresse, Controller controllerAdresse) {
-		super(modelLocal, controllerLocal, modelAdresse, controllerAdresse);
+	public VueConsole(Ecole model, Controller controller) {
+		super(model, controller);
 		update(null, null);
 		sc = new Scanner(System.in);
 		new Thread (new ReadInput()).start();
@@ -31,7 +31,7 @@ public class VueConsole extends Vue implements Observer{
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 		
-		//System.out.println();
+		//System.out.println(model.);
 		
 	}
 	
@@ -40,6 +40,10 @@ public class VueConsole extends Vue implements Observer{
 			while(true) {
 				try { // compléter tout ça
 					String c = sc.next();
+					if(c.length() != 1) {
+						affiche("Format d'input incorrect");
+					}
+					
 					
 				}
 				catch(Exception e){
