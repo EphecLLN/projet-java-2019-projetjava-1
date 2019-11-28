@@ -3,6 +3,7 @@
  */
 package model;
 
+import java.sql.SQLException;
 import java.util.Observable;
 
 /**
@@ -52,7 +53,10 @@ public class Pc extends Observable{
 	}
 	
 	
-	public void changerEtat(String nom, String etat) {
+	public void changerEtat(String nom, String etat) throws Exception {
+		
+		Connexion conn = new Connexion("update pc set " + nom + "=" + etat + "where id =" + this.id);
+		
 		switch (nom) {
 		case "type":
 			this.type = etat;
@@ -72,11 +76,8 @@ public class Pc extends Observable{
 		case "commentaires":
 			this.commentaires = etat;
 			break;
-		default:
-			throw new IllegalArgumentException("Unexpected value: " + nom);
-		}
-		setChanged();
-        notifyObservers();
+		default: throw new Exception("Mauvais matériel !");
+	}
 	}
 
 }

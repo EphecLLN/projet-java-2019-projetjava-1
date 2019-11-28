@@ -25,7 +25,7 @@ public class Connexion {
 	public Connexion(String requete) throws SQLException {
 		req = requete;
 		connexion = DriverManager.getConnection(url, user, mdp); 
-		Statement requeteStatement = connexion.createStatement();
+		requeteStatement = connexion.createStatement();
 		resultat = requeteStatement.executeQuery(req);
 	}
 
@@ -33,5 +33,13 @@ public class Connexion {
 		resultat.close();
 		requeteStatement.close();
 		connexion.close();
+	}
+	
+	public static void main(String args[]) throws SQLException {
+		Connexion test = new Connexion("select * from adresse");
+		
+		test.resultat.next();
+		
+		System.out.println(test.resultat.getObject(3));
 	}
 }
