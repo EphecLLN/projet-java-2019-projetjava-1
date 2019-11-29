@@ -53,7 +53,7 @@ public class VueConsole extends Vue implements Observer{
 					Scanner scan3 = new Scanner(System.in);
 					imp = scan3.nextLine();
 
-					System.out.print("Que voulez-vous faire? A pour calculer un nombre total de locaux, B pour le total de locaux informatique, C pour interragir avec le mat�riel ");
+					System.out.print("Que voulez-vous faire? A pour calculer un nombre total de locaux, B pour afficher l'ensemble des locaux, C pour interragir avec le mat�riel ");
 					Scanner scan4 = new Scanner(System.in);
 					var = scan4.nextLine();
 
@@ -61,10 +61,10 @@ public class VueConsole extends Vue implements Observer{
 
 					switch(var) {
 					case "A":
-						System.out.println(controller.model.implantation.size());
+						System.out.println("Le nombre total de locaux s'élève à " + controller.model.locals.size());
 						break;
 					case "B":
-						System.out.println("� impl�menter");
+						controller.afficherClasses();
 						break;
 					case "C" :
 						System.out.print("Que voulez-vous faire? A pour changer l'�tat du mat�riel, B pour afficher le total du mat�riel ");
@@ -75,7 +75,7 @@ public class VueConsole extends Vue implements Observer{
 							System.out.println("� impl�menter");
 							break;
 						case "B":
-							System.out.println(controller.model.materiel.size());
+							System.out.println(controller.model.materiels.size());
 							break;
 						default:
 							throw new IllegalArgumentException("Unexpected value: " + var2);

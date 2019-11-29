@@ -21,47 +21,6 @@ public class Implantation extends Observable{
 	int[] test = {1, 4, 6, 7};//tableaux de int pour tester les m�thodes
 	int[] test2 = {1, 5, 3, 7};//tableaux de int pour tester les m�thodes
 	
-	
-	public Implantation(int id, String nom, int adresseid) {
-		this.id = id;
-		this.nom = nom;
-		this.adresseid = adresseid;
-		
-	}
-	
-	public Implantation() {
-		
-	}
-	
-	
-	public void genererAdresse(int adresse) {
-		this.adresseid = adresse;
-		setChanged();
-        notifyObservers();
-	}
-	
-	public void ajouterLocaux() {
-		setChanged();
-        notifyObservers();
-	}
-	
-	public int nombreLocauxTotal() throws SQLException {
-		Connexion nlt = new Connexion("select count(*) from local where implatationId = "+ this.id);
-		nlt.resultat.next();
-		setChanged();
-        notifyObservers();
-		return nlt.resultat.getInt("1");
-	}
-	
-	public int nombreLocauxInformatiques() {
-		
-		//compter uniquement le nombre de locaux informatiques
-		setChanged();
-        notifyObservers();
-		return 0;
-	}
-	
-	
 	/**
 	 * @return the id
 	 */
@@ -102,6 +61,45 @@ public class Implantation extends Observable{
 	 */
 	public void setAdresse(int adresse) {
 		this.adresseid = adresse;
+	}
+	
+	public Implantation(int id, String nom, int adresseid) {
+		this.id = id;
+		this.nom = nom;
+		this.adresseid = adresseid;
+		
+	}
+	
+	public Implantation() {
+	
+	}
+	
+	
+	public void genererAdresse(int adresse) {
+		this.adresseid = adresse;
+		setChanged();
+        notifyObservers();
+	}
+	
+	public void ajouterLocaux() {
+		setChanged();
+        notifyObservers();
+	}
+	
+	public int nombreLocauxTotal() throws SQLException {
+		Connexion nlt = new Connexion("select count(*) from local where implatationId = "+ this.id);
+		nlt.resultat.next();
+		setChanged();
+        notifyObservers();
+		return nlt.resultat.getInt("1");
+	}
+	
+	public int nombreLocauxInformatiques() {
+		
+		//compter uniquement le nombre de locaux informatiques
+		setChanged();
+        notifyObservers();
+		return 0;
 	}
 
 
