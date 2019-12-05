@@ -96,8 +96,8 @@ public class MaterielSpecial extends Observable{
 	 * Methode permettant de change l'etat de la fonction, mais comme je ne connais pas encore les instructions pour acceder à un DB
 	 * @param etat
 	 */
-	public void changerEtat(String etat) {
-		this.etat = etat;
+	public void changerEtat(String etat, String newEtat) {
+		Connexion ce = new Connexion("update materielspecial set " + etat + "=" + newEtat + "where id =" + this.id);
 		setChanged();
         notifyObservers();
 	}

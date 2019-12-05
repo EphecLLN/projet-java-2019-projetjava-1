@@ -104,18 +104,8 @@ public class Intervention extends Observable{
 	 * 
 	 * @throws Exception Renvoie une exception si l'opération n'a pas pu aboutir
 	 */
-	public void modifierIntervention(String nom, String commentaires){
-		// Dans cette méthode il manque toute la partie interaction avec la BDD 
-		// (je ne connais pas encore les outils nécessaires pour réaliser cette 
-		// implémentation)
-		try {   // Il sera utile quand il y aura la connexion à la BDD
-			this.nom = nom;
-			this.commentaires = commentaires;
-		}
-		catch(Exception e) {
-			System.out.println("La modification n'a pas pu aboutir. Veuillez "
-					+ "réessayer.");
-		}
+	public void modifierIntervention(String newNom, String newCommentaires, String nom, String commentaires){
+		Connexion min = new Connexion("update intervention set " + nom + "=" + newNom + ", "+ commentaires + "=" + newCommentaires + "where id =" + this.id );
 		setChanged();
         notifyObservers();
 	}
