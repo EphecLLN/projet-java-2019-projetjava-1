@@ -128,6 +128,12 @@ public class Adresse extends Observable {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public void genererAdresse(int id, int numero, int codePostal, String rue, String ville) throws SQLException {
+		Connexion ga = new Connexion("insert into adresse values ('"+ id +"','"+ numero +"','"+ codePostal +"','"+rue +"','"+ ville +"',)");
+		setChanged();
+        notifyObservers();
+	}
 
 }
 
