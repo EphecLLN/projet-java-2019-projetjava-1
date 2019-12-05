@@ -3,7 +3,7 @@
  */
 package model;
 
-
+import java.sql.SQLException;
 
 /**
  * @author lb
@@ -109,13 +109,14 @@ public class Local{
 
 ///////////////////////////////////////*METHODES*////////////////////////////////////////////////////////////////////////////////////
 
-	public void ajouterMaterielSpecial(String nom, String etat) {
-
+	public void ajouterMaterielSpecial(int id, String nom, String etat, int local) throws SQLException {
+		Connexion ams = new Connexion("insert into materielspecial values ('"+ id +"','"+ nom +"','"+ etat +"')");
+		
 	}
-
-	public void ajouterIntervention(int id, String nom, String etat) {
-
+	public void ajouterIntervention(int id, String nom, String commentaire) throws SQLException {
+		Connexion ai = new Connexion("insert into intervention values ('"+ id +"','"+ nom +"','"+ commentaire +"')");
 	}
+	
 
 ///////////////////////////////////////*METHODE TOSTRING*////////////////////////////////////////////////////////////////////////////////////
 
@@ -129,18 +130,9 @@ public class Local{
 
 		return nom + " implantation : " + implantationId + " " + str;
 	}
-
-	public void ajouterMaterielSpecial(int id, String nom, String etat, int local) throws SQLException {
-		Connexion ams = new Connexion("insert into materielspecial values ('"+ id +"','"+ nom +"','"+ etat +"')");
-		setChanged();
-        notifyObservers();
-	}
-
-	public void ajouterIntervention(int id, String nom, String commentaire) throws SQLException {
-		Connexion ai = new Connexion("insert into intervention values ('"+ id +"','"+ nom +"','"+ commentaire +"')");
-		setChanged();
-        notifyObservers();
-	}
+	*/
 
 
+
+	
 }

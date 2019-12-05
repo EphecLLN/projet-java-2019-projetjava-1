@@ -80,13 +80,13 @@ public class Implantation {
 
 ///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
 
-	public void genererAdresse(Adresse adresse) {
-		this.adresse = adresse;
-
+	public void genererAdresse(int id, int numero, int codePostal, String rue, String ville) throws SQLException {
+		Connexion ga = new Connexion("insert into adresse values ('"+ id +"','"+ numero +"','"+ codePostal +"','"+rue +"','"+ ville +"',)");
+			
 	}
 
-	public void ajouterLocaux(String nom, int id) {
-
+	public void ajouterLocaux(int id, String nom, int implantationId, int localInformatique) throws SQLException {
+		Connexion al = new Connexion("insert into local values ('"+ id +"','"+ nom +"','"+ implantationId +"','"+ localInformatique +"')");
 	}
 
 	public int nombreLocauxTotal() throws SQLException {
@@ -96,13 +96,12 @@ public class Implantation {
 		return nlt.resultat.getInt("1");
 	}
 
-public int nombreLocauxInformatiques() throws SQLException {
+	public int nombreLocauxInformatiques() throws SQLException {
 
 		//compter uniquement le nombre de locaux informatiques
 		Connexion nli = new Connexion("select count(*) from local where localInfomartique = 1");
 		nli.resultat.next();
-		setChanged();
-        notifyObservers();
+		
 		return nli.resultat.getInt("1");
 	}
 

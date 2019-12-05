@@ -3,7 +3,7 @@
  */
 package model;
 
-
+import java.sql.SQLException;
 
 /**
  * @author Victoire
@@ -20,76 +20,9 @@ public class Utilisateur {
 
 	String[] util;
 
-	public Utilisateur(int id, String nom, String prenom, int grade, String pseudo, String motDePasse, int implantation ) {
-		this.id = id;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.pseudo = pseudo;
-		this.motDePasse = motDePasse;
-		this.implantation = implantation;
-	}
 
-	public String toString() {
-		return nom + " " + prenom + " " + grade + " " + pseudo + " " + motDePasse + " " + implantation;
-	}
+///////////////////////////////////////*GETTERS & SETTERS*////////////////////////////////////////////////////////////////////////////////////
 
-	/**
-	 * m�thode qui permet de changer le grade d'un utilisateur par celui pass� en param�tre
-	 * @param newGrade
-	 */
-	public void changerGrade(int grade, int newGrade) {
-		Connexion cg = new Connexion("update utilisateurs set " + grade + "=" + newGrade + "where id =" + this.id);
-		setChanged();
-        notifyObservers();
-	}
-	/**
-	 * m�thode qui permet d'ajouter un utilisateur � la BDD
-	 * @param id
-	 * @param nom
-	 * @param prenom
-	 * @param grade
-	 * @param pseudo
-	 * @param motDePasse
-	 * @param implantation
-	 */
-	public void ajouterUtilisateur(int id, String nom, String prenom, int grade, String pseudo, String motDePasse, int implantation ) {
-
-		Connexion au = new Connexion("insert into utilisateurs values ('"+ id +"','"+ nom +"','"+ prenom +"','"+ grade +"','"+ pseudo +"','"+ motDePasse +",'"+ implantation")");
-		setChanged();
-        notifyObservers();
-	}
-
-	/**
-	 * m�thode qui permet de supprimer un utilisateur en fonction de l'id pass� en param�tre
-	 * @param id
-	 */
-	public void supprimerUtilisateur(int id) {
-		Connexion su = new Connexion("delete from utilisateurs where id = "+ id);
-		setChanged();
-        notifyObservers();
-	}
-
-	/**
-	 * m�thode qui permet de changer le pseudo d'un utilisateur par celui pass� en param�tre
-	 * @param pseudo
-	 */
-	public void changerPseudo(String pseudo, String newPseudo) {
-		Connexion cp = new Connexion("update utilisateurs set " + pseudo + "=" + newPseudo + "where id =" + this.id);
-		setChanged();
-        notifyObservers();
-		//TODO Implementation collection
-	}
-
-	/**
-	 * m�thode qui permet de changer le mot de passe d'un utilisateur par celui pass� en param�tre
-	 * @param mdp
-	 */
-	public void changerMDP(String mdp, String newMdp) {
-		Connexion cm = new Connexion("update utilisateurs set " + mdp + "=" + newMdp + "where id =" + this.id);
-		setChanged();
-        notifyObservers();
-		//TODO implementation collection
-	}
 
 	/**
 	 * @return the id
@@ -205,15 +138,17 @@ public class Utilisateur {
 
 
 	/**
-	 * m�thode qui permet de changer le grade d'un utilisateur par celui pass� en param�tre
+	 * methode qui permet de changer le grade d'un utilisateur par celui passe en parametre
 	 * @param newGrade
+	 * @throws SQLException 
 	 */
-	public void changerGrade(int newGrade) {
-		this.grade = newGrade;
-
+	public void changerGrade(int grade, int newGrade) throws SQLException {
+		Connexion cg = new Connexion("update utilisateurs set " + grade + "=" + newGrade + "where id =" + this.id);
+		
 	}
+	
 	/**
-	 * m�thode qui permet d'ajouter un utilisateur � la BDD
+	 * methode qui permet d'ajouter un utilisateur e la BDD
 	 * @param id
 	 * @param nom
 	 * @param prenom
@@ -221,59 +156,46 @@ public class Utilisateur {
 	 * @param pseudo
 	 * @param motDePasse
 	 * @param implantation
+	 * @throws SQLException 
 	 */
-	public void ajouterUtilisateur(int id, String nom, String prenom, int grade, String pseudo, String motDePasse, int implantation ) {
+	public void ajouterUtilisateur(int id, String nom, String prenom, int grade, String pseudo, String motDePasse, int implantation ) throws SQLException {
 
-		//TODO Implementation collection
-
+		Connexion au = new Connexion("insert into utilisateurs values ('"+ id +"','"+ nom +"','"+ prenom +"','"+ grade +"','"+ pseudo +"','"+ motDePasse +",'"+ implantation+")");
+		
 	}
 
 	/**
-	 * m�thode qui permet de supprimer un utilisateur en fonction de l'id pass� en param�tre
+	 * methode qui permet de supprimer un utilisateur en fonction de l'id passe en parametre
 	 * @param id
+	 * @throws SQLException 
 	 */
-	public void supprimerUtilisateur(int id) {
-		//TODO implementation collection
-
+	public void supprimerUtilisateur(int id) throws SQLException {
+		Connexion su = new Connexion("delete from utilisateurs where id = "+ id);
+		
 	}
 
 	/**
-	 * m�thode qui permet d'authentifier un utilisateur
-	 * return vrai ou faux
-	 */
-	public boolean authentifier(String pseudo, String mdp) {
-
-		//Implementation collection
-		return false;
-	}
-
-	/**
-	 * m�thode qui permet de changer le pseudo d'un utilisateur par celui pass� en param�tre
+	 * methode qui permet de changer le pseudo d'un utilisateur par celui passe en parametre
 	 * @param pseudo
+	 * @throws SQLException 
 	 */
-	public void changerPseudo(String pseudo) {
-
-		this.pseudo = pseudo;
+	public void changerPseudo(String pseudo, String newPseudo) throws SQLException {
+		Connexion cp = new Connexion("update utilisateurs set " + pseudo + "=" + newPseudo + "where id =" + this.id);
+		
 		//TODO Implementation collection
 	}
 
 	/**
-	 * m�thode qui permet de changer le mot de passe d'un utilisateur par celui pass� en param�tre
+	 * methode qui permet de changer le mot de passe d'un utilisateur par celui passe en parametre
 	 * @param mdp
+	 * @throws SQLException 
 	 */
-	public void changerMDP(String mdp) {
-		this.motDePasse = mdp;
-
+	public void changerMDP(String mdp, String newMdp) throws SQLException {
+		Connexion cm = new Connexion("update utilisateurs set " + mdp + "=" + newMdp + "where id =" + this.id);
+		
 		//TODO implementation collection
 	}
 
-	/**
-	 * m�thode qui permet de synchroniser le programme avec la base de donn�e
-	 */
-	public void synchroniserBDD() {
-		//TODO � partir des tableaux instancier les objets
-
-	}
 
 
 
@@ -282,5 +204,6 @@ public class Utilisateur {
 	public String toString() {
 		return nom + " " + prenom + " " + grade + " " + pseudo + " " + motDePasse + " " + implantation;
 	}
+	
 
 }

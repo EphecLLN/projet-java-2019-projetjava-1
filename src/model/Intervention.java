@@ -3,6 +3,7 @@
  */
 package model;
 
+import java.sql.SQLException;
 
 /**
  * @author lb
@@ -108,13 +109,13 @@ public class Intervention{
 	 *
 	 * @param nom Le nom de l'intervention
 	 * @param commentaires Les détails de l'intervention
+	 * @throws SQLException 
 	 *
 	 * @throws Exception Renvoie une exception si l'opération n'a pas pu aboutir
 	 */
-	public void modifierIntervention(String newNom, String newCommentaires, String nom, String commentaires){
+	public void modifierIntervention(String newNom, String newCommentaires, String nom, String commentaires) throws SQLException{
 		Connexion min = new Connexion("update intervention set " + nom + "=" + newNom + ", "+ commentaires + "=" + newCommentaires + "where id =" + this.id );
-		setChanged();
-        notifyObservers();
+		
 	}
 
 

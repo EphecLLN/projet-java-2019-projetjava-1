@@ -3,7 +3,7 @@
  */
 package model;
 
-
+import java.sql.SQLException;
 
 /**
  * Classe permettant de faire et d'actualiser un inventaire de materiels
@@ -17,7 +17,7 @@ public class Materiels{
 
 
 	private int id;
-	private String nom; // � rajouter dans l'uml
+	private String nom;
 	private int neuf;
 	private int bon;
 	private int use;
@@ -138,9 +138,9 @@ public class Materiels{
 //////////////////////////////////////////*METHODES*//////////////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * M�thode
+	 * Methode
 	 *
-	 * M�thode permetant d'actualiser l'inventaire
+	 * Methode permetant d'actualiser l'inventaire
 	 * @param neuf
 	 * @param bon
 	 * @param use
@@ -157,7 +157,7 @@ public class Materiels{
 	}
 
 	/**
-	 * M�thode permetant de faire le compte d'un materiel
+	 * Methode permetant de faire le compte d'un materiel
 	 * @param neuf
 	 * @param bon
 	 * @param use
@@ -169,8 +169,7 @@ public class Materiels{
 	public int total(int neuf, int bon, int use, int critique) throws SQLException {
 		Connexion ttc = new Connexion("select neuf, bon, use, critique from materiels where id = " + this.id +"from materiels");
 		ttc.resultat.next();
-		setChanged();
-        notifyObservers();
+		
 		return ttc.resultat.getInt("neuf" + "bon" + "use" + "critique");
 
 	}
