@@ -23,6 +23,13 @@ public class Ecole extends Observable {
 	
 	public ArrayList<Adresse> adresses = new ArrayList<Adresse>();
 	
+	public ArrayList<Materiels> materiels = new ArrayList<Materiels>();
+	
+	public ArrayList<MaterielSpecial> materielSpecial = new ArrayList<MaterielSpecial>();
+
+	
+
+	
 	
 	
 	
@@ -45,6 +52,22 @@ public class Ecole extends Observable {
 		
 	}
 	
+	//Pour chaque implantations on recupère les locaux avec l'id de l'implantation
+	for(Implantation e :  implantations) {
+		Connexion connLocaux = new Connexion("select * from local where implantationId = " + e.getId());
+		connLocaux.resultat.first();
+		while(!connLocaux.resultat.isAfterLast()) {
+			if(connLocaux.resultat.getInt("localInformatique") == 0) {
+				e.locaux.add(new Local(connLocaux.resultat.getInt("id"),connLocaux.resultat.getString("nom"),connLocaux.resultat.getInt("implantationId"),connLocaux.resultat.getInt("localInformatique")));
+			}
+	}
+	
+		//Je regarde si c'est un local est informatique ou non 
+		// Et en fonction de ça on doit instancier la classe local ou local informatique
+		// Et l'instanticiation doit se fire directment dans le add de l'arrayList
+		//enfin on ajoute le local a l'array list de l'implantation
+		
+	}
 	
 	/*
 	public ArrayList<Adresse> adresses = new ArrayList<Adresse>();

@@ -9,7 +9,7 @@ import java.sql.SQLException;
  * @author lb
  *
  */
-public class LocalInformatique {
+public class LocalInformatique extends Local{
 	
 	
 ///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
@@ -39,7 +39,7 @@ public class LocalInformatique {
 
 	public LocalInformatique(int id, String nom, Materiels nbChaises, MaterielSpecial materielSpecial, Intervention intervention, Pc[] nbPcs) {
 		// TODO Auto-generated constructor stub
-		//super(id, nom, nbChaises, materielSpecial, intervention);
+		super(id, nom, nbChaises, materielSpecial, intervention);
 		this.nbPcs = nbPcs;
 	}
 	

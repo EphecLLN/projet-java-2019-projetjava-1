@@ -4,6 +4,7 @@
 package model;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 
 /**
@@ -20,8 +21,14 @@ public class Implantation {
 	private int id;
 	private String nom;
 	private Adresse adresse;
-	Local[] locaux;
+	
+	public ArrayList<Local> locaux = new ArrayList<Local>();
+	
+
+
 	Utilisateur[] util;
+	
+	
 
 
 
@@ -67,6 +74,20 @@ public class Implantation {
 	 */
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
+	}
+	
+	/**
+	 * @return the locaux
+	 */
+	public ArrayList<Local> getLocaux() {
+		return locaux;
+	}
+
+	/**
+	 * @param locaux the locaux to set
+	 */
+	public void setLocaux(ArrayList<Local> locaux) {
+		this.locaux = locaux;
 	}
 
 ///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
