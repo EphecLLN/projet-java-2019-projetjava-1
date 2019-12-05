@@ -33,8 +33,8 @@ public class Utilisateur extends Observable {
 	 * méthode qui permet de changer le grade d'un utilisateur par celui passé en paramètre
 	 * @param newGrade
 	 */
-	public void changerGrade(int newGrade) {
-		this.grade = newGrade;
+	public void changerGrade(int grade, int newGrade) {
+		Connexion cg = new Connexion("update utilisateurs set " + grade + "=" + newGrade + "where id =" + this.id);
 		setChanged();
         notifyObservers();
 	}
@@ -50,7 +50,7 @@ public class Utilisateur extends Observable {
 	 */
 	public void ajouterUtilisateur(int id, String nom, String prenom, int grade, String pseudo, String motDePasse, int implantation ) {
 		
-		//TODO Implementation collection
+		Connexion au = new Connexion("insert into utilisateurs values ('"+ id +"','"+ nom +"','"+ prenom +"','"+ grade +"','"+ pseudo +"','"+ motDePasse +",'"+ implantation")");
 		setChanged();
         notifyObservers();
 	}
@@ -60,30 +60,19 @@ public class Utilisateur extends Observable {
 	 * @param id
 	 */
 	public void supprimerUtilisateur(int id) {
-		//TODO implementation collection
+		Connexion su = new Connexion("delete from utilisateurs where id = "+ id);
 		setChanged();
         notifyObservers();
-	}
-	
-	/**
-	 * méthode qui permet d'authentifier un utilisateur
-	 * return vrai ou faux
-	 */
-	public boolean authentifier(String pseudo, String mdp) {
-		setChanged();
-        notifyObservers();
-		//Implementation collection
-		return false;
 	}
 	
 	/**
 	 * méthode qui permet de changer le pseudo d'un utilisateur par celui passé en paramètre
 	 * @param pseudo
 	 */
-	public void changerPseudo(String pseudo) {
+	public void changerPseudo(String pseudo, String newPseudo) {
+		Connexion cp = new Connexion("update utilisateurs set " + pseudo + "=" + newPseudo + "where id =" + this.id);
 		setChanged();
         notifyObservers();
-		this.pseudo = pseudo;
 		//TODO Implementation collection
 	}
 	
@@ -91,22 +80,12 @@ public class Utilisateur extends Observable {
 	 * méthode qui permet de changer le mot de passe d'un utilisateur par celui passé en paramètre
 	 * @param mdp
 	 */
-	public void changerMDP(String mdp) {
-		this.motDePasse = mdp;
+	public void changerMDP(String mdp, String newMdp) {
+		Connexion cm = new Connexion("update utilisateurs set " + mdp + "=" + newMdp + "where id =" + this.id);
 		setChanged();
         notifyObservers();
 		//TODO implementation collection
 	}
-	
-	/**
-	 * méthode qui permet de synchroniser le programme avec la base de donnée
-	 */
-	public void synchroniserBDD() {
-		//TODO à partir des tableaux instancier les objets
-		setChanged();
-        notifyObservers();
-	}
-	
 
 	/**
 	 * @return the id
