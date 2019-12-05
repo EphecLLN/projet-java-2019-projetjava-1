@@ -3,17 +3,99 @@
  */
 package model;
 
-import java.util.Observable;
+
 
 /**
  * @author Victoire
  *
  */
-public class Adresse extends Observable {
+public class Adresse {
+	
+	
+///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
+
 
 	private int id, numero, codePostal;
 	private String rue, ville;
 
+
+	
+///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
+	
+	/**
+	* @return the numero
+	*/
+	public int getNumero() {
+	return numero;
+	}
+	
+	/**
+	* @param numero the numero to set
+	*/
+	public void setNumero(int numero) {
+	this.numero = numero;
+	}
+	
+	/**
+	* @return the codePostal
+	*/
+	public int getCodePostal() {
+	return codePostal;
+	}
+	
+	/**
+	* @param codePostal the codePostal to set
+	*/
+	public void setCodePostal(int codePostal) {
+	this.codePostal = codePostal;
+	}
+	
+	/**
+	* @return the rue
+	*/
+	public String getRue() {
+	return rue;
+	}
+	
+	/**
+	* @param rue the rue to set
+	*/
+	public void setRue(String rue) {
+	this.rue = rue;
+	}
+	
+	/**
+	* @return the ville
+	*/
+	public String getVille() {
+	return ville;
+	}
+	
+	/**
+	* @param ville the ville to set
+	*/
+	public void setVille(String ville) {
+	this.ville = ville;
+	}
+	
+	/**
+	* @return the id
+	*/
+	public int getId() {
+	return id;
+	}
+	
+	/**
+	* @param id the id to set
+	*/
+	public void setId(int id) {
+	this.id = id;
+	}
+
+
+
+///////////////////////////////////////*CONSTRUCTEURS*//////////////////////////////////////////////////////////////////////////////////////////
+	
 	public Adresse(int id, int numero, String rue, String ville, int codePostal){
 	this.id = id;
 	this.numero = numero;
@@ -21,6 +103,12 @@ public class Adresse extends Observable {
 	this.rue = rue;
 	this.ville = ville;
 	}
+
+	
+	
+///////////////////////////////////////*METHODES*//////////////////////////////////////////////////////////////////////////////////////////////
+	
+
 
 	/**
 	 * Modifie les valeurs des attributs d'une adresse par ceux passés en paramètre
@@ -35,6 +123,7 @@ public class Adresse extends Observable {
 	 * @throws Exception Renvoit une exception si l'opération n'a pas pu être effectuée
 	 * 
 	*/
+
 	public void modifierAdresse(int numero, int codePostal, String rue, String ville) {
 		//il manque toute la partie avec la base de données qui sera rajoutée par la suite
 		try {
@@ -46,91 +135,17 @@ public class Adresse extends Observable {
 		catch(Exception e) {
 			System.out.println("La modification n'a pas été effectuée");
 		}
-		setChanged();
-        notifyObservers();
+		
 		
 	}
 	
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////*METHODE TOSTRING*/////////////////////////////////////////////////////////////////////////////////////
+	
 	public String toString() {
 		 return this.numero + " " + this.ville + " " + this.codePostal + " " + this.ville;	
 	}
 	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	
-	/**
-	 * @return the numero
-	 */
-	public int getNumero() {
-		return numero;
-	}
-
-	/**
-	 * @param numero the numero to set
-	 */
-	public void setNumero(int numero) {
-		this.numero = numero;
-	}
-
-	/**
-	 * @return the codePostal
-	 */
-	public int getCodePostal() {
-		return codePostal;
-	}
-
-	/**
-	 * @param codePostal the codePostal to set
-	 */
-	public void setCodePostal(int codePostal) {
-		this.codePostal = codePostal;
-	}
-
-	/**
-	 * @return the rue
-	 */
-	public String getRue() {
-		return rue;
-	}
-
-	/**
-	 * @param rue the rue to set
-	 */
-	public void setRue(String rue) {
-		this.rue = rue;
-	}
-
-	/**
-	 * @return the ville
-	 */
-	public String getVille() {
-		return ville;
-	}
-
-	/**
-	 * @param ville the ville to set
-	 */
-	public void setVille(String ville) {
-		this.ville = ville;
-	}
-
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-
 }
-
-
+	
 
 

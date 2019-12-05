@@ -3,37 +3,30 @@
  */
 package model;
 
-import java.util.Observable;
+
 
 /**
- * Classe permettant de faire et d'actualiser un inventaire de matï¿½riels
+ * Classe permettant de faire et d'actualiser un inventaire de materiels
  * @author igorv
  *
  */
-@SuppressWarnings("deprecation")
-public class Materiels extends Observable{
+
+public class Materiels{
+	
+///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
+
 	
 	private int id;
-	private String nom;
+	private String nom; // à rajouter dans l'uml
 	private int neuf;
 	private int bon;
 	private int use;
 	private int critique;
-	private int localId;
-	
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
-	}
 
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
+	
+///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
+
+
 
 	/**
 	 * @return the nom
@@ -106,43 +99,48 @@ public class Materiels extends Observable{
 	}
 
 	/**
-	 * @return the localId
+	 * @return the id
 	 */
-	public int getLocalId() {
-		return localId;
+	public int getId() {
+		return id;
 	}
 
 	/**
-	 * @param localId the localId to set
+	 * @param id the id to set
 	 */
-	public void setLocalId(int localId) {
-		this.localId = localId;
+	public void setId(int id) {
+		this.id = id;
 	}
+
+	
+///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
+
 	
 	/**
-	 * @param id
+	 * 
 	 * @param neuf
 	 * @param bon
 	 * @param use
 	 * @param critique
-	 * @param localId
+	 * @param id 
+	 * 
 	 */
-	public Materiels(int id, String nom, int neuf, int bon, int use, int critique, int localId) {
+	public Materiels( int id, String nom, int neuf, int bon, int use, int critique) {
 		this.id = id;
 		this.nom = nom;
 		this.neuf = neuf;
 		this.bon = bon;
 		this.use = use;
 		this.critique = critique;
-		this.localId = localId;
+		
 	}
 	
-	//////////////////////////////////////////*Mï¿½thodes*////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////*METHODES*//////////////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * Mï¿½thode
+	 * Méthode
 	 * 
-	 * Mï¿½thode permetant d'actualiser l'inventaire
+	 * Méthode permetant d'actualiser l'inventaire
 	 * @param neuf
 	 * @param bon
 	 * @param use
@@ -155,25 +153,25 @@ public class Materiels extends Observable{
 		this.bon = bon;
 		this.use = use;
 		this.critique = critique;
-		setChanged();
-        notifyObservers();
+		
 	}
 	
 	/**
-	 * Mï¿½thode permetant de faire le compte d'un matï¿½riel
+	 * Méthode permetant de faire le compte d'un materiel
 	 * @param neuf
 	 * @param bon
 	 * @param use
 	 * @param critique
-	 * @return la quantitï¿½e d'un matï¿½riel
+	 * @return la quantitee d'un materiel
 	 * 
 	 */
 	
 	public int total(int neuf, int bon, int use, int critique) {
-		setChanged();
-        notifyObservers();
+		
 		return neuf + bon + use + critique;
 	}
+
+
 	
 	
 }

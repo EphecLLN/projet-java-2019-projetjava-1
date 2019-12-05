@@ -3,18 +3,26 @@
  */
 package model;
 
-import java.util.Observable;
+
 
 /**
  * @author lb
  *
  */
-public class Local extends Observable {
+public class Local{
+	
+///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
+
 
 	private int id;
 	private String nom;
-	private int implantationId;
-	private int localInformatique;
+	private Materiels nbChaises;
+	private MaterielSpecial materielSpecial;
+	private Intervention intervention;
+	
+///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
+
+	
 	/**
 	 * @return the id
 	 */
@@ -39,43 +47,79 @@ public class Local extends Observable {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+	
+		
 	/**
-	 * @return the implantationId
+	 * @return the nbChaises
 	 */
-	public int getImplantationId() {
-		return implantationId;
+	public Materiels getNbChaises() {
+		return nbChaises;
 	}
 	/**
-	 * @param implantationId the implantationId to set
+	 * @param nbChaises the nbChaises to set
 	 */
-	public void setImplantationId(int implantationId) {
-		this.implantationId = implantationId;
+	public void setNbChaises(Materiels nbChaises) {
+		this.nbChaises = nbChaises;
 	}
 	/**
-	 * @return the localInformatique
+	 * @return the materielSpecial
 	 */
-	public int getLocalInformatique() {
-		return localInformatique;
+	public MaterielSpecial getMaterielSpecial() {
+		return materielSpecial;
 	}
 	/**
-	 * @param localInformatique the localInformatique to set
+	 * @param materielSpecial the materielSpecial to set
 	 */
-	public void setLocalInformatique(int localInformatique) {
-		this.localInformatique = localInformatique;
+	public void setMaterielSpecial(MaterielSpecial materielSpecial) {
+		this.materielSpecial = materielSpecial;
 	}
+	/**
+	 * @return the intervention
+	 */
+	public Intervention getIntervention() {
+		return intervention;
+	}
+	/**
+	 * @param intervention the intervention to set
+	 */
+	public void setIntervention(Intervention intervention) {
+		this.intervention = intervention;
+	}
+	
+	
+	
+///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
+
+
 	/**
 	 * @param id
 	 * @param nom
+	 * @param intervention2 
 	 * @param implantationId
 	 * @param localInformatique
 	 */
-	public Local(int id, String nom, int implantationId, int localInformatique) {
+	public Local(int id, String nom, Materiels nbChaises, MaterielSpecial materielSpecial, Intervention intervention) {
 		this.id = id;
 		this.nom = nom;
-		this.implantationId = implantationId;
-		this.localInformatique = localInformatique;
+		this.nbChaises = nbChaises;
+		this.materielSpecial = materielSpecial;
+		this.intervention = intervention;
 	}
 
+	
+///////////////////////////////////////*METHODES*////////////////////////////////////////////////////////////////////////////////////
+
+	public void ajouterMaterielSpecial(String nom, String etat) {
+		
+	}
+	
+	public void ajouterIntervention(int id, String nom, String etat) {
+		
+	}
+	
+///////////////////////////////////////*METHODE TOSTRING*////////////////////////////////////////////////////////////////////////////////////
+
+	/*
 	public String toString() {
 
 		String str = "Local : classique";
@@ -85,6 +129,7 @@ public class Local extends Observable {
 
 		return nom + " implantation : " + implantationId + " " + str;
 	}
+	*/
 
 
 }

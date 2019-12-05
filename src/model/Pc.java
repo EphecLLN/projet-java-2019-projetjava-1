@@ -4,13 +4,17 @@
 package model;
 
 import java.sql.SQLException;
-import java.util.Observable;
+
+
 
 /**
  * @author lb
  *
  */
-public class Pc extends Observable{
+public class Pc {
+	
+///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
+
 
 	private int id;
 	private int local;
@@ -21,7 +25,8 @@ public class Pc extends Observable{
 	private String souris;
 	private String commentaires;
 	
-	
+///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
+
 	
 	/**
 	 * @return the type
@@ -29,7 +34,143 @@ public class Pc extends Observable{
 	public String getType() {
 		return type;
 	}
+	
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
 
+
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+
+	/**
+	 * @return the local
+	 */
+	public int getLocal() {
+		return local;
+	}
+
+
+
+	/**
+	 * @param local the local to set
+	 */
+	public void setLocal(int local) {
+		this.local = local;
+	}
+
+
+
+	/**
+	 * @return the tour
+	 */
+	public String getTour() {
+		return tour;
+	}
+
+
+
+	/**
+	 * @param tour the tour to set
+	 */
+	public void setTour(String tour) {
+		this.tour = tour;
+	}
+
+
+
+	/**
+	 * @return the ecran
+	 */
+	public String getEcran() {
+		return ecran;
+	}
+
+
+
+	/**
+	 * @param ecran the ecran to set
+	 */
+	public void setEcran(String ecran) {
+		this.ecran = ecran;
+	}
+
+
+
+	/**
+	 * @return the clavier
+	 */
+	public String getClavier() {
+		return clavier;
+	}
+
+
+
+	/**
+	 * @param clavier the clavier to set
+	 */
+	public void setClavier(String clavier) {
+		this.clavier = clavier;
+	}
+
+
+
+	/**
+	 * @return the souris
+	 */
+	public String getSouris() {
+		return souris;
+	}
+
+
+
+	/**
+	 * @param souris the souris to set
+	 */
+	public void setSouris(String souris) {
+		this.souris = souris;
+	}
+
+
+
+	/**
+	 * @return the commentaires
+	 */
+	public String getCommentaires() {
+		return commentaires;
+	}
+
+
+
+	/**
+	 * @param commentaires the commentaires to set
+	 */
+	public void setCommentaires(String commentaires) {
+		this.commentaires = commentaires;
+	}
+
+
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	
+
+///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * @param local
@@ -52,6 +193,8 @@ public class Pc extends Observable{
 		this.commentaires = commentaires;
 	}
 	
+///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
+
 	
 	public void changerEtat(String nom, String etat) throws SQLException {
 		
@@ -79,8 +222,7 @@ public class Pc extends Observable{
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + nom);
 		}
-		setChanged();
-        notifyObservers();
+		
 	}
 
 }

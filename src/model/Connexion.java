@@ -10,6 +10,8 @@ import java.sql.*;
  */
 public class Connexion {
 
+///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
+	
 	private static String url= "jdbc:mysql://localhost/1formatikBdd";
 	private static String user = "root";
 	private static String mdp = "user1234";
@@ -18,6 +20,9 @@ public class Connexion {
 	private Connection connexion;
 	private Statement requeteStatement;
 	public ResultSet resultat = null;
+	
+///////////////////////////////////////*CONSTRUCTEURS*/////////////////////////////////////////////////////////////////////////////////////////////
+
 	/**
 	 * @throws SQLException 
 	 * 
@@ -28,6 +33,9 @@ public class Connexion {
 		Statement requeteStatement = connexion.createStatement();
 		resultat = requeteStatement.executeQuery(req);
 	}
+	
+///////////////////////////////////////*METHODE*/////////////////////////////////////////////////////////////////////////////////////////////
+
 
 	public void fermerConnexion() throws SQLException {
 		resultat.close();

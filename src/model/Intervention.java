@@ -3,19 +3,23 @@
  */
 package model;
 
-import java.util.Observable;
 
 /**
  * @author lb
  *
  */
-public class Intervention extends Observable{
+public class Intervention{
+	
+///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
+
 	
 	private int id;
 	private String nom;
 	private String commentaires;
 	private int localId;
 	
+///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
+
 	
 	/**
 	 * @return the id
@@ -80,6 +84,8 @@ public class Intervention extends Observable{
 		this.localId = localId;
 	}
 	
+///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
+	
 	/**
 	 * @param id
 	 * @param nom
@@ -90,9 +96,10 @@ public class Intervention extends Observable{
 		this.id = id;
 		this.nom = nom;
 		this.commentaires = commentaires;
-		this.localId = localId;
+		this.localId = localId; //n'est pas dans l'uml ! 
 	}
 
+///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * Modifie l'intervention en base de donées et remplace les valeurs des
@@ -116,8 +123,7 @@ public class Intervention extends Observable{
 			System.out.println("La modification n'a pas pu aboutir. Veuillez "
 					+ "réessayer.");
 		}
-		setChanged();
-        notifyObservers();
+		
 	}
 	
 

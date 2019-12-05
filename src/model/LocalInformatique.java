@@ -7,16 +7,43 @@ package model;
  * @author lb
  *
  */
-public class LocalInformatique extends Local {
+public class LocalInformatique {
+	
+	
+///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
+
 	
 	private Pc[] nbPcs;
+	
+///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
+
 	/**
-	 * 
+	 * @return the nbPcs
 	 */
-	public LocalInformatique(int id, Materiels nbChaises, Materiels nbTables, MaterielSpecial[] materielsSpecials,
-			Intervention[] interventions) {
-		// TODO Auto-generated constructor stub
-		super(id, nbChaises, nbTables, materielsSpecials, interventions);
+	public Pc[] getNbPcs() {
+		return nbPcs;
 	}
 
+	/**
+	 * @param nbPcs the nbPcs to set
+	 */
+	public void setNbPcs(Pc[] nbPcs) {
+		this.nbPcs = nbPcs;
+	}
+
+	
+///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
+
+
+	public LocalInformatique(int id, String nom, Materiels nbChaises, MaterielSpecial materielSpecial, Intervention intervention, Pc[] nbPcs) {
+		// TODO Auto-generated constructor stub
+		//super(id, nom, nbChaises, materielSpecial, intervention);
+		this.nbPcs = nbPcs;
+	}
+
+
+
+
+///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
+	
 }

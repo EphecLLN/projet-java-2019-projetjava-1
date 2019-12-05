@@ -4,6 +4,7 @@
 package model;
 
 import java.sql.SQLException;
+
 import java.util.ArrayList;
 import java.util.Observable;
 
@@ -14,6 +15,38 @@ import java.util.Observable;
 @SuppressWarnings("deprecation")
 public class Ecole extends Observable {
 	
+	
+	
+	
+	
+	public ArrayList<Implantation> implantations = new ArrayList<Implantation>();
+	
+	public ArrayList<Adresse> adresses = new ArrayList<Adresse>();
+	
+	
+	
+	
+	public Ecole() throws SQLException {
+		
+	Connexion connAdresse = new Connexion("select * from adresse");
+	connAdresse.resultat.next();
+	while(! connAdresse.resultat.isAfterLast()) {
+		adresses.add(new Adresse(connAdresse.resultat.getInt("id"),connAdresse.resultat.getInt("numero"),connAdresse.resultat.getString("rue"), connAdresse.resultat.getString("ville"),connAdresse.resultat.getInt("codePostal")));
+		connAdresse.resultat.next();
+	}
+	
+	
+		
+	Connexion connImplantation = new Connexion("select * from implantation");
+	connImplantation.resultat.next();
+	while(! connImplantation.resultat.isAfterLast()){
+		implantations.add(new Implantation(connImplantation.resultat.getInt("id"), connImplantation.resultat.getString("nom"), adresses.get(0)));             
+		connImplantation.resultat.next();
+		
+	}
+	
+	
+	/*
 	public ArrayList<Adresse> adresses = new ArrayList<Adresse>();
 	public ArrayList<Implantation> implantations = new ArrayList<Implantation>();
 	public ArrayList<Intervention> interventions = new ArrayList<Intervention>();
@@ -24,7 +57,7 @@ public class Ecole extends Observable {
 	public ArrayList<Pc> pcs = new ArrayList<Pc>();
 	public ArrayList<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
 	
-	public Ecole() throws SQLException {
+	
 		
 		
 		
@@ -71,7 +104,8 @@ public class Ecole extends Observable {
 		}
 		
 	}
+	*/
 
 	
-}
+}}
 	

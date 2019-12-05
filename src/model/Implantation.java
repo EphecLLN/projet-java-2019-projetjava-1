@@ -4,22 +4,28 @@
 package model;
 
 import java.sql.SQLException;
-import java.util.Observable;
+
 
 /**
  * @author Victoire
  *
  */
-public class Implantation extends Observable{
+public class Implantation {
+	
+	
+///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
+
 	
 	
 	private int id;
 	private String nom;
-	private int adresseid;
-	Local[] locaux; //� compl�ter une fois la classe local li�e
+	private Adresse adresse;
+	Local[] locaux; 
+	Utilisateur[] util;
 	
-	int[] test = {1, 4, 6, 7};//tableaux de int pour tester les m�thodes
-	int[] test2 = {1, 5, 3, 7};//tableaux de int pour tester les m�thodes
+
+	
+///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
 	
 	/**
 	 * @return the id
@@ -52,53 +58,48 @@ public class Implantation extends Observable{
 	/**
 	 * @return the adresse
 	 */
-	public int getAdresse() {
-		return adresseid;
+	public Adresse getAdresse() {
+		return adresse;
 	}
 
 	/**
 	 * @param adresse the adresse to set
 	 */
-	public void setAdresse(int adresse) {
-		this.adresseid = adresse;
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
 	}
 	
-	public Implantation(int id, String nom, int adresseid) {
+///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
+	
+	public Implantation(int id, String nom, Adresse adresse) {
 		this.id = id;
 		this.nom = nom;
-		this.adresseid = adresseid;
+		this.adresse = adresse;
+		
+	}
+		
+///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
+	
+	public void genererAdresse(Adresse adresse) {
+		this.adresse = adresse;
 		
 	}
 	
-	public Implantation() {
-	
-	}
-	
-	
-	public void genererAdresse(int adresse) {
-		this.adresseid = adresse;
-		setChanged();
-        notifyObservers();
-	}
-	
-	public void ajouterLocaux() {
-		setChanged();
-        notifyObservers();
+	public void ajouterLocaux(String nom, int id) {
+		
 	}
 	
 	public int nombreLocauxTotal() throws SQLException {
 		Connexion nlt = new Connexion("select count(*) from local where implatationId = "+ this.id);
 		nlt.resultat.next();
-		setChanged();
-        notifyObservers();
+		
 		return nlt.resultat.getInt("1");
 	}
 	
 	public int nombreLocauxInformatiques() {
 		
 		//compter uniquement le nombre de locaux informatiques
-		setChanged();
-        notifyObservers();
+		
 		return 0;
 	}
 
