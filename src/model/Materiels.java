@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package model;
 
@@ -12,18 +12,18 @@ package model;
  */
 
 public class Materiels{
-	
+
 ///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
 
-	
+
 	private int id;
-	private String nom; // à rajouter dans l'uml
+	private String nom; // ï¿½ rajouter dans l'uml
 	private int neuf;
 	private int bon;
 	private int use;
 	private int critique;
 
-	
+
 ///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -112,18 +112,18 @@ public class Materiels{
 		this.id = id;
 	}
 
-	
+
 ///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
 
-	
+
 	/**
-	 * 
+	 *
 	 * @param neuf
 	 * @param bon
 	 * @param use
 	 * @param critique
-	 * @param id 
-	 * 
+	 * @param id
+	 *
 	 */
 	public Materiels( int id, String nom, int neuf, int bon, int use, int critique) {
 		this.id = id;
@@ -132,20 +132,20 @@ public class Materiels{
 		this.bon = bon;
 		this.use = use;
 		this.critique = critique;
-		
+
 	}
-	
+
 //////////////////////////////////////////*METHODES*//////////////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * Méthode
-	 * 
-	 * Méthode permetant d'actualiser l'inventaire
+	 * Mï¿½thode
+	 *
+	 * Mï¿½thode permetant d'actualiser l'inventaire
 	 * @param neuf
 	 * @param bon
 	 * @param use
 	 * @param critique
-	 * 
+	 *
 	 */
 	public void actualiser(int id, int neuf, int bon, int use, int critique) {
 		this.id = id;
@@ -153,25 +153,26 @@ public class Materiels{
 		this.bon = bon;
 		this.use = use;
 		this.critique = critique;
-		
+
 	}
-	
+
 	/**
-	 * Méthode permetant de faire le compte d'un materiel
+	 * Mï¿½thode permetant de faire le compte d'un materiel
 	 * @param neuf
 	 * @param bon
 	 * @param use
 	 * @param critique
 	 * @return la quantitee d'un materiel
-	 * 
+	 *
 	 */
-	
-	public int total(int neuf, int bon, int use, int critique) {
-		
-		return neuf + bon + use + critique;
+
+	public int total(int neuf, int bon, int use, int critique) throws SQLException {
+		Connexion ttc = new Connexion("select neuf, bon, use, critique from materiels where id = " + this.id +"from materiels");
+		ttc.resultat.next();
+		setChanged();
+        notifyObservers();
+		return ttc.resultat.getInt("neuf" + "bon" + "use" + "critique");
+
 	}
 
-
-	
-	
 }

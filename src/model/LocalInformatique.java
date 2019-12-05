@@ -40,6 +40,18 @@ public class LocalInformatique {
 		//super(id, nom, nbChaises, materielSpecial, intervention);
 		this.nbPcs = nbPcs;
 	}
+	
+	public void ajouterPc(int id, int local, String type, String tour, String ecran, String clavier, String souris, String commentaire) throws SQLException {
+		Connexion ap = new Connexion("insert into pc values ('"+ id +"','"+ local +"','"+ type +"','"+ tour +"','"+ ecran +"','"+ clavier +",'"+ souris +"','"+ commentaire +"'')");
+		setChanged();
+        notifyObservers();
+	}
+	
+	public void supprimerPc(int id) throws SQLException {
+		Connexion sp = new Connexion("delete from pc where id = "+ id);
+		setChanged();
+        notifyObservers();
+	}
 
 
 

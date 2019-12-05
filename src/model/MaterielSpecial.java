@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package model;
 
@@ -11,15 +11,15 @@ package model;
  *
  */
 public class MaterielSpecial {
-	
+
 ///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
 
-	
+
 		private int id;
 		private String nom;
 		private String etat;
 		private int local;
-	
+
 ///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -78,19 +78,19 @@ public class MaterielSpecial {
 		private void setLocal(int local) {
 			this.local = local;
 		}
-		
+
 		/**
-		 * Methode permettant de change l'etat de la fonction, mais comme je ne connais pas encore les instructions pour acceder à un DB
+		 * Methode permettant de change l'etat de la fonction, mais comme je ne connais pas encore les instructions pour acceder ï¿½ un DB
 		 * @param etat
 		 */
 		public void changerEtat(String etat) {
 			this.etat = etat;
-			
+
 		}
-		
+
 ///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
 
-		
+
 	/**
 	 * Constructeur
 	 * @param id
@@ -108,9 +108,52 @@ public class MaterielSpecial {
 ///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
 
 
-	
+	/**
+	 * @param nom the nom to set
+	 */
+	private void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	/**
+	 * @return the etat
+	 */
+	public String getEtat() {
+		return etat;
+	}
+
+	/**
+	 * @param etat the etat to set
+	 */
+	private void setEtat(String etat) {
+		this.etat = etat;
+	}
+
+	/**
+	 * @return the local
+	 */
+	private int getLocal() {
+		return local;
+	}
+
+	/**
+	 * @param local the local to set
+	 */
+	private void setLocal(int local) {
+		this.local = local;
+	}
+
+	/**
+	 * Methode permettant de change l'etat de la fonction, mais comme je ne connais pas encore les instructions pour acceder ï¿½ un DB
+	 * @param etat
+	 */
+	public void changerEtat(String etat, String newEtat) {
+		Connexion ce = new Connexion("update materielspecial set " + etat + "=" + newEtat + "where id =" + this.id);
+		setChanged();
+        notifyObservers();
+	}
+
 	/**
 	 * Si necessaire, des testes d'execption prendont place ici
 	 */
 }
-

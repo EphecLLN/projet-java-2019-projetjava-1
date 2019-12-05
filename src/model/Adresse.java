@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package model;
 
@@ -10,8 +10,8 @@ package model;
  *
  */
 public class Adresse {
-	
-	
+
+
 ///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -19,72 +19,72 @@ public class Adresse {
 	private String rue, ville;
 
 
-	
+
 ///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
-	
+
 	/**
 	* @return the numero
 	*/
 	public int getNumero() {
 	return numero;
 	}
-	
+
 	/**
 	* @param numero the numero to set
 	*/
 	public void setNumero(int numero) {
 	this.numero = numero;
 	}
-	
+
 	/**
 	* @return the codePostal
 	*/
 	public int getCodePostal() {
 	return codePostal;
 	}
-	
+
 	/**
 	* @param codePostal the codePostal to set
 	*/
 	public void setCodePostal(int codePostal) {
 	this.codePostal = codePostal;
 	}
-	
+
 	/**
 	* @return the rue
 	*/
 	public String getRue() {
 	return rue;
 	}
-	
+
 	/**
 	* @param rue the rue to set
 	*/
 	public void setRue(String rue) {
 	this.rue = rue;
 	}
-	
+
 	/**
 	* @return the ville
 	*/
 	public String getVille() {
 	return ville;
 	}
-	
+
 	/**
 	* @param ville the ville to set
 	*/
 	public void setVille(String ville) {
 	this.ville = ville;
 	}
-	
+
 	/**
 	* @return the id
 	*/
 	public int getId() {
 	return id;
 	}
-	
+
 	/**
 	* @param id the id to set
 	*/
@@ -95,7 +95,7 @@ public class Adresse {
 
 
 ///////////////////////////////////////*CONSTRUCTEURS*//////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	public Adresse(int id, int numero, String rue, String ville, int codePostal){
 	this.id = id;
 	this.numero = numero;
@@ -104,28 +104,28 @@ public class Adresse {
 	this.ville = ville;
 	}
 
-	
-	
+
+
 ///////////////////////////////////////*METHODES*//////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 
 
 	/**
-	 * Modifie les valeurs des attributs d'une adresse par ceux passés en paramètre
-	 * Les modifications sont aussi effectuées dans la base de données 
-	 * 
-	 * 
-	 * @param numero Le numéro du bâtiment
+	 * Modifie les valeurs des attributs d'une adresse par ceux passï¿½s en paramï¿½tre
+	 * Les modifications sont aussi effectuï¿½es dans la base de donnï¿½es
+	 *
+	 *
+	 * @param numero Le numï¿½ro du bï¿½timent
 	 * @param codePostal Le code postal de la ville
 	 * @param rue Le nom de la rue
 	 * @param ville Le nom de la ville
-	 * 
-	 * @throws Exception Renvoit une exception si l'opération n'a pas pu être effectuée
-	 * 
+	 *
+	 * @throws Exception Renvoit une exception si l'opï¿½ration n'a pas pu ï¿½tre effectuï¿½e
+	 *
 	*/
 
 	public void modifierAdresse(int numero, int codePostal, String rue, String ville) {
-		//il manque toute la partie avec la base de données qui sera rajoutée par la suite
+		//il manque toute la partie avec la base de donnï¿½es qui sera rajoutï¿½e par la suite
 		try {
 		this.numero = numero;
 		this.codePostal = codePostal;
@@ -133,19 +133,95 @@ public class Adresse {
 		this.ville = ville;
 		}
 		catch(Exception e) {
-			System.out.println("La modification n'a pas été effectuée");
+			System.out.println("La modification n'a pas ï¿½tï¿½ effectuï¿½e");
 		}
-		
-		
+
+
 	}
-	
+
 ////////////////////////////////////////////////*METHODE TOSTRING*/////////////////////////////////////////////////////////////////////////////////////
-	
+
 	public String toString() {
-		 return this.numero + " " + this.ville + " " + this.codePostal + " " + this.ville;	
+		 return this.numero + " " + this.ville + " " + this.codePostal + " " + this.ville;
 	}
-	
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+	/**
+	 * @return the numero
+	 */
+	public int getNumero() {
+		return numero;
+	}
+
+	/**
+	 * @param numero the numero to set
+	 */
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	/**
+	 * @return the codePostal
+	 */
+	public int getCodePostal() {
+		return codePostal;
+	}
+
+	/**
+	 * @param codePostal the codePostal to set
+	 */
+	public void setCodePostal(int codePostal) {
+		this.codePostal = codePostal;
+	}
+
+	/**
+	 * @return the rue
+	 */
+	public String getRue() {
+		return rue;
+	}
+
+	/**
+	 * @param rue the rue to set
+	 */
+	public void setRue(String rue) {
+		this.rue = rue;
+	}
+
+	/**
+	 * @return the ville
+	 */
+	public String getVille() {
+		return ville;
+	}
+
+	/**
+	 * @param ville the ville to set
+	 */
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void genererAdresse(int id, int numero, int codePostal, String rue, String ville) throws SQLException {
+		Connexion ga = new Connexion("insert into adresse values ('"+ id +"','"+ numero +"','"+ codePostal +"','"+rue +"','"+ ville +"',)");
+		setChanged();
+        notifyObservers();
+	}
+
 }
-	
-
-

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package model;
 
@@ -10,16 +10,86 @@ package model;
  *
  */
 public class Utilisateur {
-	
-	
+
+
 ///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
 
 
 	private int id, grade, implantation;
 	private String nom, prenom, pseudo, motDePasse;
-	
-///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
 
+	String[] util;
+
+	public Utilisateur(int id, String nom, String prenom, int grade, String pseudo, String motDePasse, int implantation ) {
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.pseudo = pseudo;
+		this.motDePasse = motDePasse;
+		this.implantation = implantation;
+	}
+
+	public String toString() {
+		return nom + " " + prenom + " " + grade + " " + pseudo + " " + motDePasse + " " + implantation;
+	}
+
+	/**
+	 * mï¿½thode qui permet de changer le grade d'un utilisateur par celui passï¿½ en paramï¿½tre
+	 * @param newGrade
+	 */
+	public void changerGrade(int grade, int newGrade) {
+		Connexion cg = new Connexion("update utilisateurs set " + grade + "=" + newGrade + "where id =" + this.id);
+		setChanged();
+        notifyObservers();
+	}
+	/**
+	 * mï¿½thode qui permet d'ajouter un utilisateur ï¿½ la BDD
+	 * @param id
+	 * @param nom
+	 * @param prenom
+	 * @param grade
+	 * @param pseudo
+	 * @param motDePasse
+	 * @param implantation
+	 */
+	public void ajouterUtilisateur(int id, String nom, String prenom, int grade, String pseudo, String motDePasse, int implantation ) {
+
+		Connexion au = new Connexion("insert into utilisateurs values ('"+ id +"','"+ nom +"','"+ prenom +"','"+ grade +"','"+ pseudo +"','"+ motDePasse +",'"+ implantation")");
+		setChanged();
+        notifyObservers();
+	}
+
+	/**
+	 * mï¿½thode qui permet de supprimer un utilisateur en fonction de l'id passï¿½ en paramï¿½tre
+	 * @param id
+	 */
+	public void supprimerUtilisateur(int id) {
+		Connexion su = new Connexion("delete from utilisateurs where id = "+ id);
+		setChanged();
+        notifyObservers();
+	}
+
+	/**
+	 * mï¿½thode qui permet de changer le pseudo d'un utilisateur par celui passï¿½ en paramï¿½tre
+	 * @param pseudo
+	 */
+	public void changerPseudo(String pseudo, String newPseudo) {
+		Connexion cp = new Connexion("update utilisateurs set " + pseudo + "=" + newPseudo + "where id =" + this.id);
+		setChanged();
+        notifyObservers();
+		//TODO Implementation collection
+	}
+
+	/**
+	 * mï¿½thode qui permet de changer le mot de passe d'un utilisateur par celui passï¿½ en paramï¿½tre
+	 * @param mdp
+	 */
+	public void changerMDP(String mdp, String newMdp) {
+		Connexion cm = new Connexion("update utilisateurs set " + mdp + "=" + newMdp + "where id =" + this.id);
+		setChanged();
+        notifyObservers();
+		//TODO implementation collection
+	}
 
 	/**
 	 * @return the id
@@ -118,10 +188,10 @@ public class Utilisateur {
 	public void setImplantation(int implantation) {
 		this.implantation = implantation;
 	}
-	
+
 ///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
 
-	
+
 	public Utilisateur(int id, String nom, String prenom, int grade, String pseudo, String motDePasse, int implantation ) {
 		this.id = id;
 		this.nom = nom;
@@ -130,20 +200,20 @@ public class Utilisateur {
 		this.motDePasse = motDePasse;
 		this.implantation = implantation;
 	}
-	
+
 ///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
 
-	
+
 	/**
-	 * méthode qui permet de changer le grade d'un utilisateur par celui passé en paramètre
+	 * mï¿½thode qui permet de changer le grade d'un utilisateur par celui passï¿½ en paramï¿½tre
 	 * @param newGrade
 	 */
 	public void changerGrade(int newGrade) {
 		this.grade = newGrade;
-		
+
 	}
 	/**
-	 * méthode qui permet d'ajouter un utilisateur à la BDD
+	 * mï¿½thode qui permet d'ajouter un utilisateur ï¿½ la BDD
 	 * @param id
 	 * @param nom
 	 * @param prenom
@@ -153,60 +223,60 @@ public class Utilisateur {
 	 * @param implantation
 	 */
 	public void ajouterUtilisateur(int id, String nom, String prenom, int grade, String pseudo, String motDePasse, int implantation ) {
-		
+
 		//TODO Implementation collection
-		
+
 	}
-	
+
 	/**
-	 * méthode qui permet de supprimer un utilisateur en fonction de l'id passé en paramètre
+	 * mï¿½thode qui permet de supprimer un utilisateur en fonction de l'id passï¿½ en paramï¿½tre
 	 * @param id
 	 */
 	public void supprimerUtilisateur(int id) {
 		//TODO implementation collection
-		
+
 	}
-	
+
 	/**
-	 * méthode qui permet d'authentifier un utilisateur
+	 * mï¿½thode qui permet d'authentifier un utilisateur
 	 * return vrai ou faux
 	 */
 	public boolean authentifier(String pseudo, String mdp) {
-		
+
 		//Implementation collection
 		return false;
 	}
-	
+
 	/**
-	 * méthode qui permet de changer le pseudo d'un utilisateur par celui passé en paramètre
+	 * mï¿½thode qui permet de changer le pseudo d'un utilisateur par celui passï¿½ en paramï¿½tre
 	 * @param pseudo
 	 */
 	public void changerPseudo(String pseudo) {
-		
+
 		this.pseudo = pseudo;
 		//TODO Implementation collection
 	}
-	
+
 	/**
-	 * méthode qui permet de changer le mot de passe d'un utilisateur par celui passé en paramètre
+	 * mï¿½thode qui permet de changer le mot de passe d'un utilisateur par celui passï¿½ en paramï¿½tre
 	 * @param mdp
 	 */
 	public void changerMDP(String mdp) {
 		this.motDePasse = mdp;
-		
+
 		//TODO implementation collection
 	}
-	
+
 	/**
-	 * méthode qui permet de synchroniser le programme avec la base de donnée
+	 * mï¿½thode qui permet de synchroniser le programme avec la base de donnï¿½e
 	 */
 	public void synchroniserBDD() {
-		//TODO à partir des tableaux instancier les objets
-		
-	}
-	
+		//TODO ï¿½ partir des tableaux instancier les objets
 
-	
+	}
+
+
+
 ///////////////////////////////////////*METHODE TOSTRING*////////////////////////////////////////////////////////////////////////////////////
 
 	public String toString() {

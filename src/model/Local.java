@@ -10,7 +10,7 @@ package model;
  *
  */
 public class Local{
-	
+
 ///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -19,10 +19,10 @@ public class Local{
 	private Materiels nbChaises;
 	private MaterielSpecial materielSpecial;
 	private Intervention intervention;
-	
+
 ///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
 
-	
+
 	/**
 	 * @return the id
 	 */
@@ -47,8 +47,8 @@ public class Local{
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	
-		
+
+
 	/**
 	 * @return the nbChaises
 	 */
@@ -85,16 +85,16 @@ public class Local{
 	public void setIntervention(Intervention intervention) {
 		this.intervention = intervention;
 	}
-	
-	
-	
+
+
+
 ///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
 
 
 	/**
 	 * @param id
 	 * @param nom
-	 * @param intervention2 
+	 * @param intervention2
 	 * @param implantationId
 	 * @param localInformatique
 	 */
@@ -106,17 +106,17 @@ public class Local{
 		this.intervention = intervention;
 	}
 
-	
+
 ///////////////////////////////////////*METHODES*////////////////////////////////////////////////////////////////////////////////////
 
 	public void ajouterMaterielSpecial(String nom, String etat) {
-		
+
 	}
-	
+
 	public void ajouterIntervention(int id, String nom, String etat) {
-		
+
 	}
-	
+
 ///////////////////////////////////////*METHODE TOSTRING*////////////////////////////////////////////////////////////////////////////////////
 
 	/*
@@ -129,7 +129,18 @@ public class Local{
 
 		return nom + " implantation : " + implantationId + " " + str;
 	}
-	*/
+
+	public void ajouterMaterielSpecial(int id, String nom, String etat, int local) throws SQLException {
+		Connexion ams = new Connexion("insert into materielspecial values ('"+ id +"','"+ nom +"','"+ etat +"')");
+		setChanged();
+        notifyObservers();
+	}
+
+	public void ajouterIntervention(int id, String nom, String commentaire) throws SQLException {
+		Connexion ai = new Connexion("insert into intervention values ('"+ id +"','"+ nom +"','"+ commentaire +"')");
+		setChanged();
+        notifyObservers();
+	}
 
 
 }
