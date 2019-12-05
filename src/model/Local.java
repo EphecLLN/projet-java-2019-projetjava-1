@@ -85,6 +85,18 @@ public class Local extends Observable {
 
 		return nom + " implantation : " + implantationId + " " + str;
 	}
+	
+	public void ajouterMaterielSpecial(int id, String nom, String etat, int local) throws SQLException {
+		Connexion ams = new Connexion("insert into materielspecial values ('"+ id +"','"+ nom +"','"+ etat +"')");
+		setChanged();
+        notifyObservers();
+	}
+	
+	public void ajouterIntervention(int id, String nom, String commentaire) throws SQLException {
+		Connexion ai = new Connexion("insert into intervention values ('"+ id +"','"+ nom +"','"+ commentaire +"')");
+		setChanged();
+        notifyObservers();
+	}
 
 
 }

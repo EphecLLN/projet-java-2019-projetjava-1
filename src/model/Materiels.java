@@ -169,11 +169,13 @@ public class Materiels extends Observable{
 	 * 
 	 */
 	
-	public int total(int neuf, int bon, int use, int critique) {
+	public int total(int neuf, int bon, int use, int critique) throws SQLException {
+		Connexion ttc = new Connexion("select neuf, bon, use, critique from materiels where id = " + this.id +"from materiels");
+		ttc.resultat.next();
 		setChanged();
         notifyObservers();
-		return neuf + bon + use + critique;
-	}
-	
+		return ttc.resultat.getInt("neuf" + "bon" + "use" + "critique");
+		
+	}	
 	
 }

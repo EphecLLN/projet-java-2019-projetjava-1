@@ -94,12 +94,14 @@ public class Implantation extends Observable{
 		return nlt.resultat.getInt("1");
 	}
 	
-	public int nombreLocauxInformatiques() {
+public int nombreLocauxInformatiques() throws SQLException {
 		
 		//compter uniquement le nombre de locaux informatiques
+		Connexion nli = new Connexion("select count(*) from local where localInfomartique = 1");
+		nli.resultat.next();
 		setChanged();
         notifyObservers();
-		return 0;
+		return nli.resultat.getInt("1");
 	}
 
 
