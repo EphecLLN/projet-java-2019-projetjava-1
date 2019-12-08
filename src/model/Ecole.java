@@ -58,7 +58,7 @@ public class Ecole extends Observable {
 		connLocaux.resultat.first();
 		while(!connLocaux.resultat.isAfterLast()) {
 			if(connLocaux.resultat.getInt("localInformatique") == 0) {
-				e.locaux.add(new Local(connLocaux.resultat.getInt("id"),connLocaux.resultat.getString("nom"),connLocaux.resultat.getInt("implantationId"),connLocaux.resultat.getInt("localInformatique")));
+				//e.locaux.add(new Local(connLocaux.resultat.getInt("id"),connLocaux.resultat.getString("nom"),connLocaux.resultat.getInt("implantationId"),connLocaux.resultat.getInt("localInformatique")));
 			}
 	}
 	

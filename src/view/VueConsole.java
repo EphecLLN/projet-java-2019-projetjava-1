@@ -5,6 +5,7 @@ package view;
 
 
 import java.util.Observable;
+
 import java.util.Observer;
 import java.util.Scanner;
 
@@ -33,7 +34,7 @@ public class VueConsole extends Vue implements Observer{
 		//System.out.println("Bonjour");
 	}
 
-	private class ReadInput implements Runnable{
+	public class ReadInput implements Runnable{
 		public void run() {
 			while(true) {
 				// completer tout ça
@@ -61,7 +62,7 @@ public class VueConsole extends Vue implements Observer{
 
 					switch(var) {
 					case "A":
-						System.out.println("Le nombre total de locaux s'élève Ã  " + controller.model.locals.size());
+						//System.out.println("Le nombre total de locaux s'élève Ã  " + controller.model.locals.size());
 						break;
 					case "B":
 						controller.afficherClasses();
