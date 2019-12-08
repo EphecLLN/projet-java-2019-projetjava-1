@@ -21,18 +21,29 @@ public class Implantation {
 	private int id;
 	private String nom;
 	private Adresse adresse;
+	private ArrayList<Local> locaux = new ArrayList<Local>();
+	private ArrayList<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
 	
-	public ArrayList<Local> locaux = new ArrayList<Local>();
-	
-
-
-	Utilisateur[] util;
 	
 	
 
 
 
 ///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
+
+	/**
+	 * @return the utilisateurs
+	 */
+	public ArrayList<Utilisateur> getUtilisateurs() {
+		return utilisateurs;
+	}
+
+	/**
+	 * @param utilisateurs the utilisateurs to set
+	 */
+	public void setUtilisateurs(ArrayList<Utilisateur> utilisateurs) {
+		this.utilisateurs = utilisateurs;
+	}
 
 	/**
 	 * @return the id

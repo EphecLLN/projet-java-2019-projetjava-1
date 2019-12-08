@@ -4,6 +4,7 @@
 package model;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * @author lb
@@ -15,41 +16,34 @@ public class LocalInformatique extends Local{
 ///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
 
 	
-	private Pc[] nbPcs;
+	private ArrayList<Pc> pcs = new ArrayList<Pc>();
 	
 ///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * @return the nbPcs
+	 * @return the pcs
 	 */
-	public Pc[] getNbPcs() {
-		return nbPcs;
+	public ArrayList<Pc> getPcs() {
+		return pcs;
 	}
 
 	/**
-	 * @param nbPcs the nbPcs to set
+	 * @param pcs the pcs to set
 	 */
-	public void setNbPcs(Pc[] nbPcs) {
-		this.nbPcs = nbPcs;
+	public void setPcs(ArrayList<Pc> pcs) {
+		this.pcs = pcs;
 	}
 
 	
 ///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
 
 
-	public LocalInformatique(int id, String nom, Materiels nbChaises, MaterielSpecial materielSpecial, Intervention intervention, Pc[] nbPcs) {
+	public LocalInformatique(int id, String nom, Materiels nbChaises, Materiels nbTables) {
 		// TODO Auto-generated constructor stub
-		super(id, nom, nbChaises, materielSpecial, intervention);
-		this.nbPcs = nbPcs;
+		super(id, nom, nbChaises, nbTables);
 	}
-	
-
-
-
-
 
 ///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
-
 	public void ajouterPc(int id, int local, String type, String tour, String ecran, String clavier, String souris, String commentaire) throws SQLException {
 		Connexion ap = new Connexion("insert into pc values ('"+ id +"','"+ local +"','"+ type +"','"+ tour +"','"+ ecran +"','"+ clavier +",'"+ souris +"','"+ commentaire +"'')");
 		

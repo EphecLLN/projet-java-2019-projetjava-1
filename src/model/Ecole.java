@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package model;
 
@@ -8,127 +8,115 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Observable;
 
+
 /**
  * @author Victoire
  *
  */
 @SuppressWarnings("deprecation")
 public class Ecole extends Observable {
-	
-	
-	
-	
-	
+
 	public ArrayList<Implantation> implantations = new ArrayList<Implantation>();
-	
-	public ArrayList<Adresse> adresses = new ArrayList<Adresse>();
-	
-	public ArrayList<Materiels> materiels = new ArrayList<Materiels>();
-	
-	public ArrayList<MaterielSpecial> materielSpecial = new ArrayList<MaterielSpecial>();
 
-	
-
-	
-	
-	
-	
 	public Ecole() throws SQLException {
-		
-	Connexion connAdresse = new Connexion("select * from adresse");
-	connAdresse.resultat.next();
-	while(! connAdresse.resultat.isAfterLast()) {
-		adresses.add(new Adresse(connAdresse.resultat.getInt("id"),connAdresse.resultat.getInt("numero"),connAdresse.resultat.getString("rue"), connAdresse.resultat.getString("ville"),connAdresse.resultat.getInt("codePostal")));
-		connAdresse.resultat.next();
-	}
-	
-	
-		
-	Connexion connImplantation = new Connexion("select * from implantation");
-	connImplantation.resultat.next();
-	while(! connImplantation.resultat.isAfterLast()){
-		implantations.add(new Implantation(connImplantation.resultat.getInt("id"), connImplantation.resultat.getString("nom"), adresses.get(0)));             
-		connImplantation.resultat.next();
-		
-	}
-	
-	//Pour chaque implantations on recup�re les locaux avec l'id de l'implantation
-	for(Implantation e :  implantations) {
-		Connexion connLocaux = new Connexion("select * from local where implantationId = " + e.getId());
-		connLocaux.resultat.first();
-		while(!connLocaux.resultat.isAfterLast()) {
-			if(connLocaux.resultat.getInt("localInformatique") == 0) {
-				//e.locaux.add(new Local(connLocaux.resultat.getInt("id"),connLocaux.resultat.getString("nom"),connLocaux.resultat.getInt("implantationId"),connLocaux.resultat.getInt("localInformatique")));
-			}
-	}
-	
-		//Je regarde si c'est un local est informatique ou non 
-		// Et en fonction de �a on doit instancier la classe local ou local informatique
-		// Et l'instanticiation doit se fire directment dans le add de l'arrayList
-		//enfin on ajoute le local a l'array list de l'implantation
-		
-	}
-	
-	/*
-	public ArrayList<Adresse> adresses = new ArrayList<Adresse>();
-	public ArrayList<Implantation> implantations = new ArrayList<Implantation>();
-	public ArrayList<Intervention> interventions = new ArrayList<Intervention>();
-	public ArrayList<Local> locals = new ArrayList<Local>();
-	public ArrayList<LocalInformatique> localInformatiques = new ArrayList<LocalInformatique>();
-	public ArrayList<Materiels> materiels = new ArrayList<Materiels>();
-	public ArrayList<MaterielSpecial> materielSpecials = new ArrayList<MaterielSpecial>();
-	public ArrayList<Pc> pcs = new ArrayList<Pc>();
-	public ArrayList<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
-	
-	
-		
-		
-		
-		Connexion conAdresses = new Connexion("select * from adresse");
-		conAdresses.resultat.next();
-		while(! conAdresses.resultat.isAfterLast()){
-			adresses.add(new Adresse(conAdresses.resultat.getInt("id"), conAdresses.resultat.getInt("numero"), conAdresses.resultat.getString("rue"), conAdresses.resultat.getString("ville"), conAdresses.resultat.getInt("codePostal")));             
-			conAdresses.resultat.next();
-		}
-		
-		Connexion connImplantation = new Connexion("select * from implantation");
-		connImplantation.resultat.next();
-		while(! connImplantation.resultat.isAfterLast()){
-			implantations.add(new Implantation(connImplantation.resultat.getInt("id"), connImplantation.resultat.getString("nom"), connImplantation.resultat.getInt("adresseId")));             
-			connImplantation.resultat.next();
-		}
-		
-		Connexion connLocal = new Connexion("select * from local");
-		connLocal.resultat.next();
-		while(! connLocal.resultat.isAfterLast()){
-			locals.add(new Local(connLocal.resultat.getInt("id"), connLocal.resultat.getString("nom"), connLocal.resultat.getInt("implantationId"), connLocal.resultat.getInt("localInformatique")));             
-			connLocal.resultat.next();
-		}
-		
-		Connexion connIntervention = new Connexion("select * from intervention");
-		connIntervention.resultat.next();
-		while(! connIntervention.resultat.isAfterLast()){
-			interventions.add(new Intervention(connIntervention.resultat.getInt("id"), connIntervention.resultat.getString("nom"), connIntervention.resultat.getString("commentaires"), connIntervention.resultat.getInt("localId")));             
-			connIntervention.resultat.next();
-		}
-		
-		Connexion connMateriels = new Connexion("select * from materiels");
-		connMateriels.resultat.next();
-		while(! connMateriels.resultat.isAfterLast()){
-			materiels.add(new Materiels(connMateriels.resultat.getInt("id"), connMateriels.resultat.getString("nom"), connMateriels.resultat.getInt("neuf"), connMateriels.resultat.getInt("bon"), connMateriels.resultat.getInt("use"), connMateriels.resultat.getInt("critique"), connMateriels.resultat.getInt("localId")));             
-			connMateriels.resultat.next();
-		}
-		
-		Connexion connMaterielSpecial = new Connexion("select * from materielSpecial");
-		connMaterielSpecial.resultat.next();
-		while(! connMaterielSpecial.resultat.isAfterLast()){
-			materielSpecials.add(new MaterielSpecial(connMaterielSpecial.resultat.getInt("id"), connMaterielSpecial.resultat.getString("nom"), connMaterielSpecial.resultat.getString("etat"), connMaterielSpecial.resultat.getInt("localId")));             
-			connMaterielSpecial.resultat.next();
-		}
-		
-	}
-	*/
 
-	
-}}
-	
+		ajouterImplantationsEtAdresses();
+		ajouterUtilisateurs();
+		ajouterLocalEtMateriel();
+		ajouterMaterielsSpeciaux();
+
+		}
+
+	public void ajouterImplantationsEtAdresses() throws SQLException {
+		//on récupère les adresses
+				Connexion connAdresse = new Connexion("select * from adresse");
+				connAdresse.resultat.first();
+				//on créé des varibales pour les boucles
+				Connexion connImplantation;
+				Implantation imp;
+				//pour chaque adresse récupéré
+				while(!connAdresse.resultat.isAfterLast()) {
+					//on récupère l'implantation associée
+					connImplantation = new Connexion("select * from implantation where id = " + connAdresse.resultat.getInt("id"));
+					connImplantation.resultat.first();
+					//On instancie l'implantation et l'adresse
+					imp = new Implantation(connImplantation.resultat.getInt("id"), connImplantation.resultat.getString("nom"), new Adresse(connAdresse.resultat.getInt("id"),connAdresse.resultat.getInt("numero"),connAdresse.resultat.getString("rue"), connAdresse.resultat.getString("ville"),connAdresse.resultat.getInt("codePostal")));
+					//on ajoute l'implantation dans l'arraylist implantations de ecole
+					implantations.add(imp);
+					connAdresse.resultat.next();
+				}
+				connAdresse.fermerConnexion();
+	}
+
+	public void ajouterUtilisateurs() throws SQLException {
+		Connexion connUtilisateur;
+		for(Implantation uneImp: implantations) {
+			//on récupère les utilisateurs associés à l'implantation
+			connUtilisateur = new Connexion("select * from utilisateur where implantationId = " + uneImp.getId());
+			connUtilisateur.resultat.first();
+			//pour chaque utilisateur
+			while(!connUtilisateur.resultat.isAfterLast()) {
+				//on instancie l'utilisateur et on l'ajoute à l'arraylist utilisateurs de l'implantation
+				uneImp.getUtilisateurs().add(new Utilisateur(connUtilisateur.resultat.getInt("id"), connUtilisateur.resultat.getString("nom"), connUtilisateur.resultat.getString("prenom"), connUtilisateur.resultat.getInt("grade"),  connUtilisateur.resultat.getString("pseudo"),  connUtilisateur.resultat.getString("mdp")));
+				connUtilisateur.resultat.next();
+			}
+			connUtilisateur.fermerConnexion();
+		}
+	}
+
+	public void ajouterLocalEtMateriel() throws SQLException {
+		Connexion connMaterielsChaises, connMaterielsTables, connLocal;
+		for(Implantation uneImp: implantations) {
+			connLocal = new Connexion("select * from local where implantationId = " + uneImp.getId());
+			connLocal.resultat.first();
+			while(!connLocal.resultat.isAfterLast()) {
+				connMaterielsChaises = new Connexion("select * from materiels where nom = 'chaises' and localid = " + connLocal.resultat.getInt("id"));
+				connMaterielsTables = new Connexion("select * from materiels where nom = 'tables' and localid = " + connLocal.resultat.getInt("id"));
+				connMaterielsChaises.resultat.first();
+				connMaterielsTables.resultat.first();
+				if(connLocal.resultat.getInt("localinformatique") == 0) {
+					uneImp.getLocaux().add(new Local(connLocal.resultat.getInt("id"), connLocal.resultat.getString("nom"), new Materiels(connMaterielsChaises.resultat.getInt("id"), connMaterielsChaises.resultat.getString("nom"),connMaterielsChaises.resultat.getInt("neuf"), connMaterielsChaises.resultat.getInt("bon"), connMaterielsChaises.resultat.getInt("use"), connMaterielsChaises.resultat.getInt("critique")), new Materiels(connMaterielsTables.resultat.getInt("id"), connMaterielsTables.resultat.getString("nom"),connMaterielsTables.resultat.getInt("neuf"), connMaterielsTables.resultat.getInt("bon"), connMaterielsTables.resultat.getInt("use"), connMaterielsTables.resultat.getInt("critique"))));
+				}
+				else {
+					uneImp.getLocaux().add(new LocalInformatique(connLocal.resultat.getInt("id"), connLocal.resultat.getString("nom"), new Materiels(connMaterielsChaises.resultat.getInt("id"), connMaterielsChaises.resultat.getString("nom"),connMaterielsChaises.resultat.getInt("neuf"), connMaterielsChaises.resultat.getInt("bon"), connMaterielsChaises.resultat.getInt("use"), connMaterielsChaises.resultat.getInt("critique")), new Materiels(connMaterielsTables.resultat.getInt("id"), connMaterielsTables.resultat.getString("nom"),connMaterielsTables.resultat.getInt("neuf"), connMaterielsTables.resultat.getInt("bon"), connMaterielsTables.resultat.getInt("use"), connMaterielsTables.resultat.getInt("critique"))));
+
+				}
+				connMaterielsChaises.fermerConnexion();
+				connMaterielsTables.fermerConnexion();
+				connLocal.resultat.next();
+			}
+			connLocal.fermerConnexion();
+		}
+	}
+
+	public void ajouterMaterielsSpeciaux() throws SQLException {
+		Connexion connMaterielSpeciaux, connPcs;
+		for(Implantation uneImp : implantations) {
+			for(Local unLoc : uneImp.getLocaux()) {
+				connMaterielSpeciaux = new Connexion("select * from materielSpecial where localId = " + unLoc.getId());
+				connMaterielSpeciaux.resultat.first();
+				while(! connMaterielSpeciaux.resultat.isAfterLast()) {
+					unLoc.getMaterielsSpeciaux().add(new MaterielSpecial(connMaterielSpeciaux.resultat.getInt("id"), connMaterielSpeciaux.resultat.getString("nom"), connMaterielSpeciaux.resultat.getString("etat")));
+					connMaterielSpeciaux.resultat.next();
+				}
+				connMaterielSpeciaux.fermerConnexion();
+				if(unLoc.getClass().getSimpleName().equals("LocalInformatique")) {
+					LocalInformatique unLocInf = (LocalInformatique) unLoc;
+					connPcs = new Connexion("select * from pc where localid = " + unLoc.getId());
+					connPcs.resultat.first();
+					while(! connPcs.resultat.isAfterLast()) {
+						unLocInf.getPcs().add(new Pc(connPcs.resultat.getInt("id"), connPcs.resultat.getString("nom"), connPcs.resultat.getString("type"), connPcs.resultat.getString("tour"), connPcs.resultat.getString("ecran"), connPcs.resultat.getString("clavier"), connPcs.resultat.getString("souris"), connPcs.resultat.getString("commentaires")));
+						connPcs.resultat.next();
+					}
+					connPcs.fermerConnexion();
+				}
+			}
+		}
+	}
+
+	public static void main(String args[]) throws SQLException {
+		Ecole e1 = new Ecole();
+
+		System.out.println(e1.implantations.get(0).getLocaux().get(1).getNbChaises().getCritique());
+	}
+}

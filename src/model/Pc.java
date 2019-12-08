@@ -17,7 +17,7 @@ public class Pc {
 
 
 	private int id;
-	private int local;
+	private String nom;
 	private String type;
 	private String tour;
 	private String ecran;
@@ -51,25 +51,19 @@ public class Pc {
 		this.id = id;
 	}
 
-
-
 	/**
-	 * @return the local
+	 * @return the nom
 	 */
-	public int getLocal() {
-		return local;
+	public String getNom() {
+		return nom;
 	}
 
-
-
 	/**
-	 * @param local the local to set
+	 * @param nom the nom to set
 	 */
-	public void setLocal(int local) {
-		this.local = local;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
-
-
 
 	/**
 	 * @return the tour
@@ -181,10 +175,10 @@ public class Pc {
 	 * @param souris
 	 * @param commentaires
 	 */
-	public Pc(int id, int local, String type, String tour, String ecran, String clavier, String souris, String commentaires) {
+	public Pc(int id, String nom, String type, String tour, String ecran, String clavier, String souris, String commentaires) {
 		
 		this.id = id;
-		this.local = local;
+		this.nom = nom;
 		this.type = type;
 		this.tour = tour;
 		this.ecran = ecran;
