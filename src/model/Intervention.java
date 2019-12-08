@@ -17,7 +17,6 @@ public class Intervention{
 	private int id;
 	private String nom;
 	private String commentaires;
-	private int localId;
 
 ///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
 
@@ -68,23 +67,6 @@ public class Intervention{
 	public void setCommentaires(String commentaires) {
 		this.commentaires = commentaires;
 	}
-
-
-	/**
-	 * @return the localId
-	 */
-	public int getLocalId() {
-		return localId;
-	}
-
-
-	/**
-	 * @param localId the localId to set
-	 */
-	public void setLocalId(int localId) {
-		this.localId = localId;
-	}
-
 ///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
 
 	/**
@@ -93,11 +75,10 @@ public class Intervention{
 	 * @param commentaires
 	 * @param localId
 	 */
-	public Intervention(int id, String nom, String commentaires, int localId) {
+	public Intervention(int id, String nom, String commentaires) {
 		this.id = id;
 		this.nom = nom;
 		this.commentaires = commentaires;
-		this.localId = localId; //n'est pas dans l'uml !
 	}
 
 ///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////

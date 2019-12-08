@@ -1,4 +1,4 @@
-/**
+ /**
  *
  */
 package model;
@@ -109,16 +109,31 @@ public class Implantation {
 		this.adresse = adresse;
 
 	}
+	
+	public Implantation() {
+		
+	}
 
 ///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
 
-	public void genererAdresse(int id, int numero, int codePostal, String rue, String ville) throws SQLException {
-		Connexion ga = new Connexion("insert into adresse values ('"+ id +"','"+ numero +"','"+ codePostal +"','"+rue +"','"+ ville +"',)");
-			
+	
+	public void genererAdresse(int numero, String rue, int codePostal, String ville) throws SQLException {
+		
+		int id = Utils.autoId("adresse");
+		Connexion ga = new Connexion("insert into adresse values (" + id + ", '" + numero + "', '" + rue + "', '" + ville + "', " + codePostal +" )");
+		ga.fermerConnexion();
 	}
 
-	public void ajouterLocaux(int id, String nom, int implantationId, int localInformatique) throws SQLException {
-		Connexion al = new Connexion("insert into local values ('"+ id +"','"+ nom +"','"+ implantationId +"','"+ localInformatique +"')");
+	public void genererLocal(String nom, int implantationId, int localInformatique) throws SQLException {
+		int id  = Utils.autoId("local");
+		Connexion gl = new Connexion("insert into local values ('"+ id +"','"+ nom +"','"+ implantationId +"','"+ localInformatique +"')");
+		gl.fermerConnexion();
+	}
+	
+	public void genererUtilisateur(String nom, String prenom, int grade, String pseudo, String motDePasse, int implantationId) throws SQLException {
+		int id = Utils.autoId("utilisateur");
+		Connexion gu = new Connexion("insert into utilisateur values (" + id + ", '" + nom + "', '" + prenom + "', " + grade + ", '" + pseudo + "', '" + motDePasse + "', " + implantationId + ")");
+		gu.fermerConnexion();
 	}
 
 	public int nombreLocauxTotal() throws SQLException {

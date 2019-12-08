@@ -31,7 +31,9 @@ public class Connexion {
 		req = requete;
 		connexion = DriverManager.getConnection(url, user, mdp); 
 		Statement requeteStatement = connexion.createStatement();
-		resultat = requeteStatement.executeQuery(req);
+		if(requeteStatement.execute(req)) {
+			resultat = requeteStatement.getResultSet();
+		}
 	}
 	
 ///////////////////////////////////////*METHODE*/////////////////////////////////////////////////////////////////////////////////////////////

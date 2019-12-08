@@ -129,6 +129,11 @@ public class Local{
 		Connexion ai = new Connexion("insert into intervention values ('"+ id +"','"+ nom +"','"+ commentaire +"')");
 	}
 	
+	public void genererMateriels(int[] chaises, int[] tables, int localid) throws SQLException {
+		int id = Utils.autoId("materiels");
+		Connexion gm = new Connexion("insert into materiels values (" + id + ", 'chaises', " + chaises[0] + ", " + chaises[1] + ", " + chaises[2] + ", " + chaises[3] + ", " + localid + ") , (" + (id + 1) + ", 'tables', " + tables[0] + ", " + tables[1] + ", " + tables[2] + ", " + tables[3] + ", " + localid + ")");
+		gm.fermerConnexion();
+	}
 
 ///////////////////////////////////////*METHODE TOSTRING*////////////////////////////////////////////////////////////////////////////////////
 
