@@ -15,7 +15,7 @@ public class Utilisateur {
 ///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
 
 
-	private int id, grade, implantation;
+	private int id, grade;
 	private String nom, prenom, pseudo, motDePasse;
 
 	String[] util;
@@ -105,33 +105,18 @@ public class Utilisateur {
 	 * @param motDePasse the motDePasse to set
 	 */
 	public void setMotDePasse(String motDePasse) {
-		this.motDePasse = motDePasse;
-	}
-
-	/**
-	 * @return the implantation
-	 */
-	public int getImplantation() {
-		return implantation;
-	}
-
-	/**
-	 * @param implantation the implantation to set
-	 */
-	public void setImplantation(int implantation) {
-		this.implantation = implantation;
+		this.motDePasse = motDePasse; 
 	}
 
 ///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
 
 
-	public Utilisateur(int id, String nom, String prenom, int grade, String pseudo, String motDePasse, int implantation ) {
+	public Utilisateur(int id, String nom, String prenom, int grade, String pseudo, String motDePasse) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.pseudo = pseudo;
 		this.motDePasse = motDePasse;
-		this.implantation = implantation;
 	}
 
 ///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
@@ -202,7 +187,7 @@ public class Utilisateur {
 ///////////////////////////////////////*METHODE TOSTRING*////////////////////////////////////////////////////////////////////////////////////
 
 	public String toString() {
-		return nom + " " + prenom + " " + grade + " " + pseudo + " " + motDePasse + " " + implantation;
+		return nom + " " + prenom + " " + grade + " " + pseudo + " " + motDePasse;
 	}
 	
 

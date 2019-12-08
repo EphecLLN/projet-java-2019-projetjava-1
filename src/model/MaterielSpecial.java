@@ -18,7 +18,6 @@ public class MaterielSpecial {
 		private int id;
 		private String nom;
 		private String etat;
-		private int local;
 
 ///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
 
@@ -65,29 +64,6 @@ public class MaterielSpecial {
 			this.etat = etat;
 		}
 
-		/**
-		 * @return the local
-		 */
-		private int getLocal() {
-			return local;
-		}
-
-		/**
-		 * @param local the local to set
-		 */
-		private void setLocal(int local) {
-			this.local = local;
-		}
-
-		/**
-		 * Methode permettant de change l'etat de la fonction, mais comme je ne connais pas encore les instructions pour acceder � un DB
-		 * @param etat
-		 */
-		public void changerEtat(String etat) {
-			this.etat = etat;
-
-		}
-
 ///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -98,11 +74,10 @@ public class MaterielSpecial {
 	 * @param etat
 	 * @param local
 	 */
-	public MaterielSpecial(int id, String nom, String etat, int local) {
+	public MaterielSpecial(int id, String nom, String etat) {
 		this.id = id;
 		this.nom = nom;
 		this.etat = etat;
-		this.local = local;
 	}
 
 ///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////

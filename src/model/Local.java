@@ -4,6 +4,7 @@
 package model;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * @author lb
@@ -16,9 +17,9 @@ public class Local{
 
 	private int id;
 	private String nom;
-	private Materiels nbChaises;
-	private MaterielSpecial materielSpecial;
-	private Intervention intervention;
+	private Materiels nbChaises, nbTables;
+	private ArrayList<MaterielSpecial> materielsSpeciaux = new ArrayList<MaterielSpecial>();
+	private ArrayList<Intervention> interventions = new ArrayList<Intervention>();
 
 ///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
 
@@ -61,30 +62,6 @@ public class Local{
 	public void setNbChaises(Materiels nbChaises) {
 		this.nbChaises = nbChaises;
 	}
-	/**
-	 * @return the materielSpecial
-	 */
-	public MaterielSpecial getMaterielSpecial() {
-		return materielSpecial;
-	}
-	/**
-	 * @param materielSpecial the materielSpecial to set
-	 */
-	public void setMaterielSpecial(MaterielSpecial materielSpecial) {
-		this.materielSpecial = materielSpecial;
-	}
-	/**
-	 * @return the intervention
-	 */
-	public Intervention getIntervention() {
-		return intervention;
-	}
-	/**
-	 * @param intervention the intervention to set
-	 */
-	public void setIntervention(Intervention intervention) {
-		this.intervention = intervention;
-	}
 
 
 
@@ -92,18 +69,53 @@ public class Local{
 
 
 	/**
+	 * @return the nbTables
+	 */
+	public Materiels getNbTables() {
+		return nbTables;
+	}
+	/**
+	 * @param nbTables the nbTables to set
+	 */
+	public void setNbTables(Materiels nbTables) {
+		this.nbTables = nbTables;
+	}
+	/**
+	 * @return the materielsSpeciaux
+	 */
+	public ArrayList<MaterielSpecial> getMaterielsSpeciaux() {
+		return materielsSpeciaux;
+	}
+	/**
+	 * @param materielsSpeciaux the materielsSpeciaux to set
+	 */
+	public void setMaterielsSpeciaux(ArrayList<MaterielSpecial> materielsSpeciaux) {
+		this.materielsSpeciaux = materielsSpeciaux;
+	}
+	/**
+	 * @return the interventions
+	 */
+	public ArrayList<Intervention> getInterventions() {
+		return interventions;
+	}
+	/**
+	 * @param interventions the interventions to set
+	 */
+	public void setInterventions(ArrayList<Intervention> interventions) {
+		this.interventions = interventions;
+	}
+	/**
 	 * @param id
 	 * @param nom
 	 * @param intervention2
 	 * @param implantationId
 	 * @param localInformatique
 	 */
-	public Local(int id, String nom, Materiels nbChaises, MaterielSpecial materielSpecial, Intervention intervention) {
+	public Local(int id, String nom, Materiels nbChaises, Materiels nbTables) {
 		this.id = id;
 		this.nom = nom;
 		this.nbChaises = nbChaises;
-		this.materielSpecial = materielSpecial;
-		this.intervention = intervention;
+		this.nbTables = nbTables;
 	}
 
 

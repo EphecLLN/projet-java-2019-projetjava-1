@@ -38,8 +38,6 @@ public class Connexion {
 
 
 	public void fermerConnexion() throws SQLException {
-		resultat.close();
-		requeteStatement.close();
 		connexion.close();
 	}
 }
