@@ -5,6 +5,7 @@ package view;
 
 
 import java.util.Observable;
+
 import java.util.Observer;
 import java.util.Scanner;
 
@@ -33,7 +34,7 @@ public class VueConsole extends Vue implements Observer{
 		//System.out.println("Bonjour");
 	}
 
-	private class ReadInput implements Runnable{
+	public class ReadInput implements Runnable{
 		public void run() {
 			while(true) {
 				// completer tout �a
@@ -61,7 +62,7 @@ public class VueConsole extends Vue implements Observer{
 
 					switch(var) {
 					case "A":
-						System.out.println("Le nombre total de locaux s'�l�ve à " + controller.model.locals.size());
+						//System.out.println("Le nombre total de locaux s'�l�ve à " + controller.model.locals.size());
 						break;
 					case "B":
 						controller.afficherClasses();
@@ -75,7 +76,7 @@ public class VueConsole extends Vue implements Observer{
 							System.out.println("� impl�menter");
 							break;
 						case "B":
-							System.out.println(controller.model.implantations.size()); // A CHANGER 
+							System.out.println(controller.model.implantations.size()); // A CHANGER
 							break;
 						default:
 							throw new IllegalArgumentException("Unexpected value: " + var2);

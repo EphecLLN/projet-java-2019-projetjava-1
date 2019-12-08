@@ -7,6 +7,7 @@ package controller;
 
 
 import model.Ecole;
+
 import view.Vue;
 
 /**
@@ -44,8 +45,8 @@ public class Controller {
 	}
 
 	public void afficherClasses() {
-		for(int i = 0; i < model.locals.size(); i++) {
-			vue.affiche(model.locals.get(i).toString());
-		}
+		//for(int i = 0; i < model.locals.size(); i++) {
+			//vue.affiche(model.locals.get(i).toString());
+		//}
 	}
 }

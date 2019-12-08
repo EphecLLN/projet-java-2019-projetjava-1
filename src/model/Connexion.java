@@ -12,7 +12,7 @@ public class Connexion {
 
 ///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
 	
-	private static String url= "jdbc:mysql://localhost/1formatikBdd";
+	private static String url= "jdbc:mysql://localhost/1formatikBdd?serverTimezone=UTC";
 	private static String user = "root";
 	private static String mdp = "user1234";
 

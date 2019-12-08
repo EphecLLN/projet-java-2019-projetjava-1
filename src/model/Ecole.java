@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package model;
 
@@ -15,16 +15,16 @@ import java.util.Observable;
  */
 @SuppressWarnings("deprecation")
 public class Ecole extends Observable {
-	
+
 	public ArrayList<Implantation> implantations = new ArrayList<Implantation>();
 
 	public Ecole() throws SQLException {
-		
+
 		ajouterImplantationsEtAdresses();
 		ajouterUtilisateurs();
 		ajouterLocalEtMateriel();
 		ajouterMaterielsSpeciauxEtPcs();
-		
+
 		}
 	/**
 	 * Permet de récupérer et d'instancier les adresses et les implantations qui leur sont associées
@@ -39,7 +39,7 @@ public class Ecole extends Observable {
 				//pour chaque adresse récupéré
 				while(connAdresse.resultat.next()) {
 					//on récupère l'implantation associée
-					connImplantation = new Connexion("select * from implantation where id = " + connAdresse.resultat.getInt("id"));	
+					connImplantation = new Connexion("select * from implantation where id = " + connAdresse.resultat.getInt("id"));
 					connImplantation.resultat.first();
 					//On instancie l'implantation et l'adresse
 					imp = new Implantation(connImplantation.resultat.getInt("id"), connImplantation.resultat.getString("nom"), new Adresse(connAdresse.resultat.getInt("id"),connAdresse.resultat.getInt("numero"),connAdresse.resultat.getString("rue"), connAdresse.resultat.getString("ville"),connAdresse.resultat.getInt("codePostal")));
@@ -48,7 +48,7 @@ public class Ecole extends Observable {
 				}
 				connAdresse.fermerConnexion();
 	}
-	
+
 	public void ajouterUtilisateurs() throws SQLException {
 		Connexion connUtilisateur;
 		for(Implantation uneImp: implantations) {
@@ -62,7 +62,7 @@ public class Ecole extends Observable {
 			connUtilisateur.fermerConnexion();
 		}
 	}
-	
+
 	public void ajouterLocalEtMateriel() throws SQLException {
 		Connexion connMaterielsChaises, connMaterielsTables, connLocal;
 		for(Implantation uneImp: implantations) {
@@ -85,7 +85,7 @@ public class Ecole extends Observable {
 			connLocal.fermerConnexion();
 		}
 	}
-	
+
 	public void ajouterMaterielsSpeciauxEtPcs() throws SQLException {
 		Connexion connMaterielSpeciaux, connPcs, connInterventions;
 		for(Implantation uneImp : implantations) {
@@ -111,11 +111,10 @@ public class Ecole extends Observable {
 			}
 		}
 	}
-	
+
 	public static void main(String args[]) throws SQLException {
 		Ecole e1 = new Ecole();
 		System.out.println(e1.implantations.get(0).getLocaux().get(1).getNbChaises().getCritique());
-		
+
 	}
 }
-	
