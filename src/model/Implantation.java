@@ -116,26 +116,60 @@ public class Implantation {
 
 ///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
 
-	
-	public void genererAdresse(int numero, String rue, int codePostal, String ville) throws SQLException {
+	public void genererLocalEtMateriels(String nom, int localInformatique, int[] chaises, int[] tables) throws SQLException {
+		int localId = Connexion.generer("insert into local values ('', '"+ nom +"','"+ this.id +"','"+ localInformatique +"')", "local");
+		Connexion.generer("insert into materiels values ('', 'chaises', " + chaises[0] + ", " + chaises[1] + ", " + chaises[2] + ", " + chaises[3] + ", " + localId + ")", "materiels");
+		Connexion.generer("insert into materiels values ('', 'tables', " + tables[0] + ", " + tables[1] + ", " + tables[2] + ", " + tables[3] + ", " + localId + ")", "materiels");
+		Local loc;
+		if(localInformatique == 0) {
+			loc = (Local) Connexion.requete("select * from local where id = " + localId, "Local").get(0);
+		}
+		else {
+			loc = (LocalInformatique) Connexion.requete("select * from local where id = " + localId, "Local").get(0);
+		}
+		loc.setMateriels();
+		this.getLocaux().add(loc);
 		
-		int id = Utils.autoId("adresse");
-		Connexion ga = new Connexion("insert into adresse values (" + id + ", '" + numero + "', '" + rue + "', '" + ville + "', " + codePostal +" )");
-		ga.fermerConnexion();
-	}
-
-	public void genererLocal(String nom, int implantationId, int localInformatique) throws SQLException {
-		int id  = Utils.autoId("local");
-		Connexion gl = new Connexion("insert into local values ('"+ id +"','"+ nom +"','"+ implantationId +"','"+ localInformatique +"')");
-		gl.fermerConnexion();
 	}
 	
 	public void genererUtilisateur(String nom, String prenom, int grade, String pseudo, String motDePasse, int implantationId) throws SQLException {
-		int id = Utils.autoId("utilisateur");
 		Connexion gu = new Connexion("insert into utilisateur values (" + id + ", '" + nom + "', '" + prenom + "', " + grade + ", '" + pseudo + "', '" + motDePasse + "', " + implantationId + ")");
 		gu.fermerConnexion();
 	}
+	
+	/**
+	 * Permet d'instancier tous les utilisateurs de chaque implantation
+	 * @throws SQLException
+	 */
+	public void synchroUtilisateurs() throws SQLException {
+		if(!this.getUtilisateurs().isEmpty()) {
+			this.getUtilisateurs().clear();
+		}
+		ArrayList<Utilisateur> utis = Connexion.requete("select * from utilisateur where implantationId = " + this.getId(), "Utilisateur");
+		for(Utilisateur uti : utis) {
+			this.getUtilisateurs().add(uti);
+		}
+	}
+	
+	/**
+	 * Permet d'instancier Tous les locaux et le matériel associé pour chaque implantation
+	 * @throws SQLException
+	 */
+	public void synchroLocalEtMateriel() throws SQLException {
+		if(!this.getLocaux().isEmpty()) {
+			this.getLocaux().clear();
+		}
+		ArrayList<Local> locs = Connexion.requete("select * from local where implantationId = " + this.getId(), "Local");
+		for(Local loc : locs) {
+			loc.setMateriels();
+			this.getLocaux().add(loc);
+			loc.synchroMaterielsSpeciaux();
+			loc.syncrhoInterventions();
+			loc.synchroPcs();
+		}
 
+	}
+	
 	public int nombreLocauxTotal() throws SQLException {
 		Connexion nlt = new Connexion("select count(*) from local where implatationId = "+ this.id);
 		nlt.resultat.next();
