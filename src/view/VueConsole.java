@@ -47,7 +47,7 @@ public class VueConsole extends Vue implements Observer{
 						Scanner scan2 = new Scanner(System.in);
 						mdp = scan2.nextLine();
 					}
-					while(!controller.login(pseudo, mdp));
+					while(!(controller.login(pseudo, mdp)[0] == 1));
 					System.out.println("Connexion réussie !");
 
 					System.out.print("Dans quelle implantation êtes-vous? ");

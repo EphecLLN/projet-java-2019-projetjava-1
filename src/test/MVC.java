@@ -38,7 +38,7 @@ public class MVC {
 		
 		
 		//création des vues
-		System.out.println("lala");
+	
 		VueConsole vc = new VueConsole(mod, contrConsole);
 		GUI g = new GUI(mod, contrGUI);
 		
@@ -55,7 +55,6 @@ public class MVC {
 	public static void main(String[] args) throws SQLException{
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				//String pseudo = "", mdp = "";
 				try {
 					new MVC();
 				} catch (SQLException e) {

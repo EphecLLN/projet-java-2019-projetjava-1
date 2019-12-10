@@ -6,8 +6,12 @@ package controller;
 
 
 
-import model.Ecole;
+import java.sql.SQLException;
 
+
+import com.sun.org.apache.xalan.internal.xsltc.compiler.Parser;
+
+import model.*;
 import view.Vue;
 
 /**
@@ -24,19 +28,23 @@ public class Controller {
 		this.model = model;
 	}
 
-	public boolean login(String user, String mdp) {
 
-		// A revoir
+	public int[] login(String user, String mdp) {
 
-		/*boolean res = false;
-		for(int i = 0; i < model.utilisateurs.size(); i++) {
-			if(model.utilisateurs.get(i).getPseudo() == user) {
-				if(model.utilisateurs.get(i).getMotDePasse() == mdp) {
-					res = true;
+		int[] tab = {0, 0, 0};
+
+		for(Implantation uneImp : model.implantations) {
+			for(Utilisateur unUti : uneImp.getUtilisateurs()) {
+				if(unUti.getPseudo().equals(user)) {
+					if(unUti.getMotDePasse().equals(mdp)){
+						tab[0] = 1;
+						tab[1] = unUti.getGrade();
+						tab[2] = uneImp.getId();
+					}
 				}
 			}
-		}*/
-		return true;
+		}
+		return tab;
 	}
 	//ajouter les m�thodes
 
