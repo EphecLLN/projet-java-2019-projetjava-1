@@ -177,13 +177,33 @@ public class Local{
 		this.setNbTables(tables);
 	}
 	
-	public void ajouterMaterielSpecial(int id, String nom, String etat, int local) throws SQLException {
-		Connexion ams = new Connexion("insert into materielspecial values ('"+ id +"','"+ nom +"','"+ etat +"')");
-		
+	/**
+	 * Permet de générer un nouveau matériel spécial. 
+	 * Il est enregistré en bdd et ajouté au modèle.
+	 * @param nom
+	 * @param etat
+	 * @throws SQLException
+	 */
+	public void genererMaterielSpecial(String nom, String etat) throws SQLException {
+		int id = Connexion.generer("insert into materielspecial values ('','" + nom + "','" + etat + "', " + this.id + ")", "materielSpecial");
+		MaterielSpecial matSpe = (MaterielSpecial) Connexion.requete("select * from materielSpecial where id = " + id, "MaterielSpecial").get(0);
+		this.getMaterielsSpeciaux().add(matSpe);
 	}
-	public void ajouterIntervention(int id, String nom, String commentaire) throws SQLException {
-		Connexion ai = new Connexion("insert into intervention values ('"+ id +"','"+ nom +"','"+ commentaire +"')");
+	
+	/**
+	 * Permet de générer une nouvelle intervention.
+	 * Elle est enregistrée en bdd et ajoutée au modèle
+	 * @param nom
+	 * @param commentaires
+	 * @throws SQLException
+	 */
+	public void genererIntervention(String nom, String commentaires) throws SQLException {
+		int id = Connexion.generer("insert into intervention values ('','"+ nom +"','"+ commentaires +"', " + this.id + ")", "intervention");
+		Intervention inte = (Intervention) Connexion.requete("select * from intervention where id = " + id, "Intervention").get(0);
+		this.getInterventions().add(inte);
 	}
+	
+	
 
 ///////////////////////////////////////*METHODE TOSTRING*////////////////////////////////////////////////////////////////////////////////////
 

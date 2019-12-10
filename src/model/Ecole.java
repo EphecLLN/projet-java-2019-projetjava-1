@@ -47,12 +47,21 @@ public class Ecole extends Observable {
 
 
 	}
-	//A tester !
-	public void genererImplantation(String nom, int numero, String rue, int codePostal, String ville) throws SQLException {
+	/**
+	 * Permet d'ajouter une nouvelle implantation. Elle est enregistré en bdd et ajouté dans le modèle
+	 * @param nom
+	 * @param numero
+	 * @param rue
+	 * @param codePostal
+	 * @param ville
+	 * @throws SQLException
+	 */
+	public void genererImplantationEtAdresse(String nom, int numero, String rue, int codePostal, String ville) throws SQLException {
 		int adresseId = Connexion.generer("insert into adresse values ('', " + numero + ", '" + rue + "', '" + ville + "', " + codePostal +")", "adresse");
 		Connexion.generer("insert into implantation values ('', '" + nom + "', " + adresseId + ")", "implantation");
 		Implantation imp = (Implantation) Connexion.requete("select * from implantation where adresseId = " + adresseId, "Implantation").get(0);
 		imp.setAdresse((Adresse) Connexion.requete("select * from adresse where id = " + adresseId, "Adresse").get(0));
+		this.implantations.add(imp);
 	}
 
 	public static void main(String args[]) throws SQLException {

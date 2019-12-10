@@ -109,13 +109,18 @@ public class Implantation {
 		this.adresse = adresse;
 
 	}
-	
-	public Implantation() {
-		
-	}
 
 ///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
 
+	/**
+	 * Permet de générer un local et son matériel(chaises et tables) associé. 
+	 * Les données sont enregistrées sur la bdd et sont ajoutées au modèle.
+	 * @param nom
+	 * @param localInformatique
+	 * @param chaises
+	 * @param tables
+	 * @throws SQLException
+	 */
 	public void genererLocalEtMateriels(String nom, int localInformatique, int[] chaises, int[] tables) throws SQLException {
 		int localId = Connexion.generer("insert into local values ('', '"+ nom +"','"+ this.id +"','"+ localInformatique +"')", "local");
 		Connexion.generer("insert into materiels values ('', 'chaises', " + chaises[0] + ", " + chaises[1] + ", " + chaises[2] + ", " + chaises[3] + ", " + localId + ")", "materiels");
@@ -132,6 +137,17 @@ public class Implantation {
 		
 	}
 	
+	/**
+	 * Permet de générer un nouvel utilisateur. Il est enregistré en bdd et ajouté 
+	 * au modèle.
+	 * @param nom
+	 * @param prenom
+	 * @param grade
+	 * @param pseudo
+	 * @param motDePasse
+	 * @param implantationId
+	 * @throws SQLException
+	 */
 	public void genererUtilisateur(String nom, String prenom, int grade, String pseudo, String motDePasse, int implantationId) throws SQLException {
 		Connexion gu = new Connexion("insert into utilisateur values (" + id + ", '" + nom + "', '" + prenom + "', " + grade + ", '" + pseudo + "', '" + motDePasse + "', " + implantationId + ")");
 		gu.fermerConnexion();

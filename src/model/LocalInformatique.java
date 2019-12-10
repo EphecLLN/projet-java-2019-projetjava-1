@@ -33,6 +33,8 @@ public class LocalInformatique extends Local{
 	public void setPcs(ArrayList<Pc> pcs) {
 		this.pcs = pcs;
 	}
+	
+	
 
 	
 ///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
@@ -44,9 +46,23 @@ public class LocalInformatique extends Local{
 	}
 
 ///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
-	public void ajouterPc(int id, int local, String type, String tour, String ecran, String clavier, String souris, String commentaire) throws SQLException {
-		Connexion ap = new Connexion("insert into pc values ('"+ id +"','"+ local +"','"+ type +"','"+ tour +"','"+ ecran +"','"+ clavier +",'"+ souris +"','"+ commentaire +"'')");
-		
+	
+	/**
+	 * Permet de générer un nouveau pc. Il est enregistré en bdd
+	 * et ajouté au modèle.
+	 * @param nom
+	 * @param type
+	 * @param tour
+	 * @param ecran
+	 * @param clavier
+	 * @param souris
+	 * @param commentaires
+	 * @throws SQLException
+	 */
+	public void genererPc(String nom, String type, String tour, String ecran, String clavier, String souris, String commentaires) throws SQLException {
+		int id = Connexion.generer("insert into pc values ('', "+ nom +"',"+ this.getId() +",'"+ type +"','"+ tour +"','"+ ecran +"','"+ clavier +",'"+ souris +"','"+ commentaires +"'')", "pc");
+		Pc pc = (Pc) Connexion.requete("select * from pc where id = " + id, "Pc").get(0);
+		this.getPcs().add(pc);
 	}
 	
 	public void supprimerPc(int id) throws SQLException {
