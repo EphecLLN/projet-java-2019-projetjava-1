@@ -1,4 +1,4 @@
-/**
+ /**
  *
  */
 package model;
@@ -112,15 +112,80 @@ public class Implantation {
 
 ///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
 
-	public void genererAdresse(int id, int numero, int codePostal, String rue, String ville) throws SQLException {
-		Connexion ga = new Connexion("insert into adresse values ('"+ id +"','"+ numero +"','"+ codePostal +"','"+rue +"','"+ ville +"',)");
-			
+	/**
+	 * Permet de générer un local et son matériel(chaises et tables) associé. 
+	 * Les données sont enregistrées sur la bdd et sont ajoutées au modèle.
+	 * @param nom
+	 * @param localInformatique
+	 * @param chaises
+	 * @param tables
+	 * @throws SQLException
+	 */
+	public void genererLocalEtMateriels(String nom, int localInformatique, int[] chaises, int[] tables) throws SQLException {
+		int localId = Connexion.generer("insert into local values ('', '"+ nom +"','"+ this.id +"','"+ localInformatique +"')", "local");
+		Connexion.generer("insert into materiels values ('', 'chaises', " + chaises[0] + ", " + chaises[1] + ", " + chaises[2] + ", " + chaises[3] + ", " + localId + ")", "materiels");
+		Connexion.generer("insert into materiels values ('', 'tables', " + tables[0] + ", " + tables[1] + ", " + tables[2] + ", " + tables[3] + ", " + localId + ")", "materiels");
+		Local loc;
+		if(localInformatique == 0) {
+			loc = (Local) Connexion.requete("select * from local where id = " + localId, "Local").get(0);
+		}
+		else {
+			loc = (LocalInformatique) Connexion.requete("select * from local where id = " + localId, "Local").get(0);
+		}
+		loc.setMateriels();
+		this.getLocaux().add(loc);
+		
 	}
-
-	public void ajouterLocaux(int id, String nom, int implantationId, int localInformatique) throws SQLException {
-		Connexion al = new Connexion("insert into local values ('"+ id +"','"+ nom +"','"+ implantationId +"','"+ localInformatique +"')");
+	
+	/**
+	 * Permet de générer un nouvel utilisateur. Il est enregistré en bdd et ajouté 
+	 * au modèle.
+	 * @param nom
+	 * @param prenom
+	 * @param grade
+	 * @param pseudo
+	 * @param motDePasse
+	 * @param implantationId
+	 * @throws SQLException
+	 */
+	public void genererUtilisateur(String nom, String prenom, int grade, String pseudo, String motDePasse, int implantationId) throws SQLException {
+		Connexion gu = new Connexion("insert into utilisateur values (" + id + ", '" + nom + "', '" + prenom + "', " + grade + ", '" + pseudo + "', '" + motDePasse + "', " + implantationId + ")");
+		gu.fermerConnexion();
 	}
+	
+	/**
+	 * Permet d'instancier tous les utilisateurs de chaque implantation
+	 * @throws SQLException
+	 */
+	public void synchroUtilisateurs() throws SQLException {
+		if(!this.getUtilisateurs().isEmpty()) {
+			this.getUtilisateurs().clear();
+		}
+		ArrayList<Utilisateur> utis = Connexion.requete("select * from utilisateur where implantationId = " + this.getId(), "Utilisateur");
+		for(Utilisateur uti : utis) {
+			this.getUtilisateurs().add(uti);
+		}
+	}
+	
+	/**
+	 * Permet d'instancier Tous les locaux et le matériel associé pour chaque implantation
+	 * @throws SQLException
+	 */
+	public void synchroLocalEtMateriel() throws SQLException {
+		if(!this.getLocaux().isEmpty()) {
+			this.getLocaux().clear();
+		}
+		ArrayList<Local> locs = Connexion.requete("select * from local where implantationId = " + this.getId(), "Local");
+		for(Local loc : locs) {
+			loc.setMateriels();
+			this.getLocaux().add(loc);
+			loc.synchroMaterielsSpeciaux();
+			loc.syncrhoInterventions();
+			loc.synchroPcs();
+		}
 
+	}
+	
 	public int nombreLocauxTotal() throws SQLException {
 		Connexion nlt = new Connexion("select count(*) from local where implatationId = "+ this.id);
 		nlt.resultat.next();

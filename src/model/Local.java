@@ -10,6 +10,7 @@ import java.util.ArrayList;
  * @author lb
  *
  */
+@SuppressWarnings("unchecked")
 public class Local{
 
 ///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
@@ -121,13 +122,87 @@ public class Local{
 
 ///////////////////////////////////////*METHODES*////////////////////////////////////////////////////////////////////////////////////
 
-	public void ajouterMaterielSpecial(int id, String nom, String etat, int local) throws SQLException {
-		Connexion ams = new Connexion("insert into materielspecial values ('"+ id +"','"+ nom +"','"+ etat +"')");
-		
+	/**
+	 * Permet d'instancier tous les pcs de chaque local informatique de chaque implantation
+	 * @throws SQLException
+	 */
+	public void synchroPcs() throws SQLException {
+		if(this.getClass().getSimpleName().equals("LocalInformatique")) {
+			LocalInformatique thisInf = (LocalInformatique) this;
+			if(!thisInf.getPcs().isEmpty()) {
+				thisInf.getPcs().clear();
+			}
+			ArrayList<Pc> pcs = Connexion.requete("select * from pc where localid = " + this.getId(), "Pc");
+			for(Pc pc : pcs) {
+				thisInf.getPcs().add(pc);
+			}
+		}
 	}
-	public void ajouterIntervention(int id, String nom, String commentaire) throws SQLException {
-		Connexion ai = new Connexion("insert into intervention values ('"+ id +"','"+ nom +"','"+ commentaire +"')");
+	/**
+	 * Permet d'instancier toutes les interventions de chaque local de chaque implantation
+	 * @throws SQLException
+	 */
+	public void syncrhoInterventions() throws SQLException {
+		if(!this.getInterventions().isEmpty()) {
+			this.getInterventions().clear();
+		}
+		ArrayList<Intervention> intes = Connexion.requete("select * from Intervention where localId = " + this.getId(), "Intervention");
+		for(Intervention inte : intes) {
+			this.getInterventions().add(inte);
+		}
+
 	}
+	/**
+	 * Permet d'instancier tous le matériel spécial de chaque local de chaque implantation
+	 * @throws SQLException
+	 */
+	public void synchroMaterielsSpeciaux() throws SQLException {
+		if(!this.getMaterielsSpeciaux().isEmpty()) {
+			this.getMaterielsSpeciaux().clear();
+		}
+		ArrayList<MaterielSpecial> matSpes = Connexion.requete("select * from materielSpecial where localId = " + this.getId(), "MaterielSpecial");
+		for(MaterielSpecial matSpe : matSpes) {
+			this.getMaterielsSpeciaux().add(matSpe);
+		}
+	}
+	
+	/**
+	 * Change la valeur des attributs de type Materiels du local avec la valeur adhoc
+	 * @throws SQLException
+	 */
+	public void setMateriels() throws SQLException {
+		Materiels chaises = (Materiels) Connexion.requete("select * from materiels where nom = 'chaises' and localid = " + this.getId(), "Materiels").get(0);
+		Materiels tables = (Materiels) Connexion.requete("select * from materiels where nom = 'tables' and localid = " + this.getId(), "Materiels").get(0);
+		this.setNbChaises(chaises);	
+		this.setNbTables(tables);
+	}
+	
+	/**
+	 * Permet de générer un nouveau matériel spécial. 
+	 * Il est enregistré en bdd et ajouté au modèle.
+	 * @param nom
+	 * @param etat
+	 * @throws SQLException
+	 */
+	public void genererMaterielSpecial(String nom, String etat) throws SQLException {
+		int id = Connexion.generer("insert into materielspecial values ('','" + nom + "','" + etat + "', " + this.id + ")", "materielSpecial");
+		MaterielSpecial matSpe = (MaterielSpecial) Connexion.requete("select * from materielSpecial where id = " + id, "MaterielSpecial").get(0);
+		this.getMaterielsSpeciaux().add(matSpe);
+	}
+	
+	/**
+	 * Permet de générer une nouvelle intervention.
+	 * Elle est enregistrée en bdd et ajoutée au modèle
+	 * @param nom
+	 * @param commentaires
+	 * @throws SQLException
+	 */
+	public void genererIntervention(String nom, String commentaires) throws SQLException {
+		int id = Connexion.generer("insert into intervention values ('','"+ nom +"','"+ commentaires +"', " + this.id + ")", "intervention");
+		Intervention inte = (Intervention) Connexion.requete("select * from intervention where id = " + id, "Intervention").get(0);
+		this.getInterventions().add(inte);
+	}
+	
 	
 
 ///////////////////////////////////////*METHODE TOSTRING*////////////////////////////////////////////////////////////////////////////////////

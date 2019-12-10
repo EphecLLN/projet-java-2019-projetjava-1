@@ -37,7 +37,7 @@ public class VueConsole extends Vue implements Observer{
 	public class ReadInput implements Runnable{
 		public void run() {
 			while(true) {
-				// completer tout ça
+				// completer tout ï¿½a
 					String pseudo = "", mdp = "" , imp = "",var = "", var2= "";
 					do {
 						System.out.print("Utilisateur : ");
@@ -48,9 +48,9 @@ public class VueConsole extends Vue implements Observer{
 						mdp = scan2.nextLine();
 					}
 					while(!(controller.login(pseudo, mdp)[0] == 1));
-					System.out.println("Connexion réussie !");
+					System.out.println("Connexion rï¿½ussie !");
 
-					System.out.print("Dans quelle implantation êtes-vous? ");
+					System.out.print("Dans quelle implantation ï¿½tes-vous? ");
 					Scanner scan3 = new Scanner(System.in);
 					imp = scan3.nextLine();
 
@@ -62,21 +62,21 @@ public class VueConsole extends Vue implements Observer{
 
 					switch(var) {
 					case "A":
-						//System.out.println("Le nombre total de locaux s'élève Ã  " + controller.model.locals.size());
+						//System.out.println("Le nombre total de locaux s'ï¿½lï¿½ve Ã  " + controller.model.locals.size());
 						break;
 					case "B":
 						controller.afficherClasses();
 						break;
 					case "C" :
-						System.out.print("Que voulez-vous faire? A pour changer l'état du matériel, B pour afficher le total du matériel ");
+						System.out.print("Que voulez-vous faire? A pour changer l'ï¿½tat du matï¿½riel, B pour afficher le total du matï¿½riel ");
 						Scanner scan5 = new Scanner(System.in);
 						var2 = scan5.nextLine();
 						switch(var2) {
 						case "A":
-							System.out.println("à implémenter");
+							System.out.println("ï¿½ implï¿½menter");
 							break;
 						case "B":
-							System.out.println(controller.model.implantations.size()); // A CHANGER 
+							System.out.println(controller.model.implantations.size()); // A CHANGER
 							break;
 						default:
 							throw new IllegalArgumentException("Unexpected value: " + var2);
