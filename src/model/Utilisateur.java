@@ -14,15 +14,12 @@ public class Utilisateur {
 
 ///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
 
-
 	private int id, grade;
 	private String nom, prenom, pseudo, motDePasse;
 
-	String[] util;
 
 
 ///////////////////////////////////////*GETTERS & SETTERS*////////////////////////////////////////////////////////////////////////////////////
-
 
 	/**
 	 * @return the id
@@ -110,7 +107,6 @@ public class Utilisateur {
 
 ///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
 
-
 	public Utilisateur(int id, String nom, String prenom, int grade, String pseudo, String motDePasse) {
 		this.id = id;
 		this.nom = nom;
@@ -120,7 +116,6 @@ public class Utilisateur {
 	}
 
 ///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
-
 
 	/**
 	 * methode qui permet de changer le grade d'un utilisateur par celui passe en parametre
@@ -181,14 +176,17 @@ public class Utilisateur {
 		//TODO implementation collection
 	}
 
-
-
-
 ///////////////////////////////////////*METHODE TOSTRING*////////////////////////////////////////////////////////////////////////////////////
 
 	public String toString() {
 		return nom + " " + prenom + " " + grade + " " + pseudo + " " + motDePasse;
 	}
 	
-
+	/**
+	 * Supprime l'objet qui l'appelle en bdd
+	 * @throws SQLException
+	 */
+	public void supprimer() throws SQLException {
+		Connexion.supprimer(this, this.id);
+	}
 }

@@ -38,18 +38,31 @@ public class Connexion {
 		}
 	}
 	
-///////////////////////////////////////*METHODE*/////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////////
 	public static int autoId(String table) throws SQLException {
 		Connexion AutoId = new Connexion("Select count(last_insert_id()) from " + table);
 		AutoId.resultat.first();
 		return AutoId.resultat.getInt(1) + 1;
 	}
 	
+	/**
+	 * Permet de faire une requête qui ne renvoie rien (update, delete)
+	 * @param requete
+	 * @throws SQLException
+	 */
 	public static void requete(String requete) throws SQLException {
 		Connexion conn = new Connexion(requete);
 		conn.fermerConnexion();
 	}
 	
+	/**
+	 * Permet de récuperer une ArrayList contenant tous les objets d'une classe 
+	 * stockés en bdd
+	 * @param requete
+	 * @param classe
+	 * @return ArrayList
+	 * @throws SQLException
+	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static ArrayList requete(String requete, String classe) throws SQLException {
 		ArrayList arr = new ArrayList();
@@ -118,9 +131,15 @@ public class Connexion {
 		}
 		conn.fermerConnexion();
 		return arr;
-		
 	}
 	
+	/**
+	 * Permet de créer une nouvelle entité. Elle est stocké en bdd.
+	 * @param requete
+	 * @param table
+	 * @return
+	 * @throws SQLException
+	 */
 	public static int generer(String requete, String table) throws SQLException {
 		int id = autoId(table);
 		System.out.println(requete.substring(0, requete.indexOf("''")) + id + requete.substring(requete.indexOf("''")+2));
@@ -129,6 +148,10 @@ public class Connexion {
 		return id;
 	}
 
+	public static void supprimer(Object obj, int id) throws SQLException {
+		Connexion.requete("delete from " + obj.getClass().getSimpleName().toLowerCase() + " where id = " + id);
+	}
+	
 	public void fermerConnexion() throws SQLException {
 		connexion.close();
 	}

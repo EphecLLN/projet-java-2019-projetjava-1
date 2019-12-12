@@ -7,7 +7,7 @@ package controller;
 
 
 import java.sql.SQLException;
-
+import java.util.ArrayList;
 
 //import com.sun.org.apache.xalan.internal.xsltc.compiler.Parser;
 
@@ -20,15 +20,22 @@ import view.Vue;
  */
 public class Controller {
 
+/////////////////////////////////*ATTRIBUTS*//////////////////////////////////////////////////////////////////////////////////////////////
+
 	public Ecole model;
 	Vue vue;
 
-
-	public Controller(Ecole model) {
-		this.model = model;
-	}
+/////////////////////////////////*CONSTRUCTEURS*//////////////////////////////////////////////////////////////////////////////////////////
 
 
+/////////////////////////////////*METHODES*//////////////////////////////////////////////////////////////////////////////////////////////////
+
+	/**
+	 * mï¿½thode qui permet de se logger et de rï¿½cuperer les donnï¿½es en les testant en bdd
+	 * @param user
+	 * @param mdp
+	 *
+	 */
 	public int[] login(String user, String mdp) {
 
 		int[] tab = {0, 0, 0};
@@ -47,27 +54,27 @@ public class Controller {
 		return tab;
 	}
 	/**
-	 * Méthode qui récupère les noms des implantations
-	 * 
-	 * 
+	 * Mï¿½thode qui rï¿½cupï¿½re les noms des implantations
+	 *
+	 *
 	 */
 	public String[] recupererImpNom() {
-		// récupération des noms des implantations
-		String[] imps = new String[20]; 
+		// rï¿½cupï¿½ration des noms des implantations
+		String[] imps = new String[20];
 		int i = 0;
-		for(Implantation uneImp : model.implantations)	{	
+		for(Implantation uneImp : model.implantations)	{
 			imps[i] = uneImp.getNom();
 			i++;
 		}
 		return imps;
 
 	}
-	
+
 	public int[] recupererImpId() {
-		// récupération des noms des implantations
-		int [] idd = new int[2]; 
+		// rï¿½cupï¿½ration des noms des implantations
+		int [] idd = new int[2];
 		int i = 0;
-		for(Implantation uneImp : model.implantations)	{	
+		for(Implantation uneImp : model.implantations)	{
 			idd[i] = uneImp.getId();
 			i++;
 		}
@@ -75,18 +82,46 @@ public class Controller {
 
 	}
 
+	public String[] recupLocal(String nom) {
+
+		String[] locaux = new String[100];
+		int i = 0;
+		for(Implantation uneImp : model.implantations) {
+			if(uneImp.getNom() == nom) {
+				for(Local loc : uneImp.getLocaux()) {
+					locaux[i] = loc.toString();
+					i++;
+				}
+				break;
+			}
+		}
+		return locaux;
+
+	}
+
+	/*
+	public int nbLocal() {
+		//TODO LOUIS
+	}
+	*/
+
 	public void addView(Vue vue) {
 		this.vue = vue;
 	}
-	
-	//Méthode permettant de récupèrer le nombre total de locaux 
+
+	//Mï¿½thode permettant de rï¿½cupï¿½rer le nombre total de locaux
 	public void totalLocaux() {
 		//return model.Implantation.nombreLocauxTotal();
 	}
 
-	public void afficherClasses() {
-		//for(int i = 0; i < model.locals.size(); i++) {
-			//vue.affiche(model.locals.get(i).toString());
-		//}
+	public ArrayList<Local> afficherImplantation(String nomImplantation) {
+		Implantation limplantation = null;
+		for(Implantation imp : model.implantations) {
+			if (imp.getNom().equals(nomImplantation)) {
+				limplantation = imp;
+				break;
+			}
+		}
+		return limplantation.getLocaux();
 	}
 }

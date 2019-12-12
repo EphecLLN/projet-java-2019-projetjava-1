@@ -1,4 +1,4 @@
- /**
+/**
  *
  */
 package model;
@@ -16,17 +16,11 @@ public class Implantation {
 
 ///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
 	private int id;
 	private String nom;
 	private Adresse adresse;
 	private ArrayList<Local> locaux = new ArrayList<Local>();
 	private ArrayList<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
-	
-	
-	
-
 
 
 ///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
@@ -86,7 +80,7 @@ public class Implantation {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
-	
+
 	/**
 	 * @return the locaux
 	 */
@@ -113,7 +107,7 @@ public class Implantation {
 ///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * Permet de générer un local et son matériel(chaises et tables) associé. 
+	 * Permet de générer un local et son matériel(chaises et tables) associé.
 	 * Les données sont enregistrées sur la bdd et sont ajoutées au modèle.
 	 * @param nom
 	 * @param localInformatique
@@ -134,11 +128,11 @@ public class Implantation {
 		}
 		loc.setMateriels();
 		this.getLocaux().add(loc);
-		
+
 	}
-	
+
 	/**
-	 * Permet de générer un nouvel utilisateur. Il est enregistré en bdd et ajouté 
+	 * Permet de générer un nouvel utilisateur. Il est enregistré en bdd et ajouté
 	 * au modèle.
 	 * @param nom
 	 * @param prenom
@@ -152,7 +146,7 @@ public class Implantation {
 		Connexion gu = new Connexion("insert into utilisateur values (" + id + ", '" + nom + "', '" + prenom + "', " + grade + ", '" + pseudo + "', '" + motDePasse + "', " + implantationId + ")");
 		gu.fermerConnexion();
 	}
-	
+
 	/**
 	 * Permet d'instancier tous les utilisateurs de chaque implantation
 	 * @throws SQLException
@@ -166,7 +160,7 @@ public class Implantation {
 			this.getUtilisateurs().add(uti);
 		}
 	}
-	
+
 	/**
 	 * Permet d'instancier Tous les locaux et le matériel associé pour chaque implantation
 	 * @throws SQLException
@@ -185,7 +179,22 @@ public class Implantation {
 		}
 
 	}
-	
+
+	/**
+	 * Supprime l'objet qui l'appelle en bdd
+	 * @throws SQLException
+	 */
+	public void supprimer() throws SQLException {
+		this.adresse.supprimer();
+		for (Local local : locaux) {
+			local.supprimer();
+		}
+		for (Utilisateur utilisateur : utilisateurs) {
+			utilisateur.supprimer();
+		}
+		Connexion.supprimer(this, this.id);
+	}
+
 	public int nombreLocauxTotal() throws SQLException {
 		return this.getLocaux().size();
 	}
@@ -195,9 +204,10 @@ public class Implantation {
 		//compter uniquement le nombre de locaux informatiques
 		Connexion nli = new Connexion("select count(*) from local where localInfomartique = 1");
 		nli.resultat.next();
-		
+
 		return nli.resultat.getInt("1");
 	}
+
 
 
 }

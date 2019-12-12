@@ -15,7 +15,6 @@ public class LocalInformatique extends Local{
 	
 ///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
 
-	
 	private ArrayList<Pc> pcs = new ArrayList<Pc>();
 	
 ///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
@@ -33,12 +32,8 @@ public class LocalInformatique extends Local{
 	public void setPcs(ArrayList<Pc> pcs) {
 		this.pcs = pcs;
 	}
-	
-	
 
-	
 ///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
-
 
 	public LocalInformatique(int id, String nom, Materiels nbChaises, Materiels nbTables) {
 		// TODO Auto-generated constructor stub
@@ -64,13 +59,14 @@ public class LocalInformatique extends Local{
 		Pc pc = (Pc) Connexion.requete("select * from pc where id = " + id, "Pc").get(0);
 		this.getPcs().add(pc);
 	}
-	
-	public void supprimerPc(int id) throws SQLException {
-		Connexion sp = new Connexion("delete from pc where id = "+ id);
 		
        
+	@Override
+	public void supprimer() throws SQLException {
+		for (Pc pc : pcs) {
+			pc.supprimer();
+		}
+		super.supprimer();
 	}
-	
-	
 	
 }
