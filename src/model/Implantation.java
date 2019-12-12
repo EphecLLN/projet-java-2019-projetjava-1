@@ -1,4 +1,4 @@
- /**
+/**
  *
  */
 package model;
@@ -187,10 +187,7 @@ public class Implantation {
 	}
 	
 	public int nombreLocauxTotal() throws SQLException {
-		Connexion nlt = new Connexion("select count(*) from local where implatationId = "+ this.id);
-		nlt.resultat.next();
-
-		return nlt.resultat.getInt("1");
+		return this.getLocaux().size();
 	}
 
 	public int nombreLocauxInformatiques() throws SQLException {

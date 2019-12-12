@@ -29,6 +29,8 @@ import java.util.Observable;
 import java.util.Scanner;
 import java.awt.event.ActionEvent;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+
 import java.awt.Dimension;
 import javax.swing.JCheckBox;
 import javax.swing.JTabbedPane;
@@ -50,8 +52,8 @@ public class GUI extends Vue{
 	
 
 	private JPanel connexion;
-	private JTextField identTxt;
-	private JTextField coEchouee;
+	private JLabel identTxt;
+	private JLabel coEchouee;
 	
 
 /////////////////////////////////////////////*CONSTRUCTEURS*/////////////////////////////////////////////////////////////////////////////////
@@ -82,34 +84,30 @@ public class GUI extends Vue{
 		connexion.setLayout(null);
 		
 		//création du champ texte de demande d'identifiants
-		identTxt = new JTextField();
+		identTxt = new JLabel();
 		connexion.add(identTxt);
 		identTxt.setBorder(null);
-		identTxt.setFont(new Font("Poor Richard", Font.BOLD, 22));
+		identTxt.setFont(new Font("Dialog", Font.BOLD, 20));
 		identTxt.setText("Veuillez entrer vos identifiants : ");
 		identTxt.setBounds(59, 13, 333, 27);
-		identTxt.setEditable(false);
-		identTxt.setColumns(10);
 		identTxt.setOpaque(false);
 				
 		// création du champ texte du mot de passe
-		JTextArea mdp = new JTextArea();
-		mdp.setBounds(50, 97, 118, 39);
+		JLabel mdp = new JLabel();
+		mdp.setBounds(41, 92, 118, 39);
 		connexion.add(mdp);
-		mdp.setFont(new Font("Poor Richard", Font.BOLD, 20));
+		mdp.setFont(new Font("Dialog", Font.BOLD, 17));
 		mdp.setText("Mot de passe :");
 		mdp.setForeground(new Color(0, 128, 128));
-		mdp.setEditable(false);
 		mdp.setOpaque(false);
 		
 		// création du champ texte du nom d'utilisateur
-		JTextArea nomUti = new JTextArea();
+		JLabel nomUti = new JLabel();
 		nomUti.setBounds(12, 61, 156, 39);
 		connexion.add(nomUti);
-		nomUti.setFont(new Font("Poor Richard", Font.BOLD, 20));
+		nomUti.setFont(new Font("Dialog", Font.BOLD, 17));
 		nomUti.setForeground(new Color(0, 128, 128));
 		nomUti.setText("Nom d'utilisateur :");
-		nomUti.setEditable(false);
 		nomUti.setOpaque(false);
 				
 		// création du champ d'insertion du nom d'utilisateur
@@ -152,17 +150,16 @@ public class GUI extends Vue{
 				
 		
 		//création du champ de texte de mauvais identifiant au cas où la connexion aurait échouée	
-		coEchouee = new JTextField();
+		coEchouee = new JLabel();
 		connexion.add(coEchouee);
 		coEchouee.setVisible(false);
 		coEchouee.setForeground(new Color(220, 20, 60));
 		coEchouee.setText("Identifiants incorrects...");
-		coEchouee.setFont(new Font("Poor Richard", Font.BOLD, 18));
+		coEchouee.setFont(new Font("Dialog", Font.BOLD, 18));
 		coEchouee.setBorder(null);
 		coEchouee.setBounds(12, 136, 213, 22);
-		coEchouee.setEditable(false);
 		coEchouee.setOpaque(false);
-		coEchouee.setColumns(10);
+
 				
 		
 	

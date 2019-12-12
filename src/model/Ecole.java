@@ -70,3 +70,6 @@ public class Ecole extends Observable {
 		System.out.println(e1.implantations.toString());
 	}
 }
+
+
+

@@ -64,47 +64,52 @@ public class Local{
 		this.nbChaises = nbChaises;
 	}
 
-
-
-///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
-
-
 	/**
 	 * @return the nbTables
 	 */
 	public Materiels getNbTables() {
 		return nbTables;
 	}
+	
 	/**
 	 * @param nbTables the nbTables to set
 	 */
 	public void setNbTables(Materiels nbTables) {
 		this.nbTables = nbTables;
 	}
+	
 	/**
 	 * @return the materielsSpeciaux
 	 */
 	public ArrayList<MaterielSpecial> getMaterielsSpeciaux() {
 		return materielsSpeciaux;
 	}
+	
 	/**
 	 * @param materielsSpeciaux the materielsSpeciaux to set
 	 */
 	public void setMaterielsSpeciaux(ArrayList<MaterielSpecial> materielsSpeciaux) {
 		this.materielsSpeciaux = materielsSpeciaux;
 	}
+	
 	/**
 	 * @return the interventions
 	 */
 	public ArrayList<Intervention> getInterventions() {
 		return interventions;
 	}
+	
 	/**
 	 * @param interventions the interventions to set
 	 */
 	public void setInterventions(ArrayList<Intervention> interventions) {
 		this.interventions = interventions;
 	}
+
+///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
+
+
+
 	/**
 	 * @param id
 	 * @param nom
@@ -207,17 +212,12 @@ public class Local{
 
 ///////////////////////////////////////*METHODE TOSTRING*////////////////////////////////////////////////////////////////////////////////////
 
-	/*
+	
 	public String toString() {
 
-		String str = "Local : classique";
-		if(localInformatique == 1) {
-			str = "Local : informatique";
-		}
-
-		return nom + " implantation : " + implantationId + " " + str;
+		return nom + " "  + "nombre d'interventions " + this.interventions.size();
 	}
-	*/
+	
 
 
 
