@@ -1,41 +1,23 @@
 package view;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Observable;
 
-
-import java.awt.EventQueue;
-import java.awt.*;
-
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
-import javax.swing.border.EmptyBorder;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import controller.Controller;
 import model.Ecole;
-import view.VueConsole.ReadInput;
 
-import javax.swing.JTextField;
-import javax.swing.JTextArea;
-import java.awt.Color;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JTextPane;
-import java.awt.Font;
-import java.awt.Rectangle;
-import javax.swing.SwingConstants;
-import java.awt.event.ActionListener;
-import java.util.Observable;
-import java.util.Scanner;
-import java.awt.event.ActionEvent;
-import javax.swing.JInternalFrame;
-import java.awt.Dimension;
-import javax.swing.JCheckBox;
-import javax.swing.JTabbedPane;
-import javax.swing.JSpinner;
-import javax.swing.JLayeredPane;
-import javax.swing.JDesktopPane;
-
+@SuppressWarnings("deprecation")
 public class GUI extends Vue{
 	
 /////////////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////
@@ -60,7 +42,7 @@ public class GUI extends Vue{
 	public GUI(Ecole model, Controller controller) {
 	super(model, controller);
 	
-	//création de la fenêtre principale et du contentPane
+	//crï¿½ation de la fenï¿½tre principale et du contentPane
 		
 		j = new JFrame();
 		j.setTitle("1formatik");
@@ -74,14 +56,14 @@ public class GUI extends Vue{
 		contentPane.setLayout(null);
 	
 			
-		// création du pannel de connexion		
+		// crï¿½ation du pannel de connexion		
 		connexion = new JPanel();
 		connexion.setBounds(0, 0, 432, 160);
 		contentPane.add(connexion);
 		connexion.setVisible(true);
 		connexion.setLayout(null);
 		
-		//création du champ texte de demande d'identifiants
+		//crï¿½ation du champ texte de demande d'identifiants
 		identTxt = new JTextField();
 		connexion.add(identTxt);
 		identTxt.setBorder(null);
@@ -92,7 +74,7 @@ public class GUI extends Vue{
 		identTxt.setColumns(10);
 		identTxt.setOpaque(false);
 				
-		// création du champ texte du mot de passe
+		// crï¿½ation du champ texte du mot de passe
 		JTextArea mdp = new JTextArea();
 		mdp.setBounds(50, 97, 118, 39);
 		connexion.add(mdp);
@@ -102,7 +84,7 @@ public class GUI extends Vue{
 		mdp.setEditable(false);
 		mdp.setOpaque(false);
 		
-		// création du champ texte du nom d'utilisateur
+		// crï¿½ation du champ texte du nom d'utilisateur
 		JTextArea nomUti = new JTextArea();
 		nomUti.setBounds(12, 61, 156, 39);
 		connexion.add(nomUti);
@@ -112,21 +94,21 @@ public class GUI extends Vue{
 		nomUti.setEditable(false);
 		nomUti.setOpaque(false);
 				
-		// création du champ d'insertion du nom d'utilisateur
+		// crï¿½ation du champ d'insertion du nom d'utilisateur
 		utiTxt = new JTextField();
 		utiTxt.setBounds(178, 66, 150, 22);
 		connexion.add(utiTxt);
 		utiTxt.setHorizontalAlignment(SwingConstants.CENTER);
 		utiTxt.setColumns(10);
 		
-		// création du champ d'insertion du mot de passe
+		// crï¿½ation du champ d'insertion du mot de passe
 		mdpTxt = new JTextField();
 		mdpTxt.setBounds(178, 102, 150, 22);
 		connexion.add(mdpTxt);
 		mdpTxt.setHorizontalAlignment(SwingConstants.CENTER);
 		mdpTxt.setColumns(10);
 		
-		// création du bouton valider
+		// crï¿½ation du bouton valider
 		JButton btnValider = new JButton("Valider");
 		btnValider.setBounds(301, 133, 107, 27);
 		connexion.add(btnValider);
@@ -136,14 +118,14 @@ public class GUI extends Vue{
 			public void actionPerformed(ActionEvent e) {
 					
 				if(controller.login(utiTxt.getText(), mdpTxt.getText())[0] == 1) {
-					System.out.println("\n" + "Connexion réussie !");
+					System.out.println("\n" + "Connexion rï¿½ussie !");
 					j.setVisible(false);
 						
-					// création et affichage de la 2e fenêtre
+					// crï¿½ation et affichage de la 2e fenï¿½tre
 					SecondeFenetre imp_fenetre = new SecondeFenetre(model, controller);	
 				}
 				else {
-					System.out.println("Connexion pas réussie !");
+					System.out.println("Connexion pas rï¿½ussie !");
 					coEchouee.setVisible(true);
 				}
 
@@ -151,7 +133,7 @@ public class GUI extends Vue{
 		});
 				
 		
-		//création du champ de texte de mauvais identifiant au cas où la connexion aurait échouée	
+		//crï¿½ation du champ de texte de mauvais identifiant au cas oï¿½ la connexion aurait ï¿½chouï¿½e	
 		coEchouee = new JTextField();
 		connexion.add(coEchouee);
 		coEchouee.setVisible(false);

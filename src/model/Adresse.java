@@ -11,14 +11,10 @@ import java.sql.SQLException;
  */
 public class Adresse {
 
-
 ///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
-
 
 	private int id, numero, codePostal;
 	private String rue, ville;
-
-
 
 ///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
 
@@ -92,8 +88,6 @@ public class Adresse {
 	this.id = id;
 	}
 
-
-
 ///////////////////////////////////////*CONSTRUCTEURS*//////////////////////////////////////////////////////////////////////////////////////////
 
 	public Adresse(int id, int numero, String rue, String ville, int codePostal){
@@ -104,11 +98,7 @@ public class Adresse {
 	this.ville = ville;
 	}
 
-
-
 ///////////////////////////////////////*METHODES*//////////////////////////////////////////////////////////////////////////////////////////////
-
-
 
 	/**
 	 * Modifie les valeurs des attributs d'une adresse par ceux passes en parametre
@@ -124,16 +114,19 @@ public class Adresse {
 	 * @throws Exception Renvoit une exception si l'operation n'a pas pu etre effectuee
 	 *
 	*/
-
 	public void modifierAdresse(int numero, int codePostal, String rue, String ville, int newNumero, int newCodePostal, String newRue, String newVille) throws SQLException {
 		//il manque toute la partie avec la base de donnees qui sera rajoutee par la suite
 		Connexion cg = new Connexion("update utilisateurs set " + numero + "=" + newNumero + ", " + codePostal + "=" + newCodePostal + ", " + rue + "=" + newRue + ", " + ville + "=" + newVille  + " where id =" + this.id);
 
 	}
 		
-
-
-	
+	/**
+	 * Supprime l'objet qui l'appelle en bdd
+	 * @throws SQLException
+	 */
+	public void supprimer() throws SQLException {
+		Connexion.supprimer(this, this.id);
+	}
 
 ////////////////////////////////////////////////*METHODE TOSTRING*/////////////////////////////////////////////////////////////////////////////////////
 

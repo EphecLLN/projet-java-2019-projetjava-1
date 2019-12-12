@@ -7,7 +7,7 @@ package controller;
 
 
 import java.sql.SQLException;
-
+import java.util.ArrayList;
 
 import com.sun.org.apache.xalan.internal.xsltc.compiler.Parser;
 
@@ -51,10 +51,15 @@ public class Controller {
 	public void addView(Vue vue) {
 		this.vue = vue;
 	}
-
-	public void afficherClasses() {
-		//for(int i = 0; i < model.locals.size(); i++) {
-			//vue.affiche(model.locals.get(i).toString());
-		//}
+	
+	public ArrayList<Local> afficherImplantation(String nomImplantation) {
+		Implantation limplantation = null;
+		for(Implantation imp : model.implantations) {
+			if (imp.getNom().equals(nomImplantation)) {
+				limplantation = imp;
+				break;
+			}
+		}
+		return limplantation.getLocaux();
 	}
 }

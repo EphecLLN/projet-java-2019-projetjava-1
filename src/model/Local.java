@@ -64,11 +64,6 @@ public class Local{
 		this.nbChaises = nbChaises;
 	}
 
-
-
-///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
-
-
 	/**
 	 * @return the nbTables
 	 */
@@ -105,6 +100,9 @@ public class Local{
 	public void setInterventions(ArrayList<Intervention> interventions) {
 		this.interventions = interventions;
 	}
+
+///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
+
 	/**
 	 * @param id
 	 * @param nom
@@ -203,7 +201,22 @@ public class Local{
 		this.getInterventions().add(inte);
 	}
 	
-	
+	/**
+	 * Supprime l'objet qui l'appelle en bdd
+	 * @throws SQLException
+	 */
+	public void supprimer() throws SQLException {
+		
+		this.nbChaises.supprimer();
+		this.nbTables.supprimer();
+		for (Intervention intervention : interventions) {
+			intervention.supprimer();
+		}
+		for (MaterielSpecial materielSpecial : materielsSpeciaux) {
+			materielSpecial.supprimer();
+		}
+		Connexion.supprimer(this, this.id);
+	}
 
 ///////////////////////////////////////*METHODE TOSTRING*////////////////////////////////////////////////////////////////////////////////////
 

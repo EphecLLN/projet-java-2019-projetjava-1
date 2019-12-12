@@ -16,18 +16,12 @@ public class Implantation {
 
 ///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
 	private int id;
 	private String nom;
 	private Adresse adresse;
 	private ArrayList<Local> locaux = new ArrayList<Local>();
 	private ArrayList<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
 	
-	
-	
-
-
 
 ///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
 
@@ -186,11 +180,23 @@ public class Implantation {
 
 	}
 	
-	public int nombreLocauxTotal() throws SQLException {
-		Connexion nlt = new Connexion("select count(*) from local where implatationId = "+ this.id);
-		nlt.resultat.next();
+	/**
+	 * Supprime l'objet qui l'appelle en bdd
+	 * @throws SQLException
+	 */
+	public void supprimer() throws SQLException {
+		this.adresse.supprimer();
+		for (Local local : locaux) {
+			local.supprimer();
+		}
+		for (Utilisateur utilisateur : utilisateurs) {
+			utilisateur.supprimer();
+		}
+		Connexion.supprimer(this, this.id);
+	}
 
-		return nlt.resultat.getInt("1");
+	public int nombreLocauxTotal() throws SQLException {
+		return this.getLocaux().size();
 	}
 
 	public int nombreLocauxInformatiques() throws SQLException {
@@ -201,6 +207,7 @@ public class Implantation {
 		
 		return nli.resultat.getInt("1");
 	}
-
+	
+	
 
 }

@@ -14,13 +14,11 @@ public class MaterielSpecial {
 
 ///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
 
-
 		private int id;
 		private String nom;
 		private String etat;
 
 ///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
-
 
 		/**
 		 * @return the id
@@ -66,7 +64,6 @@ public class MaterielSpecial {
 
 ///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
 
-
 	/**
 	 * Constructeur
 	 * @param id
@@ -82,8 +79,6 @@ public class MaterielSpecial {
 
 ///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
 
-
-
 	/**
 	 * Methode permettant de change l'etat de la fonction, mais comme je ne connais pas encore les instructions pour acceder � un DB
 	 * @param etat
@@ -94,5 +89,11 @@ public class MaterielSpecial {
 		
 	}
 
-
+	/**
+	 * Supprime l'objet qui l'appelle en bdd
+	 * @throws SQLException
+	 */
+	public void supprimer() throws SQLException {
+		Connexion.supprimer(this, this.id);
+	}
 }

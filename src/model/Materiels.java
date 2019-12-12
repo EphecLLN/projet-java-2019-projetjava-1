@@ -15,7 +15,6 @@ public class Materiels{
 
 ///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
 
-
 	private int id;
 	private String nom;
 	private int neuf;
@@ -23,10 +22,7 @@ public class Materiels{
 	private int use;
 	private int critique;
 
-
 ///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
-
-
 
 	/**
 	 * @return the nom
@@ -112,9 +108,7 @@ public class Materiels{
 		this.id = id;
 	}
 
-
 ///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
-
 
 	/**
 	 *
@@ -157,21 +151,23 @@ public class Materiels{
 	}
 
 	/**
-	 * Methode permetant de faire le compte d'un materiel
+	 * Methode permettant de faire le compte du nombre de matériels (chaises ou tables)
 	 * @param neuf
 	 * @param bon
 	 * @param use
 	 * @param critique
-	 * @return la quantitee d'un materiel
+	 * @return la quantité d'un matériel
 	 *
 	 */
-
-	public int total(int neuf, int bon, int use, int critique) throws SQLException {
-		Connexion ttc = new Connexion("select neuf, bon, use, critique from materiels where id = " + this.id +"from materiels");
-		ttc.resultat.next();
-		
-		return ttc.resultat.getInt("neuf" + "bon" + "use" + "critique");
-
+	public int total() {
+		return neuf + bon + use + critique;
 	}
 
+	/**
+	 * Supprime l'objet qui l'appelle en bdd
+	 * @throws SQLException
+	 */
+	public void supprimer() throws SQLException {
+		Connexion.supprimer(this, this.id);
+	}
 }
