@@ -67,7 +67,7 @@ public class Ecole extends Observable {
 	public static void main(String args[]) throws SQLException {
 		Ecole e1 = new Ecole();
 		System.out.println(e1.implantations.get(0).getLocaux().get(1).getInterventions().get(0).getNom());
-		System.out.println(e1.implantations.toString());
+		Utils.recupObjet(e1.implantations);
 	}
 }
 

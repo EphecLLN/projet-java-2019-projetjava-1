@@ -70,35 +70,35 @@ public class Local{
 	public Materiels getNbTables() {
 		return nbTables;
 	}
-	
+
 	/**
 	 * @param nbTables the nbTables to set
 	 */
 	public void setNbTables(Materiels nbTables) {
 		this.nbTables = nbTables;
 	}
-	
+
 	/**
 	 * @return the materielsSpeciaux
 	 */
 	public ArrayList<MaterielSpecial> getMaterielsSpeciaux() {
 		return materielsSpeciaux;
 	}
-	
+
 	/**
 	 * @param materielsSpeciaux the materielsSpeciaux to set
 	 */
 	public void setMaterielsSpeciaux(ArrayList<MaterielSpecial> materielsSpeciaux) {
 		this.materielsSpeciaux = materielsSpeciaux;
 	}
-	
+
 	/**
 	 * @return the interventions
 	 */
 	public ArrayList<Intervention> getInterventions() {
 		return interventions;
 	}
-	
+
 	/**
 	 * @param interventions the interventions to set
 	 */
@@ -107,8 +107,6 @@ public class Local{
 	}
 
 ///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
-
-
 
 	/**
 	 * @param id
@@ -170,7 +168,7 @@ public class Local{
 			this.getMaterielsSpeciaux().add(matSpe);
 		}
 	}
-	
+
 	/**
 	 * Change la valeur des attributs de type Materiels du local avec la valeur adhoc
 	 * @throws SQLException
@@ -178,12 +176,12 @@ public class Local{
 	public void setMateriels() throws SQLException {
 		Materiels chaises = (Materiels) Connexion.requete("select * from materiels where nom = 'chaises' and localid = " + this.getId(), "Materiels").get(0);
 		Materiels tables = (Materiels) Connexion.requete("select * from materiels where nom = 'tables' and localid = " + this.getId(), "Materiels").get(0);
-		this.setNbChaises(chaises);	
+		this.setNbChaises(chaises);
 		this.setNbTables(tables);
 	}
-	
+
 	/**
-	 * Permet de générer un nouveau matériel spécial. 
+	 * Permet de générer un nouveau matériel spécial.
 	 * Il est enregistré en bdd et ajouté au modèle.
 	 * @param nom
 	 * @param etat
@@ -194,7 +192,7 @@ public class Local{
 		MaterielSpecial matSpe = (MaterielSpecial) Connexion.requete("select * from materielSpecial where id = " + id, "MaterielSpecial").get(0);
 		this.getMaterielsSpeciaux().add(matSpe);
 	}
-	
+
 	/**
 	 * Permet de générer une nouvelle intervention.
 	 * Elle est enregistrée en bdd et ajoutée au modèle
@@ -207,19 +205,34 @@ public class Local{
 		Intervention inte = (Intervention) Connexion.requete("select * from intervention where id = " + id, "Intervention").get(0);
 		this.getInterventions().add(inte);
 	}
-	
-	
+
+	/**
+	 * Supprime l'objet qui l'appelle en bdd
+	 * @throws SQLException
+	 */
+	public void supprimer() throws SQLException {
+
+		this.nbChaises.supprimer();
+		this.nbTables.supprimer();
+		for (Intervention intervention : interventions) {
+			intervention.supprimer();
+		}
+		for (MaterielSpecial materielSpecial : materielsSpeciaux) {
+			materielSpecial.supprimer();
+		}
+		Connexion.supprimer(this, this.id);
+	}
 
 ///////////////////////////////////////*METHODE TOSTRING*////////////////////////////////////////////////////////////////////////////////////
 
-	
+
 	public String toString() {
 
 		return nom + " "  + "nombre d'interventions " + this.interventions.size();
 	}
-	
 
 
 
-	
+
+
 }

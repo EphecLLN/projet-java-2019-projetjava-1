@@ -34,23 +34,23 @@ import java.awt.event.ItemEvent;
 
 
 public class SecondeFenetre extends Vue{
-	
+
 /////////////////////////////////////////*ATTRIBUTS*//////////////////////////////////////////////////////////////////////////////////////
 
 	public JPanel contentPane;
 	public JFrame j2;
 	private JLabel choix_txt;
-	
+
 
 ////////////////////////////////////////*CONSTRUCTEUR*////////////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * Création de la fenêtre
+	 * Crï¿½ation de la fenï¿½tre
 	 */
 	@SuppressWarnings("rawtypes")
 	public SecondeFenetre(Ecole model, Controller controller) {
 		super(model, controller);
-		
+
 		j2 = new JFrame();
 		j2.setVisible(true);
 		j2.setTitle("Implantation");
@@ -60,13 +60,18 @@ public class SecondeFenetre extends Vue{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		j2.setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
+
 		Panel panel = new Panel();
 		contentPane.add(panel);
 		panel.setLayout(null);
-		
-		
-		// création du champ texte de demande de choix d'implantation
+
+		// rï¿½cupï¿½ration des noms des implantations
+		String[] imp = {null};
+		for(Implantation uneImp : controller.model.implantations)	{
+			imp[0] = uneImp.getNom();
+		}
+
+		// crï¿½ation du champ texte de demande de choix d'implantation
 		choix_txt = new JLabel();
 		panel.add(choix_txt);
 		choix_txt.setBorder(null);
@@ -74,44 +79,44 @@ public class SecondeFenetre extends Vue{
 		choix_txt.setText("Veuillez choisir une implantation :");
 		choix_txt.setBounds(29, 25, 365, 22);
 		choix_txt.setOpaque(false);
-		
-		// création de la box qui permet de choisir son implantation
+
+		// crï¿½ation de la box qui permet de choisir son implantation
 		@SuppressWarnings("unchecked")
 		JComboBox choix_imp = new JComboBox(controller.recupererImp());
 		choix_imp.setBounds(29, 60, 365, 22);
 		panel.add(choix_imp);
-		
-		// création du label affichage du nombre de locaux
+
+		// crï¿½ation du label affichage du nombre de locaux
 		JLabel txtNbLocaux = new JLabel("Nombre de locaux :");
 		txtNbLocaux.setBounds(29, 161, 112, 16);
 		panel.add(txtNbLocaux);
 		txtNbLocaux.setVisible(false);
 
-		// création du label affichage du nombre de locaux
+		// crï¿½ation du label affichage du nombre de locaux
 		JLabel nbLocaux = new JLabel("");
 		nbLocaux.setBounds(162, 161, 56, 16);
 		panel.add(nbLocaux);
 		nbLocaux.setVisible(false);
 
-		// création du label affichage du nombre de locaux informatiques
+		// crï¿½ation du label affichage du nombre de locaux informatiques
 		JLabel txtNbLocInfo = new JLabel("Nombre de locaux informatiques :");
 		txtNbLocInfo.setBounds(29, 190, 194, 16);
 		panel.add(txtNbLocInfo);
 		txtNbLocInfo.setVisible(false);
 
-		// création du label affichage du nombre de locaux informatiques
+		// crï¿½ation du label affichage du nombre de locaux informatiques
 		JLabel nbLocInfo = new JLabel("");
 		nbLocInfo.setBounds(235, 190, 56, 16);
 		panel.add(nbLocInfo);
 		nbLocInfo.setVisible(false);
-		
-		// création de la box de la liste des locaux
+
+		// crï¿½ation de la box de la liste des locaux
 		JComboBox boxListeLocal = new JComboBox();
 		boxListeLocal.setBounds(29, 255, 365, 22);
 		panel.add(boxListeLocal);
 		boxListeLocal.setVisible(false);
-		
-		// création du bouton de validation
+
+		// crï¿½ation du bouton de validation
 		JButton btnValider = new JButton("Valider");
 		btnValider.setBounds(297, 95, 97, 25);
 		panel.add(btnValider);
@@ -119,7 +124,7 @@ public class SecondeFenetre extends Vue{
 		btnValider.setBackground(new Color(199, 21, 133));
 		btnValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Choix validé : " + choix_imp.getSelectedItem());
+				System.out.println("Choix validï¿½ : " + choix_imp.getSelectedItem());
 					// TODO afficher tous les labels ci dessous
 				txtNbLocaux.setVisible(true);
 				nbLocaux.setVisible(true);
@@ -127,28 +132,28 @@ public class SecondeFenetre extends Vue{
 				nbLocInfo.setVisible(true);
 				boxListeLocal.setVisible(true);
 				}
-				
-		});
-		
 
-		
+		});
+
+
+
 		JButton btnAjouterLocal = new JButton("Ajouter Local");
 		btnAjouterLocal.setBounds(29, 357, 149, 25);
 		panel.add(btnAjouterLocal);
-		
+
 		JButton btnAjouterImplentation = new JButton("Ajouter Implentation");
 		btnAjouterImplentation.setBounds(29, 388, 149, 25);
 		panel.add(btnAjouterImplentation);
-		
+
 		JButton btnMenuUtilisateur = new JButton("Menu Utilisateur");
 		btnMenuUtilisateur.setBounds(245, 388, 149, 25);
 		panel.add(btnMenuUtilisateur);
-		
-		
-		
 
-		
-				
+
+
+
+
+
 	}
 
 
@@ -156,13 +161,13 @@ public class SecondeFenetre extends Vue{
 
 ///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
 
-	
+
 
 
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 
@@ -170,6 +175,6 @@ public class SecondeFenetre extends Vue{
 
 	@Override
 	public void affiche(String string) {
-		
+
 	}
 }

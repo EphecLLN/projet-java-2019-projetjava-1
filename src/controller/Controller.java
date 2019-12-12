@@ -7,7 +7,7 @@ package controller;
 
 
 import java.sql.SQLException;
-
+import java.util.ArrayList;
 
 import com.sun.org.apache.xalan.internal.xsltc.compiler.Parser;
 
@@ -19,22 +19,22 @@ import view.Vue;
  *
  */
 public class Controller {
-	
+
 /////////////////////////////////*ATTRIBUTS*//////////////////////////////////////////////////////////////////////////////////////////////
 
 	public Ecole model;
 	Vue vue;
 
 /////////////////////////////////*CONSTRUCTEURS*//////////////////////////////////////////////////////////////////////////////////////////
-	
+
 
 /////////////////////////////////*METHODES*//////////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	/**
-	 * méthode qui permet de se logger et de récuperer les données en les testant en bdd
+	 * mï¿½thode qui permet de se logger et de rï¿½cuperer les donnï¿½es en les testant en bdd
 	 * @param user
 	 * @param mdp
-	 * 
+	 *
 	 */
 	public int[] login(String user, String mdp) {
 
@@ -53,27 +53,27 @@ public class Controller {
 		}
 		return tab;
 	}
-	
-	
+
+
 	/**
-	 * Méthode qui récupère les noms des implantations
-	 * 
-	 * 
+	 * Mï¿½thode qui rï¿½cupï¿½re les noms des implantations
+	 *
+	 *
 	 */
 	public String[] recupererImp() {
-		// récupération des noms des implantations
-		String[] imps = new String[20]; 
+		// rï¿½cupï¿½ration des noms des implantations
+		String[] imps = new String[20];
 		int i = 0;
-		for(Implantation uneImp : model.implantations)	{	
+		for(Implantation uneImp : model.implantations)	{
 			imps[i] = uneImp.getNom();
 			i++;
 		}
 		return imps;
 
 	}
-	
+
 	public String[] recupLocal(String nom) {
-		
+
 		String[] locaux = new String[100];
 		int i = 0;
 		for(Implantation uneImp : model.implantations) {
@@ -86,28 +86,28 @@ public class Controller {
 			}
 		}
 		return locaux;
-		
+
 	}
-	
+
 	/*
 	public int nbLocal() {
 		//TODO LOUIS
 	}
 	*/
-	
+
 
 	public void addView(Vue vue) {
 		this.vue = vue;
 	}
-	
-	public Controller(Ecole model) {
-		this.model = model;
-	}
 
-
-	public void afficherClasses() {
-		//for(int i = 0; i < model.locals.size(); i++) {
-			//vue.affiche(model.locals.get(i).toString());
-		//}
+	public ArrayList<Local> afficherImplantation(String nomImplantation) {
+		Implantation limplantation = null;
+		for(Implantation imp : model.implantations) {
+			if (imp.getNom().equals(nomImplantation)) {
+				limplantation = imp;
+				break;
+			}
+		}
+		return limplantation.getLocaux();
 	}
 }

@@ -5,8 +5,6 @@ package model;
 
 import java.sql.SQLException;
 
-
-
 /**
  * @author lb
  *
@@ -14,7 +12,6 @@ import java.sql.SQLException;
 public class Pc {
 	
 ///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
-
 
 	private int id;
 	private String nom;
@@ -27,7 +24,6 @@ public class Pc {
 	
 ///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
 
-	
 	/**
 	 * @return the type
 	 */
@@ -41,8 +37,6 @@ public class Pc {
 	public int getId() {
 		return id;
 	}
-
-
 
 	/**
 	 * @param id the id to set
@@ -72,8 +66,6 @@ public class Pc {
 		return tour;
 	}
 
-
-
 	/**
 	 * @param tour the tour to set
 	 */
@@ -81,17 +73,13 @@ public class Pc {
 		this.tour = tour;
 	}
 
-
-
 	/**
 	 * @return the ecran
 	 */
 	public String getEcran() {
 		return ecran;
 	}
-
-
-
+	
 	/**
 	 * @param ecran the ecran to set
 	 */
@@ -99,25 +87,19 @@ public class Pc {
 		this.ecran = ecran;
 	}
 
-
-
 	/**
 	 * @return the clavier
 	 */
 	public String getClavier() {
 		return clavier;
 	}
-
-
-
+	
 	/**
 	 * @param clavier the clavier to set
 	 */
 	public void setClavier(String clavier) {
 		this.clavier = clavier;
 	}
-
-
 
 	/**
 	 * @return the souris
@@ -126,16 +108,12 @@ public class Pc {
 		return souris;
 	}
 
-
-
 	/**
 	 * @param souris the souris to set
 	 */
 	public void setSouris(String souris) {
 		this.souris = souris;
 	}
-
-
 
 	/**
 	 * @return the commentaires
@@ -144,8 +122,6 @@ public class Pc {
 		return commentaires;
 	}
 
-
-
 	/**
 	 * @param commentaires the commentaires to set
 	 */
@@ -153,16 +129,12 @@ public class Pc {
 		this.commentaires = commentaires;
 	}
 
-
-
 	/**
 	 * @param type the type to set
 	 */
 	public void setType(String type) {
 		this.type = type;
 	}
-
-	
 
 ///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
 
@@ -176,7 +148,6 @@ public class Pc {
 	 * @param commentaires
 	 */
 	public Pc(int id, String nom, String type, String tour, String ecran, String clavier, String souris, String commentaires) {
-		
 		this.id = id;
 		this.nom = nom;
 		this.type = type;
@@ -189,7 +160,6 @@ public class Pc {
 	
 ///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
 
-	
 	public void changerEtat(String nom, String etat) throws SQLException {
 		
 		Connexion conn = new Connexion("update pc set " + nom + "=" + etat + "where id =" + this.id);
@@ -216,7 +186,13 @@ public class Pc {
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + nom);
 		}
-		
 	}
 
+	/**
+	 * Supprime l'objet qui l'appelle en bdd
+	 * @throws SQLException
+	 */
+	public void supprimer() throws SQLException {
+		Connexion.supprimer(this, this.id);
+	}
 }

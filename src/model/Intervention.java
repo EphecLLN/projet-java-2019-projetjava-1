@@ -28,14 +28,12 @@ public class Intervention{
 		return id;
 	}
 
-
 	/**
 	 * @param id the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
-
 
 	/**
 	 * @return the nom
@@ -44,7 +42,6 @@ public class Intervention{
 		return nom;
 	}
 
-
 	/**
 	 * @param nom the nom to set
 	 */
@@ -52,14 +49,12 @@ public class Intervention{
 		this.nom = nom;
 	}
 
-
 	/**
 	 * @return the commentaires
 	 */
 	public String getCommentaires() {
 		return commentaires;
 	}
-
 
 	/**
 	 * @param commentaires the commentaires to set
@@ -99,6 +94,12 @@ public class Intervention{
 		
 	}
 
-
+	/**
+	 * Supprime l'objet qui l'appelle en bdd
+	 * @throws SQLException
+	 */
+	public void supprimer() throws SQLException {
+		Connexion.supprimer(this, this.id);
+	}
 
 }
