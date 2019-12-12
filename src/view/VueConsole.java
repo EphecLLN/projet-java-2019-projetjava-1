@@ -66,7 +66,7 @@ public class VueConsole extends Vue implements Observer{
 						//System.out.println("Le nombre total de locaux s'�l�ve à " + controller.model.implantations.locals.size());
 						break;
 					case "B":
-						controller.afficherClasses();
+						//controller.afficherClasses();
 						break;
 					case "C" :
 						System.out.print("Que voulez-vous faire? A pour changer l'�tat du mat�riel, B pour afficher le total du mat�riel ");

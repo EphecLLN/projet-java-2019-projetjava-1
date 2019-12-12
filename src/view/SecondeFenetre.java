@@ -115,6 +115,12 @@ public class SecondeFenetre extends Vue{
 		boxListeLocal.setBounds(29, 255, 365, 22);
 		panel.add(boxListeLocal);
 		boxListeLocal.setVisible(false);
+		
+		// creation du bouton ouvrir
+		JButton btnOuvrir = new JButton("Ouvrir");
+		btnOuvrir.setBounds(297, 290, 97, 25);
+		panel.add(btnOuvrir);
+		btnOuvrir.setVisible(false);
 
 		// cr�ation du bouton de validation
 		JButton btnValider = new JButton("Valider");
@@ -133,6 +139,7 @@ public class SecondeFenetre extends Vue{
 				txtNbLocInfo.setVisible(true);
 				nbLocInfo.setVisible(true);
 				boxListeLocal.setVisible(true);
+				btnOuvrir.setVisible(true);
 				}
 
 		});
@@ -140,16 +147,28 @@ public class SecondeFenetre extends Vue{
 
 
 		JButton btnAjouterLocal = new JButton("Ajouter Local");
+		btnAjouterLocal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TroisiemeFenetre ajout = new TroisiemeFenetre(model, controller);
+			}
+		});
 		btnAjouterLocal.setBounds(29, 357, 149, 25);
 		panel.add(btnAjouterLocal);
 
 		JButton btnAjouterImplentation = new JButton("Ajouter Implentation");
+		btnAjouterImplentation.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				QuatriemeFenetre ajoutImp = new QuatriemeFenetre(model, controller);			
+			}
+		});
 		btnAjouterImplentation.setBounds(29, 388, 149, 25);
 		panel.add(btnAjouterImplentation);
 
 		JButton btnMenuUtilisateur = new JButton("Menu Utilisateur");
 		btnMenuUtilisateur.setBounds(245, 388, 149, 25);
 		panel.add(btnMenuUtilisateur);
+		
+		
 
 
 
