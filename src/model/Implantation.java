@@ -5,6 +5,7 @@ package model;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 
 /**
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 public class Implantation {
 
 
-///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
 
 	private int id;
 	private String nom;
@@ -23,7 +24,7 @@ public class Implantation {
 	private ArrayList<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
 
 
-///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * @return the utilisateurs
@@ -95,7 +96,7 @@ public class Implantation {
 		this.locaux = locaux;
 	}
 
-///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
 
 	public Implantation(int id, String nom, Adresse adresse) {
 		this.id = id;
@@ -104,7 +105,7 @@ public class Implantation {
 
 	}
 
-///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * Permet de générer un local et son matériel(chaises et tables) associé.
@@ -195,19 +196,28 @@ public class Implantation {
 		Connexion.supprimer(this, this.id);
 	}
 
-	public int nombreLocauxTotal() throws SQLException {
+	/**
+	 * Renvoie le nombre de l'ensemble des locaux d'une implantation
+	 * @return int
+	 */
+	public int nombreLocauxTotal(){
 		return this.getLocaux().size();
 	}
 
-	public int nombreLocauxInformatiques() throws SQLException {
-
-		//compter uniquement le nombre de locaux informatiques
-		Connexion nli = new Connexion("select count(*) from local where localInfomartique = 1");
-		nli.resultat.next();
-
-		return nli.resultat.getInt("1");
+	/**
+	 * Renvoir le nombre de locaux informatiques d'une implantation
+	 * @return int
+	 */
+	public int nombreLocauxInformatiques(){
+		int i = 0;
+		for (Local local : locaux) {
+			if(local.getClass().getSimpleName().equals("LocalInformatique")) {
+				i++;
+			}
+		}
+		return i;
 	}
 
-
-
 }
+
+

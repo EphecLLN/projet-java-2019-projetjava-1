@@ -8,6 +8,7 @@ package controller;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 //import com.sun.org.apache.xalan.internal.xsltc.compiler.Parser;
 
@@ -86,24 +87,14 @@ public class Controller {
 
 		String[] locaux = new String[100];
 		int i = 0;
-		for(Implantation uneImp : model.implantations) {
-			if(uneImp.getNom() == nom) {
-				for(Local loc : uneImp.getLocaux()) {
-					locaux[i] = loc.toString();
-					i++;
-				}
-				break;
-			}
+		Implantation uneImp = model.getImplantation(nom);
+		for(Local loc : uneImp.getLocaux()) {
+			locaux[i] = loc.toString();
+			i++;
 		}
 		return locaux;
 
 	}
-
-	/*
-	public int nbLocal() {
-		//TODO LOUIS
-	}
-	*/
 
 	public void addView(Vue vue) {
 		this.vue = vue;

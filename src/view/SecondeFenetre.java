@@ -88,25 +88,25 @@ public class SecondeFenetre extends Vue{
 
 		// cr�ation du label affichage du nombre de locaux
 		JLabel txtNbLocaux = new JLabel("Nombre de locaux :");
-		txtNbLocaux.setBounds(29, 161, 112, 16);
+		txtNbLocaux.setBounds(29, 161, 129, 16);
 		panel.add(txtNbLocaux);
 		txtNbLocaux.setVisible(false);
 
 		// cr�ation du label affichage du nombre de locaux
-		JLabel nbLocaux = new JLabel("");
+		JLabel nbLocaux = new JLabel();
 		nbLocaux.setBounds(162, 161, 56, 16);
 		panel.add(nbLocaux);
 		nbLocaux.setVisible(false);
 
 		// cr�ation du label affichage du nombre de locaux informatiques
 		JLabel txtNbLocInfo = new JLabel("Nombre de locaux informatiques :");
-		txtNbLocInfo.setBounds(29, 190, 194, 16);
+		txtNbLocInfo.setBounds(29, 190, 220, 16);
 		panel.add(txtNbLocInfo);
 		txtNbLocInfo.setVisible(false);
 
 		// cr�ation du label affichage du nombre de locaux informatiques
 		JLabel nbLocInfo = new JLabel("");
-		nbLocInfo.setBounds(235, 190, 56, 16);
+		nbLocInfo.setBounds(259, 190, 56, 16);
 		panel.add(nbLocInfo);
 		nbLocInfo.setVisible(false);
 
@@ -126,8 +126,10 @@ public class SecondeFenetre extends Vue{
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Choix valid� : " + choix_imp.getSelectedItem());
 					// TODO afficher tous les labels ci dessous
+				nbLocaux.setText(String.valueOf(model.getImplantation(choix_imp.getSelectedItem().toString()).nombreLocauxTotal()));
 				txtNbLocaux.setVisible(true);
 				nbLocaux.setVisible(true);
+				nbLocInfo.setText(String.valueOf(model.getImplantation(choix_imp.getSelectedItem().toString()).nombreLocauxInformatiques()));
 				txtNbLocInfo.setVisible(true);
 				nbLocInfo.setVisible(true);
 				boxListeLocal.setVisible(true);

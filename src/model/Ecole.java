@@ -6,6 +6,7 @@ package model;
 import java.sql.SQLException;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Observable;
 
 /**
@@ -64,6 +65,19 @@ public class Ecole extends Observable {
 		this.implantations.add(imp);
 	}
 
+	public Implantation getImplantation(String nom) {
+		Implantation implantation = null;
+		Iterator<Implantation> iterateur = this.implantations.iterator();
+		boolean trouve = false;
+		while(iterateur.hasNext() && !trouve) {
+			implantation = iterateur.next();
+			if(implantation.getNom().equals(nom)) {
+				trouve = true;
+			}
+		}
+		return implantation;
+	}
+	
 	public static void main(String args[]) throws SQLException {
 		Ecole e1 = new Ecole();
 		System.out.println(e1.implantations.get(0).getLocaux().get(1).getInterventions().get(0).getNom());
