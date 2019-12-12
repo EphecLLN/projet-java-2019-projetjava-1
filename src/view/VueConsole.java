@@ -48,9 +48,12 @@ public class VueConsole extends Vue implements Observer{
 						mdp = scan2.nextLine();
 					}
 					while(!(controller.login(pseudo, mdp)[0] == 1));
-					System.out.println("Connexion rï¿½ussie !");
+					System.out.println("Connexion réussie !");
 
-					System.out.print("Dans quelle implantation ï¿½tes-vous? ");
+					System.out.print("Dans quelle implantation êtes-vous? Veuillez à bien écrire l'ID \n");
+					for(int i=0; i< controller.recupererImpId().length;i++) {
+						System.out.println(controller.recupererImpId()[i] + " " + controller.recupererImpNom()[i]);
+					}
 					Scanner scan3 = new Scanner(System.in);
 					imp = scan3.nextLine();
 
@@ -58,11 +61,9 @@ public class VueConsole extends Vue implements Observer{
 					Scanner scan4 = new Scanner(System.in);
 					var = scan4.nextLine();
 
-
-
 					switch(var) {
 					case "A":
-						//System.out.println("Le nombre total de locaux s'ï¿½lï¿½ve Ã  " + controller.model.locals.size());
+						//System.out.println("Le nombre total de locaux s'ï¿½lï¿½ve Ã  " + controller.model.implantations.locals.size());
 						break;
 					case "B":
 						controller.afficherClasses();
