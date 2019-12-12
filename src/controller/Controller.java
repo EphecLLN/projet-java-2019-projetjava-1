@@ -108,6 +108,10 @@ public class Controller {
 	public void addView(Vue vue) {
 		this.vue = vue;
 	}
+	
+	public Controller(Ecole model) {
+		this.model = model;
+	}
 
 	//M�thode permettant de r�cup�rer le nombre total de locaux
 	public void totalLocaux() {

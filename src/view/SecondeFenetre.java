@@ -82,7 +82,7 @@ public class SecondeFenetre extends Vue{
 
 		// cr�ation de la box qui permet de choisir son implantation
 		@SuppressWarnings("unchecked")
-		JComboBox choix_imp = new JComboBox(controller.recupererImp());
+		JComboBox choix_imp = new JComboBox(controller.recupererImpNom());
 		choix_imp.setBounds(29, 60, 365, 22);
 		panel.add(choix_imp);
 
