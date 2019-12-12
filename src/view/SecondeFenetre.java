@@ -9,7 +9,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-
 import model.*;
 import controller.Controller;
 import model.Ecole;
@@ -65,12 +64,6 @@ public class SecondeFenetre extends Vue{
 		contentPane.add(panel);
 		panel.setLayout(null);
 
-		// r�cup�ration des noms des implantations
-		String[] imp = {null};
-		for(Implantation uneImp : controller.model.implantations)	{
-			imp[0] = uneImp.getNom();
-		}
-
 		// cr�ation du champ texte de demande de choix d'implantation
 		choix_txt = new JLabel();
 		panel.add(choix_txt);
@@ -111,7 +104,7 @@ public class SecondeFenetre extends Vue{
 		nbLocInfo.setVisible(false);
 
 		// cr�ation de la box de la liste des locaux
-		JComboBox boxListeLocal = new JComboBox();
+		JComboBox<String> boxListeLocal = new JComboBox<String>();
 		boxListeLocal.setBounds(29, 255, 365, 22);
 		panel.add(boxListeLocal);
 		boxListeLocal.setVisible(false);
@@ -138,6 +131,9 @@ public class SecondeFenetre extends Vue{
 				nbLocInfo.setText(String.valueOf(model.getImplantation(choix_imp.getSelectedItem().toString()).nombreLocauxInformatiques()));
 				txtNbLocInfo.setVisible(true);
 				nbLocInfo.setVisible(true);
+				for (Local local : model.getImplantation(choix_imp.getSelectedItem().toString()).getLocaux()) {
+					boxListeLocal.addItem(local.getNom());
+				}
 				boxListeLocal.setVisible(true);
 				btnOuvrir.setVisible(true);
 				}

@@ -31,6 +31,12 @@ import java.awt.Font;
 import javax.swing.JList;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import javax.swing.SwingConstants;
+import javax.swing.JToggleButton;
+import javax.swing.JCheckBox;
+import javax.swing.JSeparator;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class TroisiemeFenetre extends Vue {
 	
@@ -40,16 +46,12 @@ public class TroisiemeFenetre extends Vue {
 	public JFrame j3;
 	private JTextField champNom;
 	private JLabel lblNeuf;
-	private JLabel lblNeuf2;
 	private JTextField textField_3;
 	private JTextField aa;
 	private JTextField ee;
 	private JLabel lblBon;
-	private JLabel lblBon2;
 	private JLabel lblUse;
-	private JLabel lblUse2;
 	private JLabel lblCritique;
-	private JLabel lblCritique2;
 	private JTextField textField_4;
 	private JTextField cc;
 	private JTextField bb;
@@ -58,6 +60,7 @@ public class TroisiemeFenetre extends Vue {
 	private JTextField ff;
 	private JTextField dd;
 	private JTextField hh;
+	private JLabel lblNewLabel;
 
 ///////////////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////
 
@@ -70,8 +73,9 @@ public class TroisiemeFenetre extends Vue {
 		j3 = new JFrame();
 		j3.setVisible(true);
 		j3.setTitle("Ajouter Local");
-		j3.setBounds(100, 100, 276, 503);
+		j3.setBounds(100, 100, 330, 306);
 		contentPane = new JPanel();
+		contentPane.setForeground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		j3.setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -83,99 +87,110 @@ public class TroisiemeFenetre extends Vue {
 		
 		JLabel lblNom = new JLabel("Nom :");
 		lblNom.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNom.setBounds(22, 35, 42, 16);
+		lblNom.setBounds(22, 24, 42, 16);
 		contentPane.add(lblNom);
 		
-		JLabel lblNombreDeChaises = new JLabel("Nombre de chaises : ");
+		JLabel lblNombreDeChaises = new JLabel("chaises");
+		lblNombreDeChaises.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNombreDeChaises.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNombreDeChaises.setBounds(22, 78, 145, 16);
+		lblNombreDeChaises.setBounds(115, 86, 64, 16);
 		contentPane.add(lblNombreDeChaises);
 		
-		JLabel lblNombreDeTables = new JLabel("Nombre de tables : ");
+		JLabel lblNombreDeTables = new JLabel("tables");
+		lblNombreDeTables.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNombreDeTables.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNombreDeTables.setBounds(23, 249, 144, 16);
+		lblNombreDeTables.setBounds(220, 86, 58, 16);
 		contentPane.add(lblNombreDeTables);
 		
 		champNom = new JTextField();
-		champNom.setBounds(76, 32, 145, 22);
+		champNom.setHorizontalAlignment(SwingConstants.CENTER);
+		champNom.setBounds(77, 21, 40, 22);
 		contentPane.add(champNom);
 		champNom.setColumns(10);
 		
 		gg = new JTextField();
 		gg.setColumns(10);
-		gg.setBounds(111, 339, 40, 22);
+		gg.setBounds(230, 174, 40, 22);
 		contentPane.add(gg);
 		
 		JButton btnValider = new JButton("Valider");
-		btnValider.setBounds(149, 431, 97, 25);
+		btnValider.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
+		btnValider.setBounds(227, 250, 97, 25);
 		contentPane.add(btnValider);
 		
-		lblNeuf2 = new JLabel("Neuf");
-		lblNeuf2.setBounds(64, 287, 35, 16);
-		contentPane.add(lblNeuf2);
-		
 		ee = new JTextField();
-		ee.setBounds(111, 284, 40, 22);
+		ee.setBounds(230, 114, 40, 22);
 		contentPane.add(ee);
 		ee.setColumns(10);
 		
-		lblBon2 = new JLabel("Bon");
-		lblBon2.setBounds(64, 313, 35, 16);
-		contentPane.add(lblBon2);
-		
-		lblUse2 = new JLabel("Use");
-		lblUse2.setBounds(64, 342, 35, 16);
-		contentPane.add(lblUse2);
-		
-		lblCritique2 = new JLabel("Critique");
-		lblCritique2.setBounds(41, 371, 58, 16);
-		contentPane.add(lblCritique2);
-		
 		cc = new JTextField();
 		cc.setColumns(10);
-		cc.setBounds(111, 174, 40, 22);
+		cc.setBounds(128, 174, 40, 22);
 		contentPane.add(cc);
 		
 		ff = new JTextField();
 		ff.setColumns(10);
-		ff.setBounds(111, 310, 40, 22);
+		ff.setBounds(230, 143, 40, 22);
 		contentPane.add(ff);
 		
 		lblNeuf = new JLabel("Neuf");
-		lblNeuf.setBounds(64, 117, 35, 16);
+		lblNeuf.setBounds(22, 117, 35, 16);
 		contentPane.add(lblNeuf);
 		
 		aa = new JTextField();
-		aa.setBounds(111, 114, 40, 22);
+		aa.setHorizontalAlignment(SwingConstants.CENTER);
+		aa.setToolTipText("");
+		aa.setBounds(128, 114, 40, 22);
 		contentPane.add(aa);
 		aa.setColumns(10);
 		
 		lblBon = new JLabel("Bon");
-		lblBon.setBounds(64, 146, 35, 16);
+		lblBon.setBounds(22, 146, 35, 16);
 		contentPane.add(lblBon);
 		
 		lblUse = new JLabel("Use");
-		lblUse.setBounds(64, 177, 35, 16);
+		lblUse.setBounds(22, 177, 35, 16);
 		contentPane.add(lblUse);
 		
 		lblCritique = new JLabel("Critique");
-		lblCritique.setBounds(41, 206, 58, 16);
+		lblCritique.setBounds(22, 206, 58, 16);
 		contentPane.add(lblCritique);
 		
 		bb = new JTextField();
 		bb.setColumns(10);
-		bb.setBounds(111, 143, 40, 22);
+		bb.setBounds(128, 143, 40, 22);
 		contentPane.add(bb);
 		
 		dd = new JTextField();
 		dd.setColumns(10);
-		dd.setBounds(111, 203, 40, 22);
+		dd.setBounds(128, 203, 40, 22);
 		contentPane.add(dd);
 		
 		hh = new JTextField();
-		hh.setBounds(111, 368, 40, 22);
+		hh.setBounds(230, 203, 40, 22);
 		contentPane.add(hh);
 		hh.setColumns(10);
+		
+		JCheckBox chckbxLocalInformatique = new JCheckBox("");
+		chckbxLocalInformatique.setBounds(283, 20, 28, 23);
+		contentPane.add(chckbxLocalInformatique);
+		
+		JLabel lblLocalInformatique = new JLabel("Local informatique :");
+		lblLocalInformatique.setBounds(149, 24, 129, 16);
+		contentPane.add(lblLocalInformatique);
+		
+		lblNewLabel = new JLabel("Saisie du nom incorrecte !");
+		lblNewLabel.setVisible(false);
+		lblNewLabel.setForeground(Color.RED);
+		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(6, 253, 209, 16);
+		contentPane.add(lblNewLabel);
 		
 		
 	}
@@ -195,5 +210,10 @@ public class TroisiemeFenetre extends Vue {
 	public void affiche(String string) {
 		// TODO Auto-generated method stub
 		
+	}
+	private static class __Tmp {
+		private static void __tmp() {
+			  javax.swing.JPanel __wbp_panel = new javax.swing.JPanel();
+		}
 	}
 }
