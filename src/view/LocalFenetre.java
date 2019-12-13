@@ -15,6 +15,8 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class LocalFenetre extends Vue {
 
@@ -68,8 +70,13 @@ public class LocalFenetre extends Vue {
 		panel.add(lblTables);
 		
 		JButton btnActualiser = new JButton("Actualiser");
+		btnActualiser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ActualiserMaterielFenetre fen = new ActualiserMaterielFenetre(model, controller);
+			}
+		});
 		btnActualiser.setFont(new Font("Dialog", Font.PLAIN, 12));
-		btnActualiser.setBounds(89, 37, 85, 21);
+		btnActualiser.setBounds(89, 37, 96, 21);
 		panel.add(btnActualiser);
 		
 		JLabel lblMaterielSpecial = new JLabel("Materiel special :");
@@ -82,6 +89,11 @@ public class LocalFenetre extends Vue {
 		panel.add(comboBox);
 		
 		JButton btnModifier = new JButton("Modifier");
+		btnModifier.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnModifier.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnModifier.setBounds(127, 140, 101, 21);
 		panel.add(btnModifier);

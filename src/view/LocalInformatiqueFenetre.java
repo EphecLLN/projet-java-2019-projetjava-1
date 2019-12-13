@@ -76,7 +76,7 @@ public class LocalInformatiqueFenetre extends Vue {
 		
 		JButton btnActualiser = new JButton("Actualiser");
 		btnActualiser.setFont(new Font("Dialog", Font.PLAIN, 12));
-		btnActualiser.setBounds(89, 37, 85, 21);
+		btnActualiser.setBounds(89, 37, 112, 21);
 		panel.add(btnActualiser);
 		
 		JLabel lblMaterielSpecial = new JLabel("Materiel special :");
