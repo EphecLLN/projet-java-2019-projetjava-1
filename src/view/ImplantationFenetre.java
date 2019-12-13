@@ -9,7 +9,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-
 import model.*;
 import controller.Controller;
 import model.Ecole;
@@ -45,7 +44,7 @@ public class ImplantationFenetre extends Vue{
 ////////////////////////////////////////*CONSTRUCTEUR*////////////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * Création de la fenêtre
+	 * Crï¿½ation de la fenï¿½tre
 	 */
 	@SuppressWarnings("rawtypes")
 	public ImplantationFenetre(Ecole model, Controller controller) {
@@ -64,12 +63,6 @@ public class ImplantationFenetre extends Vue{
 		Panel panel = new Panel();
 		contentPane.add(panel);
 		panel.setLayout(null);
-
-		// rï¿½cupï¿½ration des noms des implantations
-		String[] imp = {null};
-		for(Implantation uneImp : controller.model.implantations)	{
-			imp[0] = uneImp.getNom();
-		}
 
 		// crï¿½ation du champ texte de demande de choix d'implantation
 		choix_txt = new JLabel();
@@ -114,12 +107,11 @@ public class ImplantationFenetre extends Vue{
 		nbLocInfo.setVisible(false);
 
 		// crï¿½ation de la box de la liste des locaux
-		JComboBox boxListeLocal = new JComboBox();
-		boxListeLocal.setFont(new Font("Dialog", Font.PLAIN, 12));
+		JComboBox<String> boxListeLocal = new JComboBox<String>();
 		boxListeLocal.setBounds(29, 255, 365, 22);
 		panel.add(boxListeLocal);
 		boxListeLocal.setVisible(false);
-		
+
 		// creation du bouton ouvrir
 		JButton btnOuvrir = new JButton("Ouvrir");
 		btnOuvrir.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -137,13 +129,16 @@ public class ImplantationFenetre extends Vue{
 		btnValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Choix validï¿½ : " + choix_imp.getSelectedItem());
-					
+
 				nbLocaux.setText(String.valueOf(model.getImplantation(choix_imp.getSelectedItem().toString()).nombreLocauxTotal()));
 				txtNbLocaux.setVisible(true);
 				nbLocaux.setVisible(true);
 				nbLocInfo.setText(String.valueOf(model.getImplantation(choix_imp.getSelectedItem().toString()).nombreLocauxInformatiques()));
 				txtNbLocInfo.setVisible(true);
 				nbLocInfo.setVisible(true);
+				for (Local local : model.getImplantation(choix_imp.getSelectedItem().toString()).getLocaux()) {
+					boxListeLocal.addItem(local.getNom());
+				}
 				boxListeLocal.setVisible(true);
 				btnOuvrir.setVisible(true);
 				}
@@ -151,7 +146,7 @@ public class ImplantationFenetre extends Vue{
 		});
 
 
-		// création du bouton Ajouter Local
+		// crï¿½ation du bouton Ajouter Local
 		JButton btnAjouterLocal = new JButton("Ajouter Local");
 		btnAjouterLocal.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnAjouterLocal.setBounds(29, 357, 149, 25);
@@ -161,30 +156,30 @@ public class ImplantationFenetre extends Vue{
 				AjouterLocalFenetre ajout = new AjouterLocalFenetre(model, controller);
 			}
 		});
-		
-		// création du bouton Ajouter Implantation
+
+		// crï¿½ation du bouton Ajouter Implantation
 		JButton btnAjouterImplentation = new JButton("Ajouter Implentation");
 		btnAjouterImplentation.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnAjouterImplentation.setBounds(29, 388, 149, 25);
 		panel.add(btnAjouterImplentation);
 		btnAjouterImplentation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AjouterImplantationFenetre ajoutImp = new AjouterImplantationFenetre(model, controller);			
+				AjouterImplantationFenetre ajoutImp = new AjouterImplantationFenetre(model, controller);
 			}
 		});
-		
-		// création du bouton Menu Utilisateur
+
+		// crï¿½ation du bouton Menu Utilisateur
 		JButton btnMenuUtilisateur = new JButton("Menu Utilisateur");
 		btnMenuUtilisateur.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnMenuUtilisateur.setBounds(245, 388, 149, 25);
 		panel.add(btnMenuUtilisateur);
 		btnMenuUtilisateur.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UtilisateurFenetre utilFen = new UtilisateurFenetre(model, controller);			
+				UtilisateurFenetre utilFen = new UtilisateurFenetre(model, controller);
 			}
 		});
-		
-		
+
+
 
 
 
