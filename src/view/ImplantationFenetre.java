@@ -114,6 +114,12 @@ public class ImplantationFenetre extends Vue{
 
 		// creation du bouton ouvrir
 		JButton btnOuvrir = new JButton("Ouvrir");
+		btnOuvrir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Local local = model.getImplantation(choix_imp.getSelectedItem().toString()).getLocal(boxListeLocal.getSelectedItem().toString());
+				LocalFenetre loc = new LocalFenetre(model, controller, local);
+			}
+		});
 		btnOuvrir.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnOuvrir.setBounds(297, 290, 97, 25);
 		panel.add(btnOuvrir);

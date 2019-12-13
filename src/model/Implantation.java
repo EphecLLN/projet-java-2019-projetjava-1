@@ -218,6 +218,18 @@ public class Implantation {
 		return i;
 	}
 
+	public Local getLocal(String nom) {
+		Local local = null;
+		Iterator<Local> iterateur = this.getLocaux().iterator();
+		boolean trouve = false;
+		while(iterateur.hasNext() && !trouve) {
+			local = iterateur.next();
+			if(local.getNom().equals(nom)) {
+				trouve = true;
+			}
+		}
+		return local;
+	}
 }
 
 

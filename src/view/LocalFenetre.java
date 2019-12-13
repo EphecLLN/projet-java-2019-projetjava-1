@@ -10,6 +10,8 @@ import javax.swing.border.EmptyBorder;
 
 import controller.Controller;
 import model.Ecole;
+import model.Local;
+
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JLabel;
@@ -33,11 +35,14 @@ public class LocalFenetre extends Vue {
 	/**
 	 * Creation de la fenetre
 	 */
-	public LocalFenetre(Ecole model, Controller controller) {
+	public LocalFenetre(Ecole model, Controller controller, Local local) {
 		super (model, controller);
+		
+		
 		j6 = new JFrame();
+		j6.setVisible(true);
 		j6.setBounds(100, 100, 333, 326);
-		j6.setTitle("Local");
+		j6.setTitle(local.getNom());
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		j6.setContentPane(contentPane);
@@ -93,7 +98,7 @@ public class LocalFenetre extends Vue {
 		JButton btnModifier = new JButton("Modifier");
 		btnModifier.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				ActualiserMaterielSpecialFenetre modifSpec = new ActualiserMaterielSpecialFenetre(model, controller);
 			}
 		});
 		btnModifier.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -113,6 +118,12 @@ public class LocalFenetre extends Vue {
 		btnModifier_1.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnModifier_1.setBounds(127, 199, 101, 22);
 		panel.add(btnModifier_1);
+		btnModifier_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ModifierInterventionFenetre modif = new ModifierInterventionFenetre(model, controller);
+			}
+		});
+		
 		
 		txtChaise = new JTextField();
 		txtChaise.setBounds(63, 63, 43, 19);
@@ -128,12 +139,24 @@ public class LocalFenetre extends Vue {
 		btnAjouterMateriel.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnAjouterMateriel.setBounds(10, 252, 119, 25);
 		panel.add(btnAjouterMateriel);
+		btnAjouterMateriel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AjouterMaterielFenetre addMat = new AjouterMaterielFenetre(model, controller);
+			}
+		});
+		
 		
 		JButton btnAjouterMaterielSpecial = new JButton("Ajouter Materiel Special");
 		btnAjouterMaterielSpecial.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnAjouterMaterielSpecial.setBounds(143, 252, 160, 24);
 		panel.add(btnAjouterMaterielSpecial);
-		j6.setVisible(true);
+		btnAjouterMaterielSpecial.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AjouterMaterielSpecialFenetre addMatSpec = new AjouterMaterielSpecialFenetre(model, controller);
+			}
+		});
+		
+		
 	}
 
 ///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////

@@ -24,17 +24,16 @@ public class ActualiserMaterielFenetre extends Vue {
 
 	public JPanel contentPane;
 	public JFrame j9;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField txtNeuf;
+	private JTextField txtBon;
+	private JTextField txtUse;
+	private JTextField txtCritique;
 
 
 ///////////////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * Create the frame.
+	 * Création de la fenêtre
 	 */
 	public ActualiserMaterielFenetre(Ecole model, Controller controller) {
 		super(model, controller);
@@ -53,58 +52,59 @@ public class ActualiserMaterielFenetre extends Vue {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblId = new JLabel("ID");
-		lblId.setBounds(58, 31, 56, 16);
-		panel.add(lblId);
-		
+		// creation du label neuf
 		JLabel lblNeuf = new JLabel("Neuf");
 		lblNeuf.setBounds(58, 60, 56, 16);
 		panel.add(lblNeuf);
 		
+		// creation du label bon
 		JLabel lblBon = new JLabel("Bon");
 		lblBon.setBounds(58, 89, 56, 16);
 		panel.add(lblBon);
 		
+		// creation du label usé
 		JLabel lblUs = new JLabel("Us\u00E9");
 		lblUs.setBounds(58, 118, 56, 16);
 		panel.add(lblUs);
 		
+		// creation du label critique
 		JLabel lblCritique = new JLabel("Critique");
 		lblCritique.setBounds(58, 147, 56, 16);
 		panel.add(lblCritique);
 		
+		// creation du bouton de validation
 		JButton btnValider = new JButton("Valider");
-		btnValider.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnValider.setBounds(98, 194, 97, 25);
 		panel.add(btnValider);
+		btnValider.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//txtNeuf.getText() = model.local.getNeuf();
+			}
+		});
 		
-		textField = new JTextField();
-		textField.setBounds(98, 28, 143, 22);
-		panel.add(textField);
-		textField.setColumns(10);
+		// creation du champ texte de recuperation de neuf
+		txtNeuf = new JTextField();
+		txtNeuf.setBounds(113, 57, 128, 22);
+		panel.add(txtNeuf);
+		txtNeuf.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(113, 57, 128, 22);
-		panel.add(textField_1);
-		textField_1.setColumns(10);
+		// creation du champ texte de recuperation de bon
+		txtBon = new JTextField();
+		txtBon.setBounds(113, 86, 128, 22);
+		panel.add(txtBon);
+		txtBon.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(108, 86, 133, 22);
-		panel.add(textField_2);
-		textField_2.setColumns(10);
+		// creation du champ texte de recuperation de usé
+		txtUse = new JTextField();
+		txtUse.setBounds(113, 115, 128, 22);
+		panel.add(txtUse);
+		txtUse.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(113, 115, 128, 22);
-		panel.add(textField_3);
-		textField_3.setColumns(10);
-		
-		textField_4 = new JTextField();
-		textField_4.setBounds(123, 144, 118, 22);
-		panel.add(textField_4);
-		textField_4.setColumns(10);
+		// creation du champ texte de recuperation de critique
+		txtCritique = new JTextField();
+		txtCritique.setBounds(113, 144, 128, 22);
+		panel.add(txtCritique);
+		txtCritique.setColumns(10);
 	}
 
 /////////////////////////////////////////////////*METHODES*////////////////////////////////////////////////////////////////////////////////
