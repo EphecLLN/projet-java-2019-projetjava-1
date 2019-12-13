@@ -21,7 +21,7 @@ public class LocalFenetre extends Vue {
 /////////////////////////////////////////*ATTRIBUTS*//////////////////////////////////////////////////////////////////////////////////////
 	
 	private JPanel contentPane;
-	public JFrame j6;
+	private JFrame j6;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
