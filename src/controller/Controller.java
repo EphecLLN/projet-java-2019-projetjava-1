@@ -85,7 +85,13 @@ public class Controller {
 
 	}
 	
-	public ArrayList<Local> recupererLocNom(String nomImplantation) {
+	public void genererLocal(String txtNom, boolean localInfo, int[] chaises, int[] tables, Implantation implantation) throws SQLException {
+		int estInfo = 0;
+		if(localInfo) {
+			estInfo = 1;
+		}
+		
+		implantation.genererLocalEtMateriels(txtNom, estInfo, chaises, tables);
 		
 	}
 	

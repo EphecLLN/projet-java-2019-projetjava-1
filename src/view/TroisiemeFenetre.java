@@ -46,28 +46,25 @@ public class TroisiemeFenetre extends Vue {
 	public JFrame j3;
 	private JTextField champNom;
 	private JLabel lblNeuf;
-	private JTextField textField_3;
 	private JTextField aa;
 	private JTextField ee;
 	private JLabel lblBon;
 	private JLabel lblUse;
 	private JLabel lblCritique;
-	private JTextField textField_4;
 	private JTextField cc;
 	private JTextField bb;
 	private JTextField gg;
-	private JTextField textField_6;
 	private JTextField ff;
 	private JTextField dd;
 	private JTextField hh;
-	private JLabel lblNewLabel;
+	private JLabel lblErreur;
 
 ///////////////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * Create the frame.
 	 */
-	public TroisiemeFenetre(Ecole model, Controller controller) {
+	public TroisiemeFenetre(Ecole model, Controller controller, Implantation implantation) {
 		super(model, controller);
 		
 		j3 = new JFrame();
@@ -113,15 +110,21 @@ public class TroisiemeFenetre extends Vue {
 		gg.setBounds(230, 174, 40, 22);
 		contentPane.add(gg);
 		
-		JButton btnValider = new JButton("Valider");
-		btnValider.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-			}
-		});
-		btnValider.setBounds(227, 250, 97, 25);
-		contentPane.add(btnValider);
+		JCheckBox chckbxLocalInformatique = new JCheckBox("");
+		chckbxLocalInformatique.setBounds(283, 20, 28, 23);
+		contentPane.add(chckbxLocalInformatique);
+		
+		JLabel lblLocalInformatique = new JLabel("Local informatique :");
+		lblLocalInformatique.setBounds(149, 24, 129, 16);
+		contentPane.add(lblLocalInformatique);
+		
+		lblErreur = new JLabel("Saisie du nom incorrecte !");
+		lblErreur.setVisible(false);
+		lblErreur.setForeground(Color.RED);
+		lblErreur.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		lblErreur.setHorizontalAlignment(SwingConstants.CENTER);
+		lblErreur.setBounds(6, 253, 209, 16);
+		contentPane.add(lblErreur);
 		
 		ee = new JTextField();
 		ee.setBounds(230, 114, 40, 22);
@@ -176,23 +179,34 @@ public class TroisiemeFenetre extends Vue {
 		contentPane.add(hh);
 		hh.setColumns(10);
 		
-		JCheckBox chckbxLocalInformatique = new JCheckBox("");
-		chckbxLocalInformatique.setBounds(283, 20, 28, 23);
-		contentPane.add(chckbxLocalInformatique);
+		JButton btnValider = new JButton("Valider");
+		btnValider.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(champNom.getText().contains("L") && champNom.getText().length() == 3) {
+					try {
+						int[] chaises = {Integer.parseInt(aa.getText()), Integer.parseInt(bb.getText()), Integer.parseInt(cc.getText()), Integer.parseInt(dd.getText())};
+						int[] tables = {Integer.parseInt(ee.getText()), Integer.parseInt(ff.getText()), Integer.parseInt(gg.getText()), Integer.parseInt(hh.getText())};
+
+						controller.genererLocal(champNom.getText(), chckbxLocalInformatique.isSelected(), chaises, tables, implantation);
+						lblErreur.setForeground(Color.GREEN);
+						lblErreur.setText("Local ajouté");
+						lblErreur.setVisible(true);
+						
+					}catch (Exception er) {
+						lblErreur.setText("Les champs tables et chaises doivent être remplis avec des nombres");
+						lblErreur.setVisible(true);
+					}
+				}
+				else {
+					lblErreur.setText("Le numéro du local doit être du type : LXX");
+					lblErreur.setVisible(true);
+				}
+			}
+		});
 		
-		JLabel lblLocalInformatique = new JLabel("Local informatique :");
-		lblLocalInformatique.setBounds(149, 24, 129, 16);
-		contentPane.add(lblLocalInformatique);
-		
-		lblNewLabel = new JLabel("Saisie du nom incorrecte !");
-		lblNewLabel.setVisible(false);
-		lblNewLabel.setForeground(Color.RED);
-		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(6, 253, 209, 16);
-		contentPane.add(lblNewLabel);
-		
-		
+		btnValider.setBounds(227, 250, 97, 25);
+		contentPane.add(btnValider);
 	}
 
 
@@ -204,16 +218,9 @@ public class TroisiemeFenetre extends Vue {
 		
 	}
 
-
-
 	@Override
 	public void affiche(String string) {
 		// TODO Auto-generated method stub
 		
-	}
-	private static class __Tmp {
-		private static void __tmp() {
-			  javax.swing.JPanel __wbp_panel = new javax.swing.JPanel();
-		}
 	}
 }

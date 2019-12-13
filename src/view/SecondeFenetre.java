@@ -145,7 +145,7 @@ public class SecondeFenetre extends Vue{
 		JButton btnAjouterLocal = new JButton("Ajouter Local");
 		btnAjouterLocal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TroisiemeFenetre ajout = new TroisiemeFenetre(model, controller);
+				TroisiemeFenetre ajout = new TroisiemeFenetre(model, controller, model.getImplantation(choix_imp.getSelectedItem().toString()));
 			}
 		});
 		btnAjouterLocal.setBounds(29, 357, 149, 25);
