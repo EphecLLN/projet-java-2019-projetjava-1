@@ -56,7 +56,7 @@ public class Controller {
 		}
 		return tab;
 	}
-	
+
 	/**
 	 * M�thode qui r�cup�re les noms des implantations
 	 *
@@ -85,11 +85,11 @@ public class Controller {
 		return idd;
 
 	}
-	
+
 	//public ArrayList<Local> recupererLocNom(String nomImplantation) {
-		
+
 	//}
-	
+
 
 	public String[] recupLocal(String nom) {
 
@@ -107,7 +107,7 @@ public class Controller {
 	public void addView(Vue vue) {
 		this.vue = vue;
 	}
-	
+
 	public Controller(Ecole model) {
 		this.model = model;
 	}
