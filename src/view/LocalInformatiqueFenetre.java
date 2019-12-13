@@ -173,16 +173,19 @@ public class LocalInformatiqueFenetre extends Vue {
 		panel.add(lblNewLabel_2);
 		
 		textField_4 = new JTextField();
+		textField_4.setFont(new Font("Dialog", Font.PLAIN, 12));
 		textField_4.setBounds(63, 361, 96, 19);
 		panel.add(textField_4);
 		textField_4.setColumns(10);
 		
 		textField_5 = new JTextField();
+		textField_5.setFont(new Font("Dialog", Font.PLAIN, 12));
 		textField_5.setBounds(63, 389, 96, 19);
 		panel.add(textField_5);
 		textField_5.setColumns(10);
 		
 		textField_6 = new JTextField();
+		textField_6.setFont(new Font("Dialog", Font.PLAIN, 12));
 		textField_6.setBounds(63, 414, 96, 19);
 		panel.add(textField_6);
 		textField_6.setColumns(10);
@@ -203,16 +206,19 @@ public class LocalInformatiqueFenetre extends Vue {
 		panel.add(lblNewLabel_5);
 		
 		textField_7 = new JTextField();
+		textField_7.setFont(new Font("Dialog", Font.PLAIN, 12));
 		textField_7.setBounds(284, 412, 191, 19);
 		panel.add(textField_7);
 		textField_7.setColumns(10);
 		
 		textField_8 = new JTextField();
+		textField_8.setFont(new Font("Dialog", Font.PLAIN, 12));
 		textField_8.setBounds(284, 389, 96, 19);
 		panel.add(textField_8);
 		textField_8.setColumns(10);
 		
 		textField_9 = new JTextField();
+		textField_9.setFont(new Font("Dialog", Font.PLAIN, 12));
 		textField_9.setBounds(284, 361, 96, 19);
 		panel.add(textField_9);
 		textField_9.setColumns(10);
@@ -228,6 +234,7 @@ public class LocalInformatiqueFenetre extends Vue {
 		panel.add(btnNewButton_2);
 		
 		JComboBox comboBox_3 = new JComboBox();
+		comboBox_3.setFont(new Font("Dialog", Font.PLAIN, 12));
 		comboBox_3.setBounds(238, 454, 59, 21);
 		panel.add(comboBox_3);
 		
