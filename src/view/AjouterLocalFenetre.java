@@ -32,7 +32,7 @@ import javax.swing.JList;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 
-public class TroisiemeFenetre extends Vue {
+public class AjouterLocalFenetre extends Vue {
 	
 ////////////////////////////////////////////////*ATTRIBUTS*///////////////////////////////////////////////////////////////////////////////
 
@@ -64,7 +64,7 @@ public class TroisiemeFenetre extends Vue {
 	/**
 	 * Create the frame.
 	 */
-	public TroisiemeFenetre(Ecole model, Controller controller) {
+	public AjouterLocalFenetre(Ecole model, Controller controller) {
 		super(model, controller);
 		
 		j3 = new JFrame();

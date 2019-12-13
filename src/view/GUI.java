@@ -132,7 +132,7 @@ public class GUI extends Vue{
 		JButton btnValider = new JButton("Valider");
 		btnValider.setBounds(301, 133, 107, 27);
 		connexion.add(btnValider);
-		btnValider.setFont(new Font("Tahoma", Font.BOLD, 15));
+		btnValider.setFont(new Font("Dialog", Font.BOLD, 15));
 		btnValider.setBackground(new Color(199, 21, 133));
 		btnValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -142,7 +142,7 @@ public class GUI extends Vue{
 					j.setVisible(false);
 
 					// cr�ation et affichage de la 2e fen�tre
-					SecondeFenetre imp_fenetre = new SecondeFenetre(model, controller);
+					ImplantationFenetre imp_fenetre = new ImplantationFenetre(model, controller);
 				}
 				else {
 					System.out.println("Connexion pas r�ussie !");

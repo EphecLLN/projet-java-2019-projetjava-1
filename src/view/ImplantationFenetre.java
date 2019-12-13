@@ -33,22 +33,22 @@ import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 
 
-public class SecondeFenetre extends Vue{
+public class ImplantationFenetre extends Vue{
 
 /////////////////////////////////////////*ATTRIBUTS*//////////////////////////////////////////////////////////////////////////////////////
 
-	public JPanel contentPane;
-	public JFrame j2;
+	private JPanel contentPane;
+	private JFrame j2;
 	private JLabel choix_txt;
 
 
 ////////////////////////////////////////*CONSTRUCTEUR*////////////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * Crï¿½ation de la fenï¿½tre
+	 * Création de la fenêtre
 	 */
 	@SuppressWarnings("rawtypes")
-	public SecondeFenetre(Ecole model, Controller controller) {
+	public ImplantationFenetre(Ecole model, Controller controller) {
 		super(model, controller);
 
 		j2 = new JFrame();
@@ -75,7 +75,7 @@ public class SecondeFenetre extends Vue{
 		choix_txt = new JLabel();
 		panel.add(choix_txt);
 		choix_txt.setBorder(null);
-		choix_txt.setFont(new Font("Dialog", Font.BOLD, 13));
+		choix_txt.setFont(new Font("Dialog", Font.PLAIN, 12));
 		choix_txt.setText("Veuillez choisir une implantation :");
 		choix_txt.setBounds(29, 25, 365, 22);
 		choix_txt.setOpaque(false);
@@ -83,11 +83,13 @@ public class SecondeFenetre extends Vue{
 		// crï¿½ation de la box qui permet de choisir son implantation
 		@SuppressWarnings("unchecked")
 		JComboBox choix_imp = new JComboBox(controller.recupererImpNom());
+		choix_imp.setFont(new Font("Dialog", Font.PLAIN, 12));
 		choix_imp.setBounds(29, 60, 365, 22);
 		panel.add(choix_imp);
 
 		// crï¿½ation du label affichage du nombre de locaux
 		JLabel txtNbLocaux = new JLabel("Nombre de locaux :");
+		txtNbLocaux.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtNbLocaux.setBounds(29, 161, 129, 16);
 		panel.add(txtNbLocaux);
 		txtNbLocaux.setVisible(false);
@@ -100,6 +102,7 @@ public class SecondeFenetre extends Vue{
 
 		// crï¿½ation du label affichage du nombre de locaux informatiques
 		JLabel txtNbLocInfo = new JLabel("Nombre de locaux informatiques :");
+		txtNbLocInfo.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtNbLocInfo.setBounds(29, 190, 220, 16);
 		panel.add(txtNbLocInfo);
 		txtNbLocInfo.setVisible(false);
@@ -112,18 +115,21 @@ public class SecondeFenetre extends Vue{
 
 		// crï¿½ation de la box de la liste des locaux
 		JComboBox boxListeLocal = new JComboBox();
+		boxListeLocal.setFont(new Font("Dialog", Font.PLAIN, 12));
 		boxListeLocal.setBounds(29, 255, 365, 22);
 		panel.add(boxListeLocal);
 		boxListeLocal.setVisible(false);
 		
 		// creation du bouton ouvrir
 		JButton btnOuvrir = new JButton("Ouvrir");
+		btnOuvrir.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnOuvrir.setBounds(297, 290, 97, 25);
 		panel.add(btnOuvrir);
 		btnOuvrir.setVisible(false);
 
 		// crï¿½ation du bouton de validation
 		JButton btnValider = new JButton("Valider");
+		btnValider.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnValider.setBounds(297, 95, 97, 25);
 		panel.add(btnValider);
 		btnValider.setBorder(null);
@@ -131,7 +137,7 @@ public class SecondeFenetre extends Vue{
 		btnValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Choix validï¿½ : " + choix_imp.getSelectedItem());
-					// TODO afficher tous les labels ci dessous
+					
 				nbLocaux.setText(String.valueOf(model.getImplantation(choix_imp.getSelectedItem().toString()).nombreLocauxTotal()));
 				txtNbLocaux.setVisible(true);
 				nbLocaux.setVisible(true);
@@ -145,28 +151,38 @@ public class SecondeFenetre extends Vue{
 		});
 
 
-
+		// création du bouton Ajouter Local
 		JButton btnAjouterLocal = new JButton("Ajouter Local");
-		btnAjouterLocal.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				TroisiemeFenetre ajout = new TroisiemeFenetre(model, controller);
-			}
-		});
+		btnAjouterLocal.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnAjouterLocal.setBounds(29, 357, 149, 25);
 		panel.add(btnAjouterLocal);
-
-		JButton btnAjouterImplentation = new JButton("Ajouter Implentation");
-		btnAjouterImplentation.addActionListener(new ActionListener() {
+		btnAjouterLocal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				QuatriemeFenetre ajoutImp = new QuatriemeFenetre(model, controller);			
+				AjouterLocalFenetre ajout = new AjouterLocalFenetre(model, controller);
 			}
 		});
+		
+		// création du bouton Ajouter Implantation
+		JButton btnAjouterImplentation = new JButton("Ajouter Implentation");
+		btnAjouterImplentation.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnAjouterImplentation.setBounds(29, 388, 149, 25);
 		panel.add(btnAjouterImplentation);
-
+		btnAjouterImplentation.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AjouterImplantationFenetre ajoutImp = new AjouterImplantationFenetre(model, controller);			
+			}
+		});
+		
+		// création du bouton Menu Utilisateur
 		JButton btnMenuUtilisateur = new JButton("Menu Utilisateur");
+		btnMenuUtilisateur.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnMenuUtilisateur.setBounds(245, 388, 149, 25);
 		panel.add(btnMenuUtilisateur);
+		btnMenuUtilisateur.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UtilisateurFenetre utilFen = new UtilisateurFenetre(model, controller);			
+			}
+		});
 		
 		
 
