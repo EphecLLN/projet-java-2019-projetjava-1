@@ -7,13 +7,14 @@ package controller;
 
 
 import java.sql.SQLException;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
 //import com.sun.org.apache.xalan.internal.xsltc.compiler.Parser;
 
 import model.*;
-import view.SecondeFenetre;
+
 import view.Vue;
 
 /**
@@ -55,7 +56,7 @@ public class Controller {
 		}
 		return tab;
 	}
-	
+
 	/**
 	 * M�thode qui r�cup�re les noms des implantations
 	 *
@@ -84,17 +85,17 @@ public class Controller {
 		return idd;
 
 	}
-	
+
 	public void genererLocal(String txtNom, boolean localInfo, int[] chaises, int[] tables, Implantation implantation) throws SQLException {
 		int estInfo = 0;
 		if(localInfo) {
 			estInfo = 1;
 		}
-		
+
 		implantation.genererLocalEtMateriels(txtNom, estInfo, chaises, tables);
-		
+
 	}
-	
+
 
 	public String[] recupLocal(String nom) {
 
@@ -112,7 +113,7 @@ public class Controller {
 	public void addView(Vue vue) {
 		this.vue = vue;
 	}
-	
+
 	public Controller(Ecole model) {
 		this.model = model;
 	}

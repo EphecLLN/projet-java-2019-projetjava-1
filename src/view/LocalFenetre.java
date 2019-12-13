@@ -15,21 +15,23 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class LocalFenetre extends Vue {
 
 /////////////////////////////////////////*ATTRIBUTS*//////////////////////////////////////////////////////////////////////////////////////
 	
 	private JPanel contentPane;
-	public JFrame j6;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JFrame j6;
+	private JTextField txtLocal;
+	private JTextField txtChaise;
+	private JTextField txtTable;
 
 ////////////////////////////////////////*CONSTRUCTEUR*////////////////////////////////////////////////////////////////////////////////////
 	
 	/**
-	 * Create the frame.
+	 * Creation de la fenetre
 	 */
 	public LocalFenetre(Ecole model, Controller controller) {
 		super (model, controller);
@@ -46,75 +48,100 @@ public class LocalFenetre extends Vue {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		textField.setBounds(10, 10, 96, 19);
-		panel.add(textField);
-		textField.setColumns(10);
+		//Creation du champs de texte indiquant le local
+		txtLocal = new JTextField();
+		txtLocal.setFont(new Font("Dialogue", Font.PLAIN, 12));
+		txtLocal.setBounds(10, 10, 96, 19);
+		panel.add(txtLocal);
+		txtLocal.setColumns(10);
 		
+		//Creation du label Materiels
 		JLabel lblNewLabel = new JLabel("Mat\u00E9riels :");
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 12));
 		lblNewLabel.setBounds(10, 39, 96, 16);
 		panel.add(lblNewLabel);
 		
+		//Creation du label chaise
 		JLabel lblChaises = new JLabel("Chaises");
 		lblChaises.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblChaises.setBounds(10, 65, 54, 13);
 		panel.add(lblChaises);
 		
+		//Creation du label Table
 		JLabel lblTables = new JLabel("Tables");
 		lblTables.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblTables.setBounds(10, 82, 48, 19);
 		panel.add(lblTables);
 		
+		//Creation du boutton permettant d'actualiser le nombre de table et chaise
 		JButton btnActualiser = new JButton("Actualiser");
+		btnActualiser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ActualiserMaterielFenetre fen = new ActualiserMaterielFenetre(model, controller);
+			}
+		});
 		btnActualiser.setFont(new Font("Dialog", Font.PLAIN, 12));
-		btnActualiser.setBounds(89, 37, 85, 21);
+		btnActualiser.setBounds(89, 37, 96, 21);
 		panel.add(btnActualiser);
 		
+		//Creation du label Materiel special
 		JLabel lblMaterielSpecial = new JLabel("Materiel special :");
 		lblMaterielSpecial.setFont(new Font("Dialog", Font.BOLD, 12));
 		lblMaterielSpecial.setBounds(10, 111, 96, 19);
 		panel.add(lblMaterielSpecial);
 		
+		//Creation d'une box permettant de selectionner un Materiel special du local
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(10, 140, 96, 21);
 		panel.add(comboBox);
 		
+		//Creation d'un bouton permettant de changer l'etat d'un materiel sppecial
 		JButton btnModifier = new JButton("Modifier");
+		btnModifier.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnModifier.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnModifier.setBounds(127, 140, 101, 21);
 		panel.add(btnModifier);
 		
+		//Creation du label intervention
 		JLabel lblIntervention = new JLabel("Intervention :");
 		lblIntervention.setFont(new Font("Dialog", Font.BOLD, 12));
 		lblIntervention.setBounds(13, 171, 93, 18);
 		panel.add(lblIntervention);
 		
+		//Creation d'une box permettant de selectionner une intervention 
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setBounds(10, 199, 96, 21);
 		panel.add(comboBox_1);
 		
+		//Creation d'un permettant de modifier une intervention 
 		JButton btnModifier_1 = new JButton("Modifier");
 		btnModifier_1.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnModifier_1.setBounds(127, 199, 101, 22);
 		panel.add(btnModifier_1);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(63, 63, 43, 19);
-		panel.add(textField_1);
-		textField_1.setColumns(10);
+		//Creation du champs affichant le nombre de chaise
+		txtChaise = new JTextField();
+		txtChaise.setBounds(63, 63, 43, 19);
+		panel.add(txtChaise);
+		txtChaise.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(63, 83, 43, 19);
-		panel.add(textField_2);
-		textField_2.setColumns(10);
+		//Creation du champs affichant le nombre de table
+		txtTable = new JTextField();
+		txtTable.setBounds(63, 83, 43, 19);
+		panel.add(txtTable);
+		txtTable.setColumns(10);
 		
+		//Creation d'un bouton qui ouvre une fenetre permettant d'ajouter du materiel
 		JButton btnAjouterMateriel = new JButton("Ajouter Materiel");
 		btnAjouterMateriel.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnAjouterMateriel.setBounds(10, 252, 119, 25);
 		panel.add(btnAjouterMateriel);
 		
+		//Creation d'un bouton qui ouvre une fenetre permettant d'ajouter du materiel special
 		JButton btnAjouterMaterielSpecial = new JButton("Ajouter Materiel Special");
 		btnAjouterMaterielSpecial.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnAjouterMaterielSpecial.setBounds(143, 252, 160, 24);

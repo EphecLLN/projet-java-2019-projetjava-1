@@ -2,6 +2,7 @@ package view;
 
 import java.awt.BorderLayout;
 
+
 import java.awt.EventQueue;
 import java.util.Observable;
 
@@ -13,104 +14,102 @@ import controller.Controller;
 import model.*;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import java.awt.Font;
 import javax.swing.JButton;
 
-public class QuatriemeFenetre extends Vue {
+public class UtilisateurFenetre extends Vue {
 	
 ////////////////////////////////////////////////*ATTRIBUTS*///////////////////////////////////////////////////////////////////////////////
 
 
 	public JPanel contentPane;
-	public JFrame j4;
+	public JFrame j5;
+	private JLabel lblNom;
+	private JLabel lblPrenom;
+	private JLabel lblGrade;
+	private JLabel lblPseudo;
+	private JLabel lblMotDePasse;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
+	private JButton btnAjouter;
 
 ///////////////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////
+
 
 
 	/**
 	 * Create the frame.
 	 */
-	public QuatriemeFenetre(Ecole model, Controller controller) {
+	public UtilisateurFenetre(Ecole model, Controller controller) {
 		super(model, controller);
 		
-		j4 = new JFrame();
-		j4.setTitle("Ajouter Implantation");
-		j4.setVisible(true);
-		j4.setBounds(100, 100, 321, 321);
+		j5 = new JFrame();
+		j5.setTitle("Utilisateurs");
+		j5.setVisible(true);
+		j5.setBounds(100, 100, 243, 267);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		j4.setContentPane(contentPane);
+		j5.setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 303, 274);
+		panel.setBounds(5, 5, 422, 248);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNom = new JLabel("Nom ");
-		lblNom.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNom.setBounds(23, 23, 56, 16);
+		lblNom = new JLabel("Nom");
+		lblNom.setBounds(22, 15, 56, 16);
 		panel.add(lblNom);
 		
-		JLabel lblAdresse = new JLabel("Adresse :");
-		lblAdresse.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblAdresse.setBounds(23, 65, 87, 16);
-		panel.add(lblAdresse);
+		lblPrenom = new JLabel("Prenom");
+		lblPrenom.setBounds(22, 44, 56, 16);
+		panel.add(lblPrenom);
 		
-		JLabel lblNumro = new JLabel("Num\u00E9ro ");
-		lblNumro.setBounds(43, 105, 132, 16);
-		panel.add(lblNumro);
+		lblGrade = new JLabel("Grade");
+		lblGrade.setBounds(22, 73, 56, 16);
+		panel.add(lblGrade);
 		
-		JLabel lblRue = new JLabel("Rue ");
-		lblRue.setBounds(43, 134, 56, 16);
-		panel.add(lblRue);
+		lblPseudo = new JLabel("Pseudo");
+		lblPseudo.setBounds(22, 102, 56, 16);
+		panel.add(lblPseudo);
 		
-		JLabel lblVille = new JLabel("Ville");
-		lblVille.setBounds(43, 163, 56, 16);
-		panel.add(lblVille);
-		
-		JLabel lblCodePostal = new JLabel("Code Postal");
-		lblCodePostal.setBounds(42, 192, 97, 16);
-		panel.add(lblCodePostal);
+		lblMotDePasse = new JLabel("Mot de passe");
+		lblMotDePasse.setBounds(22, 131, 85, 16);
+		panel.add(lblMotDePasse);
 		
 		textField = new JTextField();
-		textField.setBounds(59, 20, 198, 22);
+		textField.setBounds(62, 12, 134, 22);
 		panel.add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(109, 102, 148, 22);
+		textField_1.setBounds(72, 44, 124, 22);
 		panel.add(textField_1);
 		textField_1.setColumns(10);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(86, 134, 171, 22);
+		textField_2.setBounds(62, 73, 134, 22);
 		panel.add(textField_2);
 		textField_2.setColumns(10);
 		
 		textField_3 = new JTextField();
-		textField_3.setBounds(86, 160, 171, 22);
+		textField_3.setBounds(80, 102, 116, 22);
 		panel.add(textField_3);
 		textField_3.setColumns(10);
 		
 		textField_4 = new JTextField();
-		textField_4.setBounds(123, 189, 134, 22);
+		textField_4.setBounds(106, 128, 90, 22);
 		panel.add(textField_4);
 		textField_4.setColumns(10);
 		
-		JButton btnValider = new JButton("Valider");
-		btnValider.setBounds(109, 249, 97, 25);
-		panel.add(btnValider);
+		btnAjouter = new JButton("Ajouter");
+		btnAjouter.setBounds(22, 176, 174, 25);
+		panel.add(btnAjouter);
 	}
-
-/////////////////////////////////////////////////*METHODES*////////////////////////////////////////////////////////////////////////////////
-
 	
+/////////////////////////////////////////////////*METHODES*////////////////////////////////////////////////////////////////////////////////
 
 
 	@Override
@@ -118,8 +117,6 @@ public class QuatriemeFenetre extends Vue {
 		// TODO Auto-generated method stub
 		
 	}
-
-
 
 	@Override
 	public void affiche(String string) {
