@@ -13,7 +13,6 @@ import java.util.Iterator;
 //import com.sun.org.apache.xalan.internal.xsltc.compiler.Parser;
 
 import model.*;
-import view.SecondeFenetre;
 import view.Vue;
 
 /**
@@ -85,9 +84,9 @@ public class Controller {
 
 	}
 	
-	public ArrayList<Local> recupererLocNom(String nomImplantation) {
+	//public ArrayList<Local> recupererLocNom(String nomImplantation) {
 		
-	}
+	//}
 	
 
 	public String[] recupLocal(String nom) {

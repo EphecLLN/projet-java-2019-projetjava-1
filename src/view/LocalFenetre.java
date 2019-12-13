@@ -22,14 +22,14 @@ public class LocalFenetre extends Vue {
 	
 	private JPanel contentPane;
 	private JFrame j6;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField txtLocal;
+	private JTextField txtChaise;
+	private JTextField txtTable;
 
 ////////////////////////////////////////*CONSTRUCTEUR*////////////////////////////////////////////////////////////////////////////////////
 	
 	/**
-	 * Create the frame.
+	 * Creation de la fenetre
 	 */
 	public LocalFenetre(Ecole model, Controller controller) {
 		super (model, controller);
@@ -46,12 +46,14 @@ public class LocalFenetre extends Vue {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		textField.setBounds(10, 10, 96, 19);
-		panel.add(textField);
-		textField.setColumns(10);
+		//Creation du champs de texte indiquant le local
+		txtLocal = new JTextField();
+		txtLocal.setFont(new Font("Dialogue", Font.PLAIN, 12));
+		txtLocal.setBounds(10, 10, 96, 19);
+		panel.add(txtLocal);
+		txtLocal.setColumns(10);
 		
+		//Creation du label
 		JLabel lblNewLabel = new JLabel("Mat\u00E9riels :");
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 12));
 		lblNewLabel.setBounds(10, 39, 96, 16);
@@ -100,15 +102,15 @@ public class LocalFenetre extends Vue {
 		btnModifier_1.setBounds(127, 199, 101, 22);
 		panel.add(btnModifier_1);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(63, 63, 43, 19);
-		panel.add(textField_1);
-		textField_1.setColumns(10);
+		txtChaise = new JTextField();
+		txtChaise.setBounds(63, 63, 43, 19);
+		panel.add(txtChaise);
+		txtChaise.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(63, 83, 43, 19);
-		panel.add(textField_2);
-		textField_2.setColumns(10);
+		txtTable = new JTextField();
+		txtTable.setBounds(63, 83, 43, 19);
+		panel.add(txtTable);
+		txtTable.setColumns(10);
 		
 		JButton btnAjouterMateriel = new JButton("Ajouter Materiel");
 		btnAjouterMateriel.setFont(new Font("Dialog", Font.PLAIN, 12));
