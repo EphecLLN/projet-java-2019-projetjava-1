@@ -36,13 +36,14 @@ public class LocalInformatiqueFenetre extends Vue {
 ////////////////////////////////////////*CONSTRUCTEUR*////////////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * Create the frame.
+	 * Creation de la fenetre
 	 */
 	public LocalInformatiqueFenetre(Ecole model, Controller controller) {
 		super(model, controller);
 		j7.setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		j7 = new JFrame();
+		j7.setVisible(true);
 		j7.setTitle("Local Informatique");
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		j7.setContentPane(contentPane);
@@ -272,8 +273,6 @@ public class LocalInformatiqueFenetre extends Vue {
 		comboBox_3.setFont(new Font("Dialog", Font.PLAIN, 12));
 		comboBox_3.setBounds(238, 454, 59, 21);
 		panel.add(comboBox_3);
-		
-		j7.setVisible(true);
 	}
 	
 ///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
