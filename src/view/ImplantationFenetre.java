@@ -159,7 +159,7 @@ public class ImplantationFenetre extends Vue{
 		panel.add(btnAjouterLocal);
 		btnAjouterLocal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AjouterLocalFenetre ajout = new AjouterLocalFenetre(model, controller);
+				AjouterLocalFenetre ajout = new AjouterLocalFenetre(model, controller, model.getImplantation(choix_imp.getSelectedItem().toString()));
 			}
 		});
 
