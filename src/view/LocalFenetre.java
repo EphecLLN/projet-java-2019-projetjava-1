@@ -15,6 +15,8 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class LocalFenetre extends Vue {
 
@@ -73,8 +75,13 @@ public class LocalFenetre extends Vue {
 		
 		//Creation du boutton permettant d'actualiser le nombre de table et chaise
 		JButton btnActualiser = new JButton("Actualiser");
+		btnActualiser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ActualiserMaterielFenetre fen = new ActualiserMaterielFenetre(model, controller);
+			}
+		});
 		btnActualiser.setFont(new Font("Dialog", Font.PLAIN, 12));
-		btnActualiser.setBounds(89, 37, 85, 21);
+		btnActualiser.setBounds(89, 37, 96, 21);
 		panel.add(btnActualiser);
 		
 		//Creation du label Materiel special
@@ -90,6 +97,11 @@ public class LocalFenetre extends Vue {
 		
 		//Creation d'un bouton permettant de changer l'etat d'un materiel sppecial
 		JButton btnModifier = new JButton("Modifier");
+		btnModifier.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnModifier.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnModifier.setBounds(127, 140, 101, 21);
 		panel.add(btnModifier);

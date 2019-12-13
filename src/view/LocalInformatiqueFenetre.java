@@ -81,7 +81,7 @@ public class LocalInformatiqueFenetre extends Vue {
 		//Creation du boutton permettant d'actualiser le nombre de table et chaise
 		JButton btnActualiser = new JButton("Actualiser");
 		btnActualiser.setFont(new Font("Dialog", Font.PLAIN, 12));
-		btnActualiser.setBounds(89, 37, 85, 21);
+		btnActualiser.setBounds(89, 37, 112, 21);
 		panel.add(btnActualiser);
 		
 		//Creation du label Materiel special
