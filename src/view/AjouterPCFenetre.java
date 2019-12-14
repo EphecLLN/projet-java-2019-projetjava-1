@@ -62,8 +62,8 @@ public class AjouterPCFenetre extends Vue {
 		lblType.setBounds(10, 10, 45, 13);
 		panel.add(lblType);
 		
-		//Creation du label Toure
-		lblToure = new JLabel("Toure");
+		//Creation du label Tour
+		lblToure = new JLabel("Tour");
 		lblToure.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblToure.setBounds(10, 44, 45, 13);
 		panel.add(lblToure);
@@ -99,7 +99,7 @@ public class AjouterPCFenetre extends Vue {
 		panel.add(txtType);
 		txtType.setColumns(10);
 		
-		//Creation du champs permettant de renseigner la toure
+		//Creation du champs permettant de renseigner la tour
 		txtToure = new JTextField();
 		txtToure.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtToure.setBounds(65, 42, 96, 19);

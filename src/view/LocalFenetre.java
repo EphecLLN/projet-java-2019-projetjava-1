@@ -80,14 +80,15 @@ public class LocalFenetre extends Vue {
 		
 		//Creation du boutton permettant d'actualiser le nombre de table et chaise
 		JButton btnActualiser = new JButton("Actualiser");
+		btnActualiser.setFont(new Font("Dialog", Font.PLAIN, 12));
+		btnActualiser.setBounds(89, 37, 96, 21);
+		panel.add(btnActualiser);
 		btnActualiser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ActualiserMaterielFenetre fen = new ActualiserMaterielFenetre(model, controller);
 			}
 		});
-		btnActualiser.setFont(new Font("Dialog", Font.PLAIN, 12));
-		btnActualiser.setBounds(89, 37, 96, 21);
-		panel.add(btnActualiser);
+		
 		
 		//Creation du label Materiel special
 		JLabel lblMaterielSpecial = new JLabel("Materiel special :");
@@ -102,14 +103,15 @@ public class LocalFenetre extends Vue {
 		
 		//Creation d'un bouton permettant de changer l'etat d'un materiel sppecial
 		JButton btnModifier = new JButton("Modifier");
+		btnModifier.setFont(new Font("Dialog", Font.PLAIN, 12));
+		btnModifier.setBounds(127, 140, 101, 21);
+		panel.add(btnModifier);
 		btnModifier.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ActualiserMaterielSpecialFenetre modifSpec = new ActualiserMaterielSpecialFenetre(model, controller);
 			}
 		});
-		btnModifier.setFont(new Font("Dialog", Font.PLAIN, 12));
-		btnModifier.setBounds(127, 140, 101, 21);
-		panel.add(btnModifier);
+	
 		
 		//Creation du label intervention
 		JLabel lblIntervention = new JLabel("Intervention :");
