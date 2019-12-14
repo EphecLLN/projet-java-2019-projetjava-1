@@ -169,6 +169,12 @@ public class Local{
 		}
 	}
 
+	public void genererMateriels(int[] chaises, int[] tables) throws SQLException {
+		Connexion.generer("insert into materiels values ('', 'chaises', " + chaises[0] + ", " + chaises[1] + ", " + chaises[2] + ", " + chaises[3] + ", " + this.id + ")", "materiels");
+		Connexion.generer("insert into materiels values ('', 'tables', " + tables[0] + ", " + tables[1] + ", " + tables[2] + ", " + tables[3] + ", " + this.id + ")", "materiels");
+		
+	}
+	
 	/**
 	 * Change la valeur des attributs de type Materiels du local avec la valeur adhoc
 	 * @throws SQLException
