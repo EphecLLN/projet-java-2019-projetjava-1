@@ -34,7 +34,7 @@ public class Controller {
 /////////////////////////////////*METHODES*//////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * m�thode qui permet de se logger et de r�cuperer les donn�es en les testant en bdd
+	 * méthode qui permet de se logger et de récuperer les données en les testant en bdd
 	 * @param user
 	 * @param mdp
 	 *
@@ -58,12 +58,12 @@ public class Controller {
 	}
 
 	/**
-	 * M�thode qui r�cup�re les noms des implantations
+	 * Méthode qui récupère les noms des implantations
 	 *
 	 *
 	 */
 	public String[] recupererImpNom() {
-		// r�cup�ration des noms des implantations
+		// récupération des noms des implantations
 		String[] imps = new String[20];
 		int i = 0;
 		for(Implantation uneImp : model.implantations)	{
@@ -75,7 +75,7 @@ public class Controller {
 	}
 
 	public int[] recupererImpId() {
-		// r�cup�ration des noms des implantations
+		// récupération des noms des implantations
 		int [] idd = new int[2];
 		int i = 0;
 		for(Implantation uneImp : model.implantations)	{
@@ -118,19 +118,4 @@ public class Controller {
 		this.model = model;
 	}
 
-	//M�thode permettant de r�cup�rer le nombre total de locaux
-	public void totalLocaux() {
-		//return model.Implantation.nombreLocauxTotal();
-	}
-
-	public ArrayList<Local> afficherImplantation(String nomImplantation) {
-		Implantation limplantation = null;
-		for(Implantation imp : model.implantations) {
-			if (imp.getNom().equals(nomImplantation)) {
-				limplantation = imp;
-				break;
-			}
-		}
-		return limplantation.getLocaux();
-	}
 }
