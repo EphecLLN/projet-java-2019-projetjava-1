@@ -28,7 +28,6 @@ public class LocalFenetre extends Vue {
 	
 	private JPanel contentPane;
 	private JFrame j6;
-
 ////////////////////////////////////////*CONSTRUCTEUR*////////////////////////////////////////////////////////////////////////////////////
 	
 	/**
@@ -78,7 +77,7 @@ public class LocalFenetre extends Vue {
 		panel.add(btnActualiserMateriels);
 		btnActualiserMateriels.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ActualiserMaterielFenetre fen = new ActualiserMaterielFenetre(model, controller);
+				ActualiserMaterielFenetre fen = new ActualiserMaterielFenetre(model, controller, local);
 			}
 		});
 		
