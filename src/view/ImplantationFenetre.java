@@ -134,7 +134,7 @@ public class ImplantationFenetre extends Vue{
 		btnValider.setBackground(new Color(199, 21, 133));
 		btnValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Choix valid� : " + choix_imp.getSelectedItem());
+				System.out.println("Choix validé : " + choix_imp.getSelectedItem());
 
 				nbLocaux.setText(String.valueOf(model.getImplantation(choix_imp.getSelectedItem().toString()).nombreLocauxTotal()));
 				txtNbLocaux.setVisible(true);

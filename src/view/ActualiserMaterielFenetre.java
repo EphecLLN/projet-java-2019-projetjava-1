@@ -16,6 +16,8 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class ActualiserMaterielFenetre extends Vue {
 	
@@ -24,87 +26,148 @@ public class ActualiserMaterielFenetre extends Vue {
 
 	public JPanel contentPane;
 	public JFrame j9;
-	private JTextField txtNeuf;
-	private JTextField txtBon;
-	private JTextField txtUse;
-	private JTextField txtCritique;
+	private JTextField txtChaiseNeuf;
+	private JTextField txtTableNeuf;
+	private JTextField txtChaiseBon;
+	private JTextField txtChaiseUse;
+	private JTextField txtChaiseCritique;
+	private JTextField txtTableBon;
+	private JTextField txtTableUse;
+	private JTextField txtTablecritique;
 
 
 ///////////////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * CrÈation de la fenÍtre
+	 * Creation de la fenetre
 	 */
 	public ActualiserMaterielFenetre(Ecole model, Controller controller) {
 		super(model, controller);
 		j9 = new JFrame();
-		j9.setTitle("Actualiser Mat\u00E9riel");
+		j9.setTitle("Actualiser Mat√©riel");
 		j9.setVisible(true);
 		j9.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		j9.setBounds(100, 100, 318, 279);
+		j9.setBounds(100, 100, 308, 279);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		j9.setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 300, 232);
+		panel.setBounds(0, 0, 308, 232);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		// creation du label neuf
 		JLabel lblNeuf = new JLabel("Neuf");
-		lblNeuf.setBounds(58, 60, 56, 16);
+		lblNeuf.setFont(new Font("Dialog", Font.PLAIN, 12));
+		lblNeuf.setBounds(44, 53, 56, 16);
 		panel.add(lblNeuf);
 		
 		// creation du label bon
 		JLabel lblBon = new JLabel("Bon");
-		lblBon.setBounds(58, 89, 56, 16);
+		lblBon.setFont(new Font("Dialog", Font.PLAIN, 12));
+		lblBon.setBounds(44, 82, 56, 16);
 		panel.add(lblBon);
 		
-		// creation du label usÈ
-		JLabel lblUs = new JLabel("Us\u00E9");
-		lblUs.setBounds(58, 118, 56, 16);
+		// creation du label us√©
+		JLabel lblUs = new JLabel("Us√©");
+		lblUs.setFont(new Font("Dialog", Font.PLAIN, 12));
+		lblUs.setBounds(44, 118, 56, 16);
 		panel.add(lblUs);
 		
 		// creation du label critique
 		JLabel lblCritique = new JLabel("Critique");
-		lblCritique.setBounds(58, 147, 56, 16);
+		lblCritique.setFont(new Font("Dialog", Font.PLAIN, 12));
+		lblCritique.setBounds(31, 150, 56, 16);
 		panel.add(lblCritique);
 		
+		
+		// creation du label Chaises
+		JLabel lblChaises = new JLabel("Chaises");
+		lblChaises.setFont(new Font("Dialog", Font.BOLD, 12));
+		lblChaises.setBounds(98, 24, 56, 16);
+		panel.add(lblChaises);
+		
+		// creation du label Tables
+		JLabel lblTables = new JLabel("Tables");
+		lblTables.setFont(new Font("Dialog", Font.BOLD, 12));
+		lblTables.setBounds(186, 24, 56, 16);
+		panel.add(lblTables);
+		
+		// creation du champ de recuperation du nombre de chaises neuves
+		txtChaiseNeuf = new JTextField();
+		txtChaiseNeuf.setFont(new Font("Dialog", Font.PLAIN, 12));
+		txtChaiseNeuf.setHorizontalAlignment(SwingConstants.CENTER);
+		txtChaiseNeuf.setBounds(98, 53, 47, 22);
+		panel.add(txtChaiseNeuf);
+		txtChaiseNeuf.setColumns(10);
+		
+		// creation du champ de recuperation du nombre de tables neuves
+		txtTableNeuf = new JTextField();
+		txtTableNeuf.setFont(new Font("Dialog", Font.PLAIN, 12));
+		txtTableNeuf.setBounds(185, 53, 47, 22);
+		panel.add(txtTableNeuf);
+		txtTableNeuf.setColumns(10);
+		
+		// creation du champ de recuperation du nombre de chaise en bon √©tat
+		txtChaiseBon = new JTextField();
+		txtChaiseBon.setFont(new Font("Dialog", Font.PLAIN, 12));
+		txtChaiseBon.setHorizontalAlignment(SwingConstants.CENTER);
+		txtChaiseBon.setColumns(10);
+		txtChaiseBon.setBounds(98, 86, 47, 22);
+		panel.add(txtChaiseBon);
+		
+		// creation du champ de recuperation du nombre de chaises us√©es
+		txtChaiseUse = new JTextField();
+		txtChaiseUse.setFont(new Font("Dialog", Font.PLAIN, 12));
+		txtChaiseUse.setHorizontalAlignment(SwingConstants.CENTER);
+		txtChaiseUse.setColumns(10);
+		txtChaiseUse.setBounds(98, 118, 47, 22);
+		panel.add(txtChaiseUse);
+		
+		// creation du champ de recuperation du nombre de chaises critiques
+		txtChaiseCritique = new JTextField();
+		txtChaiseCritique.setFont(new Font("Dialog", Font.PLAIN, 12));
+		txtChaiseCritique.setHorizontalAlignment(SwingConstants.CENTER);
+		txtChaiseCritique.setColumns(10);
+		txtChaiseCritique.setBounds(98, 147, 47, 22);
+		panel.add(txtChaiseCritique);
+		
+		// creation du champ de recuperation du nombre de tables en bon √©tat
+		txtTableBon = new JTextField();
+		txtTableBon.setFont(new Font("Dialog", Font.PLAIN, 12));
+		txtTableBon.setHorizontalAlignment(SwingConstants.CENTER);
+		txtTableBon.setColumns(10);
+		txtTableBon.setBounds(186, 86, 47, 22);
+		panel.add(txtTableBon);
+		
+		// creation du champ de recuperation du nombre de tables us√©es
+		txtTableUse = new JTextField();
+		txtTableUse.setFont(new Font("Dialog", Font.PLAIN, 12));
+		txtTableUse.setHorizontalAlignment(SwingConstants.CENTER);
+		txtTableUse.setColumns(10);
+		txtTableUse.setBounds(186, 118, 47, 22);
+		panel.add(txtTableUse);
+		
+		// creation du champ de recuperation du nombre de tables critiques
+		txtTablecritique = new JTextField();
+		txtTablecritique.setFont(new Font("Dialog", Font.PLAIN, 12));
+		txtTablecritique.setHorizontalAlignment(SwingConstants.CENTER);
+		txtTablecritique.setColumns(10);
+		txtTablecritique.setBounds(186, 147, 47, 22);
+		panel.add(txtTablecritique);
+
 		// creation du bouton de validation
 		JButton btnValider = new JButton("Valider");
-		btnValider.setBounds(98, 194, 97, 25);
+		btnValider.setBounds(31, 194, 226, 25);
 		panel.add(btnValider);
 		btnValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//txtNeuf.getText() = model.local.getNeuf();
+				
 			}
 		});
 		
-		// creation du champ texte de recuperation de neuf
-		txtNeuf = new JTextField();
-		txtNeuf.setBounds(113, 57, 128, 22);
-		panel.add(txtNeuf);
-		txtNeuf.setColumns(10);
-		
-		// creation du champ texte de recuperation de bon
-		txtBon = new JTextField();
-		txtBon.setBounds(113, 86, 128, 22);
-		panel.add(txtBon);
-		txtBon.setColumns(10);
-		
-		// creation du champ texte de recuperation de usÈ
-		txtUse = new JTextField();
-		txtUse.setBounds(113, 115, 128, 22);
-		panel.add(txtUse);
-		txtUse.setColumns(10);
-		
-		// creation du champ texte de recuperation de critique
-		txtCritique = new JTextField();
-		txtCritique.setBounds(113, 144, 128, 22);
-		panel.add(txtCritique);
-		txtCritique.setColumns(10);
 	}
 
 /////////////////////////////////////////////////*METHODES*////////////////////////////////////////////////////////////////////////////////
