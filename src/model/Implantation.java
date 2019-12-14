@@ -118,8 +118,7 @@ public class Implantation {
 	 */
 	public void genererLocalEtMateriels(String nom, int localInformatique, int[] chaises, int[] tables) throws SQLException {
 		int localId = Connexion.generer("insert into local values ('', '"+ nom +"','"+ this.id +"','"+ localInformatique +"')", "local");
-		Connexion.generer("insert into materiels values ('', 'chaises', " + chaises[0] + ", " + chaises[1] + ", " + chaises[2] + ", " + chaises[3] + ", " + localId + ")", "materiels");
-		Connexion.generer("insert into materiels values ('', 'tables', " + tables[0] + ", " + tables[1] + ", " + tables[2] + ", " + tables[3] + ", " + localId + ")", "materiels");
+		genererMateriels(chaises, tables, localId);
 		Local loc;
 		if(localInformatique == 0) {
 			loc = (Local) Connexion.requete("select * from local where id = " + localId, "Local").get(0);
@@ -130,6 +129,12 @@ public class Implantation {
 		loc.setMateriels();
 		this.getLocaux().add(loc);
 
+	}
+	
+	public void genererMateriels(int[] chaises, int[] tables, int localId) throws SQLException {
+		Connexion.generer("insert into materiels values ('', 'chaises', " + chaises[0] + ", " + chaises[1] + ", " + chaises[2] + ", " + chaises[3] + ", " + localId + ")", "materiels");
+		Connexion.generer("insert into materiels values ('', 'tables', " + tables[0] + ", " + tables[1] + ", " + tables[2] + ", " + tables[3] + ", " + localId + ")", "materiels");
+		
 	}
 
 	/**
