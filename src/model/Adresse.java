@@ -131,7 +131,7 @@ public class Adresse {
 ////////////////////////////////////////////////*METHODE TOSTRING*/////////////////////////////////////////////////////////////////////////////////////
 
 	public String toString() {
-		 return this.numero + " " + this.ville + " " + this.codePostal + " " + this.ville;
+		 return this.numero + " " + this.rue + " " + this.codePostal + " " + this.ville;
 	}
 
 

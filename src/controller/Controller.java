@@ -11,8 +11,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.Parser;
-
 import model.*;
 
 import view.Vue;
@@ -40,9 +38,7 @@ public class Controller {
 	 *
 	 */
 	public int[] login(String user, String mdp) {
-
 		int[] tab = {0, 0, 0};
-
 		for(Implantation uneImp : model.implantations) {
 			for(Utilisateur unUti : uneImp.getUtilisateurs()) {
 				if(unUti.getPseudo().equals(user)) {

@@ -72,7 +72,7 @@ public class AjouterLocalFenetre extends Vue {
 		j3 = new JFrame();
 		j3.setVisible(true);
 		j3.setTitle("Ajouter Local");
-		j3.setBounds(100, 100, 353, 335);
+		j3.setBounds(100, 100, 341, 334);
 		contentPane = new JPanel();
 		contentPane.setForeground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -131,11 +131,12 @@ public class AjouterLocalFenetre extends Vue {
 
 		// creation du label saisir du nom incorrecte
 		lblErreur = new JLabel("Saisie du nom incorrecte !");
+		lblErreur.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblErreur.setVisible(false);
 		lblErreur.setForeground(Color.RED);
 		lblErreur.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 		lblErreur.setHorizontalAlignment(SwingConstants.CENTER);
-		lblErreur.setBounds(6, 253, 209, 16);
+		lblErreur.setBounds(32, 241, 279, 30);
 		contentPane.add(lblErreur);
 
 		// creation du champ de recuperation d'une table neuve
@@ -215,7 +216,7 @@ public class AjouterLocalFenetre extends Vue {
 
 		// creation du bouton de validation
 		JButton btnValider = new JButton("Valider");
-		btnValider.setBounds(227, 250, 97, 25);
+		btnValider.setBounds(230, 273, 97, 25);
 		contentPane.add(btnValider);
 		btnValider.addMouseListener(new MouseAdapter() {
 			@Override
@@ -231,7 +232,7 @@ public class AjouterLocalFenetre extends Vue {
 						lblErreur.setVisible(true);
 
 					}catch (Exception er) {
-						lblErreur.setText("Les champs tables et chaises doivent être remplis avec des nombres");
+						lblErreur.setText("<HTML>Les champs chaises et tables n'acceptent que des nombres entiers</html>");
 						lblErreur.setVisible(true);
 					}
 				}
