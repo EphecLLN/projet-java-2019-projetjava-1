@@ -66,7 +66,7 @@ public class GUI extends Vue{
 	public GUI(Ecole model, Controller controller) {
 	super(model, controller);
 
-	//cr�ation de la fen�tre principale et du contentPane
+	//création de la fenétre principale et du contentPane
 
 		j = new JFrame();
 		j.setTitle("1formatik");
@@ -80,14 +80,14 @@ public class GUI extends Vue{
 		contentPane.setLayout(null);
 
 
-		// cr�ation du pannel de connexion
+		// création du pannel de connexion
 		connexion = new JPanel();
 		connexion.setBounds(0, 0, 432, 160);
 		contentPane.add(connexion);
 		connexion.setVisible(true);
 		connexion.setLayout(null);
 
-		//cr�ation du champ texte de demande d'identifiants
+		//création du champ texte de demande d'identifiants
 		identTxt = new JLabel();
 		connexion.add(identTxt);
 		identTxt.setBorder(null);
@@ -96,7 +96,7 @@ public class GUI extends Vue{
 		identTxt.setBounds(59, 13, 333, 27);
 		identTxt.setOpaque(false);
 
-		// cr�ation du champ texte du mot de passe
+		// création du champ texte du mot de passe
 		JLabel mdp = new JLabel();
 		mdp.setBounds(41, 92, 118, 39);
 		connexion.add(mdp);
@@ -105,7 +105,7 @@ public class GUI extends Vue{
 		mdp.setForeground(new Color(0, 128, 128));
 		mdp.setOpaque(false);
 
-		// cr�ation du champ texte du nom d'utilisateur
+		// création du champ texte du nom d'utilisateur
 		JLabel nomUti = new JLabel();
 		nomUti.setBounds(12, 61, 156, 39);
 		connexion.add(nomUti);
@@ -114,21 +114,21 @@ public class GUI extends Vue{
 		nomUti.setText("Nom d'utilisateur :");
 		nomUti.setOpaque(false);
 
-		// cr�ation du champ d'insertion du nom d'utilisateur
+		// création du champ d'insertion du nom d'utilisateur
 		utiTxt = new JTextField();
 		utiTxt.setBounds(178, 66, 150, 22);
 		connexion.add(utiTxt);
 		utiTxt.setHorizontalAlignment(SwingConstants.CENTER);
 		utiTxt.setColumns(10);
 
-		// cr�ation du champ d'insertion du mot de passe
+		// création du champ d'insertion du mot de passe
 		mdpTxt = new JTextField();
 		mdpTxt.setBounds(178, 102, 150, 22);
 		connexion.add(mdpTxt);
 		mdpTxt.setHorizontalAlignment(SwingConstants.CENTER);
 		mdpTxt.setColumns(10);
 
-		// cr�ation du bouton valider
+		// création du bouton valider
 		JButton btnValider = new JButton("Valider");
 		btnValider.setBounds(301, 133, 107, 27);
 		connexion.add(btnValider);
@@ -138,14 +138,14 @@ public class GUI extends Vue{
 			public void actionPerformed(ActionEvent e) {
 
 				if(controller.login(utiTxt.getText(), mdpTxt.getText())[0] == 1) {
-					System.out.println("\n" + "Connexion r�ussie !");
+					System.out.println("\n" + "Connexion réussie !");
 					j.setVisible(false);
 
-					// cr�ation et affichage de la 2e fen�tre
+					// création et affichage de la 2e fenêtre
 					ImplantationFenetre imp_fenetre = new ImplantationFenetre(model, controller);
 				}
 				else {
-					System.out.println("Connexion pas r�ussie !");
+					System.out.println("Connexion pas réussie !");
 					coEchouee.setVisible(true);
 				}
 
@@ -153,7 +153,7 @@ public class GUI extends Vue{
 		});
 
 
-		//cr�ation du champ de texte de mauvais identifiant au cas o� la connexion aurait �chou�e
+		//création du champ de texte de mauvais identifiant au cas où la connexion aurait échouée
 		coEchouee = new JLabel();
 		connexion.add(coEchouee);
 		coEchouee.setVisible(false);
