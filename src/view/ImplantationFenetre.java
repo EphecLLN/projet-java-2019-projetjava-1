@@ -93,6 +93,8 @@ public class ImplantationFenetre extends Vue{
 
 		// cr�ation du label affichage du nombre de locaux
 		JLabel nbLocaux = new JLabel();
+		nbLocaux.setHorizontalTextPosition(SwingConstants.CENTER);
+		nbLocaux.setHorizontalAlignment(SwingConstants.CENTER);
 		nbLocaux.setBounds(352, 156, 56, 16);
 		panel.add(nbLocaux);
 		nbLocaux.setVisible(false);
@@ -106,6 +108,8 @@ public class ImplantationFenetre extends Vue{
 
 		// cr�ation du label affichage du nombre de locaux informatiques
 		JLabel nbLocInfo = new JLabel("");
+		nbLocInfo.setHorizontalTextPosition(SwingConstants.CENTER);
+		nbLocInfo.setHorizontalAlignment(SwingConstants.CENTER);
 		nbLocInfo.setBounds(352, 184, 56, 16);
 		panel.add(nbLocInfo);
 		nbLocInfo.setVisible(false);
@@ -175,7 +179,7 @@ public class ImplantationFenetre extends Vue{
 		JButton btnAjouterUtilisateur = new JButton("Ajouter un utilisateur");
 		btnAjouterUtilisateur.setVisible(false);
 		btnAjouterUtilisateur.setFont(new Font("Dialog", Font.PLAIN, 12));
-		btnAjouterUtilisateur.setBounds(16, 431, 163, 29);
+		btnAjouterUtilisateur.setBounds(16, 423, 163, 29);
 		panel.add(btnAjouterUtilisateur);
 		btnAjouterUtilisateur.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -204,9 +208,11 @@ public class ImplantationFenetre extends Vue{
 		panel.add(lblNbUtilisateurs);
 
 		JLabel lblNbUti = new JLabel("");
+		lblNbUti.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblNbUti.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNbUti.setVisible(false);
 		lblNbUti.setFont(UIManager.getFont("ColorChooser.font"));
-		lblNbUti.setBounds(330, 367, 61, 16);
+		lblNbUti.setBounds(352, 367, 56, 16);
 		panel.add(lblNbUti);
 
 		JComboBox<String> boxListeUtilisateurs = new JComboBox<String>();
@@ -233,8 +239,9 @@ public class ImplantationFenetre extends Vue{
 				lblChoisissezLeLocal.setVisible(true);
 				lblMenuUtilisateurs.setVisible(true);
 				lblNbUtilisateurs.setVisible(true);
-
+				lblNbUti.setText(String.valueOf(impChoisie.getUtilisateurs().size()));
 				lblNbUti.setVisible(true);
+				boxListeUtilisateurs.removeAllItems();
 				for(Utilisateur utilisateur : impChoisie.getUtilisateurs()) {
 					boxListeUtilisateurs.addItem(utilisateur.getNom() + " " + utilisateur.getPrenom());
 				}
@@ -243,12 +250,13 @@ public class ImplantationFenetre extends Vue{
 				lblImplantation.setVisible(true);
 				nbLocaux.setText(String.valueOf(impChoisie.nombreLocauxTotal()));
 				txtNbLocaux.setVisible(true);
-				nbLocaux.setVisible(true);
+				nbLocaux.setVisible(true);  
 				nbLocInfo.setText(String.valueOf(model.getImplantation(choix_imp.getSelectedItem().toString()).nombreLocauxInformatiques()));
 				txtNbLocInfo.setVisible(true);
 				nbLocInfo.setVisible(true);
+				boxListeLocal.removeAll();
 				for (Local local : impChoisie.getLocaux()) {
-					boxListeLocal.addItem(local.getNom());
+					boxListeLocal.addItem(local.getNom() + "                                                   interventions : " + local.getInterventions().size());
 				}
 				boxListeLocal.setVisible(true);
 				btnOuvrir.setVisible(true);
