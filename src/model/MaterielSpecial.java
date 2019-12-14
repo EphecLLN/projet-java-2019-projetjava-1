@@ -23,28 +23,28 @@ public class MaterielSpecial {
 		/**
 		 * @return the id
 		 */
-		private int getId() {
+		public int getId() {
 			return id;
 		}
 
 		/**
 		 * @param id the id to set
 		 */
-		private void setId(int id) {
+		public void setId(int id) {
 			this.id = id;
 		}
 
 		/**
 		 * @return the nom
 		 */
-		private String getNom() {
+		public String getNom() {
 			return nom;
 		}
 
 		/**
 		 * @param nom the nom to set
 		 */
-		private void setNom(String nom) {
+		public void setNom(String nom) {
 			this.nom = nom;
 		}
 
@@ -58,7 +58,7 @@ public class MaterielSpecial {
 		/**
 		 * @param etat the etat to set
 		 */
-		private void setEtat(String etat) {
+		public void setEtat(String etat) {
 			this.etat = etat;
 		}
 

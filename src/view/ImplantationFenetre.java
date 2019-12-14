@@ -129,7 +129,7 @@ public class ImplantationFenetre extends Vue{
 		btnOuvrir.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnOuvrir.setBounds(342, 289, 79, 29);
 		panel.add(btnOuvrir);
-		
+
 		JLabel lblImplantation = new JLabel("Implantation");
 		lblImplantation.setVisible(false);
 		lblImplantation.setFont(new Font("Dialog", Font.BOLD, 13));
@@ -137,17 +137,17 @@ public class ImplantationFenetre extends Vue{
 		lblImplantation.setHorizontalAlignment(SwingConstants.CENTER);
 		lblImplantation.setBounds(6, 128, 428, 16);
 		panel.add(lblImplantation);
-		
+
 		JSeparator separator = new JSeparator();
 		separator.setVisible(false);
 		separator.setBounds(6, 110, 428, 12);
 		panel.add(separator);
-		
+
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setVisible(false);
 		separator_1.setBounds(6, 318, 428, 12);
 		panel.add(separator_1);
-		
+
 		// cr�ation du bouton Ajouter Local
 		JButton btnAjouterLocal = new JButton("Ajouter un local");
 		btnAjouterLocal.setVisible(false);
@@ -169,8 +169,8 @@ public class ImplantationFenetre extends Vue{
 			public void actionPerformed(ActionEvent e) {
 				AjouterImplantationFenetre ajoutImp = new AjouterImplantationFenetre(model, controller);
 			}
-		});		
-		
+		});
+
 		// cr�ation du bouton Menu Utilisateur
 		JButton btnAjouterUtilisateur = new JButton("Ajouter un utilisateur");
 		btnAjouterUtilisateur.setVisible(false);
@@ -182,13 +182,13 @@ public class ImplantationFenetre extends Vue{
 				UtilisateurFenetre utilFen = new UtilisateurFenetre(model, controller);
 			}
 		});
-		
+
 		JLabel lblChoisissezLeLocal = new JLabel("Choisissez le local que vous souhaitez afficher :");
 		lblChoisissezLeLocal.setVisible(false);
 		lblChoisissezLeLocal.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblChoisissezLeLocal.setBounds(16, 227, 316, 16);
 		panel.add(lblChoisissezLeLocal);
-		
+
 		JLabel lblMenuUtilisateurs = new JLabel("Menu utilisateurs");
 		lblMenuUtilisateurs.setVisible(false);
 		lblMenuUtilisateurs.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -196,26 +196,26 @@ public class ImplantationFenetre extends Vue{
 		lblMenuUtilisateurs.setFont(new Font("Dialog", Font.BOLD, 13));
 		lblMenuUtilisateurs.setBounds(6, 339, 428, 16);
 		panel.add(lblMenuUtilisateurs);
-		
+
 		JLabel lblNbUtilisateurs = new JLabel("Nombre d'utilisateurs :");
 		lblNbUtilisateurs.setVisible(false);
 		lblNbUtilisateurs.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblNbUtilisateurs.setBounds(29, 367, 149, 16);
 		panel.add(lblNbUtilisateurs);
-		
+
 		JLabel lblNbUti = new JLabel("");
 		lblNbUti.setVisible(false);
 		lblNbUti.setFont(UIManager.getFont("ColorChooser.font"));
 		lblNbUti.setBounds(330, 367, 61, 16);
 		panel.add(lblNbUti);
-		
+
 		JComboBox<String> boxListeUtilisateurs = new JComboBox<String>();
 		boxListeUtilisateurs.setFont(UIManager.getFont("ColorChooser.font"));
 		boxListeUtilisateurs.setVisible(false);
 		boxListeUtilisateurs.setBounds(26, 392, 365, 27);
 		panel.add(boxListeUtilisateurs);
-		
-		
+
+
 		// cr�ation du bouton de validation
 		JButton btnValider = new JButton("Valider");
 		btnValider.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -233,7 +233,7 @@ public class ImplantationFenetre extends Vue{
 				lblChoisissezLeLocal.setVisible(true);
 				lblMenuUtilisateurs.setVisible(true);
 				lblNbUtilisateurs.setVisible(true);
-				
+
 				lblNbUti.setVisible(true);
 				for(Utilisateur utilisateur : impChoisie.getUtilisateurs()) {
 					boxListeUtilisateurs.addItem(utilisateur.getNom() + " " + utilisateur.getPrenom());
@@ -252,7 +252,7 @@ public class ImplantationFenetre extends Vue{
 				}
 				boxListeLocal.setVisible(true);
 				btnOuvrir.setVisible(true);
-				
+
 				}
 
 		});

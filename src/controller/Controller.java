@@ -69,6 +69,8 @@ public class Controller {
 		return imps;
 
 	}
+	
+
 
 	public int[] recupererImpId() {
 		// récupération des noms des implantations
@@ -104,6 +106,25 @@ public class Controller {
 		}
 		return locaux;
 
+	}
+	
+	public String[] recupMatSpecNom(ArrayList<MaterielSpecial> matSpes) {
+		String[] mats = new String[20];
+		int i = 0;
+		for(MaterielSpecial unMatSpe : matSpes) {
+			mats[i] = unMatSpe.getNom() + "   -   " + unMatSpe.getEtat();
+			i++;
+		}
+		return mats;
+	}
+	
+	public String[] recupInterventionNom(ArrayList<Intervention> inter) {
+		String[] interventions = new String[100];
+		int i = 0;
+		for(Intervention uneInt : inter) {
+			interventions[i] = uneInt.getNom();		
+		}
+		return interventions;
 	}
 
 	public void addView(Vue vue) {
