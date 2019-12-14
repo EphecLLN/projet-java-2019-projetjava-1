@@ -53,9 +53,6 @@ public class GUI extends Vue{
 	private JPanel contentPane;
 	private JTextField utiTxt;
 	private JTextField mdpTxt;
-
-
-	private JPanel connexion;
 	private JLabel identTxt;
 	private JLabel coEchouee;
 
@@ -72,97 +69,92 @@ public class GUI extends Vue{
 		j.setTitle("1formatik");
 		j.setVisible(true);
 		j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		j.setBounds(100, 100, 450, 207);
+		j.setBounds(100, 100, 450, 184);
 		contentPane = new JPanel();
 		contentPane.setBounds(new Rectangle(8, 7, 3, 2));
-		contentPane.setBorder(null);
 		j.setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+				//création du champ texte de demande d'identifiants
+				identTxt = new JLabel();
+				identTxt.setBounds(6, 17, 438, 17);
+				contentPane.add(identTxt);
+				identTxt.setHorizontalAlignment(SwingConstants.CENTER);
+				identTxt.setBorder(null);
+				identTxt.setFont(new Font("Dialog", Font.PLAIN, 14));
+				identTxt.setText("Veuillez entrer vos identifiants : ");
+				identTxt.setOpaque(false);
+				
+						// création du champ texte du mot de passe
+						JLabel mdp = new JLabel();
+						mdp.setBounds(43, 87, 96, 16);
+						contentPane.add(mdp);
+						mdp.setFont(new Font("Dialog", Font.BOLD, 13));
+						mdp.setText("Mot de passe :");
+						mdp.setForeground(Color.BLACK);
+						mdp.setOpaque(false);
+						
+								// création du champ texte du nom d'utilisateur
+								JLabel nomUti = new JLabel();
+								nomUti.setBounds(43, 59, 123, 16);
+								contentPane.add(nomUti);
+								nomUti.setFont(new Font("Dialog", Font.BOLD, 13));
+								nomUti.setForeground(Color.BLACK);
+								nomUti.setText("Nom d'utilisateur :");
+								nomUti.setOpaque(false);
+								
+										// création du champ d'insertion du nom d'utilisateur
+										utiTxt = new JTextField();
+										utiTxt.setFont(new Font("Dialog", Font.PLAIN, 13));
+										utiTxt.setBounds(275, 48, 130, 26);
+										contentPane.add(utiTxt);
+										utiTxt.setHorizontalAlignment(SwingConstants.CENTER);
+										utiTxt.setColumns(10);
+										
+												// création du champ d'insertion du mot de passe
+												mdpTxt = new JTextField();
+												mdpTxt.setFont(new Font("Dialog", Font.PLAIN, 13));
+												mdpTxt.setBounds(275, 82, 130, 26);
+												contentPane.add(mdpTxt);
+												mdpTxt.setHorizontalAlignment(SwingConstants.CENTER);
+												mdpTxt.setColumns(10);
+												
+														// création du bouton valider
+														JButton btnValider = new JButton("Valider");
+														btnValider.setBounds(344, 120, 87, 29);
+														contentPane.add(btnValider);
+														btnValider.setFont(new Font("Dialog", Font.PLAIN, 13));
+														btnValider.setBackground(new Color(199, 21, 133));
+														
+														
+																//création du champ de texte de mauvais identifiant au cas où la connexion aurait échouée
+																coEchouee = new JLabel();
+																coEchouee.setHorizontalAlignment(SwingConstants.CENTER);
+																coEchouee.setBounds(83, 125, 157, 16);
+																contentPane.add(coEchouee);
+																coEchouee.setVisible(false);
+																coEchouee.setForeground(new Color(220, 20, 60));
+																coEchouee.setText("Identifiants incorrects...");
+																coEchouee.setFont(new Font("Dialog", Font.BOLD, 13));
+																coEchouee.setBorder(null);
+																coEchouee.setOpaque(false);
+														btnValider.addActionListener(new ActionListener() {
+															public void actionPerformed(ActionEvent e) {
 
+																if(controller.login(utiTxt.getText(), mdpTxt.getText())[0] == 1) {
+																	System.out.println("\n" + "Connexion réussie !");
+																	j.setVisible(false);
 
-		// création du pannel de connexion
-		connexion = new JPanel();
-		connexion.setBounds(0, 0, 432, 160);
-		contentPane.add(connexion);
-		connexion.setVisible(true);
-		connexion.setLayout(null);
+																	// création et affichage de la 2e fenêtre
+																	ImplantationFenetre imp_fenetre = new ImplantationFenetre(model, controller);
+																}
+																else {
+																	System.out.println("Connexion pas réussie !");
+																	coEchouee.setVisible(true);
+																}
 
-		//création du champ texte de demande d'identifiants
-		identTxt = new JLabel();
-		connexion.add(identTxt);
-		identTxt.setBorder(null);
-		identTxt.setFont(new Font("Dialog", Font.BOLD, 20));
-		identTxt.setText("Veuillez entrer vos identifiants : ");
-		identTxt.setBounds(59, 13, 333, 27);
-		identTxt.setOpaque(false);
-
-		// création du champ texte du mot de passe
-		JLabel mdp = new JLabel();
-		mdp.setBounds(41, 92, 118, 39);
-		connexion.add(mdp);
-		mdp.setFont(new Font("Dialog", Font.BOLD, 17));
-		mdp.setText("Mot de passe :");
-		mdp.setForeground(new Color(0, 128, 128));
-		mdp.setOpaque(false);
-
-		// création du champ texte du nom d'utilisateur
-		JLabel nomUti = new JLabel();
-		nomUti.setBounds(12, 61, 156, 39);
-		connexion.add(nomUti);
-		nomUti.setFont(new Font("Dialog", Font.BOLD, 17));
-		nomUti.setForeground(new Color(0, 128, 128));
-		nomUti.setText("Nom d'utilisateur :");
-		nomUti.setOpaque(false);
-
-		// création du champ d'insertion du nom d'utilisateur
-		utiTxt = new JTextField();
-		utiTxt.setBounds(178, 66, 150, 22);
-		connexion.add(utiTxt);
-		utiTxt.setHorizontalAlignment(SwingConstants.CENTER);
-		utiTxt.setColumns(10);
-
-		// création du champ d'insertion du mot de passe
-		mdpTxt = new JTextField();
-		mdpTxt.setBounds(178, 102, 150, 22);
-		connexion.add(mdpTxt);
-		mdpTxt.setHorizontalAlignment(SwingConstants.CENTER);
-		mdpTxt.setColumns(10);
-
-		// création du bouton valider
-		JButton btnValider = new JButton("Valider");
-		btnValider.setBounds(301, 133, 107, 27);
-		connexion.add(btnValider);
-		btnValider.setFont(new Font("Dialog", Font.BOLD, 15));
-		btnValider.setBackground(new Color(199, 21, 133));
-		btnValider.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				if(controller.login(utiTxt.getText(), mdpTxt.getText())[0] == 1) {
-					System.out.println("\n" + "Connexion réussie !");
-					j.setVisible(false);
-
-					// création et affichage de la 2e fenêtre
-					ImplantationFenetre imp_fenetre = new ImplantationFenetre(model, controller);
-				}
-				else {
-					System.out.println("Connexion pas réussie !");
-					coEchouee.setVisible(true);
-				}
-
-			}
-		});
-
-
-		//création du champ de texte de mauvais identifiant au cas où la connexion aurait échouée
-		coEchouee = new JLabel();
-		connexion.add(coEchouee);
-		coEchouee.setVisible(false);
-		coEchouee.setForeground(new Color(220, 20, 60));
-		coEchouee.setText("Identifiants incorrects...");
-		coEchouee.setFont(new Font("Dialog", Font.BOLD, 18));
-		coEchouee.setBorder(null);
-		coEchouee.setBounds(12, 136, 213, 22);
-		coEchouee.setOpaque(false);
+															}
+														});
 
 
 

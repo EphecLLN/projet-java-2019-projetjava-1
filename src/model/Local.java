@@ -6,6 +6,9 @@ package model;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  * @author lb
  *
@@ -170,9 +173,14 @@ public class Local{
 	}
 
 	public void genererMateriels(int[] chaises, int[] tables) throws SQLException {
-		Connexion.generer("insert into materiels values ('', 'chaises', " + chaises[0] + ", " + chaises[1] + ", " + chaises[2] + ", " + chaises[3] + ", " + this.id + ")", "materiels");
-		Connexion.generer("insert into materiels values ('', 'tables', " + tables[0] + ", " + tables[1] + ", " + tables[2] + ", " + tables[3] + ", " + this.id + ")", "materiels");
-		
+			Connexion.generer("insert into materiels values ('', 'chaises', " + chaises[0] + ", " + chaises[1] + ", " + chaises[2] + ", " + chaises[3] + ", " + this.id + ")", "materiels");
+			Connexion.generer("insert into materiels values ('', 'tables', " + tables[0] + ", " + tables[1] + ", " + tables[2] + ", " + tables[3] + ", " + this.id + ")", "materiels");
+	}
+	
+	public void majMateriels(int[] chaises, int[] tables) throws SQLException {
+		Connexion.requete("update Materiel set neuf = " + chaises[0] + ", bon = " +  chaises[1] + ", use = " + chaises[2] + ", critique = " + chaises[3] + "where localid = " + this.id + " and nom = 'chaises'");
+		Connexion.requete("update Materiel set neuf = " + tables[0] + ", bon = " +  tables[1] + ", use = " + tables[2] + ", critique = " + tables[3] + "where localid = " + this.id + " and nom = 'tables'");
+
 	}
 	
 	/**
@@ -180,10 +188,17 @@ public class Local{
 	 * @throws SQLException
 	 */
 	public void setMateriels() throws SQLException {
+		try {
 		Materiels chaises = (Materiels) Connexion.requete("select * from materiels where nom = 'chaises' and localid = " + this.getId(), "Materiels").get(0);
 		Materiels tables = (Materiels) Connexion.requete("select * from materiels where nom = 'tables' and localid = " + this.getId(), "Materiels").get(0);
 		this.setNbChaises(chaises);
 		this.setNbTables(tables);
+		}catch (Exception e) {
+			JFrame frame = new JFrame("Erreur");
+		    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		    JOptionPane.showMessageDialog(frame, "Inconsistence en base de données : Des entrées de matériels sont manquantes.", "Erreur", JOptionPane.INFORMATION_MESSAGE);
+		    System.exit(0);
+		}
 	}
 
 	/**
