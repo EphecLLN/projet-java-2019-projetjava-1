@@ -80,6 +80,13 @@ public class VueConsole extends Vue implements Observer{
 						controller.afficherTab(controller.recupMatSpecNom(local.getMaterielsSpeciaux()));
 						System.out.println("Intervention :");
 						controller.afficherTab(controller.recupInterventionNom(local.getInterventions()));
+						if(local.getClass().getSimpleName().equals("LocalInformatique")) {
+							LocalInformatique localinfo = (LocalInformatique) local;
+							System.out.println("Liste des PC :");
+							/*for(String nomPc : controller.recupPC(localinfo.getPcs())) {
+								System.out.println(controller.recupPC(localinfo.getPcs()));
+							}*/
+						}
 						System.out.println("\n A : Actualiser le materiel \n B : Modifier un materiel special \n C : Modifier une intervention \n D : Ajouter une intervention \n E : Ajouter un Materiel special");
 						Scanner scan6 = new Scanner(System.in);
 						var2 = scan6.nextLine();
