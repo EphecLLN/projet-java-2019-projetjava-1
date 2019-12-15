@@ -24,6 +24,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JSeparator;
 import java.awt.Button;
+import java.awt.Color;
 
 public class LocalFenetre extends Vue {
 
@@ -42,7 +43,7 @@ public class LocalFenetre extends Vue {
 		
 		j6 = new JFrame();
 		j6.setVisible(true);
-		j6.setBounds(100, 100, 307, 440);
+		j6.setBounds(100, 100, 582, 440);
 		j6.setTitle(local.getNom());
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -55,7 +56,7 @@ public class LocalFenetre extends Vue {
 		panel.setLayout(null);
 		
 		//Creation du label Materiels
-		JLabel lblNewLabel = new JLabel("Mat\u00E9riels :");
+		JLabel lblNewLabel = new JLabel("Materiels :");
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 12));
 		lblNewLabel.setBounds(10, 13, 96, 16);
 		panel.add(lblNewLabel);
@@ -245,10 +246,143 @@ public class LocalFenetre extends Vue {
 		separator_1.setBounds(0, 309, 300, 2);
 		panel.add(separator_1);
 		
+		// creation du bouton Ajouter Intervention
 		JButton btnAjouterIntervention = new JButton("Ajouter Intervention");
 		btnAjouterIntervention.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnAjouterIntervention.setBounds(63, 324, 161, 25);
 		panel.add(btnAjouterIntervention);
+		
+		// creation du panel des informations du Local Informatique
+		JPanel panelLocalInfo = new JPanel();
+		panelLocalInfo.setBounds(289, 0, 281, 393);
+		contentPane.add(panelLocalInfo);
+		panelLocalInfo.setLayout(null);
+		panelLocalInfo.setVisible(false); // ne doit etre true que si le local est un local informatique
+		if(local.getClass().getSimpleName().equals("LocalInformatique")) {
+			panelLocalInfo.setVisible(true);
+		}
+		
+		// creation du label Nombre de PC
+		JLabel lblNombresDePc = new JLabel("Nombre de PC :");
+		lblNombresDePc.setFont(new Font("Dialog", Font.PLAIN, 12));
+		lblNombresDePc.setBounds(12, 13, 97, 16);
+		panelLocalInfo.add(lblNombresDePc);
+		
+		// creation du label d'affichage du nombre de pc
+		JLabel txtNbPC = new JLabel("");
+		txtNbPC.setBounds(117, 13, 56, 16);
+		panelLocalInfo.add(txtNbPC);
+		
+		// creation du label Etat PC
+		JLabel lblEtatPc = new JLabel("Etat PC :");
+		lblEtatPc.setFont(new Font("Dialog", Font.PLAIN, 12));
+		lblEtatPc.setBounds(12, 56, 56, 16);
+		panelLocalInfo.add(lblEtatPc);
+		
+		JComboBox<String> boxListePc = new JComboBox<String>();
+		if(local.getClass().getSimpleName().equals("LocalInformatique")) {
+			LocalInformatique unLocInfo = (LocalInformatique) local;
+			// creation de la box de choix du PC
+			for(String nomPc : controller.recupPC(unLocInfo.getPcs())) {
+				boxListePc.addItem(nomPc);
+			}
+		}
+		boxListePc.setFont(new Font("Dialog", Font.PLAIN, 12));
+		boxListePc.setBounds(68, 53, 80, 22);
+		panelLocalInfo.add(boxListePc);
+		
+		// creation du bouton de validation du choix du pc
+		JButton btnValider = new JButton("Valider");
+		btnValider.setFont(new Font("Dialog", Font.PLAIN, 12));
+		btnValider.setBounds(160, 52, 97, 25);
+		panelLocalInfo.add(btnValider);
+		
+		// creation du label Type
+		JLabel lblType = new JLabel("Type");
+		lblType.setFont(new Font("Dialog", Font.PLAIN, 12));
+		lblType.setBounds(12, 107, 56, 16);
+		panelLocalInfo.add(lblType);
+		
+		// creation du label Tour
+		JLabel lblTour = new JLabel("Tour");
+		lblTour.setFont(new Font("Dialog", Font.PLAIN, 12));
+		lblTour.setBounds(12, 136, 56, 16);
+		panelLocalInfo.add(lblTour);
+		
+		// creation du label Ecran
+		JLabel lblEcran = new JLabel("Ecran");
+		lblEcran.setFont(new Font("Dialog", Font.PLAIN, 12));
+		lblEcran.setBounds(12, 165, 56, 16);
+		panelLocalInfo.add(lblEcran);
+		
+		// creation du label Clavier
+		JLabel lblClavier = new JLabel("Clavier");
+		lblClavier.setFont(new Font("Dialog", Font.PLAIN, 12));
+		lblClavier.setBounds(117, 136, 56, 16);
+		panelLocalInfo.add(lblClavier);
+		
+		// creation du label Souris
+		JLabel lblSouris = new JLabel("Souris");
+		lblSouris.setFont(new Font("Dialog", Font.PLAIN, 12));
+		lblSouris.setBounds(117, 165, 56, 16);
+		panelLocalInfo.add(lblSouris);
+		
+		// creation du label Commentaire
+		JLabel lblCommentaire = new JLabel("Commentaire");
+		lblCommentaire.setFont(new Font("Dialog", Font.PLAIN, 12));
+		lblCommentaire.setBounds(12, 209, 103, 16);
+		panelLocalInfo.add(lblCommentaire);
+		
+		// creation du label d'affichage du type
+		JLabel txtType = new JLabel("");
+		txtType.setHorizontalAlignment(SwingConstants.CENTER);
+		txtType.setFont(new Font("Dialog", Font.PLAIN, 12));
+		txtType.setBounds(53, 107, 56, 16);
+		panelLocalInfo.add(txtType);
+		
+		// creation du label d'affichage de l'etat de la tour
+		JLabel txtTour = new JLabel("");
+		txtTour.setHorizontalAlignment(SwingConstants.CENTER);
+		txtTour.setFont(new Font("Dialog", Font.PLAIN, 12));
+		txtTour.setBounds(53, 136, 56, 16);
+		panelLocalInfo.add(txtTour);
+		
+		// creation du label d'affichage de l'etat de l'ecran
+		JLabel txtEcran = new JLabel("");
+		txtEcran.setHorizontalAlignment(SwingConstants.CENTER);
+		txtEcran.setFont(new Font("Dialog", Font.PLAIN, 12));
+		txtEcran.setBounds(53, 165, 56, 16);
+		panelLocalInfo.add(txtEcran);
+		
+		// creation du label d'affichage de l'etat du clavier
+		JLabel txtClavier = new JLabel("");
+		txtClavier.setHorizontalAlignment(SwingConstants.CENTER);
+		txtClavier.setFont(new Font("Dialog", Font.PLAIN, 12));
+		txtClavier.setBounds(169, 136, 56, 16);
+		panelLocalInfo.add(txtClavier);
+		
+		// creation du label d'affichage de l'etat de la souris
+		JLabel txtSouris = new JLabel("");
+		txtSouris.setHorizontalAlignment(SwingConstants.CENTER);
+		txtSouris.setBounds(169, 165, 56, 16);
+		panelLocalInfo.add(txtSouris);
+		
+		// creation du label d'affichage du commentaire
+		JLabel txtCom = new JLabel("");
+		txtCom.setHorizontalAlignment(SwingConstants.CENTER);
+		txtCom.setFont(new Font("Dialog", Font.PLAIN, 12));
+		txtCom.setBounds(12, 247, 245, 53);
+		panelLocalInfo.add(txtCom);
+		
+		// creation du bouton Ajouter PC
+		JButton btnAjouterPc = new JButton("Ajouter PC");
+		btnAjouterPc.setBounds(12, 355, 97, 25);
+		panelLocalInfo.add(btnAjouterPc);
+		
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setBounds(0, -2, 2, 395);
+		panelLocalInfo.add(separator_2);
+		separator_2.setOrientation(SwingConstants.VERTICAL);
 		btnAjouterIntervention.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AjouterInterventionFenetre ajoutIntFen = new AjouterInterventionFenetre(model, controller, local);

@@ -5,6 +5,7 @@ package model;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * @author lb
@@ -68,5 +69,21 @@ public class LocalInformatique extends Local{
 		}
 		super.supprimer();
 	}
+	
+	public Pc getPc(String nom) {
+		Pc pc = null;
+		Iterator<Pc> iterateur = this.getPcs().iterator();
+		boolean trouve = false;
+		while(iterateur.hasNext() && !trouve) {
+			pc = iterateur.next();
+			System.out.println(pc.getNom() + " " + nom);
+			if(pc.getNom().equals(nom)) {
+				System.out.println("oui");
+				trouve = true;
+			}
+		}
+		return pc;
+	}
+	
 	
 }

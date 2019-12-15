@@ -40,6 +40,7 @@ public class LocalInformatiqueFenetre extends Vue {
 	 */
 	public LocalInformatiqueFenetre(Ecole model, Controller controller) {
 		super(model, controller);
+		
 		j7.setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		j7 = new JFrame();
@@ -62,7 +63,7 @@ public class LocalInformatiqueFenetre extends Vue {
 		txtLocal.setColumns(10);
 		
 		//Creation du label Materiels
-		JLabel lblNewLabel = new JLabel("Mat\u00E9riels :");
+		JLabel lblNewLabel = new JLabel("Materiels :");
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 12));
 		lblNewLabel.setBounds(10, 39, 96, 16);
 		panel.add(lblNewLabel);
@@ -172,7 +173,7 @@ public class LocalInformatiqueFenetre extends Vue {
 		comboBox_2.setBounds(61, 322, 68, 21);
 		panel.add(comboBox_2);
 		
-		//Creation d'un bouton permettant de valider le choix d'un pc et d'afficher ses caractéristiques
+		//Creation d'un bouton permettant de valider le choix d'un pc et d'afficher ses caractï¿½ristiques
 		JButton btnNewButton = new JButton("Valider");
 		btnNewButton.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnNewButton.setBounds(143, 321, 85, 22);
@@ -262,7 +263,7 @@ public class LocalInformatiqueFenetre extends Vue {
 		btnNewButton_1.setBounds(10, 453, 96, 21);
 		panel.add(btnNewButton_1);
 		
-		//Creation d'un bouton qui supprimera le pc selectioné
+		//Creation d'un bouton qui supprimera le pc selectionï¿½
 		JButton btnNewButton_2 = new JButton("Supprimer PC");
 		btnNewButton_2.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnNewButton_2.setBounds(116, 453, 112, 21);
