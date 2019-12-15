@@ -78,11 +78,15 @@ public class Intervention{
 
 ///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
 
-
+	/**
+	 * Fait la mise a jour d'une intervention en remplacant ses donnees par celles passees en parametres
+	 * @param nom
+	 * @param commentaires
+	 * @throws SQLException
+	 */
 	public void majIntervention(String nom, String commentaires) throws SQLException {
 		System.out.println(this.getId());
 		Connexion.requete("update intervention set nom = '" + nom + "', commentaires = '" + commentaires + "' where id = " + this.getId());
-		
 		
 	}
 	

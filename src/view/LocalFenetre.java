@@ -37,7 +37,7 @@ public class LocalFenetre extends Vue {
 	private JComboBox<String> boxListePc;
 	private Local local;
 	private JPanel panelLocalInfo;
-	
+
 	////////////////////////////////////////*CONSTRUCTEUR*////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -174,7 +174,7 @@ public class LocalFenetre extends Vue {
 		lblBon.setBounds(123, 42, 56, 15);
 		panel.add(lblBon);
 
-		// Creation du label Usé
+		// Creation du label Use
 		JLabel lblUse = new JLabel("Usé");
 		lblUse.setHorizontalAlignment(SwingConstants.CENTER);
 		lblUse.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -220,7 +220,7 @@ public class LocalFenetre extends Vue {
 		panel.add(lblTableBon);
 		lblTableBon.setText(String.valueOf(local.getNbTables().getBon()));
 
-		// Creation du label d'affichage du nombre de chaises usées
+		// Creation du label d'affichage du nombre de chaises usees
 		JLabel lblChaiseUse = new JLabel("");
 		lblChaiseUse.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblChaiseUse.setHorizontalAlignment(SwingConstants.CENTER);
@@ -228,7 +228,7 @@ public class LocalFenetre extends Vue {
 		panel.add(lblChaiseUse);
 		lblChaiseUse.setText(String.valueOf(local.getNbChaises().getUse()));
 
-		// Creation du label d'affichage du nombre de tables usées
+		// Creation du label d'affichage du nombre de tables usees
 		JLabel lblTableUse = new JLabel("");
 		lblTableUse.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblTableUse.setHorizontalAlignment(SwingConstants.CENTER);

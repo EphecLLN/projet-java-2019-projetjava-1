@@ -37,7 +37,7 @@ public class AjouterImplantationFenetre extends Vue {
 
 
 	/**
-	 * Create the frame.
+	 * Creation de la fenetre
 	 */
 	public AjouterImplantationFenetre(Ecole model, Controller controller, Implantation implantation) {
 		super(model, controller);

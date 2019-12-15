@@ -39,7 +39,7 @@ public class VueConsole extends Vue implements Observer{
 		public void run() {
 			while(true) {
 				// completer tout �a
-					String pseudo = "", mdp = "" , imp = "",var = "", var2= "", loc = "";
+					String pseudo = "", mdp = "" , imp = "",var = "", var2= "", loc = "", var3="";
 					do {
 						System.out.print("Utilisateur : ");
 						Scanner scan = new Scanner (System.in);
@@ -80,6 +80,13 @@ public class VueConsole extends Vue implements Observer{
 						controller.afficherTab(controller.recupMatSpecNom(local.getMaterielsSpeciaux()));
 						System.out.println("Intervention :");
 						controller.afficherTab(controller.recupInterventionNom(local.getInterventions()));
+						if(local.getClass().getSimpleName().equals("LocalInformatique")) {
+							LocalInformatique localinfo = (LocalInformatique) local;
+							System.out.println("Liste des PC :");
+							/*for(String nomPc : controller.recupPC(localinfo.getPcs())) {
+								System.out.println(controller.recupPC(localinfo.getPcs()));
+							}*/
+						}
 						System.out.println("\n A : Actualiser le materiel \n B : Modifier un materiel special \n C : Modifier une intervention \n D : Ajouter une intervention \n E : Ajouter un Materiel special");
 						Scanner scan6 = new Scanner(System.in);
 						var2 = scan6.nextLine();
@@ -192,11 +199,88 @@ public class VueConsole extends Vue implements Observer{
 						}
 						break;
 					case "B":
-						
+						String nomNL="";
+						int [] chaisesNL = new int[4];
+						int [] tablesNL = new int[4];
+						boolean localInfo;
+						System.out.println("Ajout d'un local :");
+						System.out.print("Veuillez introduir son nom (LXX, par exemple : L01)");
+						Scanner scan24 = new Scanner(System.in);
+						nomNL = scan24.nextLine();
+						System.out.print("Veuillez indiquer si c'est un local informatique ('true' si c'est un local informatique, 'false' si c'est un local normal)");
+						Scanner scan25 = new Scanner(System.in);
+						localInfo = Boolean.parseBoolean(scan25.nextLine());
+						System.out.println("Veuillez introduire le nouveau nombre de chaise en fonction de leur état");
+						System.out.print("Neuf :");
+						Scanner scan26 = new Scanner(System.in);
+						chaisesNL[0] = Integer.parseInt(scan26.nextLine()); 
+						System.out.print("Bon :");
+						Scanner scan27 = new Scanner(System.in);
+						chaisesNL[1] = Integer.parseInt(scan27.nextLine());
+						System.out.print("Use :");
+						Scanner scan28 = new Scanner(System.in);
+						chaisesNL[2] = Integer.parseInt(scan28.nextLine());
+						System.out.print("Critique :");
+						Scanner scan29 = new Scanner(System.in);
+						chaisesNL[3] = Integer.parseInt(scan29.nextLine());
+						System.out.println("Veuillez introduire le nouveau nombre de table en fonction de leur état");
+						System.out.print("Neuf :");
+						Scanner scan30 = new Scanner(System.in);
+						tablesNL[0] = Integer.parseInt(scan30.nextLine()); 
+						System.out.print("Bon :");
+						Scanner scan31 = new Scanner(System.in);
+						tablesNL[1] = Integer.parseInt(scan31.nextLine());
+						System.out.print("Use :");
+						Scanner scan32 = new Scanner(System.in);
+						tablesNL[2] = Integer.parseInt(scan32.nextLine());
+						System.out.print("Critique :");
+						Scanner scan33 = new Scanner(System.in);
+						tablesNL[3] = Integer.parseInt(scan33.nextLine());
+						try {
+							controller.genererLocal(nomNL, localInfo, chaisesNL, tablesNL, implantation);
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						break;
 					
 					case "C":
-						
+						System.out.println("A : Pour afficher les utilisateurs\nB : Pour ajouter un utilisateur");
+						Scanner scan34 = new Scanner(System.in);
+						var3 = scan34.nextLine();
+						switch(var3) {
+						case "A":
+							System.out.println("Liste des utilisateur :");
+							for(Utilisateur utilisateur : implantation.getUtilisateurs()) {
+								System.out.println(utilisateur.getNom() + " " + utilisateur.getPrenom());
+							}
+							break;
+						case "B":
+							String nomU="", prenomU="", pseudoU="", mdpU="";
+							int gradeU = 0;
+							System.out.print("Veuillez indiquer son nom :");
+							Scanner scan35 = new Scanner(System.in);
+							nomU = scan35.nextLine();
+							System.out.print("Veuillez indiquer son prenom :");
+							Scanner scan36 = new Scanner(System.in);
+							prenomU = scan36.nextLine();
+							System.out.print("Veuillez indiquer son grade : Super administrateur : 0, Administrateur d'implantation : 1, Informaticien : 2, Utilisateur : 3");
+							Scanner scan37 = new Scanner(System.in);
+							gradeU = Integer.parseInt(scan37.nextLine());
+							System.out.print("Veuillez indiquer son Pseudo :");
+							Scanner scan38 = new Scanner(System.in);
+							pseudoU = scan38.nextLine();
+							System.out.print("Veuillez indiquer son mot de passe :");
+							Scanner scan39 = new Scanner(System.in);
+							mdpU = scan39.nextLine();
+							try {
+								implantation.genererUtilisateur(nomU, prenomU, gradeU, pseudoU, mdpU);
+							} catch (SQLException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							break;
+						}
 						break;
 					default:
 						throw new IllegalArgumentException("Unexpected value: " + var);	

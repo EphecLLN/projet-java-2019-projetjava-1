@@ -173,13 +173,24 @@ public class Local{
 		}
 	}
 
+	/**
+	 * Permet de generer le materiels a partir de la base de donnees
+	 * @param chaises
+	 * @param tables
+	 * @throws SQLException
+	 */
 	public void genererMateriels(int[] chaises, int[] tables) throws SQLException {
 
 			Connexion.generer("insert into materiels values ('', 'chaises', " + chaises[0] + ", " + chaises[1] + ", " + chaises[2] + ", " + chaises[3] + ", " + this.id + ")", "materiels");
 			Connexion.generer("insert into materiels values ('', 'tables', " + tables[0] + ", " + tables[1] + ", " + tables[2] + ", " + tables[3] + ", " + this.id + ")", "materiels");
 	}
 	
-	
+	/**
+	 * Permet de faire la mise a jour du materiel dans la base de donnees
+	 * @param chaises
+	 * @param tables
+	 * @throws SQLException
+	 */
 	public void majMateriels(int[] chaises, int[] tables) throws SQLException {
 
 		Connexion.requete("update materiels set neuf = " + chaises[0] + " where localid = " + this.id + " and nom = 'chaises'");
@@ -213,6 +224,11 @@ public class Local{
 		}
 	}
 	
+	/**
+	 * Renvoie un objet de type MaterielSpecial
+	 * @param nom
+	 * @return MaterielSpecial
+	 */
 	public MaterielSpecial getMaterielSpecial(String nom) {
 		MaterielSpecial materielSpecial = null;
 		Iterator<MaterielSpecial> iterateur = this.getMaterielsSpeciaux().iterator();
@@ -226,6 +242,12 @@ public class Local{
 		return materielSpecial;
 	}
 
+	
+	/**
+	 * Renvoie un objet de type Intervention
+	 * @param nom
+	 * @return Intervention
+	 */
 	public Intervention getIntervention(String nom) {
 		Intervention intervention = null;
 		Iterator<Intervention> iterateur = this.getInterventions().iterator();

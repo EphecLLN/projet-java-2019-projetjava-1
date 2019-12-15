@@ -209,7 +209,7 @@ public class Implantation {
 	}
 
 	/**
-	 * Renvoir le nombre de locaux informatiques d'une implantation
+	 * Renvoie le nombre de locaux informatiques d'une implantation
 	 * @return int
 	 */
 	public int nombreLocauxInformatiques(){
@@ -222,6 +222,11 @@ public class Implantation {
 		return i;
 	}
 
+	/**
+	 * Renvoie les noms des locaux
+	 * @param nom
+	 * @return Local
+	 */
 	public Local getLocal(String nom) {
 		Local local = null;
 		Iterator<Local> iterateur = this.getLocaux().iterator();

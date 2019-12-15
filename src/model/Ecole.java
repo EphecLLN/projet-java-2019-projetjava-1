@@ -16,12 +16,18 @@ import java.util.Observable;
 @SuppressWarnings({"deprecation", "unchecked"})
 public class Ecole extends Observable {
 
+//////////////////////////////////////////////*ATTRIBUTS*//////////////////////////////////////////////////////////////////////////////////
+	
 	public ArrayList<Implantation> implantations = new ArrayList<Implantation>();
 
+//////////////////////////////////////////////*CONSTRUCTEUR*//////////////////////////////////////////////////////////////////////////////	
+	
 	public Ecole() throws SQLException {
 		synchroImplantationsEtAdresses();
 	}
 
+//////////////////////////////////////////////*METHODES*//////////////////////////////////////////////////////////////////////////////////
+	
 	/**
 	 * Permet de récupérer et d'instancier les adresses et les implantations qui leur sont associées
 	 * @throws SQLException
@@ -65,6 +71,11 @@ public class Ecole extends Observable {
 		this.implantations.add(imp);
 	}
 
+	/**
+	 * Renvoit un objet de type Implantation
+	 * @param nom
+	 * @return Implantation
+	 */
 	public Implantation getImplantation(String nom) {
 		Implantation implantation = null;
 		Iterator<Implantation> iterateur = this.implantations.iterator();
@@ -78,11 +89,6 @@ public class Ecole extends Observable {
 		return implantation;
 	}
 	
-	public static void main(String args[]) throws SQLException {
-		Ecole e1 = new Ecole();
-		System.out.println(e1.implantations.get(0).getLocaux().get(1).getInterventions().get(0).getNom());
-		Utils.recupObjet(e1.implantations);
-	}
 }
 
 

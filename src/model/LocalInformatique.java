@@ -71,6 +71,11 @@ public class LocalInformatique extends Local{
 	}
 
 	
+	/**
+	 * Renvoie un objet de type Pc
+	 * @param nom
+	 * @return Pc
+	 */
 	public Pc getPc(String nom) {
 		Pc pc = null;
 		Iterator<Pc> iterateur = this.getPcs().iterator();
