@@ -120,7 +120,7 @@ public class LocalFenetre extends Vue {
 		panel.add(boxMatSpec);
 		
 		
-		//Creation d'un permettant de modifier une intervention 
+		//Creation d'un bouton permettant de modifier une intervention 
 		JButton btnModifierIntervention = new JButton("Modifier");
 		btnModifierIntervention.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnModifierIntervention.setBounds(178, 271, 75, 25);

@@ -10,7 +10,7 @@ import java.util.Observer;
 import java.util.Scanner;
 
 import controller.Controller;
-import model.Ecole;
+import model.*;
 
 
 
@@ -38,7 +38,7 @@ public class VueConsole extends Vue implements Observer{
 		public void run() {
 			while(true) {
 				// completer tout ï¿½a
-					String pseudo = "", mdp = "" , imp = "",var = "", var2= "";
+					String pseudo = "", mdp = "" , imp = "",var = "", var2= "", loc = "";
 					do {
 						System.out.print("Utilisateur : ");
 						Scanner scan = new Scanner (System.in);
@@ -48,15 +48,56 @@ public class VueConsole extends Vue implements Observer{
 						mdp = scan2.nextLine();
 					}
 					while(!(controller.login(pseudo, mdp)[0] == 1));
-					System.out.println("Connexion réussie !");
+					System.out.println("Connexion rï¿½ussie !");
 
-					System.out.print("Dans quelle implantation êtes-vous? Veuillez à bien écrire l'ID \n");
+					System.out.print("Dans quelle implantation ï¿½tes-vous? Veuillez ï¿½ bien ï¿½crire le nom de l'implantation \n");
 					for(int i=0; i< controller.recupererImpId().length;i++) {
 						System.out.println(controller.recupererImpId()[i] + " " + controller.recupererImpNom()[i]);
 					}
 					Scanner scan3 = new Scanner(System.in);
 					imp = scan3.nextLine();
-
+					Implantation implantation = model.getImplantation(imp);
+					System.out.println(implantation.getNom() + " - " + implantation.getAdresse());
+					System.out.println("Nombre de locaux : " + implantation.nombreLocauxTotal());
+					System.out.println("Nombre de locaux informatique : " + implantation.nombreLocauxInformatiques());
+					
+					System.out.println("Que voulez-vous faire ? \n A : Choisir un local Ã  afficher \n B : Ajouter un Local \n C : Menu utilisateur");
+					Scanner scan4 = new Scanner(System.in);
+					var = scan4.nextLine();
+					
+					switch(var) {
+					case "A":
+						System.out.print("Quelle local souhaitez vous afficher ?\n");
+						for(int i =0; i < controller.recupLocal(imp).length; i++) {
+							System.out.println(controller.recupLocal(imp)[i]);
+						}
+						Scanner scan5 = new Scanner(System.in);
+						loc = scan5.nextLine();
+						Local local = implantation.getLocal(loc);
+						System.out.println("Materiels :");
+						System.out.println("Chaises :");
+						System.out.println("Neuf : "+ local.getNbChaises().getNeuf() +" | Bon :"+ local.getNbChaises().getBon() +" | Use :"+ local.getNbChaises().getUse() +" | Critique :"+ local.getNbChaises().getCritique());
+						System.out.println("Tables :");
+						System.out.println("Neuf : "+ local.getNbTables().getNeuf() +" | Bon :"+ local.getNbTables().getBon() +" | Use :"+ local.getNbTables().getUse() +" | Critique :"+ local.getNbTables().getCritique());
+						break;
+					case "B":
+						
+						break;
+					
+					case "C":
+						
+						break;
+					default:
+						throw new IllegalArgumentException("Unexpected value: " + var);	
+					}
+					
+					
+			}}}
+					
+					
+					
+					
+/*
 					System.out.print("Que voulez-vous faire? A pour calculer un nombre total de locaux, B pour afficher l'ensemble des locaux, C pour interragir avec le matï¿½riel ");
 					Scanner scan4 = new Scanner(System.in);
 					var = scan4.nextLine();
@@ -89,7 +130,7 @@ public class VueConsole extends Vue implements Observer{
 			}
 		}
 	}
-
+*/
 
 	public void affiche(String string) {
 		System.out.println(string);
