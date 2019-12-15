@@ -117,6 +117,7 @@ public class Implantation {
 	 * @throws SQLException
 	 */
 	public void genererLocalEtMateriels(String nom, int localInformatique, int[] chaises, int[] tables) throws SQLException {
+		
 		int localId = Connexion.generer("insert into local values ('', '"+ nom +"','"+ this.id +"','"+ localInformatique +"')", "local");
 		Local loc;
 		if(localInformatique == 0) {
@@ -141,12 +142,12 @@ public class Implantation {
 	 * @param grade
 	 * @param pseudo
 	 * @param motDePasse
-	 * @param implantationId
 	 * @throws SQLException
 	 */
-	public void genererUtilisateur(String nom, String prenom, int grade, String pseudo, String motDePasse, int implantationId) throws SQLException {
-		Connexion gu = new Connexion("insert into utilisateur values (" + id + ", '" + nom + "', '" + prenom + "', " + grade + ", '" + pseudo + "', '" + motDePasse + "', " + implantationId + ")");
-		gu.fermerConnexion();
+	public void genererUtilisateur(String nom, String prenom, int grade, String pseudo, String motDePasse) throws SQLException {
+		int utilisateurId = Connexion.generer("insert into utilisateur values ('', '" + nom + "', '" + prenom + "', " + grade + ", '" + pseudo + "', '" + motDePasse + "', " + this.id + ")", "utilisateur");
+		Utilisateur utilisateur = (Utilisateur) Connexion.requete("Select * from utilisateur where id = " + utilisateurId, "Utilisateur").get(0);
+		this.utilisateurs.add(utilisateur);
 	}
 
 	/**
@@ -157,6 +158,7 @@ public class Implantation {
 		if(!this.getUtilisateurs().isEmpty()) {
 			this.getUtilisateurs().clear();
 		}
+		@SuppressWarnings("unchecked")
 		ArrayList<Utilisateur> utis = Connexion.requete("select * from utilisateur where implantationId = " + this.getId(), "Utilisateur");
 		for(Utilisateur uti : utis) {
 			this.getUtilisateurs().add(uti);
