@@ -169,6 +169,7 @@ public class Implantation {
 	 * Permet d'instancier Tous les locaux et le matériel associé pour chaque implantation
 	 * @throws SQLException
 	 */
+	@SuppressWarnings("unchecked")
 	public void synchroLocalEtMateriel() throws SQLException {
 		if(!this.getLocaux().isEmpty()) {
 			this.getLocaux().clear();

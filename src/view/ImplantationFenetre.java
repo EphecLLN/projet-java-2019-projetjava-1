@@ -173,7 +173,7 @@ public class ImplantationFenetre extends Vue{
 		panel.add(btnAjouterImplantation);
 		btnAjouterImplantation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AjouterImplantationFenetre ajoutImp = new AjouterImplantationFenetre(model, controller);
+				AjouterImplantationFenetre ajoutImp = new AjouterImplantationFenetre(model, controller, model.getImplantation(choix_imp.getSelectedItem().toString()));
 			}
 		});
 
