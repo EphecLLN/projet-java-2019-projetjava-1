@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class AjouterInterventionFenetre extends Vue {
@@ -33,9 +34,9 @@ public class AjouterInterventionFenetre extends Vue {
 	
 
 	/**
-	 * Création de la fenêtre
+	 * Creation de la fenetre
 	 */
-	public AjouterInterventionFenetre(Ecole model, Controller controller) {
+	public AjouterInterventionFenetre(Ecole model, Controller controller, Local local) {
 		super(model, controller);
 		
 		j14 = new JFrame();
@@ -52,39 +53,45 @@ public class AjouterInterventionFenetre extends Vue {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		// création du libellé du nom
+		// creation du label du nom
 		JLabel lblNom = new JLabel("Nom");
 		lblNom.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblNom.setBounds(22, 23, 56, 16);
 		panel.add(lblNom);
 		
-		// création du libellé du commentaire
+		// creation du label du commentaire
 		JLabel lblCommentaire = new JLabel("Commentaire");
 		lblCommentaire.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblCommentaire.setBounds(22, 52, 95, 16);
 		panel.add(lblCommentaire);
 		
-		// création du champ texte de récupération du nom
+		// creation du champ texte de recuperation du nom
 		txtNom = new JTextField();
 		txtNom.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtNom.setBounds(58, 20, 170, 22);
 		panel.add(txtNom);
 		txtNom.setColumns(10);
 		
-		// création du champ texte de récupération du commentaire
+		// creation du champ texte de recuperation du commentaire
 		txtCom = new JTextField();
 		txtCom.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtCom.setBounds(106, 49, 122, 22);
 		panel.add(txtCom);
 		txtCom.setColumns(10);
 		
-		// création du bouton valider
+		// creation du bouton valider
 		JButton btnValider = new JButton("Valider");
 		btnValider.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnValider.setBounds(247, 19, 97, 52);
 		panel.add(btnValider);
 		btnValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					local.genererIntervention(txtNom.getText(), txtCom.getText());
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		

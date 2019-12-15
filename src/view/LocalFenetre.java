@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 import java.util.Observable;
 
@@ -11,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 import controller.Controller;
 import model.Ecole;
 import model.Local;
+import model.*;
 
 import javax.swing.JTextField;
 import java.awt.Font;
@@ -21,6 +23,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JSeparator;
+import java.awt.Button;
 
 public class LocalFenetre extends Vue {
 
@@ -30,16 +33,16 @@ public class LocalFenetre extends Vue {
 	private JFrame j6;
 ////////////////////////////////////////*CONSTRUCTEUR*////////////////////////////////////////////////////////////////////////////////////
 	
+	
 	/**
 	 * Creation de la fenetre
 	 */
 	public LocalFenetre(Ecole model, Controller controller, Local local) {
 		super (model, controller);
 		
-		
 		j6 = new JFrame();
 		j6.setVisible(true);
-		j6.setBounds(100, 100, 307, 447);
+		j6.setBounds(100, 100, 307, 440);
 		j6.setTitle(local.getNom());
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -88,6 +91,13 @@ public class LocalFenetre extends Vue {
 		lblMaterielSpecial.setBounds(10, 170, 96, 19);
 		panel.add(lblMaterielSpecial);
 		
+		//Creation d'une box permettant de selectionner un Materiel special du local
+		@SuppressWarnings("unchecked")
+		JComboBox boxMatSpec = new JComboBox(controller.recupMatSpecNom(local.getMaterielsSpeciaux()));
+		boxMatSpec.setBounds(10, 202, 156, 21);
+		panel.add(boxMatSpec);
+		
+		
 		//Creation d'un bouton permettant de changer l'etat d'un materiel sppecial
 		JButton btnModifierMatSpec = new JButton("Modifier");
 		btnModifierMatSpec.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -95,8 +105,7 @@ public class LocalFenetre extends Vue {
 		panel.add(btnModifierMatSpec);
 		btnModifierMatSpec.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				ActualiserMaterielSpecialFenetre modifSpec = new ActualiserMaterielSpecialFenetre(model, controller);
+				ActualiserMaterielSpecialFenetre modifSpec = new ActualiserMaterielSpecialFenetre(model, controller, local.getMaterielSpecial(boxMatSpec.getSelectedItem().toString()));
 			}
 		});
 	
@@ -113,12 +122,7 @@ public class LocalFenetre extends Vue {
 		boxIntervention.setBounds(10, 272, 156, 21);
 		panel.add(boxIntervention);
 		
-		//Creation d'une box permettant de selectionner un Materiel special du local
-		@SuppressWarnings("unchecked")
-		JComboBox boxMatSpec = new JComboBox(controller.recupMatSpecNom(local.getMaterielsSpeciaux()));
-		boxMatSpec.setBounds(10, 202, 156, 21);
-		panel.add(boxMatSpec);
-		
+	
 		
 		//Creation d'un permettant de modifier une intervention 
 		JButton btnModifierIntervention = new JButton("Modifier");
@@ -127,30 +131,21 @@ public class LocalFenetre extends Vue {
 		panel.add(btnModifierIntervention);
 		btnModifierIntervention.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ModifierInterventionFenetre modif = new ModifierInterventionFenetre(model, controller);
+				System.out.println(local.getIntervention(boxIntervention.getSelectedItem().toString()));
+				ModifierInterventionFenetre modif = new ModifierInterventionFenetre(model, controller, local.getIntervention(boxIntervention.getSelectedItem().toString()));
 			}
 		});
-		
-		//Creation d'un bouton qui ouvre une fenetre permettant d'ajouter du materiel
-		JButton btnAjouterMateriel = new JButton("Ajouter Materiel");
-		btnAjouterMateriel.setFont(new Font("Dialog", Font.PLAIN, 12));
-		btnAjouterMateriel.setBounds(80, 324, 117, 25);
-		panel.add(btnAjouterMateriel);
-		btnAjouterMateriel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				AjouterMaterielFenetre addMat = new AjouterMaterielFenetre(model, controller);
-			}
-		});
+	
 		
 		
 		//Creation d'un bouton qui ouvre une fenetre permettant d'ajouter du materiel special
 		JButton btnAjouterMaterielSpecial = new JButton("Ajouter Materiel Special");
 		btnAjouterMaterielSpecial.setFont(new Font("Dialog", Font.PLAIN, 12));
-		btnAjouterMaterielSpecial.setBounds(58, 362, 161, 25);
+		btnAjouterMaterielSpecial.setBounds(63, 362, 161, 25);
 		panel.add(btnAjouterMaterielSpecial);
 		btnAjouterMaterielSpecial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AjouterMaterielSpecialFenetre addMatSpec = new AjouterMaterielSpecialFenetre(model, controller);
+				AjouterMaterielSpecialFenetre addMatSpec = new AjouterMaterielSpecialFenetre(model, controller, local);
 			}
 		});
 		
@@ -249,6 +244,17 @@ public class LocalFenetre extends Vue {
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setBounds(0, 309, 300, 2);
 		panel.add(separator_1);
+		
+		JButton btnAjouterIntervention = new JButton("Ajouter Intervention");
+		btnAjouterIntervention.setFont(new Font("Dialog", Font.PLAIN, 12));
+		btnAjouterIntervention.setBounds(63, 324, 161, 25);
+		panel.add(btnAjouterIntervention);
+		btnAjouterIntervention.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AjouterInterventionFenetre ajoutIntFen = new AjouterInterventionFenetre(model, controller, local);
+			}
+		});
+		
 		
 		
 		

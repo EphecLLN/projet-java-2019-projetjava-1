@@ -84,9 +84,8 @@ public class MaterielSpecial {
 	 * @param etat
 	 * @throws SQLException 
 	 */
-	public void changerEtat(String etat, String newEtat) throws SQLException {
-		Connexion ce = new Connexion("update materielspecial set " + etat + "=" + newEtat + "where id =" + this.id);
-		
+	public void majMaterielSpecial(String mat) throws SQLException {
+		Connexion.requete("update materielspecial set etat = '" + mat + "' where id = " + this.id );
 	}
 
 	/**

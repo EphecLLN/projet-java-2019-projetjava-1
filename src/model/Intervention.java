@@ -78,22 +78,14 @@ public class Intervention{
 
 ///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
 
-	/**
-	 * Modifie l'intervention en base de donées et remplace les valeurs des
-	 * attributs de l'objet par les valeurs
-	 * entrées en paramètres
-	 *
-	 * @param nom Le nom de l'intervention
-	 * @param commentaires Les détails de l'intervention
-	 * @throws SQLException 
-	 *
-	 * @throws Exception Renvoie une exception si l'opération n'a pas pu aboutir
-	 */
-	public void modifierIntervention(String newNom, String newCommentaires, String nom, String commentaires) throws SQLException{
-		Connexion min = new Connexion("update intervention set " + nom + "=" + newNom + ", "+ commentaires + "=" + newCommentaires + "where id =" + this.id );
+
+	public void majIntervention(String nom, String commentaires) throws SQLException {
+		System.out.println(this.getId());
+		Connexion.requete("update intervention set nom = '" + nom + "', commentaires = '" + commentaires + "' where id = " + this.getId());
+		
 		
 	}
-
+	
 	/**
 	 * Supprime l'objet qui l'appelle en bdd
 	 * @throws SQLException

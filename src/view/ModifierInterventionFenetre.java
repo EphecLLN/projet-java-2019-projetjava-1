@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class ModifierInterventionFenetre extends Vue {
@@ -34,9 +35,9 @@ public class ModifierInterventionFenetre extends Vue {
 ///////////////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * Création de la fenêtre
+	 * Creation de la fenetre
 	 */
-	public ModifierInterventionFenetre(Ecole model, Controller controller) {
+	public ModifierInterventionFenetre(Ecole model, Controller controller, Intervention inter) {
 		super(model, controller);
 		
 		j13 = new JFrame();
@@ -53,39 +54,48 @@ public class ModifierInterventionFenetre extends Vue {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		// création du libellé du nom
+		// creation du libelle du nom
 		JLabel lblNom = new JLabel("Nom");
 		lblNom.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblNom.setBounds(12, 13, 56, 16);
 		panel.add(lblNom);
 		
-		// création du champ texte de récupération du nom
+		// creation du champ texte de recuperation du nom
 		txtNom = new JTextField();
 		txtNom.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtNom.setBounds(51, 10, 214, 22);
 		panel.add(txtNom);
 		txtNom.setColumns(10);
+		txtNom.setText(inter.getNom());
 		
-		// création du libellé du commentaire
+		// creation du libelle du commentaire
 		JLabel lblNouveauCommentaire = new JLabel("Nouveau commentaire");
 		lblNouveauCommentaire.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblNouveauCommentaire.setBounds(12, 42, 140, 16);
 		panel.add(lblNouveauCommentaire);
 		
-		// création du champ texte de récupération du commentaire
+		// creation du champ texte de recuperation du commentaire
 		txtCom = new JTextField();
 		txtCom.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtCom.setBounds(149, 39, 116, 22);
 		panel.add(txtCom);
 		txtCom.setColumns(10);
+		txtCom.setText(inter.getCommentaires());
 		
-		// création du bouton de validation
+		// creation du bouton de validation
 		btnValider = new JButton("Valider");
 		btnValider.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnValider.setBounds(288, 9, 97, 55);
 		panel.add(btnValider);
 		btnValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					inter.majIntervention(txtNom.getText(), txtCom.getText());
+					model.synchroImplantationsEtAdresses();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		
