@@ -126,6 +126,7 @@ public class ImplantationFenetre extends Vue{
 		btnOuvrir.setVisible(false);
 		btnOuvrir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				Implantation imp = model.getImplantation(choix_imp.getSelectedItem().toString());
 				Local local = imp.getLocal(boxListeLocal.getSelectedItem().toString().substring(0,3));
 				LocalFenetre loc = new LocalFenetre(model, controller, local);

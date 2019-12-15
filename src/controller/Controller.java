@@ -14,6 +14,7 @@ import java.util.Iterator;
 import model.*;
 
 import view.Vue;
+import view.VueConsole;
 
 /**
  * @author Victoire
@@ -69,12 +70,12 @@ public class Controller {
 		return imps;
 
 	}
-	
+
 
 
 	public int[] recupererImpId() {
 		// récupération des noms des implantations
-		int [] idd = new int[2];
+		int [] idd = new int[20];
 		int i = 0;
 		for(Implantation uneImp : model.implantations)	{
 			idd[i] = uneImp.getId();
@@ -107,7 +108,7 @@ public class Controller {
 		return locaux;
 
 	}
-	
+
 	public String[] recupMatSpecNom(ArrayList<MaterielSpecial> matSpes) {
 		String[] mats = new String[20];
 		int i = 0;
@@ -117,15 +118,38 @@ public class Controller {
 		}
 		return mats;
 	}
-	
+
+	public void afficherTab(String[] tab) {
+		for(String str : tab) {
+			if(str != null) {
+				vue.affiche(str);
+			}
+		}
+	}
+
 	public String[] recupInterventionNom(ArrayList<Intervention> inter) {
 		String[] interventions = new String[100];
 		int i = 0;
 		for(Intervention uneInt : inter) {
-			interventions[i] = uneInt.getNom();		
+			interventions[i] = uneInt.getNom();
+			i++;
 		}
 		return interventions;
 	}
+
+	public String[] recupPC(ArrayList<Pc> pc) {
+		System.out.println(pc.get(0).getNom() + " " + pc.get(1).getNom() + " " + pc.get(2).getNom() + " " + pc.get(3).getNom() + " ");
+		String[] pcs = new String[100];
+		int i = 0;
+		for(Pc unPc : pc) {
+			pcs[i] = unPc.getNom();
+			i++;
+		}
+		System.out.println(pcs[0] + " "  + pcs[1] + " " + pcs[2] + " " + pcs[3]);
+		return pcs;
+	}
+
+
 
 	public void addView(Vue vue) {
 		this.vue = vue;
