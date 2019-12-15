@@ -22,6 +22,9 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import javax.swing.UIManager;
+import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class UtilisateurFenetre extends Vue {
 	
@@ -100,6 +103,13 @@ public class UtilisateurFenetre extends Vue {
 		txtPseudo.setBounds(135, 120, 130, 26);
 		contentPane.add(txtPseudo);
 		txtPseudo.setColumns(10);
+		
+		JLabel lblErreur = new JLabel("Erreur. Veuillez réessayer.");
+		lblErreur.setHorizontalAlignment(SwingConstants.CENTER);
+		lblErreur.setVisible(false);
+		lblErreur.setFont(UIManager.getFont("ColorChooser.font"));
+		lblErreur.setBounds(18, 210, 162, 16);
+		contentPane.add(lblErreur);
 
 		JComboBox boxGrade = new JComboBox();
 		boxGrade.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -111,6 +121,7 @@ public class UtilisateurFenetre extends Vue {
 		btnAjouter = new JButton("Ajouter");
 		btnAjouter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				lblErreur.setVisible(false);
 				int grade = 3;
 				switch (boxGrade.getSelectedItem().toString()) {
 				case "Super administrateur":
@@ -130,8 +141,13 @@ public class UtilisateurFenetre extends Vue {
 				}
 				try {
 					implantation.genererUtilisateur(txtNom.getText(), txtPrenom.getText(), grade, txtPseudo.getText(), txtMdp.getText());
+					lblErreur.setText("Uilisateur ajouté.");
+					lblErreur.setForeground(Color.GREEN);
+					lblErreur.setVisible(true);
 				} catch (SQLException e1) {
-					e1.printStackTrace();
+					lblErreur.setText("Erreur, veuillez Réessayer");
+					lblErreur.setForeground(Color.RED);
+					lblErreur.setVisible(true);
 				}
 			}
 		});
