@@ -74,7 +74,7 @@ public class LocalFenetre extends Vue {
 		lblTables.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblTables.setBounds(16, 62, 44, 15);
 		panel.add(lblTables);
-		
+		//sdkfmskfkljs
 		//Creation du boutton permettant d'actualiser le nombre de table et chaise
 		JButton btnActualiserMateriels = new JButton("Actualiser");
 		btnActualiserMateriels.setHorizontalTextPosition(SwingConstants.CENTER);
