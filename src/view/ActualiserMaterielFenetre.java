@@ -105,6 +105,7 @@ public class ActualiserMaterielFenetre extends Vue {
 		
 		// creation du champ de recuperation du nombre de tables neuves
 		txtTableNeuf = new JTextField();
+		txtTableNeuf.setHorizontalAlignment(SwingConstants.CENTER);
 		txtTableNeuf.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtTableNeuf.setBounds(185, 53, 47, 22);
 		panel.add(txtTableNeuf);
@@ -167,8 +168,7 @@ public class ActualiserMaterielFenetre extends Vue {
 				int[] chaises = new int[4];
 				int[] tables = new int[4];
 				try {
-					local.getNbChaises().supprimer();
-					local.getNbTables().supprimer();
+					
 					
 					chaises[0] = Integer.parseInt(txtChaiseNeuf.getText());
 					chaises[1] = Integer.parseInt(txtChaiseBon.getText());
@@ -179,7 +179,7 @@ public class ActualiserMaterielFenetre extends Vue {
 					tables[2] = Integer.parseInt(txtTableUse.getText());
 					tables[3] = Integer.parseInt(txtTableCritique.getText());
 					
-					local.genererMateriels(chaises, tables);
+					local.majMateriels(chaises, tables);
 					
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block

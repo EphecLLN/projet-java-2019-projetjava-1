@@ -38,17 +38,17 @@ import javax.swing.UIManager;
 
 public class ImplantationFenetre extends Vue{
 
-/////////////////////////////////////////*ATTRIBUTS*//////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////*ATTRIBUTS*//////////////////////////////////////////////////////////////////////////////////////
 
 	private JPanel contentPane;
 	private JFrame j2;
 	private JLabel choix_txt;
 
 
-////////////////////////////////////////*CONSTRUCTEUR*////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////*CONSTRUCTEUR*////////////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * Cr�ation de la fen�tre
+	 * Creation de la fenetre
 	 */
 	@SuppressWarnings("rawtypes")
 	public ImplantationFenetre(Ecole model, Controller controller) {
@@ -126,7 +126,8 @@ public class ImplantationFenetre extends Vue{
 		btnOuvrir.setVisible(false);
 		btnOuvrir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Local local = model.getImplantation(choix_imp.getSelectedItem().toString()).getLocal(boxListeLocal.getSelectedItem().toString());
+				Implantation imp = model.getImplantation(choix_imp.getSelectedItem().toString());
+				Local local = imp.getLocal(boxListeLocal.getSelectedItem().toString().substring(0,3));
 				LocalFenetre loc = new LocalFenetre(model, controller, local);
 			}
 		});
@@ -183,7 +184,7 @@ public class ImplantationFenetre extends Vue{
 		panel.add(btnAjouterUtilisateur);
 		btnAjouterUtilisateur.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UtilisateurFenetre utilFen = new UtilisateurFenetre(model, controller);
+				UtilisateurFenetre utilFen = new UtilisateurFenetre(model, controller, model.getImplantation(choix_imp.getSelectedItem().toString()));
 			}
 		});
 
@@ -251,28 +252,23 @@ public class ImplantationFenetre extends Vue{
 				nbLocaux.setText(String.valueOf(impChoisie.nombreLocauxTotal()));
 				txtNbLocaux.setVisible(true);
 				nbLocaux.setVisible(true);  
-				nbLocInfo.setText(String.valueOf(model.getImplantation(choix_imp.getSelectedItem().toString()).nombreLocauxInformatiques()));
+				nbLocInfo.setText(String.valueOf(impChoisie.nombreLocauxInformatiques()));
 				txtNbLocInfo.setVisible(true);
 				nbLocInfo.setVisible(true);
-				boxListeLocal.removeAll();
+				boxListeLocal.removeAllItems();
 				for (Local local : impChoisie.getLocaux()) {
-					boxListeLocal.addItem(local.getNom() + "                                                   interventions : " + local.getInterventions().size());
+					boxListeLocal.addItem(local.getNom() + "                                               interventions : " + local.getInterventions().size());
 				}
 				boxListeLocal.setVisible(true);
 				btnOuvrir.setVisible(true);
-
-				}
-
+			}
 		});
 	}
 
 
 
 
-///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
-
-
-
+	///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
 
 	@Override
 	public void update(Observable o, Object arg) {

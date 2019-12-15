@@ -15,6 +15,13 @@ import model.*;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.FlowLayout;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.awt.event.ActionEvent;
 
 public class UtilisateurFenetre extends Vue {
 	
@@ -28,11 +35,10 @@ public class UtilisateurFenetre extends Vue {
 	private JLabel lblGrade;
 	private JLabel lblPseudo;
 	private JLabel lblMotDePasse;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField txtNom;
+	private JTextField txtPrenom;
+	private JTextField txtMdp;
+	private JTextField txtPseudo;
 	private JButton btnAjouter;
 
 ///////////////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////
@@ -43,71 +49,95 @@ public class UtilisateurFenetre extends Vue {
 	/**
 	 * Create the frame.
 	 */
-	public UtilisateurFenetre(Ecole model, Controller controller) {
+	public UtilisateurFenetre(Ecole model, Controller controller, Implantation implantation) {
 		super(model, controller);
 		
 		j5 = new JFrame();
-		j5.setTitle("Utilisateurs");
+		j5.setTitle("Ajouter un utilisateur");
 		j5.setVisible(true);
-		j5.setBounds(100, 100, 243, 267);
+		j5.setBounds(100, 100, 288, 262);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		j5.setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(5, 5, 422, 248);
-		contentPane.add(panel);
-		panel.setLayout(null);
+		lblNom = new JLabel("Nom :");
+		lblNom.setBounds(18, 11, 38, 16);
+		contentPane.add(lblNom);
 		
-		lblNom = new JLabel("Nom");
-		lblNom.setBounds(22, 15, 56, 16);
-		panel.add(lblNom);
+		lblPrenom = new JLabel("Prenom :");
+		lblPrenom.setBounds(18, 49, 55, 16);
+		contentPane.add(lblPrenom);
 		
-		lblPrenom = new JLabel("Prenom");
-		lblPrenom.setBounds(22, 44, 56, 16);
-		panel.add(lblPrenom);
+		lblGrade = new JLabel("Grade :");
+		lblGrade.setBounds(18, 87, 44, 16);
+		contentPane.add(lblGrade);
 		
-		lblGrade = new JLabel("Grade");
-		lblGrade.setBounds(22, 73, 56, 16);
-		panel.add(lblGrade);
+		lblPseudo = new JLabel("Pseudo :");
+		lblPseudo.setBounds(18, 125, 53, 16);
+		contentPane.add(lblPseudo);
 		
-		lblPseudo = new JLabel("Pseudo");
-		lblPseudo.setBounds(22, 102, 56, 16);
-		panel.add(lblPseudo);
+		lblMotDePasse = new JLabel("Mot de passe :");
+		lblMotDePasse.setBounds(18, 163, 91, 16);
+		contentPane.add(lblMotDePasse);
 		
-		lblMotDePasse = new JLabel("Mot de passe");
-		lblMotDePasse.setBounds(22, 131, 85, 16);
-		panel.add(lblMotDePasse);
+		txtNom = new JTextField();
+		txtNom.setBounds(135, 6, 130, 26);
+		contentPane.add(txtNom);
+		txtNom.setColumns(10);
 		
-		textField = new JTextField();
-		textField.setBounds(62, 12, 134, 22);
-		panel.add(textField);
-		textField.setColumns(10);
+		txtPrenom = new JTextField();
+		txtPrenom.setBounds(135, 44, 130, 26);
+		contentPane.add(txtPrenom);
+		txtPrenom.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(72, 44, 124, 22);
-		panel.add(textField_1);
-		textField_1.setColumns(10);
+		txtMdp = new JTextField();
+		txtMdp.setBounds(135, 158, 130, 26);
+		contentPane.add(txtMdp);
+		txtMdp.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(62, 73, 134, 22);
-		panel.add(textField_2);
-		textField_2.setColumns(10);
-		
-		textField_3 = new JTextField();
-		textField_3.setBounds(80, 102, 116, 22);
-		panel.add(textField_3);
-		textField_3.setColumns(10);
-		
-		textField_4 = new JTextField();
-		textField_4.setBounds(106, 128, 90, 22);
-		panel.add(textField_4);
-		textField_4.setColumns(10);
+		txtPseudo = new JTextField();
+		txtPseudo.setBounds(135, 120, 130, 26);
+		contentPane.add(txtPseudo);
+		txtPseudo.setColumns(10);
+
+		JComboBox boxGrade = new JComboBox();
+		boxGrade.setFont(new Font("Dialog", Font.PLAIN, 12));
+		boxGrade.setModel(new DefaultComboBoxModel(new String[] {"Super administrateur", "Administrateur d'implantation", "Informaticien", "Utilisateur"}));
+		boxGrade.setSelectedIndex(3);
+		boxGrade.setBounds(135, 83, 130, 27);
+		contentPane.add(boxGrade);
 		
 		btnAjouter = new JButton("Ajouter");
-		btnAjouter.setBounds(22, 176, 174, 25);
-		panel.add(btnAjouter);
+		btnAjouter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int grade = 3;
+				switch (boxGrade.getSelectedItem().toString()) {
+				case "Super administrateur":
+					grade = 0;
+					break;
+				case "Administrateur d'implantation":
+					grade = 1;
+					break;
+				case "Informaticien":
+					grade = 2;
+					break;
+				case "Utilisateur":
+					grade = 3;
+					break;
+				default:
+					throw new IllegalArgumentException("Unexpected value: " + boxGrade.getSelectedItem().toString());
+				}
+				try {
+					implantation.genererUtilisateur(txtNom.getText(), txtPrenom.getText(), grade, txtPseudo.getText(), txtMdp.getText());
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnAjouter.setBounds(192, 205, 90, 29);
+		contentPane.add(btnAjouter);
+		
 	}
 	
 /////////////////////////////////////////////////*METHODES*////////////////////////////////////////////////////////////////////////////////
@@ -124,5 +154,4 @@ public class UtilisateurFenetre extends Vue {
 		// TODO Auto-generated method stub
 		
 	}
-
 }
