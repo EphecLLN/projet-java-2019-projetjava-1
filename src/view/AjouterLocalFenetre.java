@@ -79,11 +79,6 @@ public class AjouterLocalFenetre extends Vue {
 		j3.setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JPanel panel = new JPanel();
-		panel.setBounds(5, 250, 422, -248);
-		contentPane.add(panel);
-		panel.setLayout(null);
-
 		// creation du label Nom
 		JLabel lblNom = new JLabel("Nom :");
 		lblNom.setFont(new Font("Dialog", Font.BOLD, 12));
