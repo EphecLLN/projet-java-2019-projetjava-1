@@ -5,6 +5,7 @@ package model;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -173,13 +174,24 @@ public class Local{
 	}
 
 	public void genererMateriels(int[] chaises, int[] tables) throws SQLException {
+
 			Connexion.generer("insert into materiels values ('', 'chaises', " + chaises[0] + ", " + chaises[1] + ", " + chaises[2] + ", " + chaises[3] + ", " + this.id + ")", "materiels");
 			Connexion.generer("insert into materiels values ('', 'tables', " + tables[0] + ", " + tables[1] + ", " + tables[2] + ", " + tables[3] + ", " + this.id + ")", "materiels");
 	}
 	
+	
 	public void majMateriels(int[] chaises, int[] tables) throws SQLException {
-		Connexion.requete("update Materiel set neuf = " + chaises[0] + ", bon = " +  chaises[1] + ", use = " + chaises[2] + ", critique = " + chaises[3] + "where localid = " + this.id + " and nom = 'chaises'");
-		Connexion.requete("update Materiel set neuf = " + tables[0] + ", bon = " +  tables[1] + ", use = " + tables[2] + ", critique = " + tables[3] + "where localid = " + this.id + " and nom = 'tables'");
+
+		Connexion.requete("update materiels set neuf = " + chaises[0] + " where localid = " + this.id + " and nom = 'chaises'");
+		Connexion.requete("update materiels set bon = " + chaises[1] + " where localid = " + this.id + " and nom = 'chaises'");
+		Connexion.requete("update materiels set materiels.use = " + chaises[2] + " where localid = " + this.id + " and nom = 'chaises'");
+		Connexion.requete("update materiels set critique = " + chaises[3] + " where localid = " + this.id + " and nom = 'chaises'");
+				
+		Connexion.requete("update materiels set neuf = " + tables[0] + " where localid = " + this.id + " and nom = 'tables'");
+		Connexion.requete("update materiels set bon = " + tables[1] + " where localid = " + this.id + " and nom = 'tables'");
+		Connexion.requete("update materiels set materiels.use = " + tables[2] + " where localid = " + this.id + " and nom = 'tables'");
+		Connexion.requete("update materiels set critique = " + tables[3] + " where localid = " + this.id + " and nom = 'tables'");
+				
 
 	}
 	
@@ -200,7 +212,34 @@ public class Local{
 		    System.exit(0);
 		}
 	}
+	
+	public MaterielSpecial getMaterielSpecial(String nom) {
+		MaterielSpecial materielSpecial = null;
+		Iterator<MaterielSpecial> iterateur = this.getMaterielsSpeciaux().iterator();
+		boolean trouve = false;
+		while(iterateur.hasNext() && !trouve) {
+			materielSpecial = iterateur.next();
+			if(materielSpecial.getNom().equals(nom)) {
+				trouve = true;
+			}
+		}
+		return materielSpecial;
+	}
 
+	public Intervention getIntervention(String nom) {
+		Intervention intervention = null;
+		Iterator<Intervention> iterateur = this.getInterventions().iterator();
+		boolean trouve = false;
+		while(iterateur.hasNext() && !trouve) {
+			intervention = iterateur.next();
+			if(intervention.getNom().equals(nom)) {
+				trouve = true;
+			}
+		}
+		return intervention;
+	}
+	
+	
 	/**
 	 * Permet de générer un nouveau matériel spécial.
 	 * Il est enregistré en bdd et ajouté au modèle.
@@ -209,6 +248,7 @@ public class Local{
 	 * @throws SQLException
 	 */
 	public void genererMaterielSpecial(String nom, String etat) throws SQLException {
+
 		int id = Connexion.generer("insert into materielspecial values ('','" + nom + "','" + etat + "', " + this.id + ")", "materielSpecial");
 		MaterielSpecial matSpe = (MaterielSpecial) Connexion.requete("select * from materielSpecial where id = " + id, "MaterielSpecial").get(0);
 		this.getMaterielsSpeciaux().add(matSpe);
@@ -222,10 +262,13 @@ public class Local{
 	 * @throws SQLException
 	 */
 	public void genererIntervention(String nom, String commentaires) throws SQLException {
+
 		int id = Connexion.generer("insert into intervention values ('','"+ nom +"','"+ commentaires +"', " + this.id + ")", "intervention");
 		Intervention inte = (Intervention) Connexion.requete("select * from intervention where id = " + id, "Intervention").get(0);
 		this.getInterventions().add(inte);
 	}
+	
+
 
 	/**
 	 * Supprime l'objet qui l'appelle en bdd

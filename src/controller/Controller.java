@@ -97,7 +97,7 @@ public class Controller {
 
 	public String[] recupLocal(String nom) {
 
-		String[] locaux = new String[100];
+		String[] locaux = new String[10];
 		int i = 0;
 		Implantation uneImp = model.getImplantation(nom);
 		for(Local loc : uneImp.getLocaux()) {

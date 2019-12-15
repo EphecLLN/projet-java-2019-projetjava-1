@@ -16,6 +16,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.Window.Type;
 
@@ -27,14 +28,14 @@ public class AjouterMaterielSpecialFenetre extends Vue {
 	private JPanel contentPane;
 	private JFrame j12;
 	private JTextField txtNom;
-	private JTextField textField;
+	private JTextField txtEtat;
 
 ///////////////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * Création de la fenêtre
+	 * Creation de la fenetre
 	 */
-	public AjouterMaterielSpecialFenetre(Ecole model, Controller controller) {
+	public AjouterMaterielSpecialFenetre(Ecole model, Controller controller, Local local) {
 		super(model, controller);
 		
 		j12 = new JFrame();
@@ -51,39 +52,45 @@ public class AjouterMaterielSpecialFenetre extends Vue {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		// création du libellé du nom 
+		// creation du libelle du nom 
 		JLabel lblNom = new JLabel("Nom");
 		lblNom.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblNom.setBounds(23, 13, 56, 16);
 		panel.add(lblNom);
 		
-		// création du champ texte de récupération du nom
+		// creation du champ texte de recuperation du nom
 		txtNom = new JTextField();
 		txtNom.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtNom.setBounds(73, 10, 116, 22);
 		panel.add(txtNom);
 		txtNom.setColumns(10);
 		
-		// création du libbelé de l'état
+		// creation du libbele de l'etat
 		JLabel lblEtat = new JLabel("Etat");
 		lblEtat.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblEtat.setBounds(207, 13, 56, 16);
 		panel.add(lblEtat);
 		
-		// création du champ texte de récupération de l'état
-		textField = new JTextField();
-		textField.setFont(new Font("Dialog", Font.PLAIN, 12));
-		textField.setBounds(254, 10, 116, 22);
-		panel.add(textField);
-		textField.setColumns(10);
+		// creation du champ texte de recuperation de l'etat
+		txtEtat = new JTextField();
+		txtEtat.setFont(new Font("Dialog", Font.PLAIN, 12));
+		txtEtat.setBounds(254, 10, 116, 22);
+		panel.add(txtEtat);
+		txtEtat.setColumns(10);
 		
-		// création du bouton de validation
+		// creation du bouton de validation
 		JButton btnNewButton = new JButton("Valider");
 		btnNewButton.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnNewButton.setBounds(23, 60, 346, 25);
 		panel.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					local.genererMaterielSpecial(txtNom.getText(), txtEtat.getText());
+				} catch (SQLException e1) {
+					
+					e1.printStackTrace();
+				}
 			}
 		});
 	
