@@ -176,12 +176,7 @@ public class Utilisateur {
 		//TODO implementation collection
 	}
 
-///////////////////////////////////////*METHODE TOSTRING*////////////////////////////////////////////////////////////////////////////////////
 
-	public String toString() {
-		return nom + " " + prenom + " " + grade + " " + pseudo + " " + motDePasse;
-	}
-	
 	/**
 	 * Supprime l'objet qui l'appelle en bdd
 	 * @throws SQLException
@@ -189,4 +184,10 @@ public class Utilisateur {
 	public void supprimer() throws SQLException {
 		Connexion.supprimer(this, this.id);
 	}
+///////////////////////////////////////*METHODE TOSTRING*////////////////////////////////////////////////////////////////////////////////////
+
+	public String toString() {
+		return nom + " " + prenom + " " + grade + " " + pseudo + " " + motDePasse;
+	}
+	
 }

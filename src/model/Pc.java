@@ -160,6 +160,12 @@ public class Pc {
 	
 ///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
 
+	/**
+	 * Permet de changer l'état d'un pc
+	 * @param nom
+	 * @param etat
+	 * @throws SQLException
+	 */
 	public void changerEtat(String nom, String etat) throws SQLException {
 		
 		Connexion conn = new Connexion("update pc set " + nom + "=" + etat + "where id =" + this.id);

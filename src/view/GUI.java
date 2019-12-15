@@ -46,8 +46,6 @@ public class GUI extends Vue{
 
 	/////////////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////
 
-	//loulou doit continuer a faire les methodes pour generer et methode pour afficher les infos
-
 
 	private JFrame j;
 	private JPanel contentPane;
@@ -63,7 +61,7 @@ public class GUI extends Vue{
 	public GUI(Ecole model, Controller controller) {
 		super(model, controller);
 
-		//création de la fenétre principale et du contentPane
+		//creation de la fenetre principale et du contentPane
 
 		j = new JFrame();
 		j.setTitle("1formatik");
@@ -75,7 +73,7 @@ public class GUI extends Vue{
 		j.setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		//création du champ texte de demande d'identifiants
+		//creation du champ texte de demande d'identifiants
 		identTxt = new JLabel();
 		identTxt.setBounds(6, 17, 438, 17);
 		contentPane.add(identTxt);
@@ -85,7 +83,7 @@ public class GUI extends Vue{
 		identTxt.setText("Veuillez entrer vos identifiants : ");
 		identTxt.setOpaque(false);
 
-		// création du champ texte du mot de passe
+		// creation du champ texte du mot de passe
 		JLabel mdp = new JLabel();
 		mdp.setBounds(43, 87, 96, 16);
 		contentPane.add(mdp);
@@ -94,7 +92,7 @@ public class GUI extends Vue{
 		mdp.setForeground(Color.BLACK);
 		mdp.setOpaque(false);
 
-		// création du champ texte du nom d'utilisateur
+		// creation du champ texte du nom d'utilisateur
 		JLabel nomUti = new JLabel();
 		nomUti.setBounds(43, 59, 123, 16);
 		contentPane.add(nomUti);
@@ -103,7 +101,7 @@ public class GUI extends Vue{
 		nomUti.setText("Nom d'utilisateur :");
 		nomUti.setOpaque(false);
 
-		// création du champ d'insertion du nom d'utilisateur
+		// creation du champ d'insertion du nom d'utilisateur
 		utiTxt = new JTextField();
 		utiTxt.setFont(new Font("Dialog", Font.PLAIN, 13));
 		utiTxt.setBounds(275, 48, 130, 26);
@@ -111,7 +109,7 @@ public class GUI extends Vue{
 		utiTxt.setHorizontalAlignment(SwingConstants.CENTER);
 		utiTxt.setColumns(10);
 
-		// création du champ d'insertion du mot de passe
+		// creation du champ d'insertion du mot de passe
 		mdpTxt = new JTextField();
 		mdpTxt.setFont(new Font("Dialog", Font.PLAIN, 13));
 		mdpTxt.setBounds(275, 82, 130, 26);
@@ -119,7 +117,7 @@ public class GUI extends Vue{
 		mdpTxt.setHorizontalAlignment(SwingConstants.CENTER);
 		mdpTxt.setColumns(10);
 
-		// création du bouton valider
+		// creation du bouton valider
 		JButton btnValider = new JButton("Valider");
 		btnValider.setBounds(344, 120, 87, 29);
 		contentPane.add(btnValider);
@@ -127,7 +125,7 @@ public class GUI extends Vue{
 		btnValider.setBackground(new Color(199, 21, 133));
 
 
-		//création du champ de texte de mauvais identifiant au cas où la connexion aurait échouée
+		//creation du champ de texte de mauvais identifiant au cas où la connexion aurait echouee
 		coEchouee = new JLabel();
 		coEchouee.setHorizontalAlignment(SwingConstants.CENTER);
 		coEchouee.setBounds(83, 125, 157, 16);

@@ -43,7 +43,7 @@ public class LocalFenetre extends Vue {
 
 		j6 = new JFrame();
 		j6.setVisible(true);
-		j6.setBounds(100, 100, 307, 413);
+		j6.setBounds(100, 100, 628, 413);
 		j6.setTitle(local.getNom());
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -168,7 +168,7 @@ public class LocalFenetre extends Vue {
 		lblBon.setBounds(123, 42, 56, 15);
 		panel.add(lblBon);
 
-		// Creation du label Usé
+		// Creation du label Use
 		JLabel lblUse = new JLabel("Usé");
 		lblUse.setHorizontalAlignment(SwingConstants.CENTER);
 		lblUse.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -214,7 +214,7 @@ public class LocalFenetre extends Vue {
 		panel.add(lblTableBon);
 		lblTableBon.setText(String.valueOf(local.getNbTables().getBon()));
 
-		// Creation du label d'affichage du nombre de chaises usées
+		// Creation du label d'affichage du nombre de chaises usees
 		JLabel lblChaiseUse = new JLabel("");
 		lblChaiseUse.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblChaiseUse.setHorizontalAlignment(SwingConstants.CENTER);
@@ -222,7 +222,7 @@ public class LocalFenetre extends Vue {
 		panel.add(lblChaiseUse);
 		lblChaiseUse.setText(String.valueOf(local.getNbChaises().getUse()));
 
-		// Creation du label d'affichage du nombre de tables usées
+		// Creation du label d'affichage du nombre de tables usees
 		JLabel lblTableUse = new JLabel("");
 		lblTableUse.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblTableUse.setHorizontalAlignment(SwingConstants.CENTER);
@@ -258,7 +258,7 @@ public class LocalFenetre extends Vue {
 
 		// creation du panel des informations du Local Informatique
 		JPanel panelLocalInfo = new JPanel();
-		panelLocalInfo.setBounds(289, 0, 281, 393);
+		panelLocalInfo.setBounds(317, -2, 281, 393);
 		contentPane.add(panelLocalInfo);
 		panelLocalInfo.setLayout(null);
 		panelLocalInfo.setVisible(false); // ne doit etre true que si le local est un local informatique
@@ -283,10 +283,10 @@ public class LocalFenetre extends Vue {
 		lblEtatPc.setBounds(12, 56, 56, 16);
 		panelLocalInfo.add(lblEtatPc);
 
+		// creation de la box de choix du PC
 		JComboBox<String> boxListePc = new JComboBox<String>();
 		if(local.getClass().getSimpleName().equals("LocalInformatique")) {
 			LocalInformatique unLocInfo = (LocalInformatique) local;
-			// creation de la box de choix du PC
 			for(String nomPc : controller.recupPC(unLocInfo.getPcs())) {
 				boxListePc.addItem(nomPc);
 			}

@@ -68,7 +68,7 @@ public class ImplantationFenetre extends Vue{
 		contentPane.add(panel);
 		panel.setLayout(null);
 
-		// cr�ation du champ texte de demande de choix d'implantation
+		// creation du champ texte de demande de choix d'implantation
 		choix_txt = new JLabel();
 		panel.add(choix_txt);
 		choix_txt.setBorder(null);
@@ -77,21 +77,21 @@ public class ImplantationFenetre extends Vue{
 		choix_txt.setBounds(16, 13, 365, 22);
 		choix_txt.setOpaque(false);
 
-		// cr�ation de la box qui permet de choisir son implantation
+		// creation de la box qui permet de choisir son implantation
 		@SuppressWarnings("unchecked")
 		JComboBox choix_imp = new JComboBox(controller.recupererImpNom());
 		choix_imp.setFont(UIManager.getFont("ColorChooser.font"));
 		choix_imp.setBounds(26, 47, 365, 22);
 		panel.add(choix_imp);
 
-		// cr�ation du label affichage du nombre de locaux
+		// creation du label affichage du nombre de locaux
 		JLabel txtNbLocaux = new JLabel("Nombre de locaux :");
 		txtNbLocaux.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtNbLocaux.setBounds(29, 156, 129, 16);
 		panel.add(txtNbLocaux);
 		txtNbLocaux.setVisible(false);
 
-		// cr�ation du label affichage du nombre de locaux
+		// creation du label affichage du nombre de locaux
 		JLabel nbLocaux = new JLabel();
 		nbLocaux.setHorizontalTextPosition(SwingConstants.CENTER);
 		nbLocaux.setHorizontalAlignment(SwingConstants.CENTER);
@@ -99,14 +99,14 @@ public class ImplantationFenetre extends Vue{
 		panel.add(nbLocaux);
 		nbLocaux.setVisible(false);
 
-		// cr�ation du label affichage du nombre de locaux informatiques
+		// creation du label affichage du nombre de locaux informatiques
 		JLabel txtNbLocInfo = new JLabel("Nombre de locaux informatiques :");
 		txtNbLocInfo.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtNbLocInfo.setBounds(29, 184, 220, 16);
 		panel.add(txtNbLocInfo);
 		txtNbLocInfo.setVisible(false);
 
-		// cr�ation du label affichage du nombre de locaux informatiques
+		// creation du label affichage du nombre de locaux informatiques
 		JLabel nbLocInfo = new JLabel("");
 		nbLocInfo.setHorizontalTextPosition(SwingConstants.CENTER);
 		nbLocInfo.setHorizontalAlignment(SwingConstants.CENTER);
@@ -114,7 +114,7 @@ public class ImplantationFenetre extends Vue{
 		panel.add(nbLocInfo);
 		nbLocInfo.setVisible(false);
 
-		// cr�ation de la box de la liste des locaux
+		// creation de la box de la liste des locaux
 		JComboBox<String> boxListeLocal = new JComboBox<String>();
 		boxListeLocal.setVisible(false);
 		boxListeLocal.setFont(UIManager.getFont("ColorChooser.font"));
@@ -154,7 +154,7 @@ public class ImplantationFenetre extends Vue{
 		separator_1.setBounds(6, 318, 428, 12);
 		panel.add(separator_1);
 
-		// cr�ation du bouton Ajouter Local
+		// creation du bouton Ajouter Local
 		JButton btnAjouterLocal = new JButton("Ajouter un local");
 		btnAjouterLocal.setVisible(false);
 		btnAjouterLocal.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -166,7 +166,7 @@ public class ImplantationFenetre extends Vue{
 			}
 		});
 
-		// cr�ation du bouton Ajouter Implantation
+		// creation du bouton Ajouter Implantation
 		JButton btnAjouterImplantation = new JButton("Ajouter une implantation");
 		btnAjouterImplantation.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnAjouterImplantation.setBounds(16, 79, 186, 29);
@@ -177,7 +177,7 @@ public class ImplantationFenetre extends Vue{
 			}
 		});
 
-		// cr�ation du bouton Menu Utilisateur
+		// creation du bouton Menu Utilisateur
 		JButton btnAjouterUtilisateur = new JButton("Ajouter un utilisateur");
 		btnAjouterUtilisateur.setVisible(false);
 		btnAjouterUtilisateur.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -224,7 +224,7 @@ public class ImplantationFenetre extends Vue{
 		panel.add(boxListeUtilisateurs);
 
 
-		// cr�ation du bouton de validation
+		// creation du bouton de validation
 		JButton btnValider = new JButton("Valider");
 		btnValider.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnValider.setBounds(336, 79, 85, 29);
