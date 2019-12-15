@@ -14,6 +14,7 @@ import java.util.Iterator;
 import model.*;
 
 import view.Vue;
+import view.VueConsole;
 
 /**
  * @author Victoire
@@ -74,7 +75,7 @@ public class Controller {
 
 	public int[] recupererImpId() {
 		// récupération des noms des implantations
-		int [] idd = new int[2];
+		int [] idd = new int[20];
 		int i = 0;
 		for(Implantation uneImp : model.implantations)	{
 			idd[i] = uneImp.getId();
@@ -118,6 +119,14 @@ public class Controller {
 		return mats;
 	}
 	
+	public void afficherTab(String[] tab) {
+		for(String str : tab) {
+			if(str != null) {
+				vue.affiche(str);
+			}
+		}
+	}
+	
 	public String[] recupInterventionNom(ArrayList<Intervention> inter) {
 		String[] interventions = new String[100];
 		int i = 0;
@@ -126,6 +135,8 @@ public class Controller {
 		}
 		return interventions;
 	}
+	
+	
 
 	public void addView(Vue vue) {
 		this.vue = vue;
