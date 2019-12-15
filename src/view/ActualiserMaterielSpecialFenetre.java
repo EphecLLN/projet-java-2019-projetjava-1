@@ -30,7 +30,7 @@ public class ActualiserMaterielSpecialFenetre extends Vue {
 
 
 	/**
-	 * Création de la fenêtre
+	 * Creation de la fenetre
 	 */
 	public ActualiserMaterielSpecialFenetre(Ecole model, Controller controller) {
 		super(model, controller);
@@ -49,26 +49,27 @@ public class ActualiserMaterielSpecialFenetre extends Vue {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		// création du label texte nouvel état
-		JLabel lblNouveltat = new JLabel("Nouvel \u00E9tat :");
+		// creation du label texte nouvel ï¿½tat
+		JLabel lblNouveltat = new JLabel("Nouvel Ã©tat :");
 		lblNouveltat.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblNouveltat.setBounds(25, 23, 89, 16);
 		panel.add(lblNouveltat);
 		
-		// création du champ texte de récupération de l'état
+		// creation du champ texte de rï¿½cupï¿½ration de l'ï¿½tat
 		txtEtat = new JTextField();
 		txtEtat.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtEtat.setBounds(99, 20, 190, 22);
 		panel.add(txtEtat);
 		txtEtat.setColumns(10);
 		
-		// création du bouton valider
+		// creation du bouton valider
 		JButton btnValider = new JButton("Valider");
 		btnValider.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnValider.setBounds(313, 19, 97, 25);
 		panel.add(btnValider);
 		btnValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		

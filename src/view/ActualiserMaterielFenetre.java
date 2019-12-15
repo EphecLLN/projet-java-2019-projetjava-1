@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import java.awt.Font;
@@ -24,8 +25,8 @@ public class ActualiserMaterielFenetre extends Vue {
 ////////////////////////////////////////////////*ATTRIBUTS*///////////////////////////////////////////////////////////////////////////////
 
 
-	public JPanel contentPane;
-	public JFrame j9;
+	private JPanel contentPane;
+	private JFrame j9;
 	private JTextField txtChaiseNeuf;
 	private JTextField txtTableNeuf;
 	private JTextField txtChaiseBon;
@@ -33,15 +34,14 @@ public class ActualiserMaterielFenetre extends Vue {
 	private JTextField txtChaiseCritique;
 	private JTextField txtTableBon;
 	private JTextField txtTableUse;
-	private JTextField txtTablecritique;
-
+	private JTextField txtTableCritique;
 
 ///////////////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * Creation de la fenetre
 	 */
-	public ActualiserMaterielFenetre(Ecole model, Controller controller) {
+	public ActualiserMaterielFenetre(Ecole model, Controller controller, Local local) {
 		super(model, controller);
 		j9 = new JFrame();
 		j9.setTitle("Actualiser Matériel");
@@ -151,12 +151,12 @@ public class ActualiserMaterielFenetre extends Vue {
 		panel.add(txtTableUse);
 		
 		// creation du champ de recuperation du nombre de tables critiques
-		txtTablecritique = new JTextField();
-		txtTablecritique.setFont(new Font("Dialog", Font.PLAIN, 12));
-		txtTablecritique.setHorizontalAlignment(SwingConstants.CENTER);
-		txtTablecritique.setColumns(10);
-		txtTablecritique.setBounds(186, 147, 47, 22);
-		panel.add(txtTablecritique);
+		txtTableCritique = new JTextField();
+		txtTableCritique.setFont(new Font("Dialog", Font.PLAIN, 12));
+		txtTableCritique.setHorizontalAlignment(SwingConstants.CENTER);
+		txtTableCritique.setColumns(10);
+		txtTableCritique.setBounds(186, 147, 47, 22);
+		panel.add(txtTableCritique);
 
 		// creation du bouton de validation
 		JButton btnValider = new JButton("Valider");
@@ -164,6 +164,29 @@ public class ActualiserMaterielFenetre extends Vue {
 		panel.add(btnValider);
 		btnValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int[] chaises = new int[4];
+				int[] tables = new int[4];
+				try {
+					local.getNbChaises().supprimer();
+					local.getNbTables().supprimer();
+					
+					chaises[0] = Integer.parseInt(txtChaiseNeuf.getText());
+					chaises[1] = Integer.parseInt(txtChaiseBon.getText());
+					chaises[2] = Integer.parseInt(txtChaiseUse.getText());
+					chaises[3] = Integer.parseInt(txtChaiseCritique.getText());
+					tables[0] = Integer.parseInt(txtTableNeuf.getText());
+					tables[1] = Integer.parseInt(txtTableBon.getText());
+					tables[2] = Integer.parseInt(txtTableUse.getText());
+					tables[3] = Integer.parseInt(txtTableCritique.getText());
+					
+					local.genererMateriels(chaises, tables);
+					
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			
+	
 				
 			}
 		});
