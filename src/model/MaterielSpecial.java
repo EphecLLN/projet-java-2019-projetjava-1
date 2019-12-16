@@ -87,12 +87,4 @@ public class MaterielSpecial {
 	public void majMaterielSpecial(String mat) throws SQLException {
 		Connexion.requete("update materielspecial set etat = '" + mat + "' where id = " + this.id );
 	}
-
-	/**
-	 * Supprime l'objet qui l'appelle en bdd
-	 * @throws SQLException
-	 */
-	public void supprimer() throws SQLException {
-		Connexion.supprimer(this, this.id);
-	}
 }

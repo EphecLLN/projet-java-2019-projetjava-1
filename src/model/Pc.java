@@ -193,12 +193,4 @@ public class Pc {
 			throw new IllegalArgumentException("Unexpected value: " + nom);
 		}
 	}
-
-	/**
-	 * Supprime l'objet qui l'appelle en bdd
-	 * @throws SQLException
-	 */
-	public void supprimer() throws SQLException {
-		Connexion.supprimer(this, this.id);
-	}
 }

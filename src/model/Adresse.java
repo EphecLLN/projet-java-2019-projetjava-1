@@ -119,15 +119,6 @@ public class Adresse {
 		Connexion cg = new Connexion("update utilisateurs set " + numero + "=" + newNumero + ", " + codePostal + "=" + newCodePostal + ", " + rue + "=" + newRue + ", " + ville + "=" + newVille  + " where id =" + this.id);
 
 	}
-		
-	/**
-	 * Supprime l'objet qui l'appelle en bdd
-	 * @throws SQLException
-	 */
-	public void supprimer() throws SQLException {
-		Connexion.supprimer(this, this.id);
-	}
-
 ////////////////////////////////////////////////*METHODE TOSTRING*/////////////////////////////////////////////////////////////////////////////////////
 
 	public String toString() {

@@ -289,26 +289,6 @@ public class Local{
 		Intervention inte = (Intervention) Connexion.requete("select * from intervention where id = " + id, "Intervention").get(0);
 		this.getInterventions().add(inte);
 	}
-	
-
-
-	/**
-	 * Supprime l'objet qui l'appelle en bdd
-	 * @throws SQLException
-	 */
-	public void supprimer() throws SQLException {
-
-		this.nbChaises.supprimer();
-		this.nbTables.supprimer();
-		for (Intervention intervention : interventions) {
-			intervention.supprimer();
-		}
-		for (MaterielSpecial materielSpecial : materielsSpeciaux) {
-			materielSpecial.supprimer();
-		}
-		Connexion.supprimer(this, this.id);
-	}
-
 ///////////////////////////////////////*METHODE TOSTRING*////////////////////////////////////////////////////////////////////////////////////
 
 

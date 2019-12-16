@@ -89,13 +89,4 @@ public class Intervention{
 		Connexion.requete("update intervention set nom = '" + nom + "', commentaires = '" + commentaires + "' where id = " + this.getId());
 		
 	}
-	
-	/**
-	 * Supprime l'objet qui l'appelle en bdd
-	 * @throws SQLException
-	 */
-	public void supprimer() throws SQLException {
-		Connexion.supprimer(this, this.id);
-	}
-
 }

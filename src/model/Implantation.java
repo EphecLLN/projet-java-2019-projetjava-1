@@ -186,21 +186,6 @@ public class Implantation {
 	}
 
 	/**
-	 * Supprime l'objet qui l'appelle en bdd
-	 * @throws SQLException
-	 */
-	public void supprimer() throws SQLException {
-		this.adresse.supprimer();
-		for (Local local : locaux) {
-			local.supprimer();
-		}
-		for (Utilisateur utilisateur : utilisateurs) {
-			utilisateur.supprimer();
-		}
-		Connexion.supprimer(this, this.id);
-	}
-
-	/**
 	 * Renvoie le nombre de l'ensemble des locaux d'une implantation
 	 * @return int
 	 */

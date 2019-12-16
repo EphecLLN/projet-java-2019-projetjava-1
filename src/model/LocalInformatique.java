@@ -61,16 +61,6 @@ public class LocalInformatique extends Local{
 		this.getPcs().add(pc);
 	}
 
-
-	@Override
-	public void supprimer() throws SQLException {
-		for (Pc pc : pcs) {
-			pc.supprimer();
-		}
-		super.supprimer();
-	}
-
-	
 	/**
 	 * Renvoie un objet de type Pc
 	 * @param nom
