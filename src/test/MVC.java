@@ -25,24 +25,25 @@ public class MVC {
 
 	public MVC() throws SQLException{
 		
-		//création du modèle
+		//crï¿½ation du modï¿½le
 		
 		
 		Ecole mod = new Ecole();
+			
 		
 		
-		//création des controlleurs -> un pour chaque vue 
+		//crï¿½ation des controlleurs -> un pour chaque vue 
 		
 		Controller contrConsole = new Controller(mod);
 		Controller contrGUI = new Controller(mod);
 		
 		
-		//création des vues
+		//crï¿½ation des vues
 	
 		VueConsole vc = new VueConsole(mod, contrConsole);
 		GUI g = new GUI(mod, contrGUI);
 		
-		//on donne la référence à la vue pour chaque controlleur
+		//on donne la rï¿½fï¿½rence ï¿½ la vue pour chaque controlleur
 		contrConsole.addView(vc);
 		contrGUI.addView(g);
 		

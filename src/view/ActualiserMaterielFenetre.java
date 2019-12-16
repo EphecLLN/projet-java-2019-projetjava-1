@@ -1,8 +1,5 @@
 package view;
 
-import java.awt.BorderLayout;
-
-import java.awt.EventQueue;
 import java.util.Observable;
 
 import javax.swing.JFrame;
@@ -168,8 +165,8 @@ public class ActualiserMaterielFenetre extends Vue {
 				int[] chaises = new int[4];
 				int[] tables = new int[4];
 				try {
-					
-					
+
+
 					chaises[0] = Integer.parseInt(txtChaiseNeuf.getText());
 					chaises[1] = Integer.parseInt(txtChaiseBon.getText());
 					chaises[2] = Integer.parseInt(txtChaiseUse.getText());
@@ -178,19 +175,19 @@ public class ActualiserMaterielFenetre extends Vue {
 					tables[1] = Integer.parseInt(txtTableBon.getText());
 					tables[2] = Integer.parseInt(txtTableUse.getText());
 					tables[3] = Integer.parseInt(txtTableCritique.getText());
-					
+
 					local.majMateriels(chaises, tables);
-					
+
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-			
-	
-				
+
+
+
 			}
 		});
-		
+
 	}
 
 /////////////////////////////////////////////////*METHODES*////////////////////////////////////////////////////////////////////////////////

@@ -55,9 +55,8 @@ public class Controller {
 	}
 
 	/**
-	 * Méthode qui récupère les noms des implantations
-	 *
-	 *
+	 * Renvoit les noms des implantations
+	 *@return String[]
 	 */
 	public String[] recupererImpNom() {
 		// récupération des noms des implantations
@@ -72,7 +71,10 @@ public class Controller {
 	}
 
 
-
+	/**
+	 * Renvoit les id des implantations
+	 * @return int[]
+	 */
 	public int[] recupererImpId() {
 		// récupération des noms des implantations
 		int [] idd = new int[20];
@@ -85,6 +87,15 @@ public class Controller {
 
 	}
 
+	/**
+	 * Permet de générer un local en base de données
+	 * @param txtNom
+	 * @param localInfo
+	 * @param chaises
+	 * @param tables
+	 * @param implantation
+	 * @throws SQLException
+	 */
 	public void genererLocal(String txtNom, boolean localInfo, int[] chaises, int[] tables, Implantation implantation) throws SQLException {
 		int estInfo = 0;
 		if(localInfo) {
@@ -95,7 +106,12 @@ public class Controller {
 
 	}
 
-
+	
+	/**
+	 * Renvoie les noms des locaux
+	 * @param nom
+	 * @return String[]
+	 */
 	public String[] recupLocal(String nom) {
 
 		String[] locaux = new String[10];
@@ -109,6 +125,11 @@ public class Controller {
 
 	}
 
+	/**
+	 * Renvoie le nom des matériels spéciaux
+	 * @param matSpes
+	 * @return String[]
+	 */
 	public String[] recupMatSpecNom(ArrayList<MaterielSpecial> matSpes) {
 		String[] mats = new String[20];
 		int i = 0;
@@ -127,6 +148,11 @@ public class Controller {
 		}
 	}
 
+	/**
+	 * Renvoie les noms des Interventions
+	 * @param inter
+	 * @return String[]
+	 */
 	public String[] recupInterventionNom(ArrayList<Intervention> inter) {
 		String[] interventions = new String[100];
 		int i = 0;
@@ -137,6 +163,11 @@ public class Controller {
 		return interventions;
 	}
 
+	/**
+	 * Renvoie les noms des pc
+	 * @param pc
+	 * @return String[]
+	 */
 	public String[] recupPC(ArrayList<Pc> pc) {
 		String[] pcs = new String[100];
 		int i = 0;
@@ -146,8 +177,6 @@ public class Controller {
 		}
 		return pcs;
 	}
-
-
 
 	public void addView(Vue vue) {
 		this.vue = vue;

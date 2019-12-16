@@ -80,7 +80,7 @@ public class MaterielSpecial {
 ///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * Methode permettant de change l'etat de la fonction, mais comme je ne connais pas encore les instructions pour acceder � un DB
+	 * Methode permettant de change l'etat du materiel special
 	 * @param etat
 	 * @throws SQLException 
 	 */
