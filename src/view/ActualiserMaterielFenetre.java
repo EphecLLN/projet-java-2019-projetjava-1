@@ -43,7 +43,6 @@ public class ActualiserMaterielFenetre extends Vue {
 		j9 = new JFrame();
 		j9.setTitle("Actualiser Matériel");
 		j9.setVisible(true);
-		j9.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		j9.setBounds(100, 100, 308, 279);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -99,6 +98,7 @@ public class ActualiserMaterielFenetre extends Vue {
 		txtChaiseNeuf.setBounds(98, 53, 47, 22);
 		panel.add(txtChaiseNeuf);
 		txtChaiseNeuf.setColumns(10);
+		txtChaiseNeuf.setText(String.valueOf(local.getNbChaises().getNeuf()));
 		
 		// creation du champ de recuperation du nombre de tables neuves
 		txtTableNeuf = new JTextField();
@@ -107,6 +107,7 @@ public class ActualiserMaterielFenetre extends Vue {
 		txtTableNeuf.setBounds(185, 53, 47, 22);
 		panel.add(txtTableNeuf);
 		txtTableNeuf.setColumns(10);
+		txtTableNeuf.setText(String.valueOf(local.getNbTables().getNeuf()));
 		
 		// creation du champ de recuperation du nombre de chaise en bon état
 		txtChaiseBon = new JTextField();
@@ -115,6 +116,7 @@ public class ActualiserMaterielFenetre extends Vue {
 		txtChaiseBon.setColumns(10);
 		txtChaiseBon.setBounds(98, 86, 47, 22);
 		panel.add(txtChaiseBon);
+		txtChaiseBon.setText(String.valueOf(local.getNbChaises().getBon()));
 		
 		// creation du champ de recuperation du nombre de chaises usées
 		txtChaiseUse = new JTextField();
@@ -123,6 +125,7 @@ public class ActualiserMaterielFenetre extends Vue {
 		txtChaiseUse.setColumns(10);
 		txtChaiseUse.setBounds(98, 118, 47, 22);
 		panel.add(txtChaiseUse);
+		txtChaiseUse.setText(String.valueOf(local.getNbChaises().getUse()));
 		
 		// creation du champ de recuperation du nombre de chaises critiques
 		txtChaiseCritique = new JTextField();
@@ -131,6 +134,7 @@ public class ActualiserMaterielFenetre extends Vue {
 		txtChaiseCritique.setColumns(10);
 		txtChaiseCritique.setBounds(98, 147, 47, 22);
 		panel.add(txtChaiseCritique);
+		txtChaiseCritique.setText(String.valueOf(local.getNbChaises().getCritique()));
 		
 		// creation du champ de recuperation du nombre de tables en bon état
 		txtTableBon = new JTextField();
@@ -139,6 +143,7 @@ public class ActualiserMaterielFenetre extends Vue {
 		txtTableBon.setColumns(10);
 		txtTableBon.setBounds(186, 86, 47, 22);
 		panel.add(txtTableBon);
+		txtTableBon.setText(String.valueOf(local.getNbTables().getBon()));
 		
 		// creation du champ de recuperation du nombre de tables usées
 		txtTableUse = new JTextField();
@@ -147,6 +152,7 @@ public class ActualiserMaterielFenetre extends Vue {
 		txtTableUse.setColumns(10);
 		txtTableUse.setBounds(186, 118, 47, 22);
 		panel.add(txtTableUse);
+		txtTableUse.setText(String.valueOf(local.getNbTables().getUse()));
 		
 		// creation du champ de recuperation du nombre de tables critiques
 		txtTableCritique = new JTextField();
@@ -155,6 +161,7 @@ public class ActualiserMaterielFenetre extends Vue {
 		txtTableCritique.setColumns(10);
 		txtTableCritique.setBounds(186, 147, 47, 22);
 		panel.add(txtTableCritique);
+		txtTableCritique.setText(String.valueOf(local.getNbTables().getCritique()));
 
 		// creation du bouton de validation
 		JButton btnValider = new JButton("Valider");
