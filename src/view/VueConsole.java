@@ -3,26 +3,18 @@
  */
 package view;
 
-
-import java.awt.desktop.SystemEventListener;
 import java.sql.SQLException;
 import java.util.Observable;
-
-import java.util.Observer;
 import java.util.Scanner;
-
-import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Trim;
-
 import controller.Controller;
 import model.*;
-
-
 
 /**
  * @author Victoire
  *
  */
-public class VueConsole extends Vue implements Observer{
+@SuppressWarnings({"deprecation", "resource"})
+public class VueConsole extends Vue{
 	protected Scanner sc;
 
 	public VueConsole(Ecole model, Controller controller) {
@@ -34,7 +26,6 @@ public class VueConsole extends Vue implements Observer{
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
 		//System.out.println("Bonjour");
 	}
 
@@ -128,7 +119,6 @@ public class VueConsole extends Vue implements Observer{
 						try {
 							local.majMateriels(chaises, tables);
 						} catch (SQLException e) {
-							// TODO Auto-generated catch block
 						}
 						break;
 					case "B":
@@ -144,7 +134,6 @@ public class VueConsole extends Vue implements Observer{
 						try {
 							matspe.majMaterielSpecial(newEtat);
 						} catch (SQLException e) {
-							// TODO Auto-generated catch block
 						}
 						break;
 					case "C":
@@ -163,7 +152,6 @@ public class VueConsole extends Vue implements Observer{
 						try {
 							intervention.majIntervention(newNom, newCom);
 						} catch (SQLException e) {
-							// TODO Auto-generated catch block
 						}
 						break;
 					case "D":
@@ -178,7 +166,6 @@ public class VueConsole extends Vue implements Observer{
 						try {
 							local.genererIntervention(nomI, com);
 						} catch (SQLException e) {
-							// TODO Auto-generated catch block
 						}
 						break;
 					case "E":
@@ -193,7 +180,6 @@ public class VueConsole extends Vue implements Observer{
 						try {
 							local.genererMaterielSpecial(nomMS, etatMS);
 						} catch (SQLException e) {
-							// TODO Auto-generated catch block
 						}
 						break;
 					case "F":
@@ -239,7 +225,6 @@ public class VueConsole extends Vue implements Observer{
 						try {
 							localinfo2.genererPc(nomPc, typePc, tourPc, ecranPc, clavierPc, sourisPc, commentairesPc);
 						} catch (SQLException e1) {
-							// TODO Auto-generated catch block
 						}
 						break;
 					}
@@ -285,7 +270,6 @@ public class VueConsole extends Vue implements Observer{
 					try {
 						controller.genererLocal(nomNL, localInfo, chaisesNL, tablesNL, implantation);
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 					}
 					break;
 
@@ -321,7 +305,6 @@ public class VueConsole extends Vue implements Observer{
 						try {
 							implantation.genererUtilisateur(nomU, prenomU, gradeU, pseudoU, mdpU);
 						} catch (SQLException e) {
-							// TODO Auto-generated catch block
 						}
 						break;
 					}
@@ -349,7 +332,6 @@ public class VueConsole extends Vue implements Observer{
 					try {
 						model.genererImplantationEtAdresse(nomI, numeroI, rueI, codePostalI, villeI);
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 					}
 					break;
 				default:

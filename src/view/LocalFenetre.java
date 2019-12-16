@@ -1,10 +1,7 @@
 package view;
 
-import java.awt.BorderLayout;
 
-import java.awt.EventQueue;
 import java.util.Observable;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -13,11 +10,7 @@ import controller.Controller;
 import model.Ecole;
 import model.Local;
 import model.*;
-
-import javax.swing.JTextField;
 import java.awt.Font;
-import java.awt.Window;
-
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -25,9 +18,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JSeparator;
-import java.awt.Button;
-import java.awt.Color;
 
+@SuppressWarnings({ "unused", "deprecation" })
 public class LocalFenetre extends Vue {
 
 	/////////////////////////////////////////*ATTRIBUTS*//////////////////////////////////////////////////////////////////////////////////////
@@ -103,8 +95,7 @@ public class LocalFenetre extends Vue {
 		panel.add(lblMaterielSpecial);
 
 		//Creation d'une box permettant de selectionner un Materiel special du local
-		@SuppressWarnings("unchecked")
-		JComboBox boxMatSpec = new JComboBox(controller.recupMatSpecNom(local.getMaterielsSpeciaux()));
+		JComboBox<String> boxMatSpec = new JComboBox<String>(controller.recupMatSpecNom(local.getMaterielsSpeciaux()));
 		boxMatSpec.setBounds(29, 202, 245, 27);
 		panel.add(boxMatSpec);
 
@@ -128,8 +119,7 @@ public class LocalFenetre extends Vue {
 		panel.add(lblIntervention);
 
 		//Creation d'une box permettant de selectionner une intervention
-		@SuppressWarnings("unchecked")
-		JComboBox boxIntervention = new JComboBox(controller.recupInterventionNom(local.getInterventions()));
+		JComboBox<String> boxIntervention = new JComboBox<String>(controller.recupInterventionNom(local.getInterventions()));
 		boxIntervention.setBounds(29, 318, 245, 27);
 		panel.add(boxIntervention);
 
@@ -476,7 +466,6 @@ public class LocalFenetre extends Vue {
 
 	@Override
 	public void affiche(String string) {
-		// TODO Auto-generated method stub
 
 	}
 }

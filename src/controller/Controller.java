@@ -4,17 +4,11 @@
 package controller;
 
 
-
-
 import java.sql.SQLException;
-
 import java.util.ArrayList;
-import java.util.Iterator;
-
 import model.*;
 
 import view.Vue;
-import view.VueConsole;
 
 /**
  * @author Victoire

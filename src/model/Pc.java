@@ -3,8 +3,6 @@
  */
 package model;
 
-import java.sql.SQLException;
-
 /**
  * @author lb
  *
@@ -156,41 +154,5 @@ public class Pc {
 		this.clavier = clavier;
 		this.souris = souris;
 		this.commentaires = commentaires;
-	}
-
-///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
-
-	/**
-	 * Permet de changer l'état d'un pc
-	 * @param nom
-	 * @param etat
-	 * @throws SQLException
-	 */
-	public void changerEtat(String nom, String etat) throws SQLException {
-
-		Connexion conn = new Connexion("update pc set " + nom + "=" + etat + "where id =" + this.id);
-
-		switch (nom) {
-		case "type":
-			this.type = etat;
-			break;
-		case "tour":
-			this.tour = etat;
-			break;
-		case "ecran":
-			this.ecran = etat;
-			break;
-		case "clavier":
-			this.clavier = etat;
-			break;
-		case "souris":
-			this.souris = etat;
-			break;
-		case "commentaires":
-			this.commentaires = etat;
-			break;
-		default:
-			throw new IllegalArgumentException("Unexpected value: " + nom);
-		}
 	}
 }

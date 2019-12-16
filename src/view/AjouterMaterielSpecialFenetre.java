@@ -1,14 +1,9 @@
 package view;
 
-import java.awt.BorderLayout;
-
-import java.awt.EventQueue;
 import java.util.Observable;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import controller.Controller;
 import model.*;
 import javax.swing.JLabel;
@@ -18,8 +13,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
-import java.awt.Window.Type;
 
+@SuppressWarnings("deprecation")
 public class AjouterMaterielSpecialFenetre extends Vue {
 	
 ////////////////////////////////////////////////*ATTRIBUTS*///////////////////////////////////////////////////////////////////////////////

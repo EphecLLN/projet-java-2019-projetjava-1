@@ -3,8 +3,6 @@
  */
 package model;
 
-import java.sql.SQLException;
-
 /**
  * @author Victoire
  *

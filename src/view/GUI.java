@@ -6,40 +6,15 @@ import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import controller.Controller;
 import model.Ecole;
-import view.VueConsole.ReadInput;
-
-import javax.swing.JTextField;
-import javax.swing.JTextArea;
-import java.awt.Color;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JTextPane;
-import java.awt.Font;
-import java.awt.Rectangle;
-import javax.swing.SwingConstants;
-import java.awt.event.ActionListener;
-import java.util.Observable;
-import java.util.Scanner;
-import java.awt.event.ActionEvent;
-import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
-
-import java.awt.Dimension;
-import javax.swing.JCheckBox;
-import javax.swing.JTabbedPane;
-import javax.swing.JSpinner;
-import javax.swing.JLayeredPane;
-import javax.swing.JDesktopPane;
 
 @SuppressWarnings("deprecation")
 public class GUI extends Vue{
@@ -144,7 +119,8 @@ public class GUI extends Vue{
 					j.setVisible(false);
 
 					// création et affichage de la 2e fenêtre
-					ImplantationFenetre imp_fenetre = new ImplantationFenetre(model, controller);
+					@SuppressWarnings("unused")
+					ImplantationFenetre impFen = new ImplantationFenetre(model, controller);
 				}
 				else {
 					System.out.println("Connexion pas réussie !");

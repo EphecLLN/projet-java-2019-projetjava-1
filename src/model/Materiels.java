@@ -3,8 +3,6 @@
  */
 package model;
 
-import java.sql.SQLException;
-
 /**
  * Classe permettant de faire et d'actualiser un inventaire de materiels
  * @author igorv
