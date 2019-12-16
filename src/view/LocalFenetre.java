@@ -375,6 +375,7 @@ public class LocalFenetre extends Vue {
 
 		// creation du label d'affichage de l'etat de la souris
 		JLabel txtSouris = new JLabel("");
+		txtSouris.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtSouris.setBounds(64, 129, 56, 16);
 		panelDetailsPc.add(txtSouris);
 		txtSouris.setHorizontalAlignment(SwingConstants.LEFT);
@@ -390,10 +391,6 @@ public class LocalFenetre extends Vue {
 		separator_5.setBounds(0, 0, 298, 12);
 		panelDetailsPc.add(separator_5);
 
-		JButton btnModifier = new JButton("Modifier");
-		btnModifier.setBounds(202, 248, 96, 29);
-		panelDetailsPc.add(btnModifier);
-
 		boxListePc = new JComboBox<String>();
 		boxListePc.setBounds(29, 37, 245, 27);
 		panelLocalInfo.add(boxListePc);
@@ -408,7 +405,7 @@ public class LocalFenetre extends Vue {
 				boxListePc.addItem(nomPc);
 			}
 		}
-
+		
 		// creation du bouton de validation du choix du pc
 		JButton btnValider = new JButton("Valider");
 		btnValider.addActionListener(new ActionListener() {

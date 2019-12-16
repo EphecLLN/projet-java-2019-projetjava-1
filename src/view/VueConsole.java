@@ -4,11 +4,14 @@
 package view;
 
 
+import java.awt.desktop.SystemEventListener;
 import java.sql.SQLException;
 import java.util.Observable;
 
 import java.util.Observer;
 import java.util.Scanner;
+
+import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Trim;
 
 import controller.Controller;
 import model.*;
@@ -37,9 +40,8 @@ public class VueConsole extends Vue implements Observer{
 
 	public class ReadInput implements Runnable{
 		public void run() {
-			while(true) {
 				// completer tout �a
-					String pseudo = "", mdp = "" , imp = "",var = "", var2= "", loc = "", var3="", var4="";
+					String pseudo = "", mdp = "" , imp = "",var = "", var2= "", loc = "", var3="";
 					do {
 						System.out.print("Utilisateur : ");
 						Scanner scan = new Scanner (System.in);
@@ -50,11 +52,14 @@ public class VueConsole extends Vue implements Observer{
 					}
 					while(!(controller.login(pseudo, mdp)[0] == 1));
 					System.out.println("Connexion r�ussie !");
-
-					System.out.print("Dans quelle implantation �tes-vous? Veuillez � bien �crire le nom de l'implantation \n");
+					while(true) {
+					System.out.print("Dans quelle implantation �tes-vous? Veuillez � bien �crire le nom de l'implantation \n Pour arreter le programme tapez 'fin' \n");
 					controller.afficherTab(controller.recupererImpNom());
 					Scanner scan3 = new Scanner(System.in);
 					imp = scan3.nextLine();
+					if(imp.equals("fin")) {
+						System.exit(0);
+					}
 					Implantation implantation = model.getImplantation(imp);
 					System.out.println(implantation.getNom() + " - " + implantation.getAdresse());
 					System.out.println("Nombre de locaux : " + implantation.nombreLocauxTotal());
@@ -63,7 +68,6 @@ public class VueConsole extends Vue implements Observer{
 					System.out.println("Que voulez-vous faire ? \n A : Choisir un local à afficher \n B : Ajouter un Local \n C : Menu utilisateur");
 					Scanner scan4 = new Scanner(System.in);
 					var = scan4.nextLine();
-					
 					switch(var) {
 					case "A":
 						System.out.print("Quelle local souhaitez vous afficher ?\n");
@@ -84,14 +88,10 @@ public class VueConsole extends Vue implements Observer{
 							LocalInformatique localinfo = (LocalInformatique) local;
 							System.out.println("Liste des PC :");
 							controller.afficherTab(controller.recupPC(localinfo.getPcs()));
-							System.out.print("Veuillez choisir le pc pour lequelle vous voullez afficher les details");
-							Scanner scan40 = new Scanner(System.in);
-							
-							
 						}
 						System.out.println("\n A : Actualiser le materiel \n B : Modifier un materiel special \n C : Modifier une intervention \n D : Ajouter une intervention \n E : Ajouter un Materiel special");
 						if(local.getClass().getSimpleName().equals("LocalInformatique")) {
-							System.out.println("\n F : Afficher les détails d'un PC \n G : Ajouter un PC");
+							System.out.println(" F : Afficher les détails d'un PC \n G : Ajouter un PC");
 						}
 						Scanner scan6 = new Scanner(System.in);
 						var2 = scan6.nextLine();
@@ -202,10 +202,51 @@ public class VueConsole extends Vue implements Observer{
 							}
 							break;
 						case "F":
-							
+							String pcChoix="";
+							LocalInformatique localinfo = (LocalInformatique) local;
+							controller.afficherTab(controller.recupPC(localinfo.getPcs()));
+							System.out.print("Quelle Pc voullez vous afficher ?");
+							Scanner scan40 = new Scanner(System.in);
+							pcChoix = scan40.nextLine();
+							Pc pc = localinfo.getPc(pcChoix);
+							System.out.println("Détail PC " + pc.getNom() +" :");
+							System.out.println("Type : " + pc.getType());
+							System.out.println("Tour : " + pc.getTour());
+							System.out.println("Ecran : " + pc.getEcran());
+							System.out.println("Clavier : " + pc.getClavier());
+							System.out.println("Souris : " + pc.getSouris());
+							System.out.println("Commentaires : " + pc.getCommentaires());
 							break;
 						case "G":
-							
+							String NomPc="", TypePc="", TourPc="", EcranPc="", ClavierPc="", SourisPc="", CommentairesPc="";
+							LocalInformatique localinfo2 = (LocalInformatique) local;
+							System.out.print("Nom du PC (PCXXX ex : PC001) :");
+							Scanner scan41 = new Scanner(System.in);
+							NomPc = scan41.nextLine();
+							System.out.print("Type :");
+							Scanner scan42 = new Scanner(System.in);
+							TypePc = scan42.nextLine();
+							System.out.print("Tour :");
+							Scanner scan43 = new Scanner(System.in);
+							TourPc = scan43.nextLine();
+							System.out.print("Ecran :");
+							Scanner scan44 = new Scanner(System.in);
+							EcranPc = scan44.nextLine();
+							System.out.print("Clavier :");
+							Scanner scan45 = new Scanner(System.in);
+							ClavierPc = scan45.nextLine();
+							System.out.print("Souris :");
+							Scanner scan46 = new Scanner(System.in);
+							SourisPc = scan46.nextLine();
+							System.out.print("Commentaires :");
+							Scanner scan47 = new Scanner(System.in);
+							CommentairesPc = scan47.nextLine();
+							try {
+								localinfo2.genererPc(NomPc, TypePc, TourPc, EcranPc, ClavierPc, SourisPc, CommentairesPc);
+							} catch (SQLException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
 							break;
 						}
 						break;
@@ -299,44 +340,6 @@ public class VueConsole extends Vue implements Observer{
 					
 					
 			}}}
-					
-					
-					
-					
-/*
-					System.out.print("Que voulez-vous faire? A pour calculer un nombre total de locaux, B pour afficher l'ensemble des locaux, C pour interragir avec le mat�riel ");
-					Scanner scan4 = new Scanner(System.in);
-					var = scan4.nextLine();
-
-					switch(var) {
-					case "A":
-						//System.out.println("Le nombre total de locaux s'�l�ve à " + controller.model.implantations.locals.size());
-						break;
-					case "B":
-						//controller.afficherClasses();
-						break;
-					case "C" :
-						System.out.print("Que voulez-vous faire? A pour changer l'�tat du mat�riel, B pour afficher le total du mat�riel ");
-						Scanner scan5 = new Scanner(System.in);
-						var2 = scan5.nextLine();
-						switch(var2) {
-						case "A":
-							System.out.println("� impl�menter");
-							break;
-						case "B":
-							System.out.println(controller.model.implantations.size()); // A CHANGER
-							break;
-						default:
-							throw new IllegalArgumentException("Unexpected value: " + var2);
-						}
-						break;
-					default:
-						throw new IllegalArgumentException("Unexpected value: " + var);
-					}
-			}
-		}
-	}
-*/
 
 	public void affiche(String string) {
 		System.out.println(string);
