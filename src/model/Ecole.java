@@ -54,6 +54,7 @@ public class Ecole extends Observable {
 
 
 	}
+	
 	/**
 	 * Permet d'ajouter une nouvelle implantation. Elle est enregistré en bdd et ajouté dans le modèle
 	 * @param nom
@@ -72,7 +73,8 @@ public class Ecole extends Observable {
 	}
 
 	/**
-	 * Renvoit un objet de type Implantation
+	 * Renvoit un objet de type Implantation.
+	 * Ne fait pas partie des getters et des setters
 	 * @param nom
 	 * @return Implantation
 	 */

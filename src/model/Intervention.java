@@ -62,7 +62,7 @@ public class Intervention{
 	public void setCommentaires(String commentaires) {
 		this.commentaires = commentaires;
 	}
-///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////*CONSTRUCTEUR*////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * @param id
@@ -90,12 +90,5 @@ public class Intervention{
 		
 	}
 	
-	/**
-	 * Supprime l'objet qui l'appelle en bdd
-	 * @throws SQLException
-	 */
-	public void supprimer() throws SQLException {
-		Connexion.supprimer(this, this.id);
-	}
 
 }

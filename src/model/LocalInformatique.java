@@ -34,7 +34,7 @@ public class LocalInformatique extends Local{
 		this.pcs = pcs;
 	}
 
-///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////*CONSTRUCTEUR*////////////////////////////////////////////////////////////////////////////////////
 
 	public LocalInformatique(int id, String nom, Materiels nbChaises, Materiels nbTables) {
 		// TODO Auto-generated constructor stub
@@ -61,17 +61,11 @@ public class LocalInformatique extends Local{
 		this.getPcs().add(pc);
 	}
 		
-       
-	@Override
-	public void supprimer() throws SQLException {
-		for (Pc pc : pcs) {
-			pc.supprimer();
-		}
-		super.supprimer();
-	}
+ 
 	
 	/**
 	 * Renvoie un objet de type Pc
+	 * Ne fait pas partie des getters
 	 * @param nom
 	 * @return Pc
 	 */

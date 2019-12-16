@@ -88,7 +88,7 @@ public class Adresse {
 	this.id = id;
 	}
 
-///////////////////////////////////////*CONSTRUCTEURS*//////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////*CONSTRUCTEUR*//////////////////////////////////////////////////////////////////////////////////////////
 
 	public Adresse(int id, int numero, String rue, String ville, int codePostal){
 	this.id = id;
@@ -97,40 +97,13 @@ public class Adresse {
 	this.rue = rue;
 	this.ville = ville;
 	}
+	
 
-///////////////////////////////////////*METHODES*//////////////////////////////////////////////////////////////////////////////////////////////
 
-	/**
-	 * Modifie les valeurs des attributs d'une adresse par ceux passes en parametre
-	 * Les modifications sont aussi effectuees dans la base de donnees
-	 *
-	 *
-	 * @param numero Le numero du betiment
-	 * @param codePostal Le code postal de la ville
-	 * @param rue Le nom de la rue
-	 * @param ville Le nom de la ville
-	 * @throws SQLException 
-	 *
-	 * @throws Exception Renvoit une exception si l'operation n'a pas pu etre effectuee
-	 *
-	*/
-	public void modifierAdresse(int numero, int codePostal, String rue, String ville, int newNumero, int newCodePostal, String newRue, String newVille) throws SQLException {
-		//il manque toute la partie avec la base de donnees qui sera rajoutee par la suite
-		Connexion cg = new Connexion("update utilisateurs set " + numero + "=" + newNumero + ", " + codePostal + "=" + newCodePostal + ", " + rue + "=" + newRue + ", " + ville + "=" + newVille  + " where id =" + this.id);
-
-	}
-		
-	/**
-	 * Supprime l'objet qui l'appelle en bdd
-	 * @throws SQLException
-	 */
-	public void supprimer() throws SQLException {
-		Connexion.supprimer(this, this.id);
-	}
-
-////////////////////////////////////////////////*METHODE TOSTRING*/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////*METHODE*/////////////////////////////////////////////////////////////////////////////////////
 
 	public String toString() {
+
 		 return this.numero + " " + this.rue + " " + this.codePostal + " " + this.ville;
 	}
 

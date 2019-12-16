@@ -110,7 +110,7 @@ public class Local{
 		this.interventions = interventions;
 	}
 
-///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////*CONSTRUCTEUR*////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * @param id
@@ -174,7 +174,7 @@ public class Local{
 	}
 
 	/**
-	 * Permet de generer le materiels a partir de la base de donnees
+	 * Permet de generer le matériels a partir de la base de donnees
 	 * @param chaises
 	 * @param tables
 	 * @throws SQLException
@@ -186,7 +186,7 @@ public class Local{
 	}
 	
 	/**
-	 * Permet de faire la mise a jour du materiel dans la base de donnees
+	 * Permet de faire la mise a jour du matériel dans la base de donnees
 	 * @param chaises
 	 * @param tables
 	 * @throws SQLException
@@ -208,6 +208,7 @@ public class Local{
 	
 	/**
 	 * Change la valeur des attributs de type Materiels du local avec la valeur adhoc
+	 * Ne fait pas partie des setters
 	 * @throws SQLException
 	 */
 	public void setMateriels() throws SQLException {
@@ -226,6 +227,7 @@ public class Local{
 	
 	/**
 	 * Renvoie un objet de type MaterielSpecial
+	 * Ne fait pas partie des getters
 	 * @param nom
 	 * @return MaterielSpecial
 	 */
@@ -245,6 +247,7 @@ public class Local{
 	
 	/**
 	 * Renvoie un objet de type Intervention
+	 * Ne fait pas partie des getters
 	 * @param nom
 	 * @return Intervention
 	 */
@@ -290,26 +293,6 @@ public class Local{
 		this.getInterventions().add(inte);
 	}
 	
-
-
-	/**
-	 * Supprime l'objet qui l'appelle en bdd
-	 * @throws SQLException
-	 */
-	public void supprimer() throws SQLException {
-
-		this.nbChaises.supprimer();
-		this.nbTables.supprimer();
-		for (Intervention intervention : interventions) {
-			intervention.supprimer();
-		}
-		for (MaterielSpecial materielSpecial : materielsSpeciaux) {
-			materielSpecial.supprimer();
-		}
-		Connexion.supprimer(this, this.id);
-	}
-
-///////////////////////////////////////*METHODE TOSTRING*////////////////////////////////////////////////////////////////////////////////////
 
 
 	public String toString() {

@@ -108,7 +108,7 @@ public class Materiels{
 		this.id = id;
 	}
 
-///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////*CONSTRUCTEUR*////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 *
@@ -163,11 +163,5 @@ public class Materiels{
 		return neuf + bon + use + critique;
 	}
 
-	/**
-	 * Supprime l'objet qui l'appelle en bdd
-	 * @throws SQLException
-	 */
-	public void supprimer() throws SQLException {
-		Connexion.supprimer(this, this.id);
-	}
+	
 }
