@@ -109,6 +109,7 @@ public class AjouterLocalFenetre extends Vue {
 
 		// creation du champ de recuperation d'une table use
 		txtTableUse = new JTextField();
+		txtTableUse.setHorizontalAlignment(SwingConstants.CENTER);
 		txtTableUse.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtTableUse.setColumns(10);
 		txtTableUse.setBounds(230, 174, 40, 22);
@@ -143,6 +144,7 @@ public class AjouterLocalFenetre extends Vue {
 
 		// creation du champ de recuperation d'une chaise usée
 		txtChaiseUse = new JTextField();
+		txtChaiseUse.setHorizontalAlignment(SwingConstants.CENTER);
 		txtChaiseUse.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtChaiseUse.setColumns(10);
 		txtChaiseUse.setBounds(128, 174, 40, 22);
@@ -150,6 +152,7 @@ public class AjouterLocalFenetre extends Vue {
 
 		// creation du champ de recuperation d'une table en bon état
 		txtTableBon = new JTextField();
+		txtTableBon.setHorizontalAlignment(SwingConstants.CENTER);
 		txtTableBon.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtTableBon.setColumns(10);
 		txtTableBon.setBounds(230, 143, 40, 22);
@@ -190,6 +193,7 @@ public class AjouterLocalFenetre extends Vue {
 
 		// creation du champ de recuperation d'un chaise en bon état
 		txtChaiseBon = new JTextField();
+		txtChaiseBon.setHorizontalAlignment(SwingConstants.CENTER);
 		txtChaiseBon.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtChaiseBon.setColumns(10);
 		txtChaiseBon.setBounds(128, 143, 40, 22);
@@ -197,6 +201,7 @@ public class AjouterLocalFenetre extends Vue {
 
 		// creation du champ de recuperation d'une chaise critique
 		txtChaiseCritique = new JTextField();
+		txtChaiseCritique.setHorizontalAlignment(SwingConstants.CENTER);
 		txtChaiseCritique.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtChaiseCritique.setColumns(10);
 		txtChaiseCritique.setBounds(128, 203, 40, 22);
@@ -204,6 +209,7 @@ public class AjouterLocalFenetre extends Vue {
 
 		// creation du champ de recuperation d'une table critique
 		txtTableCritique = new JTextField();
+		txtTableCritique.setHorizontalAlignment(SwingConstants.CENTER);
 		txtTableCritique.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtTableCritique.setBounds(230, 203, 40, 22);
 		contentPane.add(txtTableCritique);
