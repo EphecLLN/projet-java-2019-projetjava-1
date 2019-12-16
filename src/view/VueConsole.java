@@ -39,7 +39,7 @@ public class VueConsole extends Vue implements Observer{
 		public void run() {
 			while(true) {
 				// completer tout �a
-					String pseudo = "", mdp = "" , imp = "",var = "", var2= "", loc = "", var3="";
+					String pseudo = "", mdp = "" , imp = "",var = "", var2= "", loc = "", var3="", var4="";
 					do {
 						System.out.print("Utilisateur : ");
 						Scanner scan = new Scanner (System.in);
@@ -83,11 +83,16 @@ public class VueConsole extends Vue implements Observer{
 						if(local.getClass().getSimpleName().equals("LocalInformatique")) {
 							LocalInformatique localinfo = (LocalInformatique) local;
 							System.out.println("Liste des PC :");
-							/*for(String nomPc : controller.recupPC(localinfo.getPcs())) {
-								System.out.println(controller.recupPC(localinfo.getPcs()));
-							}*/
+							controller.afficherTab(controller.recupPC(localinfo.getPcs()));
+							System.out.print("Veuillez choisir le pc pour lequelle vous voullez afficher les details");
+							Scanner scan40 = new Scanner(System.in);
+							
+							
 						}
 						System.out.println("\n A : Actualiser le materiel \n B : Modifier un materiel special \n C : Modifier une intervention \n D : Ajouter une intervention \n E : Ajouter un Materiel special");
+						if(local.getClass().getSimpleName().equals("LocalInformatique")) {
+							System.out.println("\n F : Afficher les détails d'un PC \n G : Ajouter un PC");
+						}
 						Scanner scan6 = new Scanner(System.in);
 						var2 = scan6.nextLine();
 						switch(var2) {
@@ -195,6 +200,12 @@ public class VueConsole extends Vue implements Observer{
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
+							break;
+						case "F":
+							
+							break;
+						case "G":
+							
 							break;
 						}
 						break;

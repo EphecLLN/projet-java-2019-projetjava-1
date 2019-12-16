@@ -138,14 +138,12 @@ public class Controller {
 	}
 
 	public String[] recupPC(ArrayList<Pc> pc) {
-		System.out.println(pc.get(0).getNom() + " " + pc.get(1).getNom() + " " + pc.get(2).getNom() + " " + pc.get(3).getNom() + " ");
 		String[] pcs = new String[100];
 		int i = 0;
 		for(Pc unPc : pc) {
 			pcs[i] = unPc.getNom();
 			i++;
 		}
-		System.out.println(pcs[0] + " "  + pcs[1] + " " + pcs[2] + " " + pcs[3]);
 		return pcs;
 	}
 
