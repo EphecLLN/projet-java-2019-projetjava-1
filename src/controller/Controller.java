@@ -175,8 +175,6 @@ public class Controller {
 		return pcs;
 	}
 
-
-
 	public void addView(Vue vue) {
 		this.vue = vue;
 	}

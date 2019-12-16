@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.util.Observable;
 
@@ -9,11 +10,20 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controller.Controller;
+import model.Connexion;
 import model.Ecole;
+import model.LocalInformatique;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class AjouterPCFenetre extends Vue {
 	
@@ -21,124 +31,135 @@ public class AjouterPCFenetre extends Vue {
 
 	private JPanel contentPane;
 	private JFrame j8;
-	private JLabel lblType;
-	private JLabel lblToure;
-	private JLabel lblEcran;
-	private JLabel lblClavier;
-	private JLabel lblSouris;
-	private JLabel lblCommentaire;
+	private JTextField txtNom;
 	private JTextField txtType;
-	private JTextField txtToure;
-	private JTextField txtEcran;
-	private JTextField txtClavier;
-	private JTextField txtSouris;
-	private JTextField txtCommentaire;
-	private JButton btnAjouter;
+	private JComboBox boxTour;
+	private JComboBox boxEcran;
+	private JComboBox boxClavier;
+	private JComboBox boxSouris;
+	private JTextField txtCommentaires;
 
 ////////////////////////////////////////*CONSTRUCTEUR*////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * Creation de la fenetre 
 	 */
-	public AjouterPCFenetre(Ecole model, Controller controller) {
+	public AjouterPCFenetre(Ecole model, Controller controller, LocalInformatique localInformatique) {
 		super(model,controller);
 		j8 = new JFrame();
 		j8.setVisible(true);
-		j8.setBounds(100, 100, 275, 264);
+		j8.setBounds(100, 100, 275, 276);
 		contentPane = new JPanel();
 		j8.setTitle("Ajouter PC");
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		j8.setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(5, 5, 259, 225);
-		contentPane.add(panel);
-		panel.setLayout(null);
+		txtNom = new JTextField();
+		txtNom.setColumns(10);
+		txtNom.setBounds(125, 8, 130, 26);
+		contentPane.add(txtNom);
 		
-		//Creation du label Type
-		lblType = new JLabel("Type");
+		JLabel label = new JLabel("Nom :");
+		label.setFont(new Font("Dialog", Font.PLAIN, 12));
+		label.setBounds(14, 13, 38, 16);
+		contentPane.add(label);
+		
+		JLabel lblType = new JLabel("Type :");
 		lblType.setFont(new Font("Dialog", Font.PLAIN, 12));
-		lblType.setBounds(10, 10, 45, 13);
-		panel.add(lblType);
+		lblType.setBounds(14, 41, 38, 16);
+		contentPane.add(lblType);
 		
-		//Creation du label Tour
-		lblToure = new JLabel("Tour");
-		lblToure.setFont(new Font("Dialog", Font.PLAIN, 12));
-		lblToure.setBounds(10, 44, 45, 13);
-		panel.add(lblToure);
+		JLabel lblTour = new JLabel("Tour :");
+		lblTour.setFont(new Font("Dialog", Font.PLAIN, 12));
+		lblTour.setBounds(14, 69, 37, 16);
+		contentPane.add(lblTour);
 		
-		//Creation du label Ecran
-		lblEcran = new JLabel("Ecran");
+		JLabel lblEcran = new JLabel("Écran :");
 		lblEcran.setFont(new Font("Dialog", Font.PLAIN, 12));
-		lblEcran.setBounds(10, 77, 45, 13);
-		panel.add(lblEcran);
+		lblEcran.setBounds(14, 97, 42, 16);
+		contentPane.add(lblEcran);
 		
-		//Creation du label Clavier
-		lblClavier = new JLabel("Clavier");
+		JLabel lblClavier = new JLabel("Clavier :");
 		lblClavier.setFont(new Font("Dialog", Font.PLAIN, 12));
-		lblClavier.setBounds(10, 108, 45, 13);
-		panel.add(lblClavier);
+		lblClavier.setBounds(14, 125, 51, 16);
+		contentPane.add(lblClavier);
 		
-		//Creation du label Souris
-		lblSouris = new JLabel("Souris");
+		JLabel lblSouris = new JLabel("Souris :");
 		lblSouris.setFont(new Font("Dialog", Font.PLAIN, 12));
-		lblSouris.setBounds(10, 137, 45, 13);
-		panel.add(lblSouris);
+		lblSouris.setBounds(14, 153, 47, 16);
+		contentPane.add(lblSouris);
 		
-		//Creation du label Commentaire
-		lblCommentaire = new JLabel("Commentaire");
-		lblCommentaire.setFont(new Font("Dialog", Font.PLAIN, 12));
-		lblCommentaire.setBounds(10, 166, 84, 13);
-		panel.add(lblCommentaire);
+		JLabel lblCommentaires = new JLabel("Commentaires :");
+		lblCommentaires.setFont(new Font("Dialog", Font.PLAIN, 12));
+		lblCommentaires.setBounds(14, 181, 99, 16);
+		contentPane.add(lblCommentaires);
 		
-		//Creation du champs permettant de renseigner le type
 		txtType = new JTextField();
-		txtType.setFont(new Font("Dialog", Font.PLAIN, 12));
-		txtType.setBounds(65, 8, 96, 19);
-		panel.add(txtType);
 		txtType.setColumns(10);
+		txtType.setBounds(125, 36, 130, 26);
+		contentPane.add(txtType);
 		
-		//Creation du champs permettant de renseigner la tour
-		txtToure = new JTextField();
-		txtToure.setFont(new Font("Dialog", Font.PLAIN, 12));
-		txtToure.setBounds(65, 42, 96, 19);
-		panel.add(txtToure);
-		txtToure.setColumns(10);
+		boxTour = new JComboBox();
+		boxTour.setModel(new DefaultComboBoxModel(new String[] {"Neuf", "Bon", "Usé", "Critique"}));
+		boxTour.setBounds(125, 64, 130, 26);
+		contentPane.add(boxTour);
 		
-		//Creation du champs permettant de renseigner l'ecran
-		txtEcran = new JTextField();
-		txtEcran.setFont(new Font("Dialog", Font.PLAIN, 12));
-		txtEcran.setBounds(65, 75, 96, 19);
-		panel.add(txtEcran);
-		txtEcran.setColumns(10);
+		boxEcran = new JComboBox();
+		boxEcran.setModel(new DefaultComboBoxModel(new String[] {"Neuf", "Bon", "Usé", "Critique"}));
+		boxEcran.setBounds(125, 92, 130, 26);
+		contentPane.add(boxEcran);
 		
-		//Creation du champs permettant de renseigner le clavier
-		txtClavier = new JTextField();
-		txtClavier.setFont(new Font("Dialog", Font.PLAIN, 12));
-		txtClavier.setBounds(65, 104, 96, 19);
-		panel.add(txtClavier);
-		txtClavier.setColumns(10);
+		boxClavier = new JComboBox();
+		boxClavier.setModel(new DefaultComboBoxModel(new String[] {"Neuf", "Bon", "Usé", "Critique"}));
+		boxClavier.setBounds(125, 120, 130, 26);
+		contentPane.add(boxClavier);
 		
-		//Creation du champs permettant de renseigner la souris
-		txtSouris = new JTextField();
-		txtSouris.setFont(new Font("Dialog", Font.PLAIN, 12));
-		txtSouris.setBounds(65, 133, 96, 19);
-		panel.add(txtSouris);
-		txtSouris.setColumns(10);
+		boxSouris = new JComboBox();
+		boxSouris.setModel(new DefaultComboBoxModel(new String[] {"Neuf", "Bon", "Usé", "Critique"}));
+		boxSouris.setBounds(125, 148, 130, 26);
+		contentPane.add(boxSouris);
 		
-		//Creation du champs permettant de mettre un commentaire
-		txtCommentaire = new JTextField();
-		txtCommentaire.setFont(new Font("Dialog", Font.PLAIN, 12));
-		txtCommentaire.setBounds(98, 162, 139, 19);
-		panel.add(txtCommentaire);
-		txtCommentaire.setColumns(10);
+		txtCommentaires = new JTextField();
+		txtCommentaires.setColumns(10);
+		txtCommentaires.setBounds(125, 176, 130, 26);
+		contentPane.add(txtCommentaires);
 		
-		//Creation d'un bouton permettant d'ajouter un pc
-		btnAjouter = new JButton("Ajouter");
-		btnAjouter.setFont(new Font("Dialog", Font.PLAIN, 12));
-		btnAjouter.setBounds(0, 199, 85, 21);
-		panel.add(btnAjouter);
+		JLabel lblErreur = new JLabel("Erreur, veuillez réessayer.");
+		lblErreur.setVisible(false);
+		lblErreur.setHorizontalAlignment(SwingConstants.CENTER);
+		lblErreur.setFont(new Font("Dialog", Font.PLAIN, 12));
+		lblErreur.setBounds(14, 214, 158, 26);
+		contentPane.add(lblErreur);
+		
+		JButton btnNewButton = new JButton("Valider");
+		btnNewButton.setFont(new Font("Dialog", Font.PLAIN, 12));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(txtNom.getText().contains("PC") && txtNom.getText().length() == 5) {
+					try {
+						localInformatique.genererPc(txtNom.getText(), txtType.getText(), boxTour.getSelectedItem().toString(), boxEcran.getSelectedItem().toString(), boxClavier.getSelectedItem().toString(), boxSouris.getSelectedItem().toString(), txtCommentaires.getText());
+						lblErreur.setForeground(Color.GREEN);
+						lblErreur.setText("PC ajouté");
+						lblErreur.setVisible(true);
+
+						
+					} catch (SQLException e1) {
+						System.out.println(e1);
+						lblErreur.setForeground(Color.RED);
+						lblErreur.setText("Erreur, veuillez réessayer.");
+						lblErreur.setVisible(true);
+					}
+				}
+				else {
+					lblErreur.setForeground(Color.RED);
+					lblErreur.setText("<html>Le nom du PC doit être du type PCXXX</html>");
+					lblErreur.setVisible(true);
+				}
+			}
+		});
+		btnNewButton.setBounds(184, 219, 85, 29);
+		contentPane.add(btnNewButton);
 	}
 	
 	
@@ -157,5 +178,4 @@ public class AjouterPCFenetre extends Vue {
 		// TODO Auto-generated method stub
 		
 	}
-
 }

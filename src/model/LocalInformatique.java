@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package model;
 
@@ -12,13 +12,13 @@ import java.util.Iterator;
  *
  */
 public class LocalInformatique extends Local{
-	
-	
-///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
+
+
+	///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
 
 	private ArrayList<Pc> pcs = new ArrayList<Pc>();
-	
-///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
+
+	///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * @return the pcs
@@ -41,8 +41,8 @@ public class LocalInformatique extends Local{
 		super(id, nom, nbChaises, nbTables);
 	}
 
-///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
-	
+	///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
+
 	/**
 	 * Permet de générer un nouveau pc. Il est enregistré en bdd
 	 * et ajouté au modèle.
@@ -56,13 +56,13 @@ public class LocalInformatique extends Local{
 	 * @throws SQLException
 	 */
 	public void genererPc(String nom, String type, String tour, String ecran, String clavier, String souris, String commentaires) throws SQLException {
-		int id = Connexion.generer("insert into pc values ('', "+ nom +"',"+ this.getId() +",'"+ type +"','"+ tour +"','"+ ecran +"','"+ clavier +",'"+ souris +"','"+ commentaires +"'')", "pc");
+		int id = Connexion.generer("insert into pc values ('', '"+ nom +"',"+ this.getId() +",'"+ type +"','"+ tour +"','"+ ecran +"','"+ clavier +"','"+ souris +"','"+ commentaires +"')", "pc");
 		Pc pc = (Pc) Connexion.requete("select * from pc where id = " + id, "Pc").get(0);
 		this.getPcs().add(pc);
 	}
-		
- 
-	
+
+
+
 	/**
 	 * Renvoie un objet de type Pc
 	 * Ne fait pas partie des getters
@@ -75,14 +75,12 @@ public class LocalInformatique extends Local{
 		boolean trouve = false;
 		while(iterateur.hasNext() && !trouve) {
 			pc = iterateur.next();
-			System.out.println(pc.getNom() + " " + nom);
 			if(pc.getNom().equals(nom)) {
-				System.out.println("oui");
 				trouve = true;
 			}
 		}
 		return pc;
 	}
-	
-	
+
+
 }
