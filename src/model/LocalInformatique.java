@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package model;
 
@@ -34,7 +34,7 @@ public class LocalInformatique extends Local{
 		this.pcs = pcs;
 	}
 
-	///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////*CONSTRUCTEUR*////////////////////////////////////////////////////////////////////////////////////
 
 	public LocalInformatique(int id, String nom, Materiels nbChaises, Materiels nbTables) {
 		// TODO Auto-generated constructor stub
@@ -63,6 +63,7 @@ public class LocalInformatique extends Local{
 
 	/**
 	 * Renvoie un objet de type Pc
+	 * Ne fait pas partie des getters
 	 * @param nom
 	 * @return Pc
 	 */

@@ -15,7 +15,7 @@ import java.util.Iterator;
 public class Implantation {
 
 
-	///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
 
 	private int id;
 	private String nom;
@@ -23,8 +23,7 @@ public class Implantation {
 	private ArrayList<Local> locaux = new ArrayList<Local>();
 	private ArrayList<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
 
-
-	///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * @return the utilisateurs
@@ -96,7 +95,7 @@ public class Implantation {
 		this.locaux = locaux;
 	}
 
-	///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////*CONSTRUCTEUR*////////////////////////////////////////////////////////////////////////////////////
 
 	public Implantation(int id, String nom, Adresse adresse) {
 		this.id = id;
@@ -117,7 +116,7 @@ public class Implantation {
 	 * @throws SQLException
 	 */
 	public void genererLocalEtMateriels(String nom, int localInformatique, int[] chaises, int[] tables) throws SQLException {
-		
+
 		int localId = Connexion.generer("insert into local values ('', '"+ nom +"','"+ this.id +"','"+ localInformatique +"')", "local");
 		Local loc;
 		if(localInformatique == 0) {
@@ -131,8 +130,8 @@ public class Implantation {
 		this.getLocaux().add(loc);
 
 	}
-	
-	
+
+
 
 	/**
 	 * Permet de générer un nouvel utilisateur. Il est enregistré en bdd et ajouté
@@ -225,5 +224,3 @@ public class Implantation {
 		return local;
 	}
 }
-
-

@@ -62,7 +62,7 @@ public class Intervention{
 	public void setCommentaires(String commentaires) {
 		this.commentaires = commentaires;
 	}
-///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////*CONSTRUCTEUR*////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * @param id
@@ -87,6 +87,6 @@ public class Intervention{
 	public void majIntervention(String nom, String commentaires) throws SQLException {
 		System.out.println(this.getId());
 		Connexion.requete("update intervention set nom = '" + nom + "', commentaires = '" + commentaires + "' where id = " + this.getId());
-		
+
 	}
 }

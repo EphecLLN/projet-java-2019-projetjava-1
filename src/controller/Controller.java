@@ -27,9 +27,6 @@ public class Controller {
 	public Ecole model;
 	Vue vue;
 
-/////////////////////////////////*CONSTRUCTEURS*//////////////////////////////////////////////////////////////////////////////////////////
-
-
 /////////////////////////////////*METHODES*//////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
@@ -55,7 +52,7 @@ public class Controller {
 	}
 
 	/**
-	 * Renvoit les noms des implantations
+	 * Renvoie les noms des implantations
 	 *@return String[]
 	 */
 	public String[] recupererImpNom() {
@@ -72,7 +69,7 @@ public class Controller {
 
 
 	/**
-	 * Renvoit les id des implantations
+	 * Renvoie les id des implantations
 	 * @return int[]
 	 */
 	public int[] recupererImpId() {

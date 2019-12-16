@@ -62,7 +62,7 @@ public class MaterielSpecial {
 			this.etat = etat;
 		}
 
-///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////*CONSTRUCTEUR*////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * Constructeur
@@ -82,7 +82,7 @@ public class MaterielSpecial {
 	/**
 	 * Methode permettant de change l'etat du materiel special
 	 * @param etat
-	 * @throws SQLException 
+	 * @throws SQLException
 	 */
 	public void majMaterielSpecial(String mat) throws SQLException {
 		Connexion.requete("update materielspecial set etat = '" + mat + "' where id = " + this.id );

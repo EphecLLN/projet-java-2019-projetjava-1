@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package model;
 
@@ -10,7 +10,7 @@ import java.sql.SQLException;
  *
  */
 public class Pc {
-	
+
 ///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
 
 	private int id;
@@ -21,7 +21,7 @@ public class Pc {
 	private String clavier;
 	private String souris;
 	private String commentaires;
-	
+
 ///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
 
 	/**
@@ -30,7 +30,7 @@ public class Pc {
 	public String getType() {
 		return type;
 	}
-	
+
 	/**
 	 * @return the id
 	 */
@@ -79,7 +79,7 @@ public class Pc {
 	public String getEcran() {
 		return ecran;
 	}
-	
+
 	/**
 	 * @param ecran the ecran to set
 	 */
@@ -93,7 +93,7 @@ public class Pc {
 	public String getClavier() {
 		return clavier;
 	}
-	
+
 	/**
 	 * @param clavier the clavier to set
 	 */
@@ -136,7 +136,7 @@ public class Pc {
 		this.type = type;
 	}
 
-///////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////*CONSTRUCTEUR*////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * @param local
@@ -157,7 +157,7 @@ public class Pc {
 		this.souris = souris;
 		this.commentaires = commentaires;
 	}
-	
+
 ///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
@@ -167,9 +167,9 @@ public class Pc {
 	 * @throws SQLException
 	 */
 	public void changerEtat(String nom, String etat) throws SQLException {
-		
+
 		Connexion conn = new Connexion("update pc set " + nom + "=" + etat + "where id =" + this.id);
-		
+
 		switch (nom) {
 		case "type":
 			this.type = etat;
