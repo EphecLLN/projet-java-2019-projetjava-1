@@ -86,17 +86,20 @@ public class AjouterMaterielSpecialFenetre extends Vue {
 		panel.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					local.genererMaterielSpecial(txtNom.getText(), txtEtat.getText());
-					lblValidation.setVisible(true);
-					
-					
-				} catch (SQLException e1) {
+				if(((txtEtat.getText()).equals("Neuf")) || ((txtEtat.getText()).equals("Bon")) || ((txtEtat.getText()).equals("Use")) || ((txtEtat.getText()).equals("critique"))) {
+					try {
+						local.genererMaterielSpecial(txtNom.getText(), txtEtat.getText());
+						lblValidation.setText("Ajout effectué");
+						lblValidation.setVisible(true);
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+				} else {
 					lblValidation.setText("Veuillez entrez un état correct : Neuf, Bon, Use ou Critique");
 					lblValidation.setVisible(true);
-					e1.printStackTrace();
 				}
 			}
+			
 		});
 		
 	
