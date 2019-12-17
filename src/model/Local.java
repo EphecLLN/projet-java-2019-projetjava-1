@@ -203,6 +203,7 @@ public class Local{
 		Connexion.requete("update materiels set materiels.use = " + tables[2] + " where localid = " + this.id + " and nom = 'tables'");
 		Connexion.requete("update materiels set critique = " + tables[3] + " where localid = " + this.id + " and nom = 'tables'");
 				
+		
 
 	}
 	

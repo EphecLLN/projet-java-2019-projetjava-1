@@ -174,7 +174,6 @@ public class ActualiserMaterielFenetre extends Vue {
 				int[] tables = new int[4];
 				try {
 
-
 					chaises[0] = Integer.parseInt(txtChaiseNeuf.getText());
 					chaises[1] = Integer.parseInt(txtChaiseBon.getText());
 					chaises[2] = Integer.parseInt(txtChaiseUse.getText());
