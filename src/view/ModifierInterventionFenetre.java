@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("deprecation")
 public class ModifierInterventionFenetre extends Vue {
@@ -40,19 +41,19 @@ public class ModifierInterventionFenetre extends Vue {
 		j13 = new JFrame();
 		j13.setTitle("Modifier Intervention");
 		j13.setVisible(true);
-		j13.setBounds(100, 100, 428, 148);
+		j13.setBounds(100, 100, 283, 143);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		j13.setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(5, 5, 403, 96);
+		panel.setBounds(5, 5, 272, 110);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		// creation du libelle du nom
-		JLabel lblNom = new JLabel("Nom");
+		JLabel lblNom = new JLabel("Nom :");
 		lblNom.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblNom.setBounds(12, 13, 56, 16);
 		panel.add(lblNom);
@@ -60,13 +61,13 @@ public class ModifierInterventionFenetre extends Vue {
 		// creation du champ texte de recuperation du nom
 		txtNom = new JTextField();
 		txtNom.setFont(new Font("Dialog", Font.PLAIN, 12));
-		txtNom.setBounds(51, 10, 214, 22);
+		txtNom.setBounds(112, 9, 120, 25);
 		panel.add(txtNom);
 		txtNom.setColumns(10);
 		txtNom.setText(inter.getNom());
 		
 		// creation du libelle du commentaire
-		JLabel lblNouveauCommentaire = new JLabel("Nouveau commentaire");
+		JLabel lblNouveauCommentaire = new JLabel("Commentaires :");
 		lblNouveauCommentaire.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblNouveauCommentaire.setBounds(12, 42, 140, 16);
 		panel.add(lblNouveauCommentaire);
@@ -74,21 +75,22 @@ public class ModifierInterventionFenetre extends Vue {
 		// creation du champ texte de recuperation du commentaire
 		txtCom = new JTextField();
 		txtCom.setFont(new Font("Dialog", Font.PLAIN, 12));
-		txtCom.setBounds(149, 39, 116, 22);
+		txtCom.setBounds(112, 38, 120, 25);
 		panel.add(txtCom);
 		txtCom.setColumns(10);
 		txtCom.setText(inter.getCommentaires());
 		
 		
 		lblValidation = new JLabel("Modification effectuée");
-		lblValidation.setBounds(12, 67, 373, 16);
+		lblValidation.setHorizontalAlignment(SwingConstants.CENTER);
+		lblValidation.setBounds(12, 80, 157, 16);
 		panel.add(lblValidation);
 		lblValidation.setVisible(false);
 		
 		// creation du bouton de validation
 		btnValider = new JButton("Valider");
 		btnValider.setFont(new Font("Dialog", Font.PLAIN, 12));
-		btnValider.setBounds(288, 9, 97, 55);
+		btnValider.setBounds(187, 81, 85, 29);
 		panel.add(btnValider);
 		btnValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -42,9 +42,9 @@ public class VueConsole extends Vue{
 				mdp = scan2.nextLine();
 			}
 			while(!(controller.login(pseudo, mdp)[0] == 1));
-			System.out.println("Connexion r�ussie !");
+			System.out.println("Connexion réussie !");
 			while(true) {
-				System.out.print("Dans quelle implantation �tes-vous? Veuillez � bien �crire le nom de l'implantation \n Pour arreter le programme tapez 'fin' \n");
+				System.out.print("Dans quelle implantation êtes-vous? Veillez à bien écrire le nom de l'implantation \n Pour arrêter le programme tapez 'fin' \n");
 				controller.afficherTab(controller.recupererImpNom());
 				Scanner scan3 = new Scanner(System.in);
 				imp = scan3.nextLine();
@@ -54,7 +54,7 @@ public class VueConsole extends Vue{
 				Implantation implantation = model.getImplantation(imp);
 				System.out.println(implantation.getNom() + " - " + implantation.getAdresse());
 				System.out.println("Nombre de locaux : " + implantation.nombreLocauxTotal());
-				System.out.println("Nombre de locaux informatique : " + implantation.nombreLocauxInformatiques());
+				System.out.println("Nombre de locaux informatiques : " + implantation.nombreLocauxInformatiques());
 
 				System.out.println("Que voulez-vous faire ? \n A : Choisir un local à afficher \n B : Ajouter un Local \n C : Menu utilisateur \n D : Ajouter une implantation");
 				Scanner scan4 = new Scanner(System.in);
@@ -66,21 +66,21 @@ public class VueConsole extends Vue{
 					Scanner scan5 = new Scanner(System.in);
 					loc = scan5.nextLine();
 					Local local = implantation.getLocal(loc);
-					System.out.println("Materiels :");
+					System.out.println("Matériels :");
 					System.out.println("Chaises :");
-					System.out.println("Neuf : "+ local.getNbChaises().getNeuf() +" | Bon : "+ local.getNbChaises().getBon() +" | Use : "+ local.getNbChaises().getUse() +" | Critique : "+ local.getNbChaises().getCritique());
+					System.out.println("Neuf : "+ local.getNbChaises().getNeuf() +" | Bon : "+ local.getNbChaises().getBon() +" | Usé : "+ local.getNbChaises().getUse() +" | Critique : "+ local.getNbChaises().getCritique());
 					System.out.println("Tables :");
-					System.out.println("Neuf : "+ local.getNbTables().getNeuf() +" | Bon : "+ local.getNbTables().getBon() +" | Use : "+ local.getNbTables().getUse() +" | Critique : "+ local.getNbTables().getCritique());
-					System.out.println("Materiels special :");
+					System.out.println("Neuf : "+ local.getNbTables().getNeuf() +" | Bon : "+ local.getNbTables().getBon() +" | Usé : "+ local.getNbTables().getUse() +" | Critique : "+ local.getNbTables().getCritique());
+					System.out.println("Matériels spéciaux :");
 					controller.afficherTab(controller.recupMatSpecNom(local.getMaterielsSpeciaux()));
-					System.out.println("Intervention :");
+					System.out.println("Interventions :");
 					controller.afficherTab(controller.recupInterventionNom(local.getInterventions()));
 					if(local.getClass().getSimpleName().equals("LocalInformatique")) {
 						LocalInformatique localinfo = (LocalInformatique) local;
-						System.out.println("Liste des PC :");
+						System.out.println("Liste des PCs :");
 						controller.afficherTab(controller.recupPC(localinfo.getPcs()));
 					}
-					System.out.println("\n A : Actualiser le materiel \n B : Modifier un materiel special \n C : Modifier une intervention \n D : Ajouter une intervention \n E : Ajouter un Materiel special");
+					System.out.println("\n A : Actualiser le matériel \n B : Modifier un matériel spécial \n C : Modifier une intervention \n D : Ajouter une intervention \n E : Ajouter un Matériel spécial");
 					if(local.getClass().getSimpleName().equals("LocalInformatique")) {
 						System.out.println(" F : Afficher les détails d'un PC \n G : Ajouter un PC");
 					}
@@ -103,14 +103,14 @@ public class VueConsole extends Vue{
 						System.out.print("Critique :");
 						Scanner scan10 = new Scanner(System.in);
 						chaises[3] = Integer.parseInt(scan10.nextLine());
-						System.out.println("Veuillez introduire le nouveau nombre de table en fonction de leur état");
+						System.out.println("Veuillez introduire le nouveau nombre de table(s) en fonction de leur état");
 						System.out.print("Neuf :");
 						Scanner scan11 = new Scanner(System.in);
 						tables[0] = Integer.parseInt(scan11.nextLine()); 
 						System.out.print("Bon :");
 						Scanner scan12 = new Scanner(System.in);
 						tables[1] = Integer.parseInt(scan12.nextLine());
-						System.out.print("Use :");
+						System.out.print("Usé :");
 						Scanner scan13 = new Scanner(System.in);
 						tables[2] = Integer.parseInt(scan13.nextLine());
 						System.out.print("Critique :");
@@ -124,11 +124,11 @@ public class VueConsole extends Vue{
 					case "B":
 						String mats="", newEtat="";
 						controller.afficherTab(controller.recupMatSpecNom(local.getMaterielsSpeciaux()));
-						System.out.print("Veuillez indiquer le materiel special a modifier : ");
+						System.out.print("Veuillez indiquer le matériel spécial à modifier : ");
 						Scanner scan15 = new Scanner(System.in);
 						mats = scan15.nextLine();
 						MaterielSpecial matspe = local.getMaterielSpecial(mats);
-						System.out.print("Veuillez indiquer son nouvel etat : ");
+						System.out.print("Veuillez indiquer son nouvel état : ");
 						Scanner scan16 = new Scanner(System.in);
 						newEtat = scan16.nextLine();
 						try {
@@ -139,7 +139,7 @@ public class VueConsole extends Vue{
 					case "C":
 						String inter="", newNom="", newCom=""; 
 						controller.afficherTab(controller.recupInterventionNom(local.getInterventions()));
-						System.out.print("Veuillez indiquer l'intervention a modifier : ");
+						System.out.print("Veuillez indiquer l'intervention à modifier : ");
 						Scanner scan17 = new Scanner(System.in);
 						inter = scan17.nextLine();
 						Intervention intervention = local.getIntervention(inter);
@@ -170,11 +170,11 @@ public class VueConsole extends Vue{
 						break;
 					case "E":
 						String nomMS ="", etatMS="";
-						System.out.println("Nouveau materiel special :");
+						System.out.println("Nouveau matériel spécial :");
 						System.out.print("Veuillez indiquer son nom : ");
 						Scanner scan22 = new Scanner(System.in);
 						nomMS = scan22.nextLine();
-						System.out.print("Veuillez indiquer son etat : ");
+						System.out.print("Veuillez indiquer son état : ");
 						Scanner scan23 = new Scanner(System.in);
 						etatMS = scan23.nextLine();
 						try {
@@ -241,27 +241,27 @@ public class VueConsole extends Vue{
 					System.out.print("Veuillez indiquer si c'est un local informatique ('true' si c'est un local informatique, 'false' si c'est un local normal)");
 					Scanner scan25 = new Scanner(System.in);
 					localInfo = Boolean.parseBoolean(scan25.nextLine());
-					System.out.println("Veuillez introduire le nouveau nombre de chaise en fonction de leur état");
+					System.out.println("Veuillez introduire le nouveau nombre de chaise(s) en fonction de leur état");
 					System.out.print("Neuf :");
 					Scanner scan26 = new Scanner(System.in);
 					chaisesNL[0] = Integer.parseInt(scan26.nextLine()); 
 					System.out.print("Bon :");
 					Scanner scan27 = new Scanner(System.in);
 					chaisesNL[1] = Integer.parseInt(scan27.nextLine());
-					System.out.print("Use :");
+					System.out.print("Usé :");
 					Scanner scan28 = new Scanner(System.in);
 					chaisesNL[2] = Integer.parseInt(scan28.nextLine());
 					System.out.print("Critique :");
 					Scanner scan29 = new Scanner(System.in);
 					chaisesNL[3] = Integer.parseInt(scan29.nextLine());
-					System.out.println("Veuillez introduire le nouveau nombre de table en fonction de leur état");
+					System.out.println("Veuillez introduire le nouveau nombre de table(s) en fonction de leur état");
 					System.out.print("Neuf :");
 					Scanner scan30 = new Scanner(System.in);
 					tablesNL[0] = Integer.parseInt(scan30.nextLine()); 
 					System.out.print("Bon :");
 					Scanner scan31 = new Scanner(System.in);
 					tablesNL[1] = Integer.parseInt(scan31.nextLine());
-					System.out.print("Use :");
+					System.out.print("Usé :");
 					Scanner scan32 = new Scanner(System.in);
 					tablesNL[2] = Integer.parseInt(scan32.nextLine());
 					System.out.print("Critique :");
@@ -290,13 +290,13 @@ public class VueConsole extends Vue{
 						System.out.print("Veuillez indiquer son nom :");
 						Scanner scan35 = new Scanner(System.in);
 						nomU = scan35.nextLine();
-						System.out.print("Veuillez indiquer son prenom :");
+						System.out.print("Veuillez indiquer son prénom :");
 						Scanner scan36 = new Scanner(System.in);
 						prenomU = scan36.nextLine();
 						System.out.print("Veuillez indiquer son grade : Super administrateur : 0, Administrateur d'implantation : 1, Informaticien : 2, Utilisateur : 3");
 						Scanner scan37 = new Scanner(System.in);
 						gradeU = Integer.parseInt(scan37.nextLine());
-						System.out.print("Veuillez indiquer son Pseudo :");
+						System.out.print("Veuillez indiquer son pseudo :");
 						Scanner scan38 = new Scanner(System.in);
 						pseudoU = scan38.nextLine();
 						System.out.print("Veuillez indiquer son mot de passe :");

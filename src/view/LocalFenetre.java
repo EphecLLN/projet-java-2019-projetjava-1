@@ -44,12 +44,23 @@ public class LocalFenetre extends Vue {
 		j6 = new JFrame();
 		this.local = local;
 		j6.setVisible(true);
-		j6.setBounds(100, 100, 620, 465);
+		j6.setBounds(100, 100, 620, 413);
 		j6.setTitle(local.getNom());
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		j6.setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+				// création du bouton Rafraichir
+				JButton btnRefresh = new JButton("Rafraîchir");
+				btnRefresh.setBounds(517, 360, 97, 25);
+				contentPane.add(btnRefresh);
+				btnRefresh.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						j6.dispose();
+						new LocalFenetre(model, controller, local);
+					}
+				});
 
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 310, 391);
@@ -97,9 +108,12 @@ public class LocalFenetre extends Vue {
 		panel.add(lblMaterielSpecial);
 
 		//Creation d'une box permettant de selectionner un Materiel special du local
-		JComboBox<String> boxMatSpec = new JComboBox<String>(controller.recupMatSpecNom(local.getMaterielsSpeciaux()));
+		JComboBox<String> boxMatSpec = new JComboBox<String>();
 		boxMatSpec.setBounds(29, 202, 245, 27);
 		panel.add(boxMatSpec);
+		for(String str : controller.recupMatSpecNom(local.getMaterielsSpeciaux())) {
+			boxMatSpec.addItem(str);
+		}
 
 		//Creation d'un bouton permettant de changer l'etat d'un materiel sppecial
 		JButton btnModifierMatSpec = new JButton("Modifier");
@@ -121,10 +135,12 @@ public class LocalFenetre extends Vue {
 		panel.add(lblIntervention);
 
 		//Creation d'une box permettant de selectionner une intervention
-		JComboBox<String> boxIntervention = new JComboBox<String>(controller.recupInterventionNom(local.getInterventions()));
+		JComboBox<String> boxIntervention = new JComboBox<String>();
 		boxIntervention.setBounds(29, 318, 245, 27);
 		panel.add(boxIntervention);
-
+		for(String str : controller.recupInterventionNom(local.getInterventions())) {
+			boxIntervention.addItem(str);
+		}
 
 
 		//Creation d'un bouton permettant de modifier une intervention
@@ -270,7 +286,7 @@ public class LocalFenetre extends Vue {
 
 		// creation du panel des informations du Local Informatique
 		panelLocalInfo = new JPanel();
-		panelLocalInfo.setBounds(309, 0, 310, 391);
+		panelLocalInfo.setBounds(309, 0, 310, 362);
 		contentPane.add(panelLocalInfo);
 		panelLocalInfo.setLayout(null);
 		panelLocalInfo.setVisible(false); // ne doit etre true que si le local est un local informatique
@@ -289,7 +305,7 @@ public class LocalFenetre extends Vue {
 
 		JPanel panelDetailsPc = new JPanel();
 		panelDetailsPc.setVisible(false);
-		panelDetailsPc.setBounds(6, 108, 298, 277);
+		panelDetailsPc.setBounds(6, 108, 298, 251);
 		panelLocalInfo.add(panelDetailsPc);
 		panelDetailsPc.setLayout(null);
 
@@ -435,27 +451,11 @@ public class LocalFenetre extends Vue {
 		panelLocalInfo.add(separator_2);
 		separator_2.setOrientation(SwingConstants.VERTICAL);
 
-		// création du bouton Rafraichir
-		JButton btnRefresh = new JButton("Rafraîchir");
-		btnRefresh.setBounds(10, 393, 97, 25);
-		contentPane.add(btnRefresh);
-		btnRefresh.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				j6.dispose();
-				new LocalFenetre(model, controller, local);
-			}
-		});
-
 		btnAjouterIntervention.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AjouterInterventionFenetre ajoutIntFen = new AjouterInterventionFenetre(model, controller, local);
 			}
 		});
-
-
-
-
-
 	}
 
 	///////////////////////////////////////*METHODES*/////////////////////////////////////////////////////////////////////////////////////////

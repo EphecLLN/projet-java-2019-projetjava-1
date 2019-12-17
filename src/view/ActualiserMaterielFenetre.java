@@ -44,59 +44,59 @@ public class ActualiserMaterielFenetre extends Vue {
 		j9 = new JFrame();
 		j9.setTitle("Actualiser Matériel");
 		j9.setVisible(true);
-		j9.setBounds(100, 100, 308, 279);
+		j9.setBounds(100, 100, 266, 233);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		j9.setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 308, 232);
+		panel.setBounds(0, 0, 260, 205);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		// creation du label neuf
 		JLabel lblNeuf = new JLabel("Neuf");
 		lblNeuf.setFont(new Font("Dialog", Font.PLAIN, 12));
-		lblNeuf.setBounds(44, 53, 56, 16);
+		lblNeuf.setBounds(19, 40, 56, 16);
 		panel.add(lblNeuf);
 		
 		// creation du label bon
 		JLabel lblBon = new JLabel("Bon");
 		lblBon.setFont(new Font("Dialog", Font.PLAIN, 12));
-		lblBon.setBounds(44, 82, 56, 16);
+		lblBon.setBounds(19, 69, 56, 16);
 		panel.add(lblBon);
 		
 		// creation du label usé
 		JLabel lblUs = new JLabel("Usé");
 		lblUs.setFont(new Font("Dialog", Font.PLAIN, 12));
-		lblUs.setBounds(44, 118, 56, 16);
+		lblUs.setBounds(19, 105, 56, 16);
 		panel.add(lblUs);
 		
 		// creation du label critique
 		JLabel lblCritique = new JLabel("Critique");
 		lblCritique.setFont(new Font("Dialog", Font.PLAIN, 12));
-		lblCritique.setBounds(31, 150, 56, 16);
+		lblCritique.setBounds(19, 137, 56, 16);
 		panel.add(lblCritique);
 		
 		
 		// creation du label Chaises
 		JLabel lblChaises = new JLabel("Chaises");
 		lblChaises.setFont(new Font("Dialog", Font.BOLD, 12));
-		lblChaises.setBounds(98, 24, 56, 16);
+		lblChaises.setBounds(86, 11, 56, 16);
 		panel.add(lblChaises);
 		
 		// creation du label Tables
 		JLabel lblTables = new JLabel("Tables");
 		lblTables.setFont(new Font("Dialog", Font.BOLD, 12));
-		lblTables.setBounds(186, 24, 56, 16);
+		lblTables.setBounds(174, 11, 56, 16);
 		panel.add(lblTables);
 		
 		// creation du champ de recuperation du nombre de chaises neuves
 		txtChaiseNeuf = new JTextField();
 		txtChaiseNeuf.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtChaiseNeuf.setHorizontalAlignment(SwingConstants.CENTER);
-		txtChaiseNeuf.setBounds(98, 53, 47, 22);
+		txtChaiseNeuf.setBounds(86, 40, 47, 22);
 		panel.add(txtChaiseNeuf);
 		txtChaiseNeuf.setColumns(10);
 		txtChaiseNeuf.setText(String.valueOf(local.getNbChaises().getNeuf()));
@@ -105,7 +105,7 @@ public class ActualiserMaterielFenetre extends Vue {
 		txtTableNeuf = new JTextField();
 		txtTableNeuf.setHorizontalAlignment(SwingConstants.CENTER);
 		txtTableNeuf.setFont(new Font("Dialog", Font.PLAIN, 12));
-		txtTableNeuf.setBounds(185, 53, 47, 22);
+		txtTableNeuf.setBounds(173, 40, 47, 22);
 		panel.add(txtTableNeuf);
 		txtTableNeuf.setColumns(10);
 		txtTableNeuf.setText(String.valueOf(local.getNbTables().getNeuf()));
@@ -115,7 +115,7 @@ public class ActualiserMaterielFenetre extends Vue {
 		txtChaiseBon.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtChaiseBon.setHorizontalAlignment(SwingConstants.CENTER);
 		txtChaiseBon.setColumns(10);
-		txtChaiseBon.setBounds(98, 86, 47, 22);
+		txtChaiseBon.setBounds(86, 73, 47, 22);
 		panel.add(txtChaiseBon);
 		txtChaiseBon.setText(String.valueOf(local.getNbChaises().getBon()));
 		
@@ -124,7 +124,7 @@ public class ActualiserMaterielFenetre extends Vue {
 		txtChaiseUse.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtChaiseUse.setHorizontalAlignment(SwingConstants.CENTER);
 		txtChaiseUse.setColumns(10);
-		txtChaiseUse.setBounds(98, 118, 47, 22);
+		txtChaiseUse.setBounds(86, 105, 47, 22);
 		panel.add(txtChaiseUse);
 		txtChaiseUse.setText(String.valueOf(local.getNbChaises().getUse()));
 		
@@ -133,7 +133,7 @@ public class ActualiserMaterielFenetre extends Vue {
 		txtChaiseCritique.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtChaiseCritique.setHorizontalAlignment(SwingConstants.CENTER);
 		txtChaiseCritique.setColumns(10);
-		txtChaiseCritique.setBounds(98, 147, 47, 22);
+		txtChaiseCritique.setBounds(86, 134, 47, 22);
 		panel.add(txtChaiseCritique);
 		txtChaiseCritique.setText(String.valueOf(local.getNbChaises().getCritique()));
 		
@@ -142,7 +142,7 @@ public class ActualiserMaterielFenetre extends Vue {
 		txtTableBon.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtTableBon.setHorizontalAlignment(SwingConstants.CENTER);
 		txtTableBon.setColumns(10);
-		txtTableBon.setBounds(186, 86, 47, 22);
+		txtTableBon.setBounds(174, 73, 47, 22);
 		panel.add(txtTableBon);
 		txtTableBon.setText(String.valueOf(local.getNbTables().getBon()));
 		
@@ -151,7 +151,7 @@ public class ActualiserMaterielFenetre extends Vue {
 		txtTableUse.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtTableUse.setHorizontalAlignment(SwingConstants.CENTER);
 		txtTableUse.setColumns(10);
-		txtTableUse.setBounds(186, 118, 47, 22);
+		txtTableUse.setBounds(174, 105, 47, 22);
 		panel.add(txtTableUse);
 		txtTableUse.setText(String.valueOf(local.getNbTables().getUse()));
 		
@@ -160,13 +160,13 @@ public class ActualiserMaterielFenetre extends Vue {
 		txtTableCritique.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtTableCritique.setHorizontalAlignment(SwingConstants.CENTER);
 		txtTableCritique.setColumns(10);
-		txtTableCritique.setBounds(186, 147, 47, 22);
+		txtTableCritique.setBounds(174, 134, 47, 22);
 		panel.add(txtTableCritique);
 		txtTableCritique.setText(String.valueOf(local.getNbTables().getCritique()));
 
 		// creation du bouton de validation
 		JButton btnValider = new JButton("Valider");
-		btnValider.setBounds(31, 194, 226, 25);
+		btnValider.setBounds(174, 176, 87, 29);
 		panel.add(btnValider);
 		btnValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

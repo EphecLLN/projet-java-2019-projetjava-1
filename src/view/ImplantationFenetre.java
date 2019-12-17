@@ -49,7 +49,7 @@ public class ImplantationFenetre extends Vue{
 		j2.setVisible(true);
 		j2.setTitle("Implantation");
 		j2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		j2.setBounds(100, 100, 450, 522);
+		j2.setBounds(100, 100, 450, 498);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		j2.setContentPane(contentPane);
@@ -225,7 +225,7 @@ public class ImplantationFenetre extends Vue{
 		btnValider.setBackground(SystemColor.menu);
 		
 		JButton btnRafraichir = new JButton("Rafraîchir");
-		btnRafraichir.setBounds(324, 0, 97, 25);
+		btnRafraichir.setBounds(343, 441, 97, 25);
 		panel.add(btnRafraichir);
 		btnRafraichir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

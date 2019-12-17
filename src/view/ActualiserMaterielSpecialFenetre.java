@@ -43,27 +43,27 @@ public class ActualiserMaterielSpecialFenetre extends Vue {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(5, 0, 422, 57);
+		panel.setBounds(5, 0, 439, 76);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		// creation du label texte nouvel etat
 		JLabel lblNouveltat = new JLabel("Nouvel état :");
 		lblNouveltat.setFont(new Font("Dialog", Font.PLAIN, 12));
-		lblNouveltat.setBounds(25, 23, 89, 16);
+		lblNouveltat.setBounds(26, 23, 89, 16);
 		panel.add(lblNouveltat);
 		
 		// creation du champ texte de recuperation de l'etat
 		txtEtat =new JTextField();
 		txtEtat.setFont(new Font("Dialog", Font.PLAIN, 12));
-		txtEtat.setBounds(99, 20, 190, 22);
+		txtEtat.setBounds(127, 20, 190, 22);
 		panel.add(txtEtat);
 		txtEtat.setColumns(10);
 		
 		// creation du bouton valider
 		JButton btnValider = new JButton("Valider");
 		btnValider.setFont(new Font("Dialog", Font.PLAIN, 12));
-		btnValider.setBounds(313, 19, 97, 25);
+		btnValider.setBounds(336, 45, 97, 25);
 		panel.add(btnValider);
 		btnValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
