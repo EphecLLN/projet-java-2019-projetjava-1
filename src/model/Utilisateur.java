@@ -114,6 +114,7 @@ public class Utilisateur {
 
 
 
+
 	public String toString() {
 		return nom + " " + prenom + " " + grade + " " + pseudo + " " + motDePasse;
 	}

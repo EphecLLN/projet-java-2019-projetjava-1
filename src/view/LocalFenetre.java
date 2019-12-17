@@ -1,6 +1,5 @@
 package view;
 
-
 import java.util.Observable;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,7 +9,10 @@ import controller.Controller;
 import model.Ecole;
 import model.Local;
 import model.*;
+
+
 import java.awt.Font;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -42,7 +44,7 @@ public class LocalFenetre extends Vue {
 		j6 = new JFrame();
 		this.local = local;
 		j6.setVisible(true);
-		j6.setBounds(100, 100, 620, 413);
+		j6.setBounds(100, 100, 620, 465);
 		j6.setTitle(local.getNom());
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -395,7 +397,7 @@ public class LocalFenetre extends Vue {
 				boxListePc.addItem(nomPc);
 			}
 		}
-		
+
 		// creation du bouton de validation du choix du pc
 		JButton btnValider = new JButton("Valider");
 		btnValider.addActionListener(new ActionListener() {
@@ -433,11 +435,23 @@ public class LocalFenetre extends Vue {
 		panelLocalInfo.add(separator_2);
 		separator_2.setOrientation(SwingConstants.VERTICAL);
 
+		// création du bouton Rafraichir
+		JButton btnRefresh = new JButton("Rafraîchir");
+		btnRefresh.setBounds(10, 393, 97, 25);
+		contentPane.add(btnRefresh);
+		btnRefresh.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				j6.dispose();
+				new LocalFenetre(model, controller, local);
+			}
+		});
+
 		btnAjouterIntervention.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AjouterInterventionFenetre ajoutIntFen = new AjouterInterventionFenetre(model, controller, local);
 			}
 		});
+
 
 
 
@@ -448,18 +462,6 @@ public class LocalFenetre extends Vue {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		System.out.println("Ça passe par ici");
-		boxListePc = new JComboBox<String>();
-		if(local.getClass().getSimpleName().equals("LocalInformatique")) {
-			panelLocalInfo.setVisible(true);
-		}
-		if(local.getClass().getSimpleName().equals("LocalInformatique")) {
-			LocalInformatique unLocInfo = (LocalInformatique) local;
-			// creation de la box de choix du PC
-			for(String nomPc : controller.recupPC(unLocInfo.getPcs())) {
-				boxListePc.addItem(nomPc);
-			}
-		}
 
 	}
 

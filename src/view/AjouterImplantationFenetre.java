@@ -119,6 +119,9 @@ public class AjouterImplantationFenetre extends Vue {
 		panel.add(lblErreur);
 
 		JButton btnValider = new JButton("Valider");
+		btnValider.setFont(new Font("Dialog", Font.PLAIN, 12));
+		btnValider.setBounds(212, 239, 85, 29);
+		panel.add(btnValider);
 		btnValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -135,9 +138,7 @@ public class AjouterImplantationFenetre extends Vue {
 			}
 
 		});
-		btnValider.setFont(new Font("Dialog", Font.PLAIN, 12));
-		btnValider.setBounds(212, 239, 85, 29);
-		panel.add(btnValider);
+		
 
 	}
 

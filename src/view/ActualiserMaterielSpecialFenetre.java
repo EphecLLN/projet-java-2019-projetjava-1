@@ -72,6 +72,7 @@ public class ActualiserMaterielSpecialFenetre extends Vue {
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
+				j11.dispose();
 			}
 		});
 		

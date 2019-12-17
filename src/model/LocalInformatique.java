@@ -61,8 +61,6 @@ public class LocalInformatique extends Local{
 		this.getPcs().add(pc);
 	}
 
-
-
 	/**
 	 * Renvoie un objet de type Pc
 	 * Ne fait pas partie des getters

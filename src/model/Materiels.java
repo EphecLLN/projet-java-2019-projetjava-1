@@ -160,6 +160,4 @@ public class Materiels{
 	public int total() {
 		return neuf + bon + use + critique;
 	}
-
-	
 }

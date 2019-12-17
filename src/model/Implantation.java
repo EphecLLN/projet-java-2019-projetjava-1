@@ -116,7 +116,7 @@ public class Implantation {
 	 * @throws SQLException
 	 */
 	public void genererLocalEtMateriels(String nom, int localInformatique, int[] chaises, int[] tables) throws SQLException {
-		
+
 		int localId = Connexion.generer("insert into local values ('', '"+ nom +"','"+ this.id +"','"+ localInformatique +"')", "local");
 		Local loc;
 		if(localInformatique == 0) {
@@ -130,8 +130,8 @@ public class Implantation {
 		this.getLocaux().add(loc);
 
 	}
-	
-	
+
+
 
 	/**
 	 * Permet de générer un nouvel utilisateur. Il est enregistré en bdd et ajouté
@@ -172,7 +172,7 @@ public class Implantation {
 	public void synchroLocalEtMateriel() throws SQLException {
 		if(!this.getLocaux().isEmpty()) {
 			this.getLocaux().clear();
-		}
+		} 
 		ArrayList<Local> locs = Connexion.requete("select * from local where implantationId = " + this.getId(), "Local");
 		for(Local loc : locs) {
 			loc.setMateriels();
@@ -183,8 +183,6 @@ public class Implantation {
 		}
 
 	}
-
-	
 
 	/**
 	 * Renvoie le nombre de l'ensemble des locaux d'une implantation
@@ -226,5 +224,3 @@ public class Implantation {
 		return local;
 	}
 }
-
-

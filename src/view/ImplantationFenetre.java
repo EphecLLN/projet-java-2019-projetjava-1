@@ -121,6 +121,8 @@ public class ImplantationFenetre extends Vue{
 				Implantation imp = model.getImplantation(choix_imp.getSelectedItem().toString());
 				Local local = imp.getLocal(boxListeLocal.getSelectedItem().toString().substring(0,3));
 				LocalFenetre loc = new LocalFenetre(model, controller, local);
+				
+				
 			}
 		});
 		btnOuvrir.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -221,6 +223,17 @@ public class ImplantationFenetre extends Vue{
 		btnValider.setBounds(336, 79, 85, 29);
 		panel.add(btnValider);
 		btnValider.setBackground(SystemColor.menu);
+		
+		JButton btnRafraichir = new JButton("Rafraîchir");
+		btnRafraichir.setBounds(324, 0, 97, 25);
+		panel.add(btnRafraichir);
+		btnRafraichir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				j2.dispose();
+				new ImplantationFenetre(model, controller);
+			}
+		});
+		
 		btnValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Implantation impChoisie = model.getImplantation(choix_imp.getSelectedItem().toString());
