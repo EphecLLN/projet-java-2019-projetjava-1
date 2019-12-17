@@ -28,6 +28,7 @@ public class AjouterInterventionFenetre extends Vue {
 	private JFrame j14;
 	private JTextField txtNom;
 	private JTextField txtCom;
+	private JLabel lblValidation;
 
 ///////////////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////
 
@@ -42,14 +43,14 @@ public class AjouterInterventionFenetre extends Vue {
 		j14 = new JFrame();
 		j14.setTitle("Ajouter Intervention");
 		j14.setVisible(true);
-		j14.setBounds(100, 100, 385, 131);
+		j14.setBounds(100, 100, 385, 154);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		j14.setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 365, 84);
+		panel.setBounds(0, 0, 365, 107);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -79,15 +80,23 @@ public class AjouterInterventionFenetre extends Vue {
 		panel.add(txtCom);
 		txtCom.setColumns(10);
 		
+		// creation du label de validation
+		lblValidation = new JLabel("Ajout effectué");
+		lblValidation.setBounds(22, 81, 322, 16);
+		panel.add(lblValidation);
+		lblValidation.setVisible(false);
+		
 		// creation du bouton valider
 		JButton btnValider = new JButton("Valider");
 		btnValider.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnValider.setBounds(247, 19, 97, 52);
 		panel.add(btnValider);
+		
 		btnValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					local.genererIntervention(txtNom.getText(), txtCom.getText());
+					lblValidation.setVisible(true);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

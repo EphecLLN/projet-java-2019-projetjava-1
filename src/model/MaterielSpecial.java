@@ -86,6 +86,7 @@ public class MaterielSpecial {
 	 */
 	public void majMaterielSpecial(String mat) throws SQLException {
 		Connexion.requete("update materielspecial set etat = '" + mat + "' where id = " + this.id );
+		this.etat = mat;
 	}
 
 

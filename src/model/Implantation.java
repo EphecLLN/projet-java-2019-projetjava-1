@@ -172,7 +172,7 @@ public class Implantation {
 	public void synchroLocalEtMateriel() throws SQLException {
 		if(!this.getLocaux().isEmpty()) {
 			this.getLocaux().clear();
-		}
+		} 
 		ArrayList<Local> locs = Connexion.requete("select * from local where implantationId = " + this.getId(), "Local");
 		for(Local loc : locs) {
 			loc.setMateriels();

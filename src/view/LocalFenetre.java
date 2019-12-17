@@ -1,8 +1,5 @@
 package view;
 
-import java.awt.BorderLayout;
-
-import java.awt.EventQueue;
 import java.util.Observable;
 
 import javax.swing.JFrame;
@@ -14,9 +11,8 @@ import model.Ecole;
 import model.Local;
 import model.*;
 
-import javax.swing.JTextField;
+
 import java.awt.Font;
-import java.awt.Window;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -25,8 +21,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JSeparator;
-import java.awt.Button;
-import java.awt.Color;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 
 public class LocalFenetre extends Vue {
 
@@ -50,7 +53,7 @@ public class LocalFenetre extends Vue {
 		j6 = new JFrame();
 		this.local = local;
 		j6.setVisible(true);
-		j6.setBounds(100, 100, 620, 413);
+		j6.setBounds(100, 100, 620, 465);
 		j6.setTitle(local.getNom());
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -442,13 +445,25 @@ public class LocalFenetre extends Vue {
 		separator_2.setBounds(0, -2, -6, 395);
 		panelLocalInfo.add(separator_2);
 		separator_2.setOrientation(SwingConstants.VERTICAL);
+		
+		// création du bouton Rafraichir
+		JButton btnRefresh = new JButton("Rafraîchir");
+		btnRefresh.setBounds(10, 393, 97, 25);
+		contentPane.add(btnRefresh);
+		btnRefresh.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				j6.dispose();
+				new LocalFenetre(model, controller, local);
+			}
+		});
 
 		btnAjouterIntervention.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AjouterInterventionFenetre ajoutIntFen = new AjouterInterventionFenetre(model, controller, local);
 			}
 		});
-
+		
+		
 
 
 
@@ -458,18 +473,6 @@ public class LocalFenetre extends Vue {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		System.out.println("Ça passe par ici");
-		boxListePc = new JComboBox<String>();
-		if(local.getClass().getSimpleName().equals("LocalInformatique")) {
-			panelLocalInfo.setVisible(true);
-		}
-		if(local.getClass().getSimpleName().equals("LocalInformatique")) {
-			LocalInformatique unLocInfo = (LocalInformatique) local;
-			// creation de la box de choix du PC
-			for(String nomPc : controller.recupPC(unLocInfo.getPcs())) {
-				boxListePc.addItem(nomPc);
-			}
-		}
 
 	}
 

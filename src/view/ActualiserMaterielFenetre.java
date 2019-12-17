@@ -184,13 +184,20 @@ public class ActualiserMaterielFenetre extends Vue {
 					tables[3] = Integer.parseInt(txtTableCritique.getText());
 
 					local.majMateriels(chaises, tables);
+					
+					
 
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-
-
+				
+				
+				j9.revalidate();
+				j9.dispose();
+				
+				
+				
 
 			}
 		});
@@ -200,6 +207,7 @@ public class ActualiserMaterielFenetre extends Vue {
 /////////////////////////////////////////////////*METHODES*////////////////////////////////////////////////////////////////////////////////
 
 
+	
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub

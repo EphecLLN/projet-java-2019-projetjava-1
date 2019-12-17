@@ -30,6 +30,7 @@ public class ModifierInterventionFenetre extends Vue {
 	private JTextField txtNom;
 	private JTextField txtCom;
 	private JButton btnValider;
+	private JLabel lblValidation;
 
 	
 ///////////////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////
@@ -43,14 +44,14 @@ public class ModifierInterventionFenetre extends Vue {
 		j13 = new JFrame();
 		j13.setTitle("Modifier Intervention");
 		j13.setVisible(true);
-		j13.setBounds(100, 100, 428, 126);
+		j13.setBounds(100, 100, 428, 148);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		j13.setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(5, 5, 403, 75);
+		panel.setBounds(5, 5, 403, 96);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -82,6 +83,12 @@ public class ModifierInterventionFenetre extends Vue {
 		txtCom.setColumns(10);
 		txtCom.setText(inter.getCommentaires());
 		
+		
+		lblValidation = new JLabel("Modification effectuée");
+		lblValidation.setBounds(12, 67, 373, 16);
+		panel.add(lblValidation);
+		lblValidation.setVisible(false);
+		
 		// creation du bouton de validation
 		btnValider = new JButton("Valider");
 		btnValider.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -92,6 +99,7 @@ public class ModifierInterventionFenetre extends Vue {
 				try {
 					inter.majIntervention(txtNom.getText(), txtCom.getText());
 					model.synchroImplantationsEtAdresses();
+					lblValidation.setVisible(true);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

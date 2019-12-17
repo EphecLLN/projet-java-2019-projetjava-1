@@ -180,7 +180,7 @@ public class Local{
 	 * @throws SQLException
 	 */
 	public void genererMateriels(int[] chaises, int[] tables) throws SQLException {
-
+			
 			Connexion.generer("insert into materiels values ('', 'chaises', " + chaises[0] + ", " + chaises[1] + ", " + chaises[2] + ", " + chaises[3] + ", " + this.id + ")", "materiels");
 			Connexion.generer("insert into materiels values ('', 'tables', " + tables[0] + ", " + tables[1] + ", " + tables[2] + ", " + tables[3] + ", " + this.id + ")", "materiels");
 	}
@@ -192,7 +192,8 @@ public class Local{
 	 * @throws SQLException
 	 */
 	public void majMateriels(int[] chaises, int[] tables) throws SQLException {
-
+	
+				
 		Connexion.requete("update materiels set neuf = " + chaises[0] + " where localid = " + this.id + " and nom = 'chaises'");
 		Connexion.requete("update materiels set bon = " + chaises[1] + " where localid = " + this.id + " and nom = 'chaises'");
 		Connexion.requete("update materiels set materiels.use = " + chaises[2] + " where localid = " + this.id + " and nom = 'chaises'");
@@ -202,7 +203,7 @@ public class Local{
 		Connexion.requete("update materiels set bon = " + tables[1] + " where localid = " + this.id + " and nom = 'tables'");
 		Connexion.requete("update materiels set materiels.use = " + tables[2] + " where localid = " + this.id + " and nom = 'tables'");
 		Connexion.requete("update materiels set critique = " + tables[3] + " where localid = " + this.id + " and nom = 'tables'");
-				
+		this.setMateriels();
 
 	}
 	

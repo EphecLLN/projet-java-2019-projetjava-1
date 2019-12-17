@@ -33,7 +33,7 @@ public class AjouterMaterielSpecialFenetre extends Vue {
 ///////////////////////////////////////////////*CONSTRUCTEURS*////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * Creation de la fenetre
+	 * Création de la fenêtre
 	 */
 	public AjouterMaterielSpecialFenetre(Ecole model, Controller controller, Local local) {
 		super(model, controller);
@@ -52,47 +52,59 @@ public class AjouterMaterielSpecialFenetre extends Vue {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		// creation du libelle du nom 
+		// création du label du nom 
 		JLabel lblNom = new JLabel("Nom");
 		lblNom.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblNom.setBounds(23, 13, 56, 16);
 		panel.add(lblNom);
 		
-		// creation du champ texte de recuperation du nom
+		// création du champ texte de récupération du nom
 		txtNom = new JTextField();
 		txtNom.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtNom.setBounds(73, 10, 116, 22);
 		panel.add(txtNom);
 		txtNom.setColumns(10);
 		
-		// creation du libbele de l'etat
+		// création du libbele de l'etat
 		JLabel lblEtat = new JLabel("Etat");
 		lblEtat.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblEtat.setBounds(207, 13, 56, 16);
 		panel.add(lblEtat);
 		
-		// creation du champ texte de recuperation de l'etat
+		// création du champ texte de récupération de l'etat
 		txtEtat = new JTextField();
 		txtEtat.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtEtat.setBounds(254, 10, 116, 22);
 		panel.add(txtEtat);
 		txtEtat.setColumns(10);
 		
-		// creation du bouton de validation
+		// création du label de texte de validation ou d'erreur
+		JLabel lblValidation = new JLabel("Ajout effectué");
+		lblValidation.setBounds(23, 72, 347, 16);
+		panel.add(lblValidation);
+		lblValidation.setVisible(false);
+		
+		// création du bouton de validation
 		JButton btnNewButton = new JButton("Valider");
 		btnNewButton.setFont(new Font("Dialog", Font.PLAIN, 12));
-		btnNewButton.setBounds(23, 60, 346, 25);
+		btnNewButton.setBounds(23, 43, 347, 25);
 		panel.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					local.genererMaterielSpecial(txtNom.getText(), txtEtat.getText());
-				} catch (SQLException e1) {
+					lblValidation.setVisible(true);
 					
+					
+				} catch (SQLException e1) {
+					lblValidation.setText("Veuillez entrez un état correct : Neuf, Bon, Use ou Critique");
+					lblValidation.setVisible(true);
 					e1.printStackTrace();
 				}
 			}
 		});
+		
+	
 	
 	}
 	
@@ -110,5 +122,4 @@ public class AjouterMaterielSpecialFenetre extends Vue {
 		// TODO Auto-generated method stub
 		
 	}
-
 }

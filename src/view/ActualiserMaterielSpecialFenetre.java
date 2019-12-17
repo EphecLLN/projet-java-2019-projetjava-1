@@ -76,6 +76,7 @@ public class ActualiserMaterielSpecialFenetre extends Vue {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				j11.dispose();
 			}
 		});
 		
