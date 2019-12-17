@@ -6,6 +6,7 @@ package model;
 import java.sql.SQLException;
 
 /**
+ * Classe des interventions 
  * @author lb
  *
  */

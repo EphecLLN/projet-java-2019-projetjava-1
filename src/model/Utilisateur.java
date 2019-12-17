@@ -4,6 +4,7 @@
 package model;
 
 /**
+ * Classe regroupant les informations des utilisateurs
  * @author Victoire
  *
  */

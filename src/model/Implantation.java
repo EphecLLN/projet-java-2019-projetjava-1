@@ -9,6 +9,7 @@ import java.util.Iterator;
 
 
 /**
+ * Classe des implantations de l'école
  * @author Victoire
  *
  */

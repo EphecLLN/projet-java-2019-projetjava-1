@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
+ * Classe des locaux
  * @author lb
  *
  */

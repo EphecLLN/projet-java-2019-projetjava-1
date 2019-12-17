@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
+ * Classe des locaux informatiques
  * @author lb
  *
  */

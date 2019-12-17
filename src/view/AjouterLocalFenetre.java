@@ -111,6 +111,7 @@ public class AjouterLocalFenetre extends Vue {
 
 		// creation du champ de recuperation d'une table neuve
 		txtTableNeuf = new JTextField();
+		txtTableNeuf.setHorizontalAlignment(SwingConstants.CENTER);
 		txtTableNeuf.setFont(new Font("Dialog", Font.PLAIN, 12));
 		txtTableNeuf.setBounds(230, 114, 40, 22);
 		contentPane.add(txtTableNeuf);

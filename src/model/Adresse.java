@@ -4,6 +4,7 @@
 package model;
 
 /**
+ * Classe des adresses des implantations
  * @author Victoire
  *
  */

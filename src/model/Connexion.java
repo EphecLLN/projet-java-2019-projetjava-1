@@ -7,6 +7,7 @@ import java.sql.*;
 import java.util.*;
 
 /**
+ * Classe qui permet de connecter la base de données
  * @author lb
  *
  */
@@ -26,8 +27,9 @@ public class Connexion {
 ///////////////////////////////////////*CONSTRUCTEUR*/////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * @throws SQLException 
-	 * 
+	 * Constructeur de la classe Connexion
+	 * @param requete La requête à envoyer
+	 * @throws SQLException renvoie une erreur SQL si la requête échoue
 	 */
 	public Connexion(String requete) throws SQLException {
 		req = requete;
@@ -47,8 +49,8 @@ public class Connexion {
 	
 	/**
 	 * Permet de faire une requête qui ne renvoie rien (update, delete)
-	 * @param requete
-	 * @throws SQLException
+	 * @param requete La requête à envoyer
+	 * @throws SQLException renvoie une erreur SQL si la requête échoue
 	 */
 	public static void requete(String requete) throws SQLException {
 		Connexion conn = new Connexion(requete);

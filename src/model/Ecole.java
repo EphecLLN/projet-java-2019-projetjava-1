@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.Observable;
 
 /**
+ * Classe principale du modèle
  * @author Victoire
  *
  */

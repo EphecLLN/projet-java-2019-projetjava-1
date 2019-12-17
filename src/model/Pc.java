@@ -7,6 +7,7 @@ package model;
 
 
 /**
+ * Classe des pc
  * @author lb
  *
  */
