@@ -1,19 +1,13 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.util.Observable;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import controller.Controller;
-import model.Connexion;
 import model.Ecole;
 import model.LocalInformatique;
-
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -25,6 +19,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
+@SuppressWarnings({ "rawtypes", "deprecation" })
 public class AjouterPCFenetre extends Vue {
 	
 /////////////////////////////////////////*ATTRIBUTS*//////////////////////////////////////////////////////////////////////////////////////
@@ -44,6 +39,7 @@ public class AjouterPCFenetre extends Vue {
 	/**
 	 * Creation de la fenetre 
 	 */
+	@SuppressWarnings("unchecked")
 	public AjouterPCFenetre(Ecole model, Controller controller, LocalInformatique localInformatique) {
 		super(model,controller);
 		j8 = new JFrame();

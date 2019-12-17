@@ -1,7 +1,6 @@
 package view;
 
 import java.util.Observable;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -21,16 +20,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JSeparator;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
-
+@SuppressWarnings({ "unused", "deprecation" })
 public class LocalFenetre extends Vue {
 
 	/////////////////////////////////////////*ATTRIBUTS*//////////////////////////////////////////////////////////////////////////////////////
@@ -106,8 +97,7 @@ public class LocalFenetre extends Vue {
 		panel.add(lblMaterielSpecial);
 
 		//Creation d'une box permettant de selectionner un Materiel special du local
-		@SuppressWarnings("unchecked")
-		JComboBox boxMatSpec = new JComboBox(controller.recupMatSpecNom(local.getMaterielsSpeciaux()));
+		JComboBox<String> boxMatSpec = new JComboBox<String>(controller.recupMatSpecNom(local.getMaterielsSpeciaux()));
 		boxMatSpec.setBounds(29, 202, 245, 27);
 		panel.add(boxMatSpec);
 
@@ -131,8 +121,7 @@ public class LocalFenetre extends Vue {
 		panel.add(lblIntervention);
 
 		//Creation d'une box permettant de selectionner une intervention
-		@SuppressWarnings("unchecked")
-		JComboBox boxIntervention = new JComboBox(controller.recupInterventionNom(local.getInterventions()));
+		JComboBox<String> boxIntervention = new JComboBox<String>(controller.recupInterventionNom(local.getInterventions()));
 		boxIntervention.setBounds(29, 318, 245, 27);
 		panel.add(boxIntervention);
 
@@ -408,7 +397,7 @@ public class LocalFenetre extends Vue {
 				boxListePc.addItem(nomPc);
 			}
 		}
-		
+
 		// creation du bouton de validation du choix du pc
 		JButton btnValider = new JButton("Valider");
 		btnValider.addActionListener(new ActionListener() {
@@ -445,7 +434,7 @@ public class LocalFenetre extends Vue {
 		separator_2.setBounds(0, -2, -6, 395);
 		panelLocalInfo.add(separator_2);
 		separator_2.setOrientation(SwingConstants.VERTICAL);
-		
+
 		// création du bouton Rafraichir
 		JButton btnRefresh = new JButton("Rafraîchir");
 		btnRefresh.setBounds(10, 393, 97, 25);
@@ -462,8 +451,8 @@ public class LocalFenetre extends Vue {
 				AjouterInterventionFenetre ajoutIntFen = new AjouterInterventionFenetre(model, controller, local);
 			}
 		});
-		
-		
+
+
 
 
 
@@ -479,7 +468,6 @@ public class LocalFenetre extends Vue {
 
 	@Override
 	public void affiche(String string) {
-		// TODO Auto-generated method stub
 
 	}
 }

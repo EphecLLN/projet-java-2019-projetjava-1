@@ -1,10 +1,5 @@
 package view;
 
-import java.awt.BorderLayout;
-
-import java.awt.EventQueue;
-import java.util.Observable;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -17,8 +12,10 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.Observable;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("deprecation")
 public class ActualiserMaterielSpecialFenetre extends Vue {
 
 ////////////////////////////////////////////////*ATTRIBUTS*///////////////////////////////////////////////////////////////////////////////
@@ -73,7 +70,6 @@ public class ActualiserMaterielSpecialFenetre extends Vue {
 				try {
 					matSpec.majMaterielSpecial(txtEtat.getText());
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				j11.dispose();
@@ -87,13 +83,11 @@ public class ActualiserMaterielSpecialFenetre extends Vue {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void affiche(String string) {
-		// TODO Auto-generated method stub
 		
 	}
 }

@@ -1,14 +1,9 @@
 package view;
 
-import java.awt.BorderLayout;
-
-import java.awt.EventQueue;
 import java.util.Observable;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import controller.Controller;
 import model.*;
 import javax.swing.JLabel;
@@ -19,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("deprecation")
 public class AjouterInterventionFenetre extends Vue {
 	
 ////////////////////////////////////////////////*ATTRIBUTS*///////////////////////////////////////////////////////////////////////////////
@@ -98,7 +94,6 @@ public class AjouterInterventionFenetre extends Vue {
 					local.genererIntervention(txtNom.getText(), txtCom.getText());
 					lblValidation.setVisible(true);
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -110,13 +105,11 @@ public class AjouterInterventionFenetre extends Vue {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void affiche(String string) {
-		// TODO Auto-generated method stub
 		
 	}
 

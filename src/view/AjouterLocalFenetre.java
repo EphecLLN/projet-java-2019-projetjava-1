@@ -1,46 +1,20 @@
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-
-import model.*;
 import controller.Controller;
 import model.Ecole;
 import model.Implantation;
-
-import java.awt.Panel;
-import java.util.ArrayList;
 import java.util.Observable;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
-import javax.swing.ComboBoxModel;
-import javax.swing.DefaultListModel;
-import javax.swing.JComboBox;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.Color;
-import javax.swing.JTextField;
 import java.awt.Font;
-import javax.swing.JList;
-import java.awt.event.ItemListener;
-import java.awt.event.ItemEvent;
-import javax.swing.SwingConstants;
-import javax.swing.JToggleButton;
-import javax.swing.JCheckBox;
-import javax.swing.JSeparator;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+@SuppressWarnings("deprecation")
 public class AjouterLocalFenetre extends Vue {
-
-	//TODO renommer les variables
 
 ////////////////////////////////////////////////*ATTRIBUTS*///////////////////////////////////////////////////////////////////////////////
 
@@ -252,13 +226,11 @@ public class AjouterLocalFenetre extends Vue {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void affiche(String string) {
-		// TODO Auto-generated method stub
 
 	}
 }

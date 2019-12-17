@@ -3,8 +3,6 @@
  */
 package model;
 
-import java.sql.SQLException;
-
 /**
  * @author Victoire
  *
@@ -97,7 +95,7 @@ public class Adresse {
 	this.rue = rue;
 	this.ville = ville;
 	}
-	
+
 
 
 ////////////////////////////////////////////////*METHODE*/////////////////////////////////////////////////////////////////////////////////////

@@ -88,8 +88,6 @@ public class Intervention{
 		this.nom = nom;
 		this.commentaires = commentaires;
 		Connexion.requete("update intervention set nom = '" + nom + "', commentaires = '" + commentaires + "' where id = " + this.getId());
-		
-	}
-	
 
+	}
 }

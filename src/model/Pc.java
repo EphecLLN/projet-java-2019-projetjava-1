@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package model;
 
@@ -11,7 +11,7 @@ package model;
  *
  */
 public class Pc {
-	
+
 ///////////////////////////////////////*ATTRIBUTS*/////////////////////////////////////////////////////////////////////////////////////////////
 
 	private int id;
@@ -22,7 +22,7 @@ public class Pc {
 	private String clavier;
 	private String souris;
 	private String commentaires;
-	
+
 ///////////////////////////////////////*GETTERS ET SETTERS*////////////////////////////////////////////////////////////////////////////////////
 
 	/**
@@ -31,7 +31,7 @@ public class Pc {
 	public String getType() {
 		return type;
 	}
-	
+
 	/**
 	 * @return the id
 	 */
@@ -80,7 +80,7 @@ public class Pc {
 	public String getEcran() {
 		return ecran;
 	}
-	
+
 	/**
 	 * @param ecran the ecran to set
 	 */
@@ -94,7 +94,7 @@ public class Pc {
 	public String getClavier() {
 		return clavier;
 	}
-	
+
 	/**
 	 * @param clavier the clavier to set
 	 */
@@ -158,7 +158,7 @@ public class Pc {
 		this.souris = souris;
 		this.commentaires = commentaires;
 	}
-	
+
 
 
 

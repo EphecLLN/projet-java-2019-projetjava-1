@@ -1,21 +1,15 @@
 package view;
 
-import java.awt.BorderLayout;
-
-
-import java.awt.EventQueue;
 import java.util.Observable;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import controller.Controller;
 import model.*;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import java.awt.FlowLayout;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Font;
@@ -26,6 +20,7 @@ import javax.swing.UIManager;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 
+@SuppressWarnings("deprecation")
 public class UtilisateurFenetre extends Vue {
 	
 ////////////////////////////////////////////////*ATTRIBUTS*///////////////////////////////////////////////////////////////////////////////
@@ -52,7 +47,6 @@ public class UtilisateurFenetre extends Vue {
 	/**
 	 * Creation de la fenetre
 	 */
-	@SuppressWarnings("unchecked")
 	public UtilisateurFenetre(Ecole model, Controller controller, Implantation implantation) {
 		super(model, controller);
 		
@@ -123,9 +117,9 @@ public class UtilisateurFenetre extends Vue {
 		contentPane.add(lblErreur);
 
 		// creation de box du grade
-		JComboBox boxGrade = new JComboBox();
+		JComboBox<String> boxGrade = new JComboBox<String>();
 		boxGrade.setFont(new Font("Dialog", Font.PLAIN, 12));
-		boxGrade.setModel(new DefaultComboBoxModel(new String[] {"Super administrateur", "Administrateur d'implantation", "Informaticien", "Utilisateur"}));
+		boxGrade.setModel(new DefaultComboBoxModel<String>(new String[] {"Super administrateur", "Administrateur d'implantation", "Informaticien", "Utilisateur"}));
 		boxGrade.setSelectedIndex(3);
 		boxGrade.setBounds(135, 83, 130, 27);
 		contentPane.add(boxGrade);
@@ -174,13 +168,11 @@ public class UtilisateurFenetre extends Vue {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void affiche(String string) {
-		// TODO Auto-generated method stub
 		
 	}
 }

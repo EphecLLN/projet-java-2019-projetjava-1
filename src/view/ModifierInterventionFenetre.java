@@ -1,17 +1,12 @@
 package view;
 
-import java.awt.BorderLayout;
-
-import java.awt.EventQueue;
 import java.util.Observable;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controller.Controller;
 import model.*;
-import java.awt.FlowLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Font;
@@ -20,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("deprecation")
 public class ModifierInterventionFenetre extends Vue {
 	
 ////////////////////////////////////////////////*ATTRIBUTS*///////////////////////////////////////////////////////////////////////////////
@@ -101,7 +97,6 @@ public class ModifierInterventionFenetre extends Vue {
 					model.synchroImplantationsEtAdresses();
 					lblValidation.setVisible(true);
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -115,14 +110,10 @@ public class ModifierInterventionFenetre extends Vue {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void affiche(String string) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

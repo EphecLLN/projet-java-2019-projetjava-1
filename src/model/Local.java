@@ -180,11 +180,11 @@ public class Local{
 	 * @throws SQLException
 	 */
 	public void genererMateriels(int[] chaises, int[] tables) throws SQLException {
-			
+
 			Connexion.generer("insert into materiels values ('', 'chaises', " + chaises[0] + ", " + chaises[1] + ", " + chaises[2] + ", " + chaises[3] + ", " + this.id + ")", "materiels");
 			Connexion.generer("insert into materiels values ('', 'tables', " + tables[0] + ", " + tables[1] + ", " + tables[2] + ", " + tables[3] + ", " + this.id + ")", "materiels");
 	}
-	
+
 	/**
 	 * Permet de faire la mise a jour du matériel dans la base de donnees
 	 * @param chaises
@@ -192,13 +192,13 @@ public class Local{
 	 * @throws SQLException
 	 */
 	public void majMateriels(int[] chaises, int[] tables) throws SQLException {
-	
-				
+
+
 		Connexion.requete("update materiels set neuf = " + chaises[0] + " where localid = " + this.id + " and nom = 'chaises'");
 		Connexion.requete("update materiels set bon = " + chaises[1] + " where localid = " + this.id + " and nom = 'chaises'");
 		Connexion.requete("update materiels set materiels.use = " + chaises[2] + " where localid = " + this.id + " and nom = 'chaises'");
 		Connexion.requete("update materiels set critique = " + chaises[3] + " where localid = " + this.id + " and nom = 'chaises'");
-				
+
 		Connexion.requete("update materiels set neuf = " + tables[0] + " where localid = " + this.id + " and nom = 'tables'");
 		Connexion.requete("update materiels set bon = " + tables[1] + " where localid = " + this.id + " and nom = 'tables'");
 		Connexion.requete("update materiels set materiels.use = " + tables[2] + " where localid = " + this.id + " and nom = 'tables'");
@@ -206,7 +206,7 @@ public class Local{
 		this.setMateriels();
 
 	}
-	
+
 	/**
 	 * Change la valeur des attributs de type Materiels du local avec la valeur adhoc
 	 * Ne fait pas partie des setters
@@ -225,7 +225,7 @@ public class Local{
 		    System.exit(0);
 		}
 	}
-	
+
 	/**
 	 * Renvoie un objet de type MaterielSpecial
 	 * Ne fait pas partie des getters
@@ -245,7 +245,7 @@ public class Local{
 		return materielSpecial;
 	}
 
-	
+
 	/**
 	 * Renvoie un objet de type Intervention
 	 * Ne fait pas partie des getters
@@ -264,8 +264,8 @@ public class Local{
 		}
 		return intervention;
 	}
-	
-	
+
+
 	/**
 	 * Permet de générer un nouveau matériel spécial.
 	 * Il est enregistré en bdd et ajouté au modèle.
@@ -293,7 +293,7 @@ public class Local{
 		Intervention inte = (Intervention) Connexion.requete("select * from intervention where id = " + id, "Intervention").get(0);
 		this.getInterventions().add(inte);
 	}
-	
+///////////////////////////////////////*METHODE TOSTRING*////////////////////////////////////////////////////////////////////////////////////
 
 
 	public String toString() {
